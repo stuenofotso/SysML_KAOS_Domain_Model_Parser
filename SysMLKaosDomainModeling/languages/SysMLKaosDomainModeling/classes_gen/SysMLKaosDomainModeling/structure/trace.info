@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,79,0" name="SysMLKaosDomainModeling.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,64,0" name="SysMLKaosDomainModeling.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="14,0,266,0" name="SysMLKaosDomainModeling.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+</debug-info>
+

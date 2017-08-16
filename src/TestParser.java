@@ -65,7 +65,7 @@ public class TestParser {
 
                 System.out.println("\n\n\nchemin du fichier en sortie: "+filename);
 
-                pw.println("/* "+str2varname(file.getName().substring(0, file.getName().length()-4))+"\n* Author: OWL2BSystem\n* Creation date: "+ new SimpleDateFormat("dd/MM/yyyy").format(new Date() {
+                pw.println("/* "+str2varname(file.getName().substring(0, file.getName().length()-4))+"\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: "+ new SimpleDateFormat("dd/MM/yyyy").format(new Date() {
                 })+"\n*/");
                 pw.println();
                 pw.println("SYSTEM\n\t"+str2varname(file.getName().substring(0, file.getName().length()-4)));
