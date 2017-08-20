@@ -3,7 +3,6 @@
   <component name="MPSProject">
     <projectModules>
       <modulePath path="$PROJECT_DIR$/languages/SysMLKaosDomainModeling/SysMLKaosDomainModeling.mpl" folder="" />
-      <modulePath path="$PROJECT_DIR$/languages/SysMLKaosDomainModeling/runtime/SysMLKaosDomainModeling.runtime.msd" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/SysMLKaosDomainModeling/sandbox/SysMLKaosDomainModeling.sandbox.msd" folder="" />
     </projectModules>
   </component>

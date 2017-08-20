@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root nodeRef="r:e89e95dc-d337-4e54-a66a-6ea84135f1b5(SysMLKaosDomainModeling.build)/5795948090138594261">
+    <file name="SysMLKaosDomainModeling.xml">
+      <unit id="5795948090138594261" at="1,0,430,10" name="SysMLKaosDomainModeling.build.SysMLKaosDomainModeling" />
+    </file>
+  </root>
+  <root nodeRef="r:e89e95dc-d337-4e54-a66a-6ea84135f1b5(SysMLKaosDomainModeling.build)/5795948090138594386">
+    <file name="SysMLKaosDomainModelingDistribution.xml">
+      <unit id="5795948090138594386" at="1,0,138,10" name="SysMLKaosDomainModeling.build.SysMLKaosDomainModelingDistribution" />
+    </file>
+  </root>
+</debug-info>
+

@@ -6,6 +6,9 @@ import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor {
   public ConstraintsAspectDescriptor() {
@@ -13,7 +16,39 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
 
   @Override
   public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
-    SAbstractConcept cncpt = concept;
+    SAbstractConcept cncpt_a0c = concept;
+    switch (index_2qnle6_a0c.index(cncpt_a0c)) {
+      case 0:
+        return new Attribute_Constraints();
+      case 1:
+        return new AttributeAtom_Constraints();
+      case 2:
+        return new AttributeMaplet_Constraints();
+      case 3:
+        return new Cardinality_Constraints();
+      case 4:
+        return new ConceptAtom_Constraints();
+      case 5:
+        return new DataSetAtom_Constraints();
+      case 6:
+        return new DataValue_Constraints();
+      case 7:
+        return new DomainModel_Constraints();
+      case 8:
+        return new EqualityAtom_Constraints();
+      case 9:
+        return new Individual_Constraints();
+      case 10:
+        return new InequalityAtom_Constraints();
+      case 11:
+        return new Relation_Constraints();
+      case 12:
+        return new RelationAtom_Constraints();
+      case 13:
+        return new RelationMaplet_Constraints();
+      default:
+    }
     return new BaseConstraintsDescriptor(concept);
   }
+  private static final ConceptSwitchIndex index_2qnle6_a0c = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694980ebL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L), MetaIdFactory.conceptId(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L)).seal();
 }

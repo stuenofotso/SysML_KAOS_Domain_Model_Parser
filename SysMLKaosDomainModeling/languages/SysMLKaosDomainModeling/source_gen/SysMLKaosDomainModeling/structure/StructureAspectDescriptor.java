@@ -14,23 +14,32 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAtom = createDescriptorForAtom();
   /*package*/ final ConceptDescriptor myConceptAttribute = createDescriptorForAttribute();
+  /*package*/ final ConceptDescriptor myConceptAttributeAtom = createDescriptorForAttributeAtom();
   /*package*/ final ConceptDescriptor myConceptAttributeMaplet = createDescriptorForAttributeMaplet();
   /*package*/ final ConceptDescriptor myConceptBody = createDescriptorForBody();
+  /*package*/ final ConceptDescriptor myConceptBuiltInAtom = createDescriptorForBuiltInAtom();
   /*package*/ final ConceptDescriptor myConceptCardinality = createDescriptorForCardinality();
   /*package*/ final ConceptDescriptor myConceptConcept = createDescriptorForConcept();
+  /*package*/ final ConceptDescriptor myConceptConceptAtom = createDescriptorForConceptAtom();
   /*package*/ final ConceptDescriptor myConceptCustomDataSet = createDescriptorForCustomDataSet();
   /*package*/ final ConceptDescriptor myConceptDataSet = createDescriptorForDataSet();
+  /*package*/ final ConceptDescriptor myConceptDataSetAtom = createDescriptorForDataSetAtom();
   /*package*/ final ConceptDescriptor myConceptDataValue = createDescriptorForDataValue();
   /*package*/ final ConceptDescriptor myConceptDefaultDataSet = createDescriptorForDefaultDataSet();
   /*package*/ final ConceptDescriptor myConceptDomainCardinality = createDescriptorForDomainCardinality();
   /*package*/ final ConceptDescriptor myConceptDomainModel = createDescriptorForDomainModel();
   /*package*/ final ConceptDescriptor myConceptEnumeratedDataSet = createDescriptorForEnumeratedDataSet();
+  /*package*/ final ConceptDescriptor myConceptEqualityAtom = createDescriptorForEqualityAtom();
   /*package*/ final ConceptDescriptor myConceptHead = createDescriptorForHead();
   /*package*/ final ConceptDescriptor myConceptIndividual = createDescriptorForIndividual();
+  /*package*/ final ConceptDescriptor myConceptInequalityAtom = createDescriptorForInequalityAtom();
   /*package*/ final ConceptDescriptor myConceptPredicate = createDescriptorForPredicate();
   /*package*/ final ConceptDescriptor myConceptRangeCardinality = createDescriptorForRangeCardinality();
   /*package*/ final ConceptDescriptor myConceptRelation = createDescriptorForRelation();
+  /*package*/ final ConceptDescriptor myConceptRelationAtom = createDescriptorForRelationAtom();
   /*package*/ final ConceptDescriptor myConceptRelationMaplet = createDescriptorForRelationMaplet();
+  /*package*/ final ConceptDescriptor myConceptTerm = createDescriptorForTerm();
+  /*package*/ final ConceptDescriptor myConceptVariable = createDescriptorForVariable();
   private final LanguageConceptSwitch myConceptIndex;
 
   public StructureAspectDescriptor() {
@@ -39,7 +48,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAtom, myConceptAttribute, myConceptAttributeMaplet, myConceptBody, myConceptCardinality, myConceptConcept, myConceptCustomDataSet, myConceptDataSet, myConceptDataValue, myConceptDefaultDataSet, myConceptDomainCardinality, myConceptDomainModel, myConceptEnumeratedDataSet, myConceptHead, myConceptIndividual, myConceptPredicate, myConceptRangeCardinality, myConceptRelation, myConceptRelationMaplet);
+    return Arrays.asList(myConceptAtom, myConceptAttribute, myConceptAttributeAtom, myConceptAttributeMaplet, myConceptBody, myConceptBuiltInAtom, myConceptCardinality, myConceptConcept, myConceptConceptAtom, myConceptCustomDataSet, myConceptDataSet, myConceptDataSetAtom, myConceptDataValue, myConceptDefaultDataSet, myConceptDomainCardinality, myConceptDomainModel, myConceptEnumeratedDataSet, myConceptEqualityAtom, myConceptHead, myConceptIndividual, myConceptInequalityAtom, myConceptPredicate, myConceptRangeCardinality, myConceptRelation, myConceptRelationAtom, myConceptRelationMaplet, myConceptTerm, myConceptVariable);
   }
 
   @Override
@@ -50,18 +59,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAtom;
       case LanguageConceptSwitch.Attribute:
         return myConceptAttribute;
+      case LanguageConceptSwitch.AttributeAtom:
+        return myConceptAttributeAtom;
       case LanguageConceptSwitch.AttributeMaplet:
         return myConceptAttributeMaplet;
       case LanguageConceptSwitch.Body:
         return myConceptBody;
+      case LanguageConceptSwitch.BuiltInAtom:
+        return myConceptBuiltInAtom;
       case LanguageConceptSwitch.Cardinality:
         return myConceptCardinality;
       case LanguageConceptSwitch.Concept:
         return myConceptConcept;
+      case LanguageConceptSwitch.ConceptAtom:
+        return myConceptConceptAtom;
       case LanguageConceptSwitch.CustomDataSet:
         return myConceptCustomDataSet;
       case LanguageConceptSwitch.DataSet:
         return myConceptDataSet;
+      case LanguageConceptSwitch.DataSetAtom:
+        return myConceptDataSetAtom;
       case LanguageConceptSwitch.DataValue:
         return myConceptDataValue;
       case LanguageConceptSwitch.DefaultDataSet:
@@ -72,18 +89,28 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDomainModel;
       case LanguageConceptSwitch.EnumeratedDataSet:
         return myConceptEnumeratedDataSet;
+      case LanguageConceptSwitch.EqualityAtom:
+        return myConceptEqualityAtom;
       case LanguageConceptSwitch.Head:
         return myConceptHead;
       case LanguageConceptSwitch.Individual:
         return myConceptIndividual;
+      case LanguageConceptSwitch.InequalityAtom:
+        return myConceptInequalityAtom;
       case LanguageConceptSwitch.Predicate:
         return myConceptPredicate;
       case LanguageConceptSwitch.RangeCardinality:
         return myConceptRangeCardinality;
       case LanguageConceptSwitch.Relation:
         return myConceptRelation;
+      case LanguageConceptSwitch.RelationAtom:
+        return myConceptRelationAtom;
       case LanguageConceptSwitch.RelationMaplet:
         return myConceptRelationMaplet;
+      case LanguageConceptSwitch.Term:
+        return myConceptTerm;
+      case LanguageConceptSwitch.Variable:
+        return myConceptVariable;
       default:
         return null;
     }
@@ -95,8 +122,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   private static ConceptDescriptor createDescriptorForAtom() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
-    b.class_(false, false, false);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.class_(false, true, false);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132845");
     return b.create();
   }
@@ -110,6 +136,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("domain", 0x506f5814694981f3L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L).optional(false).origin("5795948090138132979").done();
     b.associate("range", 0x506f5814694981f6L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL).optional(false).origin("5795948090138132982").done();
     b.aggregate("maplets", 0x506f581469498245L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL).optional(true).ordered(true).multiple(true).origin("5795948090138133061").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForAttributeAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "AttributeAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451474");
+    b.associate("attribute", 0x506f5814694e5e13L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL).optional(false).origin("5795948090138451475").done();
+    b.associate("antecedent", 0x506f5814694e5e15L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451477").done();
+    b.associate("image", 0x506f5814694e5e18L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451480").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAttributeMaplet() {
@@ -127,12 +163,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("atoms", 0x506f58146949818cL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL).optional(false).ordered(true).multiple(true).origin("5795948090138132876").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForBuiltInAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "BuiltInAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451495");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForCardinality() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Cardinality", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L);
     b.class_(false, true, false);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138133155");
     b.prop("minCardinality", 0x506f5814694982bfL, "5795948090138133183");
-    b.prop("domainCardinality", 0x506f5814694982c2L, "5795948090138133186");
+    b.prop("maxCardinality", 0x506f5814694982c2L, "5795948090138133186");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConcept() {
@@ -142,6 +186,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132357");
     b.prop("isVariable", 0x506f581469497fa4L, "5795948090138132388");
     b.associate("parentConcept", 0x506f581469497fa7L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L).optional(true).origin("5795948090138132391").done();
+    b.aggregate("individuals", 0x506f5814694983aeL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL).optional(true).ordered(true).multiple(true).origin("5795948090138133422").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForConceptAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "ConceptAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451452");
+    b.associate("concept", 0x506f5814694e5dfdL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L).optional(false).origin("5795948090138451453").done();
+    b.associate("term", 0x506f5814694e5dffL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451455").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCustomDataSet() {
@@ -155,13 +209,23 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDataSet() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "DataSet", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL);
     b.class_(false, true, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132394");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDataSetAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "DataSetAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451458");
+    b.associate("dataSet", 0x506f5814694e5e03L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL).optional(false).origin("5795948090138451459").done();
+    b.associate("term", 0x506f5814694e5e05L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451461").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDataValue() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "DataValue", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694980ebL);
     b.class_(false, false, false);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.super_("SysMLKaosDomainModeling.structure.Term", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132715");
     b.prop("lexicalForm", 0x506f58146949810aL, "5795948090138132746");
     b.associate("type", 0x506f58146949810dL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL).optional(false).origin("5795948090138132749").done();
@@ -171,7 +235,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "DefaultDataSet", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497fc9L);
     b.class_(false, false, true);
     b.super_("SysMLKaosDomainModeling.structure.DataSet", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132425");
     return b.create();
   }
@@ -186,14 +249,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "DomainModel", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L);
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0x4caf0310491e41f5L, 0x8a9b2006b3a94898L, 0x40c1a7cb987d20d5L);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138131714");
     b.associate("parentDomainModel", 0x506f581469497f82L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L).optional(true).origin("5795948090138132354").done();
     b.aggregate("concepts", 0x506f5814694983a2L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L).optional(true).ordered(true).multiple(true).origin("5795948090138133410").done();
     b.aggregate("relations", 0x506f5814694983a7L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL).optional(true).ordered(true).multiple(true).origin("5795948090138133415").done();
-    b.aggregate("individuals", 0x506f5814694983aeL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL).optional(true).ordered(true).multiple(true).origin("5795948090138133422").done();
     b.aggregate("attributes", 0x506f5814694983b7L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL).optional(true).ordered(true).multiple(true).origin("5795948090138133431").done();
     b.aggregate("dataSets", 0x506f5814694983c2L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497faaL).optional(true).ordered(true).multiple(true).origin("5795948090138133442").done();
-    b.aggregate("dataValues", 0x506f5814694983cfL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694980ebL).optional(true).ordered(true).multiple(true).origin("5795948090138133455").done();
     b.aggregate("predicates", 0x506f5814694983deL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L).optional(true).ordered(true).multiple(true).origin("5795948090138133470").done();
     return b.create();
   }
@@ -203,6 +265,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("SysMLKaosDomainModeling.structure.CustomDataSet", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498071L);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132684");
     b.aggregate("elements", 0x506f581469498110L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694980ebL).optional(false).ordered(true).multiple(true).origin("5795948090138132752").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForEqualityAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "EqualityAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451484");
+    b.associate("leftMember", 0x506f5814694e5e1dL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451485").done();
+    b.associate("rightMember", 0x506f5814694e5e1fL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451487").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHead() {
@@ -215,18 +286,29 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForIndividual() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Individual", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL);
     b.class_(false, false, false);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.super_("SysMLKaosDomainModeling.structure.Term", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138133018");
     b.associate("type", 0x506f58146949823dL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L).optional(false).origin("5795948090138133053").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForInequalityAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "InequalityAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451490");
+    b.associate("leftMember", 0x506f5814694e5e23L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451491").done();
+    b.associate("rightMember", 0x506f5814694e5e24L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451492").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPredicate() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Predicate", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L);
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138132755");
     b.aggregate("antecedent", 0x506f581469498192L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498151L).optional(false).ordered(true).multiple(false).origin("5795948090138132882").done();
     b.aggregate("consequent", 0x506f581469498195L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498132L).optional(true).ordered(true).multiple(false).origin("5795948090138132885").done();
+    b.aggregate("variables", 0x506f58146957014bL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dc7L).optional(true).ordered(true).multiple(true).origin("5795948090139017547").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForRangeCardinality() {
@@ -254,12 +336,36 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("maplets", 0x506f581469498397L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L).optional(true).ordered(true).multiple(true).origin("5795948090138133399").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForRelationAtom() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "RelationAtom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Atom", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949816dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451464");
+    b.associate("relation", 0x506f5814694e5e09L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL).optional(false).origin("5795948090138451465").done();
+    b.associate("antecedent", 0x506f5814694e5e0bL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451467").done();
+    b.associate("image", 0x506f5814694e5e0eL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL).optional(false).origin("5795948090138451470").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForRelationMaplet() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "RelationMaplet", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L);
     b.class_(false, false, false);
     b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138133363");
     b.associate("antecedent", 0x506f58146949838fL).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL).optional(false).origin("5795948090138133391").done();
     b.associate("image", 0x506f581469498392L).target(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949821aL).optional(false).origin("5795948090138133394").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTerm() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Term", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138515245");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForVariable() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("SysMLKaosDomainModeling", "Variable", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dc7L);
+    b.class_(false, false, false);
+    b.super_("SysMLKaosDomainModeling.structure.Term", 0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694f572dL);
+    b.origin("r:0069f631-891a-4ca2-904e-aa2fe791c6ed(SysMLKaosDomainModeling.structure)/5795948090138451399");
     return b.create();
   }
 }
