@@ -1,14 +1,44 @@
 /* lg_system_ref_0
 * Author: SysML/KAOS Domain Model Parser
-* Creation date: 20/08/2017
+* Creation date: 21/08/2017
 */
 
 SYSTEM
-	lg_system_ref_0
+lg_system_ref_0
+
 
 SETS
+LandingGear; LandingSet; DATA_SET_1={lg_extended, lg_retracted}
 
-LandingGear; LandingSet
+CONSTANTS
+LG1, LS1, LS2, LS3, T_re, re, T_landingGearState
+
+VARIABLES
+landingGearState
+
+PROPERTIES
+LG1 : LandingGear &
+LandingGear = {LG1 : LandingGear} &
+LS1 : LandingSet &
+LS2 : LandingSet &
+LS3 : LandingSet &
+LandingSet = {LS1 : LandingSet, LS2 : LandingSet, LS3 : LandingSet} &
+T_re = LandingSet <-> LandingGear &
+re : T_re &
+!xx. (xx : ran(re) => card(re~[{xx}]) = 2) &
+!xx. (xx : dom(re) => card(re[{xx}]) >= 0) &
+re = {LS1|->LG1, LS1|->LG1, LS2|->LG1} &
+T_landingGearState = LandingSet --> DATA_SET_1
+
+INVARIANT
+landingGearState : T_landingGearState &
+//predicate p1
+!(x1, x2, x3). ((x1 : LandingGear) /\ (x2 : DATA_SET_1) /\ (x1 |-> x3 : landingGearState)) => ((x2 |-> x3 : landingGearState)) &
+//predicate p2
+!(x4, x5). ((x4 |-> x5 : landingGearState))
+
+INITIALISATION
+landingGearState := {LS3|->lg_extended}
 
 
 END

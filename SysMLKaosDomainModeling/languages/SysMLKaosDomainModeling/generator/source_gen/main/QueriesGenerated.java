@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
@@ -40,10 +41,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetPropertyValue_582242545756934762(final PropertyMacroContext _context) {
-    return (((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")) == null) ? "\nSYSTEM\n\t" : "\nREFINEMENT\n\t")) + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+    return (((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")) == null) ? "\nSYSTEM\n" : "\nREFINEMENT\n")) + SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
   public static Object propertyMacro_GetPropertyValue_582242545756980319(final PropertyMacroContext _context) {
-    return ((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")) == null) ? "" : "REFINES\n\t" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
+    return ((SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")) == null) ? "" : "REFINES\n" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f581469497f82L, "parentDomainModel")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")));
   }
   public static Object propertyMacro_GetPropertyValue_582242545756639839(final PropertyMacroContext _context) {
     String str = "";
@@ -130,6 +131,458 @@ public class QueriesGenerated extends QueryProviderBase {
 
     return str;
   }
+  public static Object propertyMacro_GetPropertyValue_582242545757800102(final PropertyMacroContext _context) {
+    String str = "";
+    String str1 = "";
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983a2L, "concepts")))) {
+      if ((SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f581469497fa7L, "parentConcept")) != null)) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " <: " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f581469497fa7L, "parentConcept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+      }
+
+      str1 = "";
+      for (SNode f : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f5814694983aeL, "individuals")))) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        if (!(SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f581469497fa4L, "isVariable")))) {
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {" : ", ")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+      }
+      str += (str1 == "" ? "" : ((str == "" ? "" : " &\n")) + str1 + "}");
+
+    }
+
+
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983a7L, "relations")))) {
+      str += ((str == "" ? "" : " &\n")) + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949829bL, "domain")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " <-> " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949829eL, "range")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+      if (!(SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable")))) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826eL, "isTransitive"))) {
+          str += ((str == "" ? "" : " &\n")) + "(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " ; " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") <: " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498273L, "isSymmetric"))) {
+          str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~ = " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949827aL, "isASymmetric"))) {
+          str += ((str == "" ? "" : " &\n")) + "(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~ /\\\\ " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") <: id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "))";
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498283L, "isReflexive"))) {
+          str += ((str == "" ? "" : " &\n")) + "id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")) <: " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949828eL, "isIrreflexive"))) {
+          str += ((str == "" ? "" : " &\n")) + "id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")) /\\\\ " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {}";
+
+        }
+
+        // maxCardinality>=0 && minCardinality != maxCardinality 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) >= 0 && SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) != SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) : " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ".." + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) >= 0 && SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) != SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) : " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ".." + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) + ")";
+
+        }
+
+        // maxCardinality>=0 && minCardinality == maxCardinality 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) == SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) = " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) == SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) = " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        // maxCardinality is null 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) == -1) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) >= " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) == -1) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) >= " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        str1 = "";
+        for (SNode m : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498397L, "maplets")))) {
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {" : ", ")) + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L, 0x506f58146949838fL, "antecedent")) + "|->" + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L, 0x506f581469498392L, "image"));
+        }
+        str += (str1 == "" ? "" : ((str == "" ? "" : " &\n")) + str1 + "}");
+
+
+      }
+
+
+    }
+
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983b7L, "attributes")))) {
+      if (!(SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981eeL, "isFunctional")))) {
+        str += ((str == "" ? "" : " &\n")) + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981f3L, "domain")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " <-> " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981f6L, "range")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+      }
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981eeL, "isFunctional"))) {
+        str += ((str == "" ? "" : " &\n")) + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981f3L, "domain")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " --> " + SPropertyOperations.getString(SLinkOperations.getTarget(e, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981f6L, "range")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+      }
+
+
+      if (!(SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable")))) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        str1 = "";
+        for (SNode m : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f581469498245L, "maplets")))) {
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {" : ", ")) + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL, 0x506f581469498217L, "antecedent")) + "|->" + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL, 0x506f581469498240L, "image"));
+        }
+        str += (str1 == "" ? "" : ((str == "" ? "" : " &\n")) + str1 + "}");
+
+      }
+
+
+
+    }
+
+    for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983deL, "predicates")))) {
+      // Le predicat ne fait intervenir que des constantes 
+      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498192L, "antecedent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498151L, 0x506f58146949818cL, "atoms"))).all(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return (!(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) && !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")) && (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable"))))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")) && (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable")))));
+        }
+      }) && ((SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")) == null) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498132L, 0x506f58146949818fL, "atoms"))).all(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return (!(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) && !(SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")) && (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable"))))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")) && (!(SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable")))));
+        }
+      }))) {
+
+        str += ((str == "" ? "" : " &\n")) + "//predicate " + SPropertyOperations.getString(p, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "\n";
+
+
+        str1 = "";
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f58146957014bL, "variables")))) {
+
+          str1 += ((str1 == "" ? "!(" : ", ")) + SPropertyOperations.getString(v, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        }
+
+        str += (str1 == "" ? "" : str1 + "). ");
+
+        str1 = "";
+        for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498192L, "antecedent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498151L, 0x506f58146949818cL, "atoms")))) {
+          str1 += (str1 == "" ? "(" : " /\\\\ ");
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dffL, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dfdL, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e05L, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e03L, "dataSet")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e15L, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e18L, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0bL, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0eL, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1dL, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1fL, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e23L, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " /= " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e24L, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+        }
+        str += (str1 == "" ? "" : str1 + ")");
+
+        if ((SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")) != null)) {
+          str += " => ";
+
+          str1 = "";
+          for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498132L, 0x506f58146949818fL, "atoms")))) {
+            str1 += (str1 == "" ? "(" : " /\\\\ ");
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dffL, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dfdL, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e05L, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e03L, "dataSet")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e15L, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e18L, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0bL, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0eL, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1dL, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1fL, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e23L, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " /= " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e24L, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+          }
+          str += (str1 == "" ? "" : str1 + ")");
+
+        }
+
+
+
+      }
+
+
+    }
+
+
+    return str;
+  }
+  public static Object propertyMacro_GetPropertyValue_582242545757842629(final PropertyMacroContext _context) {
+    String str = "";
+    String str1 = "";
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983a2L, "concepts")))) {
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f581469497fa4L, "isVariable"))) {
+        str += ((str == "" ? "" : " &\n")) + "X_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " <: " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        for (SNode f : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f5814694983aeL, "individuals")))) {
+          str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : X_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        }
+
+      }
+
+
+    }
+
+
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983a7L, "relations")))) {
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable"))) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826eL, "isTransitive"))) {
+          str += ((str == "" ? "" : " &\n")) + "(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " ; " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") <: " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498273L, "isSymmetric"))) {
+          str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~ = " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949827aL, "isASymmetric"))) {
+          str += ((str == "" ? "" : " &\n")) + "(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~ /\\\\ " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") <: id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "))";
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498283L, "isReflexive"))) {
+          str += ((str == "" ? "" : " &\n")) + "id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")) <: " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+        }
+
+        if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949828eL, "isIrreflexive"))) {
+          str += ((str == "" ? "" : " &\n")) + "id(dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")) /\\\\ " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {}";
+
+        }
+
+        // maxCardinality>=0 && minCardinality != maxCardinality 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) >= 0 && SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) != SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) : " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ".." + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) >= 0 && SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) != SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) : " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ".." + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) + ")";
+
+        }
+
+        // maxCardinality>=0 && minCardinality == maxCardinality 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) == SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) = " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) == SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality"))) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) = " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        // maxCardinality is null 
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) == -1) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : ran(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "~[{xx}]) >= " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498363L, "domainCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+        if (SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982c2L, "maxCardinality")) == -1) {
+          str += ((str == "" ? "" : " &\n")) + "!xx. (xx : dom(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ") => card(" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "[{xx}]) >= " + SPropertyOperations.getInteger(SLinkOperations.getTarget(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949836aL, "rangeCardinality")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694982a3L, 0x506f5814694982bfL, "minCardinality")) + ")";
+
+        }
+
+      }
+    }
+
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983b7L, "attributes")))) {
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable"))) {
+        str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + "T_" + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+
+      }
+
+    }
+
+    for (SNode p : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983deL, "predicates")))) {
+      // Le predicat fait intervenir des variables 
+      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498192L, "antecedent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498151L, 0x506f58146949818cL, "atoms"))).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")) && (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable")))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")) && (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable"))));
+        }
+      }) || (!((SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")) == null)) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498132L, 0x506f58146949818fL, "atoms"))).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")) && (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable")))) || (SNodeOperations.isInstanceOf(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")) && (SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable"))));
+        }
+      }))) {
+
+        str += ((str == "" ? "" : " &\n")) + "//predicate " + SPropertyOperations.getString(p, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + "\n";
+
+
+        str1 = "";
+        for (SNode v : ListSequence.fromList(SLinkOperations.getChildren(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f58146957014bL, "variables")))) {
+
+          str1 += ((str1 == "" ? "!(" : ", ")) + SPropertyOperations.getString(v, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+        }
+
+        str += (str1 == "" ? "" : str1 + "). ");
+
+        str1 = "";
+        for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498192L, "antecedent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498151L, 0x506f58146949818cL, "atoms")))) {
+          str1 += (str1 == "" ? "(" : " /\\\\ ");
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dffL, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dfdL, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e05L, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e03L, "dataSet")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e15L, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e18L, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0bL, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0eL, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1dL, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1fL, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+          if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom"))) {
+            str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e23L, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " /= " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e24L, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+          }
+
+        }
+        str += (str1 == "" ? "" : str1 + ")");
+
+        if ((SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")) != null)) {
+          str += " => ";
+
+          str1 = "";
+          for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(p, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498113L, 0x506f581469498195L, "consequent")), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498132L, 0x506f58146949818fL, "atoms")))) {
+            str1 += (str1 == "" ? "(" : " /\\\\ ");
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e27L, "SysMLKaosDomainModeling.structure.BuiltInAtom")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dffL, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, "SysMLKaosDomainModeling.structure.ConceptAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5dfcL, 0x506f5814694e5dfdL, "concept")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e05L, "term")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, "SysMLKaosDomainModeling.structure.DataSetAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e02L, 0x506f5814694e5e03L, "dataSet")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e15L, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e18L, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, "SysMLKaosDomainModeling.structure.AttributeAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e12L, 0x506f5814694e5e13L, "attribute")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0bL, "antecedent")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " |-> " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e0eL, "image")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, "SysMLKaosDomainModeling.structure.RelationAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e08L, 0x506f5814694e5e09L, "relation")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1dL, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, "SysMLKaosDomainModeling.structure.EqualityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e1cL, 0x506f5814694e5e1fL, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+            if (SNodeOperations.isInstanceOf(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom"))) {
+              str1 += "(" + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e23L, "leftMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " /= " + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(a, MetaAdapterFactory.getConcept(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, "SysMLKaosDomainModeling.structure.InequalityAtom")), MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694e5e22L, 0x506f5814694e5e24L, "rightMember")), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + ")";
+            }
+
+          }
+          str += (str1 == "" ? "" : str1 + ")");
+
+        }
+
+
+
+      }
+
+
+    }
+
+
+
+    return str;
+  }
+  public static Object propertyMacro_GetPropertyValue_582242545757885499(final PropertyMacroContext _context) {
+    String str = "";
+    String str1;
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983b7L, "attributes")))) {
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f5814694981b9L, "isVariable"))) {
+        str1 = "";
+        for (SNode m : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949819aL, 0x506f581469498245L, "maplets")))) {
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " := {" : ", ")) + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL, 0x506f581469498217L, "antecedent")) + "|->" + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f5814694981fbL, 0x506f581469498240L, "image"));
+        }
+        str += (str1 == "" ? "" : ((str == "" ? "" : " ||\n")) + str1 + "}");
+
+      }
+
+    }
+
+    for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497d02L, 0x506f5814694983a7L, "relations")))) {
+      if (SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f58146949826bL, "isVariable"))) {
+        str1 = "";
+        for (SNode m : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f58146949824cL, 0x506f581469498397L, "maplets")))) {
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " := {" : ", ")) + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L, 0x506f58146949838fL, "antecedent")) + "|->" + SLinkOperations.getTarget(m, MetaAdapterFactory.getReferenceLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469498373L, 0x506f581469498392L, "image"));
+        }
+        str += (str1 == "" ? "" : ((str == "" ? "" : " ||\n")) + str1 + "}");
+
+      }
+
+    }
+
+
+    return str;
+  }
   public static Object propertyMacro_GetPropertyValue_5795948090141408688(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
   }
@@ -176,6 +629,9 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("582242545756639838", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "sets"));
     pvqMethods.put("582242545757341265", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "constants"));
     pvqMethods.put("582242545757620392", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "variables"));
+    pvqMethods.put("582242545757800101", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "properties"));
+    pvqMethods.put("582242545757842628", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "invariants"));
+    pvqMethods.put("582242545757885498", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "initialisation"));
     pvqMethods.put("5795948090141408685", new QueriesGenerated.PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "0"));
   }
   @NotNull
@@ -213,6 +669,12 @@ public class QueriesGenerated extends QueryProviderBase {
         case 7:
           return QueriesGenerated.propertyMacro_GetPropertyValue_582242545757620393(ctx);
         case 8:
+          return QueriesGenerated.propertyMacro_GetPropertyValue_582242545757800102(ctx);
+        case 9:
+          return QueriesGenerated.propertyMacro_GetPropertyValue_582242545757842629(ctx);
+        case 10:
+          return QueriesGenerated.propertyMacro_GetPropertyValue_582242545757885499(ctx);
+        case 11:
           return QueriesGenerated.propertyMacro_GetPropertyValue_5795948090141408688(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

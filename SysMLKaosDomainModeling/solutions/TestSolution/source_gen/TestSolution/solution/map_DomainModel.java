@@ -33,7 +33,7 @@ public class map_DomainModel {
 
 
       pw.println("/* " + "lg_system_ref_0" + "\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date()) + "\n*/");
-      pw.println("\nSYSTEM\n	lg_system_ref_0");
+      pw.println("\nSYSTEM\nlg_system_ref_0");
       pw.println("");
 
       pw.println("\nSETS");
@@ -44,6 +44,15 @@ public class map_DomainModel {
 
       pw.println("\nVARIABLES");
       pw.println("landingGearState");
+
+      pw.println("\nPROPERTIES");
+      pw.println("LG1 : LandingGear &\nLandingGear = {LG1 : LandingGear} &\nLS1 : LandingSet &\nLS2 : LandingSet &\nLS3 : LandingSet &\nLandingSet = {LS1 : LandingSet, LS2 : LandingSet, LS3 : LandingSet} &\nT_re = LandingSet <-> LandingGear &\nre : T_re &\n!xx. (xx : ran(re) => card(re~[{xx}]) = 2) &\n!xx. (xx : dom(re) => card(re[{xx}]) >= 0) &\nre = {LS1|->LG1, LS1|->LG1, LS2|->LG1} &\nT_landingGearState = LandingSet --> DATA_SET_1");
+
+      pw.println("\nINVARIANT");
+      pw.println("landingGearState : T_landingGearState &\n//predicate p1\n!(x1, x2, x3). ((x1 : LandingGear) /\\ (x2 : DATA_SET_1) /\\ (x1 |-> x3 : landingGearState)) => ((x2 |-> x3 : landingGearState)) &\n//predicate p2\n!(x4, x5). ((x4 |-> x5 : landingGearState))");
+
+      pw.println("\nINITIALISATION");
+      pw.println("landingGearState := {LS3|->lg_extended}");
 
 
       pw.println("\n\nEND");
