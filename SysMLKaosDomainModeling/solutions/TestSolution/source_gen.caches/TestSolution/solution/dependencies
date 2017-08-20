@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="TestSolution.solution.map_DomainModel" file="map_DomainModel.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+</dependenciesRoot>
+

@@ -63,10 +63,10 @@ public class TestParser {
                  filename = file.getParent()+File.separator+str2varname(file.getName().substring(0, file.getName().length()-4))+"-b-system.sys";
                 PrintWriter pw = new PrintWriter(filename);
 
+
                 System.out.println("\n\n\nchemin du fichier en sortie: "+filename);
 
-                pw.println("/* "+str2varname(file.getName().substring(0, file.getName().length()-4))+"\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: "+ new SimpleDateFormat("dd/MM/yyyy").format(new Date() {
-                })+"\n*/");
+                pw.println("/* "+str2varname(file.getName().substring(0, file.getName().length()-4))+"\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: "+ new SimpleDateFormat("dd/MM/yyyy").format(new Date() )+"\n*/");
                 pw.println();
                 pw.println("SYSTEM\n\t"+str2varname(file.getName().substring(0, file.getName().length()-4)));
 
