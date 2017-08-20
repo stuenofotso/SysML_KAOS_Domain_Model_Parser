@@ -18,11 +18,11 @@ landingGearState
 
 PROPERTIES
 LG1 : LandingGear &
-LandingGear = {LG1 : LandingGear} &
+LandingGear = {LG1} &
 LS1 : LandingSet &
 LS2 : LandingSet &
 LS3 : LandingSet &
-LandingSet = {LS1 : LandingSet, LS2 : LandingSet, LS3 : LandingSet} &
+LandingSet = {LS1, LS2, LS3} &
 T_re = LandingSet <-> LandingGear &
 re : T_re &
 !xx. (xx : ran(re) => card(re~[{xx}]) = 2) &

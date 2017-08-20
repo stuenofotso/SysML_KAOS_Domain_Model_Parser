@@ -143,7 +143,7 @@ public class QueriesGenerated extends QueryProviderBase {
       for (SNode f : ListSequence.fromList(SLinkOperations.getChildren(e, MetaAdapterFactory.getContainmentLink(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f5814694983aeL, "individuals")))) {
         str += ((str == "" ? "" : " &\n")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
         if (!(SPropertyOperations.getBoolean(e, MetaAdapterFactory.getProperty(0x9715e310dbcb448eL, 0x93035bfaafdcf84dL, 0x506f581469497f85L, 0x506f581469497fa4L, "isVariable")))) {
-          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {" : ", ")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " : " + SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
+          str1 += ((str1 == "" ? SPropertyOperations.getString(e, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name")) + " = {" : ", ")) + SPropertyOperations.getString(f, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"));
 
         }
       }
