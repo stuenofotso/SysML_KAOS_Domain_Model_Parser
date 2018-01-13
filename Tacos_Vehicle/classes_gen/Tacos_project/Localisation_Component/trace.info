@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <root nodeRef="r:2af08a14-fe88-40c1-b24e-82f48366338d(Tacos_project.Localisation_Component)/1497106843081244529">
+    <file name="map_DomainModel.java">
+      <node id="1497106843081244529" at="13,0,14,0" concept="4" trace="EVENT_B_MODELS_DIR_NAME" />
+      <node id="1497106843081244529" at="14,0,15,0" concept="4" trace="EVENT_B_MODELS_FILE_EXTENSION" />
+      <node id="1497106843081244529" at="16,42,17,236" concept="2" />
+      <node id="1497106843081244529" at="18,54,19,47" concept="0" />
+      <node id="1497106843081244529" at="21,35,22,31" concept="0" />
+      <node id="1497106843081244529" at="24,9,25,38" concept="0" />
+      <node id="1497106843081244529" at="26,29,27,26" concept="0" />
+      <node id="1497106843081244529" at="28,5,29,0" concept="3" />
+      <node id="1497106843081244529" at="29,0,30,0" concept="3" />
+      <node id="1497106843081244529" at="30,0,31,0" concept="3" />
+      <node id="1497106843081244529" at="31,0,32,129" concept="0" />
+      <node id="1497106843081244529" at="33,9,34,56" concept="2" />
+      <node id="1497106843081244529" at="34,56,35,0" concept="3" />
+      <node id="1497106843081244529" at="35,0,36,0" concept="3" />
+      <node id="1497106843081244529" at="36,0,37,187" concept="0" />
+      <node id="1497106843081244529" at="37,187,38,58" concept="0" />
+      <node id="1497106843081244529" at="38,58,39,21" concept="0" />
+      <node id="1497106843081244529" at="39,21,40,0" concept="3" />
+      <node id="1497106843081244529" at="40,0,41,27" concept="0" />
+      <node id="1497106843081244529" at="41,27,42,42" concept="0" />
+      <node id="1497106843081244529" at="42,42,43,0" concept="3" />
+      <node id="1497106843081244529" at="43,0,44,32" concept="0" />
+      <node id="1497106843081244529" at="44,32,45,99" concept="0" />
+      <node id="1497106843081244529" at="45,99,46,0" concept="3" />
+      <node id="1497106843081244529" at="46,0,47,32" concept="0" />
+      <node id="1497106843081244529" at="47,32,48,84" concept="0" />
+      <node id="1497106843081244529" at="48,84,49,0" concept="3" />
+      <node id="1497106843081244529" at="49,0,50,33" concept="0" />
+      <node id="1497106843081244529" at="50,33,51,196" concept="0" />
+      <node id="1497106843081244529" at="51,196,52,0" concept="3" />
+      <node id="1497106843081244529" at="52,0,53,32" concept="0" />
+      <node id="1497106843081244529" at="53,32,54,322" concept="0" />
+      <node id="1497106843081244529" at="54,322,55,0" concept="3" />
+      <node id="1497106843081244529" at="55,0,56,37" concept="0" />
+      <node id="1497106843081244529" at="56,37,57,21" concept="0" />
+      <node id="1497106843081244529" at="57,21,58,0" concept="3" />
+      <node id="1497106843081244529" at="58,0,59,0" concept="3" />
+      <node id="1497106843081244529" at="59,0,60,28" concept="0" />
+      <node id="1497106843081244529" at="60,28,61,17" concept="0" />
+      <node id="1497106843081244529" at="61,17,62,0" concept="3" />
+      <node id="1497106843081244529" at="63,39,64,26" concept="0" />
+      <node id="1497106843081244529" at="65,5,66,0" concept="3" />
+      <node id="1497106843081244529" at="66,0,67,0" concept="3" />
+      <node id="1497106843081244529" at="67,0,68,0" concept="3" />
+      <node id="1497106843081244529" at="17,236,20,5" concept="1" />
+      <node id="1497106843081244529" at="20,5,23,5" concept="1" />
+      <node id="1497106843081244529" at="23,5,28,5" concept="6" />
+      <node id="1497106843081244529" at="32,129,65,5" concept="6" />
+      <node id="1497106843081244529" at="16,0,70,0" concept="5" trace="main#([Ljava/lang/String;)V" />
+      <scope id="1497106843081244529" at="18,54,19,47" />
+      <scope id="1497106843081244529" at="21,35,22,31" />
+      <scope id="1497106843081244529" at="24,9,25,38" />
+      <scope id="1497106843081244529" at="26,0,27,26">
+        <var name="e" id="1497106843081244529" />
+      </scope>
+      <scope id="1497106843081244529" at="26,29,27,26" />
+      <scope id="1497106843081244529" at="63,0,64,26">
+        <var name="e" id="1497106843081244529" />
+      </scope>
+      <scope id="1497106843081244529" at="63,39,64,26" />
+      <scope id="1497106843081244529" at="33,9,62,0">
+        <var name="pw" id="1497106843081244529" />
+      </scope>
+      <scope id="1497106843081244529" at="16,42,68,0">
+        <var name="eventBModelFile" id="1497106843081244529" />
+      </scope>
+      <scope id="1497106843081244529" at="16,0,70,0">
+        <var name="args" id="1497106843081244529" />
+      </scope>
+      <unit id="1497106843081244529" at="12,0,71,0" name="Tacos_project.Localisation_Component.map_DomainModel" />
+    </file>
+  </root>
+  <root nodeRef="r:2af08a14-fe88-40c1-b24e-82f48366338d(Tacos_project.Localisation_Component)/1497106843084273127">
+    <file name="map_DomainModel.java">
+      <node id="1497106843084273127" at="13,0,14,0" concept="4" trace="EVENT_B_MODELS_DIR_NAME" />
+      <node id="1497106843084273127" at="14,0,15,0" concept="4" trace="EVENT_B_MODELS_FILE_EXTENSION" />
+      <node id="1497106843084273127" at="16,42,17,236" concept="2" />
+      <node id="1497106843084273127" at="18,54,19,47" concept="0" />
+      <node id="1497106843084273127" at="21,35,22,31" concept="0" />
+      <node id="1497106843084273127" at="24,9,25,38" concept="0" />
+      <node id="1497106843084273127" at="26,29,27,26" concept="0" />
+      <node id="1497106843084273127" at="28,5,29,0" concept="3" />
+      <node id="1497106843084273127" at="29,0,30,0" concept="3" />
+      <node id="1497106843084273127" at="30,0,31,0" concept="3" />
+      <node id="1497106843084273127" at="31,0,32,129" concept="0" />
+      <node id="1497106843084273127" at="33,9,34,56" concept="2" />
+      <node id="1497106843084273127" at="34,56,35,0" concept="3" />
+      <node id="1497106843084273127" at="35,0,36,0" concept="3" />
+      <node id="1497106843084273127" at="36,0,37,187" concept="0" />
+      <node id="1497106843084273127" at="37,187,38,62" concept="0" />
+      <node id="1497106843084273127" at="38,62,39,57" concept="0" />
+      <node id="1497106843084273127" at="39,57,40,0" concept="3" />
+      <node id="1497106843084273127" at="40,0,41,27" concept="0" />
+      <node id="1497106843084273127" at="41,27,42,41" concept="0" />
+      <node id="1497106843084273127" at="42,41,43,0" concept="3" />
+      <node id="1497106843084273127" at="43,0,44,32" concept="0" />
+      <node id="1497106843084273127" at="44,32,45,159" concept="0" />
+      <node id="1497106843084273127" at="45,159,46,0" concept="3" />
+      <node id="1497106843084273127" at="46,0,47,32" concept="0" />
+      <node id="1497106843084273127" at="47,32,48,55" concept="0" />
+      <node id="1497106843084273127" at="48,55,49,0" concept="3" />
+      <node id="1497106843084273127" at="49,0,50,33" concept="0" />
+      <node id="1497106843084273127" at="50,33,51,829" concept="0" />
+      <node id="1497106843084273127" at="51,829,52,0" concept="3" />
+      <node id="1497106843084273127" at="52,0,53,32" concept="0" />
+      <node id="1497106843084273127" at="53,32,54,441" concept="0" />
+      <node id="1497106843084273127" at="54,441,55,0" concept="3" />
+      <node id="1497106843084273127" at="55,0,56,37" concept="0" />
+      <node id="1497106843084273127" at="56,37,57,21" concept="0" />
+      <node id="1497106843084273127" at="57,21,58,0" concept="3" />
+      <node id="1497106843084273127" at="58,0,59,0" concept="3" />
+      <node id="1497106843084273127" at="59,0,60,28" concept="0" />
+      <node id="1497106843084273127" at="60,28,61,17" concept="0" />
+      <node id="1497106843084273127" at="61,17,62,0" concept="3" />
+      <node id="1497106843084273127" at="63,39,64,26" concept="0" />
+      <node id="1497106843084273127" at="65,5,66,0" concept="3" />
+      <node id="1497106843084273127" at="66,0,67,0" concept="3" />
+      <node id="1497106843084273127" at="67,0,68,0" concept="3" />
+      <node id="1497106843084273127" at="17,236,20,5" concept="1" />
+      <node id="1497106843084273127" at="20,5,23,5" concept="1" />
+      <node id="1497106843084273127" at="23,5,28,5" concept="6" />
+      <node id="1497106843084273127" at="32,129,65,5" concept="6" />
+      <node id="1497106843084273127" at="16,0,70,0" concept="5" trace="main#([Ljava/lang/String;)V" />
+      <scope id="1497106843084273127" at="18,54,19,47" />
+      <scope id="1497106843084273127" at="21,35,22,31" />
+      <scope id="1497106843084273127" at="24,9,25,38" />
+      <scope id="1497106843084273127" at="26,0,27,26">
+        <var name="e" id="1497106843084273127" />
+      </scope>
+      <scope id="1497106843084273127" at="26,29,27,26" />
+      <scope id="1497106843084273127" at="63,0,64,26">
+        <var name="e" id="1497106843084273127" />
+      </scope>
+      <scope id="1497106843084273127" at="63,39,64,26" />
+      <scope id="1497106843084273127" at="33,9,62,0">
+        <var name="pw" id="1497106843084273127" />
+      </scope>
+      <scope id="1497106843084273127" at="16,42,68,0">
+        <var name="eventBModelFile" id="1497106843084273127" />
+      </scope>
+      <scope id="1497106843084273127" at="16,0,70,0">
+        <var name="args" id="1497106843084273127" />
+      </scope>
+      <unit id="1497106843084273127" at="12,0,71,0" name="Tacos_project.Localisation_Component.map_DomainModel" />
+    </file>
+  </root>
+  <root nodeRef="r:2af08a14-fe88-40c1-b24e-82f48366338d(Tacos_project.Localisation_Component)/1497106843085557099">
+    <file name="map_DomainModel.java">
+      <node id="1497106843085557099" at="13,0,14,0" concept="4" trace="EVENT_B_MODELS_DIR_NAME" />
+      <node id="1497106843085557099" at="14,0,15,0" concept="4" trace="EVENT_B_MODELS_FILE_EXTENSION" />
+      <node id="1497106843085557099" at="16,42,17,236" concept="2" />
+      <node id="1497106843085557099" at="18,54,19,47" concept="0" />
+      <node id="1497106843085557099" at="21,35,22,31" concept="0" />
+      <node id="1497106843085557099" at="24,9,25,38" concept="0" />
+      <node id="1497106843085557099" at="26,29,27,26" concept="0" />
+      <node id="1497106843085557099" at="28,5,29,0" concept="3" />
+      <node id="1497106843085557099" at="29,0,30,0" concept="3" />
+      <node id="1497106843085557099" at="30,0,31,0" concept="3" />
+      <node id="1497106843085557099" at="31,0,32,129" concept="0" />
+      <node id="1497106843085557099" at="33,9,34,56" concept="2" />
+      <node id="1497106843085557099" at="34,56,35,0" concept="3" />
+      <node id="1497106843085557099" at="35,0,36,0" concept="3" />
+      <node id="1497106843085557099" at="36,0,37,187" concept="0" />
+      <node id="1497106843085557099" at="37,187,38,62" concept="0" />
+      <node id="1497106843085557099" at="38,62,39,57" concept="0" />
+      <node id="1497106843085557099" at="39,57,40,0" concept="3" />
+      <node id="1497106843085557099" at="40,0,41,27" concept="0" />
+      <node id="1497106843085557099" at="41,27,42,21" concept="0" />
+      <node id="1497106843085557099" at="42,21,43,0" concept="3" />
+      <node id="1497106843085557099" at="43,0,44,32" concept="0" />
+      <node id="1497106843085557099" at="44,32,45,98" concept="0" />
+      <node id="1497106843085557099" at="45,98,46,0" concept="3" />
+      <node id="1497106843085557099" at="46,0,47,32" concept="0" />
+      <node id="1497106843085557099" at="47,32,48,21" concept="0" />
+      <node id="1497106843085557099" at="48,21,49,0" concept="3" />
+      <node id="1497106843085557099" at="49,0,50,33" concept="0" />
+      <node id="1497106843085557099" at="50,33,51,325" concept="0" />
+      <node id="1497106843085557099" at="51,325,52,0" concept="3" />
+      <node id="1497106843085557099" at="52,0,53,32" concept="0" />
+      <node id="1497106843085557099" at="53,32,54,21" concept="0" />
+      <node id="1497106843085557099" at="54,21,55,0" concept="3" />
+      <node id="1497106843085557099" at="55,0,56,37" concept="0" />
+      <node id="1497106843085557099" at="56,37,57,21" concept="0" />
+      <node id="1497106843085557099" at="57,21,58,0" concept="3" />
+      <node id="1497106843085557099" at="58,0,59,0" concept="3" />
+      <node id="1497106843085557099" at="59,0,60,28" concept="0" />
+      <node id="1497106843085557099" at="60,28,61,17" concept="0" />
+      <node id="1497106843085557099" at="61,17,62,0" concept="3" />
+      <node id="1497106843085557099" at="63,39,64,26" concept="0" />
+      <node id="1497106843085557099" at="65,5,66,0" concept="3" />
+      <node id="1497106843085557099" at="66,0,67,0" concept="3" />
+      <node id="1497106843085557099" at="67,0,68,0" concept="3" />
+      <node id="1497106843085557099" at="17,236,20,5" concept="1" />
+      <node id="1497106843085557099" at="20,5,23,5" concept="1" />
+      <node id="1497106843085557099" at="23,5,28,5" concept="6" />
+      <node id="1497106843085557099" at="32,129,65,5" concept="6" />
+      <node id="1497106843085557099" at="16,0,70,0" concept="5" trace="main#([Ljava/lang/String;)V" />
+      <scope id="1497106843085557099" at="18,54,19,47" />
+      <scope id="1497106843085557099" at="21,35,22,31" />
+      <scope id="1497106843085557099" at="24,9,25,38" />
+      <scope id="1497106843085557099" at="26,0,27,26">
+        <var name="e" id="1497106843085557099" />
+      </scope>
+      <scope id="1497106843085557099" at="26,29,27,26" />
+      <scope id="1497106843085557099" at="63,0,64,26">
+        <var name="e" id="1497106843085557099" />
+      </scope>
+      <scope id="1497106843085557099" at="63,39,64,26" />
+      <scope id="1497106843085557099" at="33,9,62,0">
+        <var name="pw" id="1497106843085557099" />
+      </scope>
+      <scope id="1497106843085557099" at="16,42,68,0">
+        <var name="eventBModelFile" id="1497106843085557099" />
+      </scope>
+      <scope id="1497106843085557099" at="16,0,70,0">
+        <var name="args" id="1497106843085557099" />
+      </scope>
+      <unit id="1497106843085557099" at="12,0,71,0" name="Tacos_project.Localisation_Component.map_DomainModel" />
+    </file>
+  </root>
+</debug-info>
+

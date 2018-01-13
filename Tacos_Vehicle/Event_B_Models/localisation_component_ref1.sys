@@ -1,0 +1,53 @@
+/* localisation_component_ref1
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 13/01/2018
+*/
+
+REFINEMENT
+localisation_component_ref1
+REFINES
+localisation_component_ref0
+
+SETS
+SubComponent; Sensor
+
+CONSTANTS
+W1, G1, A1, S1, T_vehicle_subcomponents, vehicle_subcomponents, T_vehicle_sensors, vehicle_sensors, T_raw_locations, T_validated_locations
+
+VARIABLES
+raw_locations, validated_locations
+
+PROPERTIES
+W1 : SubComponent &
+G1 : SubComponent &
+SubComponent = {W1, G1} &
+A1 : Sensor &
+S1 : Sensor &
+Sensor = {A1, S1} &
+T_vehicle_subcomponents = Vehicle <-> SubComponent &
+vehicle_subcomponents : T_vehicle_subcomponents &
+!xx. (xx : dom(vehicle_subcomponents) => card(vehicle_subcomponents[{xx}]) = 1) &
+!xx. (xx : ran(vehicle_subcomponents) => card(vehicle_subcomponents~[{xx}]) >= 1) &
+vehicle_subcomponents = {V1|->G1, V1|->W1} &
+T_vehicle_sensors = Vehicle <-> Sensor &
+vehicle_sensors : T_vehicle_sensors &
+!xx. (xx : dom(vehicle_sensors) => card(vehicle_sensors[{xx}]) = 1) &
+!xx. (xx : ran(vehicle_sensors) => card(vehicle_sensors~[{xx}]) >= 1) &
+vehicle_sensors = {V1|->A1, V1|->S1} &
+T_raw_locations = SubComponent <-> Localization &
+T_validated_locations = SubComponent <-> Localization
+
+INVARIANT
+raw_locations : T_raw_locations &
+!xx. (xx : ran(raw_locations) => card(raw_locations~[{xx}]) : 0..1) &
+!xx. (xx : dom(raw_locations) => card(raw_locations[{xx}]) >= 0) &
+validated_locations : T_validated_locations &
+validated_locations <: raw_locations &
+!xx. (xx : ran(validated_locations) => card(validated_locations~[{xx}]) : 0..1) &
+!xx. (xx : dom(validated_locations) => card(validated_locations[{xx}]) >= 0)
+
+INITIALISATION
+
+
+
+END

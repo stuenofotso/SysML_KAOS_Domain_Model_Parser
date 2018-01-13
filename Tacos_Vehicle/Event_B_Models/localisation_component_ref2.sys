@@ -1,0 +1,43 @@
+/* localisation_component_ref2
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 13/01/2018
+*/
+
+REFINEMENT
+localisation_component_ref2
+REFINES
+localisation_component_ref1
+
+SETS
+
+
+CONSTANTS
+SpeedSensor, S1, Accelerometer, A1, Wifi, W1, Gps, G1, T_precision, precision
+
+VARIABLES
+
+
+PROPERTIES
+SpeedSensor <: Sensor &
+S1 : SpeedSensor &
+SpeedSensor = {S1} &
+Accelerometer <: Sensor &
+A1 : Accelerometer &
+Accelerometer = {A1} &
+Wifi <: SubComponent &
+W1 : Wifi &
+Wifi = {W1} &
+Gps <: SubComponent &
+G1 : Gps &
+Gps = {G1} &
+T_precision = SubComponent --> FLOAT &
+precision : T_precision
+
+INVARIANT
+
+
+INITIALISATION
+
+
+
+END

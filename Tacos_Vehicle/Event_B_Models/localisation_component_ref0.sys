@@ -1,0 +1,38 @@
+/* localisation_component_ref0
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 13/01/2018
+*/
+
+SYSTEM
+localisation_component_ref0
+
+
+SETS
+Vehicle; Localization
+
+CONSTANTS
+V1, Longitude, Latitude, T_estimated_location, T_loc_longitude, T_loc_latitude
+
+VARIABLES
+X_Localization, estimated_location, loc_longitude, loc_latitude
+
+PROPERTIES
+V1 : Vehicle &
+Vehicle = {V1} &
+T_estimated_location = Vehicle <-> Localization &
+T_loc_longitude = Localization --> Longitude &
+T_loc_latitude = Localization --> Latitude
+
+INVARIANT
+X_Localization <: Localization &
+estimated_location : T_estimated_location &
+!xx. (xx : ran(estimated_location) => card(estimated_location~[{xx}]) : 0..1) &
+!xx. (xx : dom(estimated_location) => card(estimated_location[{xx}]) = 1) &
+loc_longitude : T_loc_longitude &
+loc_latitude : T_loc_latitude
+
+INITIALISATION
+
+
+
+END
