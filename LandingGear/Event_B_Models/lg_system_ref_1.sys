@@ -1,0 +1,30 @@
+/* lg_system_ref_1
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 25/08/2017
+*/
+
+REFINEMENT
+lg_system_ref_1
+REFINES
+lg_system_ref_0
+
+SETS
+
+
+CONSTANTS
+
+
+VARIABLES
+
+
+PROPERTIES
+
+
+INVARIANT
+
+
+INITIALISATION
+
+
+
+END
