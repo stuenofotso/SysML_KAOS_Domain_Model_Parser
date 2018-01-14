@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1515689264184" org.eventb.texttools.text_representation="context EventB_Metamodel_Context&#10;&#10;sets Component_Set Variable_Set Constant_Set Set_Set SetItem_Set&#10;     LogicFormula_Set&#10;     /* the subset of logical formulas that can directly be expressed within the specification,&#10;        without the need for an explicit constructor, will not be contained in this set.&#10;        This is for example the case of equality between elements.&#10;         */&#10;     Operator InitialisationAction_Set&#10;&#10;constants B_NATURAL B_INTEGER B_FLOAT B_BOOL B_STRING Inclusion_OP Belonging_OP BecomeEqual2SetOf_OP RelationSet_OP FunctionSet_OP Maplet_OP Equal2SetOf_OP BecomeEqual2EmptySet_OP RelationComposition_OP Inversion_OP Equality_OP&#10;&#10;axioms&#10;  @axiom1 finite(SetItem_Set)&#10;  @axiom2 {B_NATURAL, B_INTEGER, B_FLOAT, B_BOOL, B_STRING} ⊆  Set_Set&#10;  @axiom3 partition({B_NATURAL, B_INTEGER, B_FLOAT, B_BOOL, B_STRING}, {B_NATURAL}, {B_INTEGER}, {B_FLOAT}, {B_BOOL}, {B_STRING})&#10;  @axiom4 partition(Operator, {Inclusion_OP}, {Belonging_OP}, {BecomeEqual2SetOf_OP}, {RelationSet_OP}, {Maplet_OP}, {Equal2SetOf_OP}, {BecomeEqual2EmptySet_OP}, {FunctionSet_OP}, {RelationComposition_OP}, {Inversion_OP}, {Equality_OP})&#10;end&#10;" version="3">
+<org.eventb.core.carrierSet name="_6NG_oL_cEeeny6sufONfOA" org.eventb.core.identifier="Component_Set"/>
+<org.eventb.core.carrierSet name="_6NG_ob_cEeeny6sufONfOA" org.eventb.core.identifier="Variable_Set"/>
+<org.eventb.core.carrierSet name="_6NG_or_cEeeny6sufONfOA" org.eventb.core.identifier="Constant_Set"/>
+<org.eventb.core.axiom name="_7tMf0MLxEeeny6sufONfOA" org.eventb.core.label="axiom1" org.eventb.core.predicate="finite(SetItem_Set)"/>
+<org.eventb.core.constant name="_3pkr0MMREeeny6sufONfOA" org.eventb.core.identifier="B_NATURAL"/>
+<org.eventb.core.constant name="_3pkr0cMREeeny6sufONfOA" org.eventb.core.identifier="B_INTEGER"/>
+<org.eventb.core.constant name="_3pkr0sMREeeny6sufONfOA" org.eventb.core.identifier="B_FLOAT"/>
+<org.eventb.core.constant name="_3pkr08MREeeny6sufONfOA" org.eventb.core.identifier="B_BOOL"/>
+<org.eventb.core.constant name="_3pkr1MMREeeny6sufONfOA" org.eventb.core.identifier="B_STRING"/>
+<org.eventb.core.axiom name="_3pkr1cMREeeny6sufONfOA" org.eventb.core.label="axiom2" org.eventb.core.predicate="{B_NATURAL, B_INTEGER, B_FLOAT, B_BOOL, B_STRING} ⊆  Set_Set"/>
+<org.eventb.core.axiom name="_WZwUIMMVEeeny6sufONfOA" org.eventb.core.label="axiom3" org.eventb.core.predicate="partition({B_NATURAL, B_INTEGER, B_FLOAT, B_BOOL, B_STRING}, {B_NATURAL}, {B_INTEGER}, {B_FLOAT}, {B_BOOL}, {B_STRING})"/>
+<org.eventb.core.carrierSet name="_rEsOoMR0EeeTm8onEx2aKQ" org.eventb.core.identifier="Set_Set"/>
+<org.eventb.core.carrierSet name="_JxPbgMR1EeeTm8onEx2aKQ" org.eventb.core.identifier="SetItem_Set"/>
+<org.eventb.core.carrierSet name="_tAepEMR4EeeTm8onEx2aKQ" org.eventb.core.comment="the subset of logical formulas that can directly be expressed within the specification,&#10;        without the need for an explicit constructor, will not be contained in this set.&#10;        This is for example the case of equality between elements.&#10;         " org.eventb.core.identifier="LogicFormula_Set"/>
+<org.eventb.core.carrierSet name="_tAepEcR4EeeTm8onEx2aKQ" org.eventb.core.identifier="Operator"/>
+<org.eventb.core.axiom name="_tAepE8R4EeeTm8onEx2aKQ" org.eventb.core.label="axiom4" org.eventb.core.predicate="partition(Operator, {Inclusion_OP}, {Belonging_OP}, {BecomeEqual2SetOf_OP}, {RelationSet_OP}, {Maplet_OP}, {Equal2SetOf_OP}, {BecomeEqual2EmptySet_OP}, {FunctionSet_OP}, {RelationComposition_OP}, {Inversion_OP}, {Equality_OP})"/>
+<org.eventb.core.constant name="_kNAEoMShEeeSUOuOBEY7Nw" org.eventb.core.identifier="Inclusion_OP"/>
+<org.eventb.core.constant name="_kNAEocShEeeSUOuOBEY7Nw" org.eventb.core.identifier="Belonging_OP"/>
+<org.eventb.core.carrierSet name="_C1_xgMVCEee1S_yc-zTz0Q" org.eventb.core.identifier="InitialisationAction_Set"/>
+<org.eventb.core.constant name="_QOMS8MVIEee1S_yc-zTz0Q" org.eventb.core.identifier="BecomeEqual2SetOf_OP"/>
+<org.eventb.core.constant name="_vnJhsMYrEee1S_yc-zTz0Q" org.eventb.core.identifier="RelationSet_OP"/>
+<org.eventb.core.constant name="_aUY3IMfKEeev5ePod3iPUA" org.eventb.core.identifier="FunctionSet_OP"/>
+<org.eventb.core.constant name="_3bZlYMfREeev5ePod3iPUA" org.eventb.core.identifier="Maplet_OP"/>
+<org.eventb.core.constant name="_LgohIMiJEeelIMKhkdy-hg" org.eventb.core.identifier="Equal2SetOf_OP"/>
+<org.eventb.core.constant name="_7l66YMlYEee8oPjNn96orA" org.eventb.core.identifier="BecomeEqual2EmptySet_OP"/>
+<org.eventb.core.constant name="_Egel0MqyEeeu793PMp37VA" org.eventb.core.identifier="RelationComposition_OP"/>
+<org.eventb.core.constant name="_yrGnQMrTEeeRwabH1iobKQ" org.eventb.core.identifier="Inversion_OP"/>
+<org.eventb.core.constant name="_fC3m8MrUEeeRwabH1iobKQ" org.eventb.core.identifier="Equality_OP"/>
+</org.eventb.core.contextFile>

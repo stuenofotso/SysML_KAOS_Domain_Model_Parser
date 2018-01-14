@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="2">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="Component_Set" org.eventb.core.type="ℙ(Component_Set)"/>
+<org.eventb.core.poIdentifier name="Constant_Set" org.eventb.core.type="ℙ(Constant_Set)"/>
+<org.eventb.core.poIdentifier name="InitialisationAction_Set" org.eventb.core.type="ℙ(InitialisationAction_Set)"/>
+<org.eventb.core.poIdentifier name="LogicFormula_Set" org.eventb.core.type="ℙ(LogicFormula_Set)"/>
+<org.eventb.core.poIdentifier name="Operator" org.eventb.core.type="ℙ(Operator)"/>
+<org.eventb.core.poIdentifier name="SetItem_Set" org.eventb.core.type="ℙ(SetItem_Set)"/>
+<org.eventb.core.poIdentifier name="Set_Set" org.eventb.core.type="ℙ(Set_Set)"/>
+<org.eventb.core.poIdentifier name="Variable_Set" org.eventb.core.type="ℙ(Variable_Set)"/>
+<org.eventb.core.poIdentifier name="B_BOOL" org.eventb.core.type="Set_Set"/>
+<org.eventb.core.poIdentifier name="B_FLOAT" org.eventb.core.type="Set_Set"/>
+<org.eventb.core.poIdentifier name="B_INTEGER" org.eventb.core.type="Set_Set"/>
+<org.eventb.core.poIdentifier name="B_NATURAL" org.eventb.core.type="Set_Set"/>
+<org.eventb.core.poIdentifier name="B_STRING" org.eventb.core.type="Set_Set"/>
+<org.eventb.core.poIdentifier name="BecomeEqual2EmptySet_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="BecomeEqual2SetOf_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Belonging_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Equal2SetOf_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Equality_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="FunctionSet_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Inclusion_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Inversion_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="Maplet_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="RelationComposition_OP" org.eventb.core.type="Operator"/>
+<org.eventb.core.poIdentifier name="RelationSet_OP" org.eventb.core.type="Operator"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.bpo|org.eventb.core.poFile#EventB_Metamodel_Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="2">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="finite(SetItem_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_7tMf0MLxEeeny6sufONfOA"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="{B_NATURAL,B_INTEGER,B_FLOAT,B_BOOL,B_STRING}⊆Set_Set" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_3pkr1cMREeeny6sufONfOA"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="partition({B_NATURAL,B_INTEGER,B_FLOAT,B_BOOL,B_STRING},{B_NATURAL},{B_INTEGER},{B_FLOAT},{B_BOOL},{B_STRING})" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_WZwUIMMVEeeny6sufONfOA"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="partition(Operator,{Inclusion_OP},{Belonging_OP},{BecomeEqual2SetOf_OP},{RelationSet_OP},{Maplet_OP},{Equal2SetOf_OP},{BecomeEqual2EmptySet_OP},{FunctionSet_OP},{RelationComposition_OP},{Inversion_OP},{Equality_OP})" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_tAepE8R4EeeTm8onEx2aKQ"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

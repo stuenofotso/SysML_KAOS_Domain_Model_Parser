@@ -1,0 +1,1704 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\SingleHeader{event\_b\_specs\_from\_ontologies\_ref\_1}
+\MACHINE{event\_b\_specs\_from\_ontologies\_ref\_1}{event\_b\_specs\_from\_ontologies}{EventB\_Metamodel\_Context,Domain\_Metamodel\_Context}{}
+\VARIABLES{
+	\Variable{DomainModel}{}
+	\Variable{DomainModel\_parent\_DomainModel}{}
+	\Variable{Variable}{}
+	\Variable{Constant}{}
+	\Variable{Set}{}
+	\Variable{SetItem}{}
+	\Variable{AbstractSet}{}
+	\Variable{EnumeratedSet}{}
+	\Variable{Invariant}{}
+	\Variable{Property}{}
+	\Variable{LogicFormula}{}
+	\Variable{InitialisationAction}{Event-B associations}
+	\Variable{Variable\_definedIn\_Component}{}
+	\Variable{Constant\_definedIn\_Component}{}
+	\Variable{Set\_definedIn\_Component}{}
+	\Variable{LogicFormula\_definedIn\_Component}{}
+	\Variable{Invariant\_involves\_Variables}{}
+	\Variable{Constant\_isInvolvedIn\_LogicFormulas}{}
+	\Variable{LogicFormula\_involves\_Sets}{}
+	\Variable{LogicFormula\_involves\_SetItems}{}
+	\Variable{LogicFormula\_uses\_Operators}{}
+	\Variable{Variable\_typing\_Invariant}{}
+	\Variable{Constant\_typing\_Property}{}
+	\Variable{SetItem\_itemOf\_EnumeratedSet}{}
+	\Variable{InitialisationAction\_uses\_Operators}{}
+	\Variable{Variable\_init\_InitialisationAction}{}
+	\Variable{InitialisationAction\_involves\_Constants}{Domain Model sets}
+	\Variable{Concept}{}
+	\Variable{Individual}{}
+	\Variable{DataValue}{}
+	\Variable{DataSet}{}
+	\Variable{DefaultDataSet}{}
+	\Variable{CustomDataSet}{}
+	\Variable{EnumeratedDataSet}{*************relations/attributes**********************************************************************}
+	\Variable{Relation}{}
+	\Variable{RelationMaplet}{}
+	\Variable{AttributeMaplet}{}
+	\Variable{Attribute}{Domain Model attributes}
+	\Variable{Concept\_isVariable}{*************relations/attributes**********************************************************************}
+	\Variable{Relation\_isVariable}{}
+	\Variable{Relation\_isTransitive}{}
+	\Variable{Relation\_isSymmetric}{}
+	\Variable{relation\_isASymmetric}{}
+	\Variable{Relation\_isReflexive}{}
+	\Variable{Relation\_isIrreflexive}{}
+	\Variable{Attribute\_isVariable}{}
+	\Variable{Attribute\_isFunctional}{Domain Model associations}
+	\Variable{Concept\_definedIn\_DomainModel}{}
+	\Variable{DataSet\_definedIn\_DomainModel}{}
+	\Variable{Concept\_parentConcept\_Concept}{}
+	\Variable{Individual\_individualOf\_Concept}{}
+	\Variable{DataValue\_valueOf\_DataSet}{}
+	\Variable{DataValue\_elements\_EnumeratedDataSet}{}
+	\Variable{Relation\_definedIn\_DomainModel}{}
+	\Variable{Attribute\_definedIn\_DomainModel}{*************relations/attributes**********************************************************************}
+	\Variable{Relation\_domain\_Concept}{}
+	\Variable{Relation\_range\_Concept}{}
+	\Variable{Relation\_DomainCardinality\_minCardinality}{}
+	\Variable{Relation\_DomainCardinality\_maxCardinality}{}
+	\Variable{Relation\_RangeCardinality\_minCardinality}{}
+	\Variable{Relation\_RangeCardinality\_maxCardinality}{}
+	\Variable{RelationMaplet\_mapletOf\_Relation}{}
+	\Variable{RelationMaplet\_antecedent\_Individual}{}
+	\Variable{RelationMaplet\_image\_Individual}{}
+	\Variable{Attribute\_domain\_Concept}{}
+	\Variable{Attribute\_range\_DataSet}{}
+	\Variable{AttributeMaplet\_mapletOf\_Attribute}{}
+	\Variable{AttributeMaplet\_antecedent\_Individual}{}
+	\Variable{AttributeMaplet\_image\_DataValue}{correspondences}
+	\Variable{Concept\_corresp\_AbstractSet}{}
+	\Variable{DomainModel\_corresp\_Component}{}
+	\Variable{EnumeratedDataSet\_corresp\_EnumeratedSet}{}
+	\Variable{DataValue\_corresp\_SetItem}{}
+	\Variable{CustomDataSet\_corresp\_AbstractSet}{}
+	\Variable{DefaultDataSet\_corresp\_AbstractSet}{}
+	\Variable{Concept\_corresp\_Constant}{}
+	\Variable{Individual\_corresp\_Constant}{}
+	\Variable{DataValue\_corresp\_Constant}{}
+	\Variable{Concept\_corresp\_Variable}{*************relations/attributes**********************************************************************}
+	\Variable{Relation\_Type}{}
+	\Variable{Relation\_corresp\_Constant}{}
+	\Variable{Relation\_corresp\_Variable}{}
+	\Variable{Attribute\_Type}{}
+	\Variable{Attribute\_corresp\_Constant}{}
+	\Variable{Attribute\_corresp\_Variable}{}
+	\Variable{RelationCharacteristic\_corresp\_LogicFormula}{}
+	\Variable{RelationMaplet\_corresp\_Constant}{}
+	\Variable{DataSet\_corresp\_Set}{}
+	\Variable{AttributeMaplet\_corresp\_Constant}{}
+}
+\INVARIANTS{
+	\Invariant{inv1\_1}{false}{$Variable\subseteq{}Variable\_Set$}{}
+	\Invariant{inv1\_2}{false}{$Constant\subseteq{}Constant\_Set$}{}
+	\Invariant{inv1\_3}{false}{$Set\subseteq{}Set\_Set$}{}
+	\Invariant{inv1\_4}{false}{$partition(Set, AbstractSet, EnumeratedSet)$}{}
+	\Invariant{inv1\_5}{false}{$SetItem\subseteq{}SetItem\_Set$}{}
+	\Invariant{inv1\_6}{false}{$Variable\_definedIn\_Component \in{}  Variable \tfun{} Component$}{}
+	\Invariant{inv1\_7}{false}{$Constant\_definedIn\_Component \in{}  Constant \tfun{} Component$}{}
+	\Invariant{inv1\_8}{false}{$Set\_definedIn\_Component \in{}  Set \tfun{} Component$}{}
+	\Invariant{inv1\_9}{false}{$SetItem\_itemOf\_EnumeratedSet \in{} SetItem \psur{} EnumeratedSet$}{\\Domain Model}
+	\Invariant{inv1\_10}{false}{$Concept \subseteq{} Concept\_Set$}{}
+	\Invariant{inv1\_11}{false}{$Individual \subseteq{} Individual\_Set$}{}
+	\Invariant{inv1\_12}{false}{$DataValue \subseteq{} DataValue\_Set$}{}
+	\Invariant{inv1\_13}{false}{$DataSet \subseteq{} DataSet\_Set$}{}
+	\Invariant{inv1\_14}{false}{$partition(DataSet, DefaultDataSet, CustomDataSet)$}{}
+	\Invariant{inv1\_15}{false}{$EnumeratedDataSet \subseteq{} CustomDataSet$}{}
+	\Invariant{inv1\_16}{false}{$Concept\_isVariable  \in{} Concept \tfun{} BOOL$}{}
+	\Invariant{inv1\_17}{false}{$Concept\_definedIn\_DomainModel \in{}  Concept \tfun{} DomainModel$}{}
+	\Invariant{inv1\_18}{false}{$DataSet\_definedIn\_DomainModel \in{}  DataSet \tfun{} DomainModel$}{}
+	\Invariant{inv1\_19}{false}{$Concept\_parentConcept\_Concept \in{} Concept \pfun{} Concept$}{}
+	\Invariant{inv1\_20}{false}{$Individual\_individualOf\_Concept \in{} Individual \tfun{} Concept$}{}
+	\Invariant{inv1\_21}{false}{$DataValue\_valueOf\_DataSet \in{} DataValue \tfun{}  DataSet$}{}
+	\Invariant{inv1\_22}{false}{$DataValue\_elements\_EnumeratedDataSet \in{} DataValue \psur{}  EnumeratedDataSet$}{}
+	\Invariant{inv1\_23}{false}{$Concept\_corresp\_AbstractSet \in{} Concept \pinj{} AbstractSet$}{}
+	\Invariant{inv1\_24}{false}{$EnumeratedDataSet\_corresp\_EnumeratedSet \in{} EnumeratedDataSet \pinj{} EnumeratedSet$}{}
+	\Invariant{inv1\_25}{false}{$DataValue\_corresp\_SetItem \in{} DataValue \pinj{} SetItem$}{}
+	\Invariant{inv1\_26}{false}{$\forall{}xx\qdot{}(xx\in{}EnumeratedDataSet \land{} xx \notin{} dom(EnumeratedDataSet\_corresp\_EnumeratedSet)\limp{}DataValue\_elements\_EnumeratedDataSet\converse{}[\{xx\}]\binter{}dom(DataValue\_corresp\_SetItem)=\emptyset{})$}{}
+	\Invariant{inv1\_27}{false}{$CustomDataSet\_corresp\_AbstractSet \in{} CustomDataSet \pinj{} AbstractSet$}{}
+	\Invariant{inv1\_28}{false}{$\{\_NATURAL, \_INTEGER, \_FLOAT, \_BOOL, \_STRING\} \binter{}  CustomDataSet = \emptyset{}$}{}
+	\Invariant{inv1\_29}{false}{$DefaultDataSet\_corresp\_AbstractSet \in{} DefaultDataSet \pinj{} AbstractSet$}{}
+	\Invariant{inv1\_30}{false}{$\{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\} \binter{}  EnumeratedSet = \emptyset{}$}{}
+	\Invariant{inv1\_31}{false}{$Concept\_corresp\_Constant \in{} Concept \pinj{} Constant$}{\\@inv1$\_$32 $\forall{}$co$\qdot{}$(co$\in{}$dom(Concept$\_$parentConcept$\_$Concept)$\limp{}$(Individual$\_$individualOf$\_$Concept$\converse{}$[$\{$co$\}$]$\subseteq{}$Individual$\_$individualOf$\_$Concept$\converse{}$[$\{$Concept$\_$parentConcept$\_$Concept(co)$\}$]))}
+	\Invariant{inv1\_33}{false}{$LogicFormula \subseteq{} LogicFormula\_Set$}{}
+	\Invariant{inv1\_34}{false}{$Property \subseteq{} LogicFormula$}{}
+	\Invariant{inv1\_35}{false}{$Invariant \subseteq{} LogicFormula$}{}
+	\Invariant{inv1\_36}{false}{$LogicFormula\_definedIn\_Component \in{}  LogicFormula \tfun{} Component$}{}
+	\Invariant{inv1\_37}{false}{$Invariant\_involves\_Variables \in{}  Invariant \tfun{} (\natn{}\pfun{}Variable)$}{\\logic formula operands can be variables, constants, sets or set items, indexed by their appearance order number. The first operand is indexed by 1, no matter it's type.}
+	\Invariant{inv1\_38}{false}{$ran(union(ran(Invariant\_involves\_Variables)))=Variable$}{}
+	\Invariant{inv1\_39}{false}{$Constant\_isInvolvedIn\_LogicFormulas \in{}  Constant \tfun{} \pown{}(\natn{}\cprod{}LogicFormula)$}{\\When appearance order does not matter, we may index all constants using the same number.}
+	\Invariant{inv1\_40}{false}{$\forall{}cons\qdot{}(cons\in{}Constant\limp{}ran(Constant\_isInvolvedIn\_LogicFormulas(cons))\binter{}Property\neq{}\emptyset{})$}{}
+	\Invariant{inv1\_41}{false}{$LogicFormula\_involves\_Sets \in{}  LogicFormula \tfun{} (\natn{}\pfun{}Set)$}{}
+	\Invariant{inv1\_42}{false}{$LogicFormula\_uses\_Operators \in{}  LogicFormula \tfun{} (\natn{}\pfun{}Operator)$}{}
+	\Invariant{inv1\_44}{false}{$Individual\_corresp\_Constant \in{} Individual \pinj{} Constant$}{}
+	\Invariant{inv1\_45}{false}{$DataValue\_corresp\_Constant \in{} DataValue \pinj{} Constant$}{}
+	\Invariant{inv1\_46}{false}{$Concept\_corresp\_Variable \in{} Concept \pinj{} Variable$}{}
+	\Invariant{inv1\_47}{false}{$InitialisationAction\subseteq{} InitialisationAction\_Set$}{}
+	\Invariant{inv1\_49}{false}{$InitialisationAction\_uses\_Operators \in{}  InitialisationAction \tfun{} (\natn{}\pfun{}Operator)$}{}
+	\Invariant{inv1\_50}{false}{$Variable\_init\_InitialisationAction \in{}  Variable \tbij{} InitialisationAction$}{\\for initialisation actions, the assigned operand is the involved variable.}
+	\Invariant{inv1\_52}{false}{$InitialisationAction\_involves\_Constants \in{}  InitialisationAction \tfun{} (\natn{}\pfun{}Constant)$}{\\*************relations/attributes**********************************************************************}
+	\Invariant{inv1\_53}{false}{$Relation \subseteq{} Relation\_Set$}{}
+	\Invariant{inv1\_56}{false}{$RelationMaplet \subseteq{} Relation\_Maplet\_Set$}{}
+	\Invariant{inv1\_57}{false}{$AttributeMaplet \subseteq{} Attribute\_Maplet\_Set$}{}
+	\Invariant{inv1\_58}{false}{$Attribute \subseteq{} Attribute\_Set$}{}
+	\Invariant{inv1\_59}{false}{$Relation\_isVariable  \in{} Relation \tfun{} BOOL$}{}
+	\Invariant{inv1\_60}{false}{$Relation\_isTransitive  \in{} Relation \pfun{} BOOL$}{}
+	\Invariant{inv1\_61}{false}{$Relation\_isSymmetric  \in{} Relation \pfun{} BOOL$}{}
+	\Invariant{inv1\_62}{false}{$relation\_isASymmetric  \in{} Relation \pfun{} BOOL$}{}
+	\Invariant{inv1\_63}{false}{$Relation\_isReflexive  \in{} Relation \pfun{} BOOL$}{}
+	\Invariant{inv1\_64}{false}{$Relation\_isIrreflexive  \in{} Relation \pfun{} BOOL$}{}
+	\Invariant{inv1\_65}{false}{$Relation\_DomainCardinality\_minCardinality  \in{} Relation \pfun{} \nat{}$}{}
+	\Invariant{inv1\_66}{false}{$Relation\_DomainCardinality\_maxCardinality  \in{} Relation \pfun{} (\nat{} \bunion{} \{-1\})$}{}
+	\Invariant{inv1\_67}{false}{$Relation\_RangeCardinality\_minCardinality  \in{} Relation \pfun{} \nat{}$}{}
+	\Invariant{inv1\_68}{false}{$Relation\_RangeCardinality\_maxCardinality  \in{} Relation \pfun{} (\nat{} \bunion{} \{-1\})$}{}
+	\Invariant{inv1\_69}{false}{$Attribute\_isVariable  \in{} Attribute \tfun{} BOOL$}{}
+	\Invariant{inv1\_70}{false}{$Attribute\_isFunctional  \in{} Attribute \pfun{} BOOL$}{}
+	\Invariant{inv1\_71}{false}{$Relation\_definedIn\_DomainModel \in{}  Relation \tfun{} DomainModel$}{}
+	\Invariant{inv1\_72}{false}{$Attribute\_definedIn\_DomainModel \in{}  Attribute \tfun{} DomainModel$}{}
+	\Invariant{inv1\_73}{false}{$Relation\_domain\_Concept \in{}  Relation \tfun{} Concept$}{}
+	\Invariant{inv1\_74}{false}{$Relation\_range\_Concept \in{}  Relation \tfun{} Concept$}{}
+	\Invariant{inv1\_77}{false}{$RelationMaplet\_mapletOf\_Relation \in{}  RelationMaplet \tfun{} Relation$}{}
+	\Invariant{inv1\_78}{false}{$RelationMaplet\_antecedent\_Individual \in{}  RelationMaplet \tfun{} Individual$}{}
+	\Invariant{inv1\_79}{false}{$RelationMaplet\_image\_Individual \in{}  RelationMaplet \tfun{} Individual$}{}
+	\Invariant{inv1\_80}{false}{$Attribute\_domain\_Concept \in{}  Attribute \tfun{} Concept$}{}
+	\Invariant{inv1\_81}{false}{$Attribute\_range\_DataSet \in{}  Attribute \tfun{} DataSet$}{}
+	\Invariant{inv1\_82}{false}{$AttributeMaplet\_mapletOf\_Attribute \in{}  AttributeMaplet \tfun{} Attribute$}{}
+	\Invariant{inv1\_83}{false}{$AttributeMaplet\_antecedent\_Individual \in{}  AttributeMaplet \tfun{} Individual$}{}
+	\Invariant{inv1\_84}{false}{$AttributeMaplet\_image\_DataValue \in{}  AttributeMaplet \tfun{} DataValue$}{}
+	\Invariant{inv1\_85}{false}{$\forall{}rm\qdot{}(rm\in{}RelationMaplet\limp{}Individual\_individualOf\_Concept(RelationMaplet\_antecedent\_Individual(rm))=Relation\_domain\_Concept(RelationMaplet\_mapletOf\_Relation(rm)))$}{}
+	\Invariant{inv1\_86}{false}{$\forall{}rm\qdot{}(rm\in{}RelationMaplet\limp{}Individual\_individualOf\_Concept(RelationMaplet\_image\_Individual(rm))=Relation\_range\_Concept(RelationMaplet\_mapletOf\_Relation(rm)))$}{}
+	\Invariant{inv1\_87}{false}{$\forall{}am\qdot{}(am\in{}AttributeMaplet\limp{}Individual\_individualOf\_Concept(AttributeMaplet\_antecedent\_Individual(am))=Attribute\_domain\_Concept(AttributeMaplet\_mapletOf\_Attribute(am)))$}{}
+	\Invariant{inv1\_88}{false}{$\forall{}am\qdot{}(am\in{}AttributeMaplet\limp{}DataValue\_valueOf\_DataSet(AttributeMaplet\_image\_DataValue(am))=Attribute\_range\_DataSet(AttributeMaplet\_mapletOf\_Attribute(am)))$}{}
+	\Invariant{inv1\_89}{false}{$Relation\_Type \in{} Relation \pinj{} Constant$}{}
+	\Invariant{inv1\_90}{false}{$Relation\_corresp\_Constant \in{} Relation \pinj{} Constant$}{}
+	\Invariant{inv1\_91}{false}{$Relation\_corresp\_Variable \in{} Relation \pinj{} Variable$}{}
+	\Invariant{inv1\_92}{false}{$\forall{} re\qdot{}(re\in{}dom(Relation\_Type)\leqv{}(re\in{}dom(Relation\_corresp\_Constant) \lor{} (re\in{}dom(Relation\_corresp\_Variable))))$}{}
+	\Invariant{inv1\_93}{false}{$Attribute\_Type \in{} Attribute \pinj{} Constant$}{}
+	\Invariant{inv1\_94}{false}{$Attribute\_corresp\_Constant \in{} Attribute \pinj{} Constant$}{}
+	\Invariant{inv1\_95}{false}{$Attribute\_corresp\_Variable \in{} Attribute \pinj{} Variable$}{}
+	\Invariant{inv1\_96}{false}{$\forall{} re\qdot{}(re\in{}dom(Attribute\_Type)\leqv{}(re\in{}dom(Attribute\_corresp\_Constant) \lor{} (re\in{}dom(Attribute\_corresp\_Variable))))$}{}
+	\Invariant{inv1\_97}{false}{$Variable\_typing\_Invariant \in{} Variable \tinj{} Invariant$}{}
+	\Invariant{inv1\_98}{false}{$Constant\_typing\_Property \in{} Constant \tinj{} Property$}{}
+	\Invariant{inv1\_99}{false}{$RelationCharacteristic\_corresp\_LogicFormula \in{}  (Relation\pfun{}RelationCharacteristics\_Set)\pinj{}LogicFormula$}{}
+	\Invariant{inv1\_100}{false}{$RelationMaplet\_corresp\_Constant \in{} RelationMaplet\pinj{} Constant$}{}
+	\Invariant{inv1\_101}{false}{$DataSet\_corresp\_Set \in{} DataSet\pinj{}Set$}{}
+	\Invariant{inv1\_102}{false}{$AttributeMaplet\_corresp\_Constant \in{} AttributeMaplet\pinj{} Constant$}{}
+	\Invariant{inv1\_103}{false}{$LogicFormula\_involves\_SetItems \in{}  LogicFormula \pfun{} (\natn{}\pfun{}SetItem)$}{}
+	\Invariant{inv1\_104}{false}{$EnumeratedDataSet\_corresp\_EnumeratedSet \subseteq{}  DataSet\_corresp\_Set$}{}
+	\Invariant{inv1\_105}{false}{$CustomDataSet\_corresp\_AbstractSet \subseteq{}  DataSet\_corresp\_Set$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$DomainModel\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$Variable\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$Constant\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$Set\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$AbstractSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$EnumeratedSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act7}{$SetItem\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act8}{$Concept	\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act9}{$Individual\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act10}{$DataValue	\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act11}{$DataSet \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act12}{$DefaultDataSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act13}{$CustomDataSet \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act14}{$EnumeratedDataSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act15}{$Variable\_definedIn\_Component \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act16}{$Constant\_definedIn\_Component  \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act17}{$Set\_definedIn\_Component \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act18}{$SetItem\_itemOf\_EnumeratedSet \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act19}{$Concept\_isVariable\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act20}{$Concept\_definedIn\_DomainModel\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act21}{$DataSet\_definedIn\_DomainModel\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act22}{$Concept\_parentConcept\_Concept\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act23}{$Individual\_individualOf\_Concept\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act24}{$DataValue\_valueOf\_DataSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act25}{$DataValue\_elements\_EnumeratedDataSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act26}{$Concept\_corresp\_AbstractSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act27}{$DomainModel\_corresp\_Component \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act28}{$EnumeratedDataSet\_corresp\_EnumeratedSet \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act29}{$DataValue\_corresp\_SetItem \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act30}{$CustomDataSet\_corresp\_AbstractSet \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act31}{$DomainModel\_parent\_DomainModel \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act32}{$DefaultDataSet\_corresp\_AbstractSet \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act33}{$Concept\_corresp\_Constant \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act34}{$Invariant \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act35}{$Property \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act36}{$LogicFormula \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act37}{$LogicFormula\_definedIn\_Component \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act38}{$Invariant\_involves\_Variables \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act39}{$Constant\_isInvolvedIn\_LogicFormulas \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act40}{$LogicFormula\_involves\_Sets \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act41}{$LogicFormula\_uses\_Operators \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act42}{$Individual\_corresp\_Constant \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act43}{$DataValue\_corresp\_Constant \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act44}{$Concept\_corresp\_Variable \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act45}{$InitialisationAction \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act47}{$InitialisationAction\_uses\_Operators \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act48}{$Variable\_init\_InitialisationAction \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act49}{$InitialisationAction\_involves\_Constants \bcmeq{} \emptyset{}$}{true}{\\*************relations/attributes**********************************************************************}
+		\Action{act50}{$Relation \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act51}{$Relation\_DomainCardinality\_minCardinality\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act52}{$Relation\_DomainCardinality\_maxCardinality	\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act53}{$RelationMaplet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act54}{$AttributeMaplet	\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act55}{$Attribute	\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act56}{$Relation\_isVariable \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act57}{$Relation\_isTransitive\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act58}{$Relation\_isSymmetric \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act59}{$relation\_isASymmetric \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act60}{$Relation\_isReflexive \bcmeq{}\emptyset{}$}{true}{}
+		\Action{act61}{$Relation\_isIrreflexive\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act66}{$Attribute\_isVariable\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act67}{$Attribute\_isFunctional\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act68}{$Relation\_definedIn\_DomainModel\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act69}{$Attribute\_definedIn\_DomainModel\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act70}{$Relation\_domain\_Concept\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act71}{$Relation\_range\_Concept\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act72}{$Relation\_RangeCardinality\_minCardinality\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act73}{$Relation\_RangeCardinality\_maxCardinality\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act74}{$RelationMaplet\_mapletOf\_Relation\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act75}{$RelationMaplet\_antecedent\_Individual\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act76}{$RelationMaplet\_image\_Individual\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act77}{$Attribute\_domain\_Concept\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act78}{$Attribute\_range\_DataSet\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act79}{$AttributeMaplet\_mapletOf\_Attribute\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act80}{$AttributeMaplet\_antecedent\_Individual\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act81}{$AttributeMaplet\_image\_DataValue\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act82}{$Relation\_Type\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act83}{$Relation\_corresp\_Constant\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act84}{$Relation\_corresp\_Variable\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act85}{$Attribute\_Type\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act86}{$Attribute\_corresp\_Constant\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act87}{$Attribute\_corresp\_Variable\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act88}{$Variable\_typing\_Invariant\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act89}{$Constant\_typing\_Property\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act90}{$RelationCharacteristic\_corresp\_LogicFormula \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act91}{$RelationMaplet\_corresp\_Constant \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act92}{$DataSet\_corresp\_Set \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act93}{$AttributeMaplet\_corresp\_Constant \bcmeq{}  \emptyset{}$}{true}{}
+		\Action{act94}{$LogicFormula\_involves\_SetItems \bcmeq{}  \emptyset{}$}{true}{}
+	}
+}
+\EVT{initialize\_default\_datasets}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{DM}{true}{}
+		\Param{o\_DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(DomainModel\_corresp\_Component)\setminus{}dom(DomainModel\_parent\_DomainModel) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$DefaultDataSet = \emptyset{}$}{true}{}
+		\Guard{grd2}{false}{$DM \in{}  dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$DM \notin{} dom(DomainModel\_parent\_DomainModel)$}{true}{}
+		\Guard{grd4}{false}{$AbstractSet \binter{} \{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\} = \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$o\_DM = DomainModel\_corresp\_Component(DM)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$DefaultDataSet \bcmeq{} \{\_NATURAL, \_INTEGER, \_FLOAT, \_BOOL, \_STRING\}$}{true}{}
+		\Action{act2}{$DataSet \bcmeq{} DataSet \bunion{} \{\_NATURAL, \_INTEGER, \_FLOAT, \_BOOL, \_STRING\}$}{true}{}
+		\Action{act3}{$DataSet\_definedIn\_DomainModel \bcmeq{}  DataSet\_definedIn\_DomainModel \bunion{} \{(xx\mapsto{}yy)|xx\in{}\{\_NATURAL, \_INTEGER, \_FLOAT, \_BOOL, \_STRING\}\land{}yy=DM\}$}{true}{}
+		\Action{act4}{$AbstractSet \bcmeq{}  AbstractSet \bunion{} \{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\}$}{true}{}
+		\Action{act5}{$Set \bcmeq{}  Set \bunion{} \{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\}$}{true}{}
+		\Action{act6}{$DefaultDataSet\_corresp\_AbstractSet \bcmeq{} \{\_NATURAL\mapsto{}B\_NATURAL, \_INTEGER\mapsto{}B\_INTEGER, \_FLOAT\mapsto{}B\_FLOAT, \_BOOL\mapsto{}B\_BOOL, \_STRING\mapsto{}B\_STRING\}$}{true}{}
+		\Action{act7}{$Set\_definedIn\_Component \bcmeq{}  Set\_definedIn\_Component \bunion{} \{(xx\mapsto{}yy)|xx\in{}\{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\}\land{}yy=o\_DM\}$}{true}{}
+		\Action{act8}{$DataSet\_corresp\_Set \bcmeq{}  DataSet\_corresp\_Set \ovl{} \{\_NATURAL\mapsto{}B\_NATURAL, \_INTEGER\mapsto{}B\_INTEGER, \_FLOAT\mapsto{}B\_FLOAT, \_BOOL\mapsto{}B\_BOOL, \_STRING\mapsto{}B\_STRING\}$}{true}{}
+	}
+}
+\EVT{rule\_3}{false}{ordinary}{}{\\correspondence of a concept not associated to a parent concept}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Concept \setminus{} (dom(Concept\_parentConcept\_Concept) \bunion{} dom(Concept\_corresp\_AbstractSet)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} Concept$}{true}{}
+		\Guard{grd2}{false}{$CO \notin{} dom(Concept\_parentConcept\_Concept)$}{true}{}
+		\Guard{grd3}{false}{$CO \notin{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd4}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd5}{false}{$Set\_Set \setminus{} Set \neq{}\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$o\_CO \in{} Set\_Set$}{true}{}
+		\Guard{grd7}{false}{$o\_CO \notin{} Set$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$AbstractSet \bcmeq{}  AbstractSet \bunion{}  \{o\_CO\}$}{true}{}
+		\Action{act2}{$Set \bcmeq{}  Set \bunion{}  \{o\_CO\}$}{true}{}
+		\Action{act3}{$Concept\_corresp\_AbstractSet(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act4}{$Set\_definedIn\_Component(o\_CO) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+	}
+}
+\EVT{rule\_4}{false}{ordinary}{}{\\correspondence of an instance of EnumeratedDataSet}{
+	\ANY{
+		\Param{EDS}{true}{}
+		\Param{o\_EDS}{true}{}
+		\Param{elements}{true}{}
+		\Param{o\_elements}{true}{}
+		\Param{mapping\_elements\_o\_elements}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$EnumeratedDataSet \setminus{} dom(DataSet\_corresp\_Set) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$EDS \in{} EnumeratedDataSet$}{true}{}
+		\Guard{grd2}{false}{$EDS \notin{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd4}{false}{$DataSet\_definedIn\_DomainModel(EDS) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd5}{false}{$Set\_Set \setminus{} Set \neq{}\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$o\_EDS \in{} Set\_Set$}{true}{}
+		\Guard{grd7}{false}{$o\_EDS \notin{} Set$}{true}{}
+		\Guard{grd8}{false}{$o\_EDS \notin{}  \{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\}$}{true}{\\elements}
+		\Guard{grd9}{false}{$o\_elements \subseteq{}  SetItem\_Set$}{true}{}
+		\Guard{grd10}{false}{$o\_elements \binter{} SetItem = \emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$elements = DataValue\_elements\_EnumeratedDataSet\converse{}[\{EDS\}]$}{true}{}
+		\Guard{grd12}{false}{$card(o\_elements) = card(elements)$}{true}{}
+		\Guard{grd13}{false}{$mapping\_elements\_o\_elements \in{} elements \tbij{} o\_elements$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$EnumeratedSet \bcmeq{}  EnumeratedSet \bunion{}  \{o\_EDS\}$}{true}{}
+		\Action{act2}{$Set \bcmeq{}  Set \bunion{}  \{o\_EDS\}$}{true}{}
+		\Action{act3}{$EnumeratedDataSet\_corresp\_EnumeratedSet(EDS)\bcmeq{}o\_EDS$}{true}{}
+		\Action{act4}{$Set\_definedIn\_Component(o\_EDS) \bcmeq{} DomainModel\_corresp\_Component(DataSet\_definedIn\_DomainModel(EDS))$}{true}{\\elements}
+		\Action{act5}{$SetItem \bcmeq{} SetItem \bunion{}  o\_elements$}{true}{}
+		\Action{act6}{$SetItem\_itemOf\_EnumeratedSet \bcmeq{}  SetItem\_itemOf\_EnumeratedSet \bunion{} \{(xx\mapsto{}yy) |xx\in{}o\_elements \land{}yy=o\_EDS\}$}{true}{}
+		\Action{act7}{$DataValue\_corresp\_SetItem \bcmeq{}  DataValue\_corresp\_SetItem \bunion{} mapping\_elements\_o\_elements$}{true}{}
+		\Action{act8}{$DataSet\_corresp\_Set \bcmeq{}  DataSet\_corresp\_Set \ovl{} \{EDS\mapsto{}o\_EDS\}$}{true}{}
+	}
+}
+\EVT{rule\_5}{false}{ordinary}{}{\\correspondence of an instance of CustomDataSet which is not an instance of EnumeratedDataSet}{
+	\ANY{
+		\Param{CS}{true}{}
+		\Param{o\_CS}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$CustomDataSet \setminus{} (EnumeratedDataSet \bunion{} dom(DataSet\_corresp\_Set)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CS \in{} CustomDataSet$}{true}{}
+		\Guard{grd2}{false}{$CS \notin{} EnumeratedDataSet$}{true}{}
+		\Guard{grd3}{false}{$CS \notin{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd4}{false}{$DataSet\_definedIn\_DomainModel(CS) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd5}{false}{$Set\_Set \setminus{} Set \neq{}\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$o\_CS \in{} Set\_Set$}{true}{}
+		\Guard{grd7}{false}{$o\_CS \notin{} Set$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$AbstractSet \bcmeq{}  AbstractSet \bunion{}  \{o\_CS\}$}{true}{}
+		\Action{act2}{$Set \bcmeq{}  Set \bunion{}  \{o\_CS\}$}{true}{}
+		\Action{act3}{$CustomDataSet\_corresp\_AbstractSet(CS)\bcmeq{}o\_CS$}{true}{}
+		\Action{act4}{$Set\_definedIn\_Component(o\_CS) \bcmeq{} DomainModel\_corresp\_Component(DataSet\_definedIn\_DomainModel(CS))$}{true}{}
+		\Action{act5}{$DataSet\_corresp\_Set \bcmeq{}  DataSet\_corresp\_Set \ovl{} \{CS\mapsto{}o\_CS\}$}{true}{}
+	}
+}
+\EVT{rule\_6\_1}{false}{ordinary}{}{\\correspondence of a concept associated to a parent concept (where the parent concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{PCO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_PCO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$PCO \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd4}{false}{$Concept\_parentConcept\_Concept(CO)=PCO$}{true}{}
+		\Guard{grd5}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_CO \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_PCO \in{} AbstractSet$}{true}{}
+		\Guard{grd11}{false}{$o\_PCO = Concept\_corresp\_AbstractSet(PCO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Constant(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_CO) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas(o\_CO) \bcmeq{} \{1\mapsto{}o\_lg\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \{2\mapsto{}o\_PCO\}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_CO) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_6\_2}{false}{ordinary}{}{\\correspondence of a concept associated to a parent concept (where the parent concept corresponds to a constant)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{PCO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_PCO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$PCO \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd4}{false}{$Concept\_parentConcept\_Concept(CO)=PCO$}{true}{}
+		\Guard{grd5}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_CO \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_PCO \in{} Constant$}{true}{}
+		\Guard{grd11}{false}{$o\_PCO = Concept\_corresp\_Constant(PCO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Constant(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_CO) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}Constant\_isInvolvedIn\_LogicFormulas\ovl{}\{(o\_CO\mapsto{}\{1\mapsto{}o\_lg\}), o\_PCO\mapsto{}Constant\_isInvolvedIn\_LogicFormulas(o\_PCO)\bunion{}\{2\mapsto{}o\_lg\}\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_CO) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_7\_1}{false}{ordinary}{}{\\correspondence of an instance of Individual (where the  concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{ind}{true}{}
+		\Param{o\_ind}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Individual\_individualOf\_Concept) \setminus{} dom(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$ind \in{} dom(Individual\_individualOf\_Concept) \setminus{} dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd4}{false}{$Individual\_individualOf\_Concept(ind)=CO$}{true}{}
+		\Guard{grd5}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_ind \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_CO \in{} AbstractSet$}{true}{}
+		\Guard{grd11}{false}{$o\_CO = Concept\_corresp\_AbstractSet(CO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_ind\}$}{true}{}
+		\Action{act2}{$Individual\_corresp\_Constant(ind)\bcmeq{}o\_ind$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_ind) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas(o\_ind) \bcmeq{} \{1\mapsto{}o\_lg\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \{2\mapsto{}o\_CO\}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_ind) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_7\_2}{false}{ordinary}{}{\\correspondence of an instance of Individual (where the  concept corresponds to a constant)}{
+	\ANY{
+		\Param{ind}{true}{}
+		\Param{o\_ind}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Individual\_individualOf\_Concept) \setminus{} dom(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$ind \in{} dom(Individual\_individualOf\_Concept) \setminus{} dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd4}{false}{$Individual\_individualOf\_Concept(ind)=CO$}{true}{}
+		\Guard{grd5}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_ind \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_CO \in{} Constant$}{true}{}
+		\Guard{grd11}{false}{$o\_CO = Concept\_corresp\_Constant(CO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_ind\}$}{true}{}
+		\Action{act2}{$Individual\_corresp\_Constant(ind)\bcmeq{}o\_ind$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_ind) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}Constant\_isInvolvedIn\_LogicFormulas\ovl{}\{(o\_ind\mapsto{}\{1\mapsto{}o\_lg\}), o\_CO\mapsto{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO)\bunion{}\{2\mapsto{}o\_lg\}\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_ind) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_8}{false}{ordinary}{}{\\correspondence of an instance of DataValue (When the data set is an instance of CustomDataSet not instance of EnumeratedDataSet\\~    (for this last case, the rule for instances of EnumeratedDataSet also handles data values) ) }{
+	\ANY{
+		\Param{dva}{true}{}
+		\Param{o\_dva}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_DS}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(DataValue\_valueOf\_DataSet) \setminus{} dom(DataValue\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$dva \in{} dom(DataValue\_valueOf\_DataSet) \setminus{} dom(DataValue\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(CustomDataSet\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$DS \in{} dom(CustomDataSet\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd4}{false}{$DataValue\_valueOf\_DataSet(dva)=DS$}{true}{}
+		\Guard{grd5}{false}{$DataSet\_definedIn\_DomainModel(DS) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_dva \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_DS \in{} AbstractSet$}{true}{}
+		\Guard{grd11}{false}{$o\_DS = CustomDataSet\_corresp\_AbstractSet(DS)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_dva\}$}{true}{}
+		\Action{act2}{$DataValue\_corresp\_Constant(dva)\bcmeq{}o\_dva$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_dva) \bcmeq{} DomainModel\_corresp\_Component(DataSet\_definedIn\_DomainModel(DS))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas(o\_dva) \bcmeq{} \{1\mapsto{}o\_lg\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \{2\mapsto{}o\_DS\}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(DataSet\_definedIn\_DomainModel(DS))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_dva) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_9\_1}{false}{ordinary}{}{\\handling the variability of a concept and initializing the associated variable (when the  concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{x\_CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{o\_ia}{true}{}
+		\Param{o\_inds}{true}{}
+		\Param{bij\_o\_inds}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$(dom(Concept\_corresp\_AbstractSet)\binter{}Concept\_isVariable\converse{}[\{TRUE\}]) \setminus{} dom(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} (dom(Concept\_corresp\_AbstractSet)\binter{}Concept\_isVariable\converse{}[\{TRUE\}]) \setminus{} dom(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd2}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$Individual\_individualOf\_Concept\converse{}[\{CO\}] \subseteq{}  dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd4}{false}{$Variable\_Set \setminus{} Variable \neq{}\emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$x\_CO \in{} Variable\_Set \setminus{} Variable$}{true}{}
+		\Guard{grd6}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd8}{false}{$o\_CO \in{} AbstractSet$}{true}{}
+		\Guard{grd9}{false}{$o\_CO = Concept\_corresp\_AbstractSet(CO)$}{true}{}
+		\Guard{grd10}{false}{$InitialisationAction\_Set \setminus{} InitialisationAction \neq{} \emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$o\_ia \in{} InitialisationAction\_Set \setminus{} InitialisationAction$}{true}{}
+		\Guard{grd12}{false}{$o\_inds =  Individual\_corresp\_Constant[Individual\_individualOf\_Concept\converse{}[\{CO\}]]$}{true}{}
+		\Guard{grd13}{false}{$finite(o\_inds)$}{true}{}
+		\Guard{grd14}{false}{$bij\_o\_inds \in{} 1\upto{}card(o\_inds) \tbij{} o\_inds$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Variable \bcmeq{}  Variable \bunion{}  \{x\_CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Variable(CO)\bcmeq{}x\_CO$}{true}{}
+		\Action{act3}{$Variable\_definedIn\_Component(x\_CO) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Invariant \bcmeq{} Invariant \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Action{act7}{$Invariant\_involves\_Variables(o\_lg) \bcmeq{} \{1\mapsto{}x\_CO\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \{2\mapsto{}o\_CO\}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act10}{$InitialisationAction \bcmeq{} InitialisationAction \bunion{} \{o\_ia\}$}{true}{}
+		\Action{act11}{$InitialisationAction\_uses\_Operators(o\_ia) \bcmeq{} \{1\mapsto{}BecomeEqual2SetOf\_OP\}$}{true}{}
+		\Action{act12}{$Variable\_init\_InitialisationAction(x\_CO)  \bcmeq{}  o\_ia$}{true}{}
+		\Action{act13}{$InitialisationAction\_involves\_Constants(o\_ia) \bcmeq{} bij\_o\_inds$}{true}{}
+		\Action{act14}{$Variable\_typing\_Invariant(x\_CO) \bcmeq{} o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_9\_2}{false}{ordinary}{}{\\handling the variability of a concept and initializing the associated variable (when the  concept corresponds to a constant)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{x\_CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{o\_ia}{true}{}
+		\Param{o\_inds}{true}{}
+		\Param{bij\_o\_inds}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$(dom(Concept\_corresp\_Constant)\binter{}Concept\_isVariable\converse{}[\{TRUE\}]) \setminus{} dom(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} (dom(Concept\_corresp\_Constant)\binter{}Concept\_isVariable\converse{}[\{TRUE\}]) \setminus{} dom(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd2}{false}{$Concept\_definedIn\_DomainModel(CO) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$Individual\_individualOf\_Concept\converse{}[\{CO\}] \subseteq{}  dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd4}{false}{$Variable\_Set \setminus{} Variable \neq{}\emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$x\_CO \in{} Variable\_Set \setminus{} Variable$}{true}{}
+		\Guard{grd6}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd8}{false}{$o\_CO \in{} Constant$}{true}{}
+		\Guard{grd9}{false}{$o\_CO = Concept\_corresp\_Constant(CO)$}{true}{}
+		\Guard{grd10}{false}{$InitialisationAction\_Set \setminus{} InitialisationAction \neq{} \emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$o\_ia \in{} InitialisationAction\_Set \setminus{} InitialisationAction$}{true}{}
+		\Guard{grd12}{false}{$o\_inds =  Individual\_corresp\_Constant[Individual\_individualOf\_Concept\converse{}[\{CO\}]]$}{true}{}
+		\Guard{grd13}{false}{$finite(o\_inds)$}{true}{}
+		\Guard{grd14}{false}{$bij\_o\_inds \in{} 1\upto{}card(o\_inds) \tbij{} o\_inds$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Variable \bcmeq{}  Variable \bunion{}  \{x\_CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Variable(CO)\bcmeq{}x\_CO$}{true}{}
+		\Action{act3}{$Variable\_definedIn\_Component(x\_CO) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act4}{$Invariant \bcmeq{} Invariant \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Action{act7}{$Invariant\_involves\_Variables(o\_lg) \bcmeq{} \{1\mapsto{}x\_CO\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas(o\_CO) \bcmeq{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO)\bunion{}\{2\mapsto{}o\_lg\}$}{true}{}
+		\Action{act9}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act10}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Concept\_definedIn\_DomainModel(CO))$}{true}{}
+		\Action{act11}{$InitialisationAction \bcmeq{} InitialisationAction \bunion{} \{o\_ia\}$}{true}{}
+		\Action{act12}{$InitialisationAction\_uses\_Operators(o\_ia) \bcmeq{} \{1\mapsto{}BecomeEqual2SetOf\_OP\}$}{true}{}
+		\Action{act13}{$Variable\_init\_InitialisationAction(x\_CO)  \bcmeq{}  o\_ia$}{true}{}
+		\Action{act14}{$InitialisationAction\_involves\_Constants(o\_ia) \bcmeq{} bij\_o\_inds$}{true}{}
+		\Action{act15}{$Variable\_typing\_Invariant(x\_CO) \bcmeq{} o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_10\_1}{false}{ordinary}{}{\\correspondence of an instance of Relation having its isVariable property set to false (case where domain and range correspond to abstract sets)}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{T\_RE}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{CO1}{true}{}
+		\Param{o\_CO1}{true}{}
+		\Param{CO2}{true}{}
+		\Param{o\_CO2}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO1 = Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd4}{false}{$CO2 = Relation\_range\_Concept(RE)$}{true}{}
+		\Guard{grd5}{false}{$\{CO1, CO2\} \subseteq{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd6}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd7}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd8}{false}{$\{T\_RE, o\_RE\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd9}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd11}{false}{$o\_CO1 = Concept\_corresp\_AbstractSet(CO1)$}{true}{}
+		\Guard{grd12}{false}{$o\_CO2 = Concept\_corresp\_AbstractSet(CO2)$}{true}{}
+		\Guard{grd13}{false}{$DM = Relation\_definedIn\_DomainModel(RE)$}{true}{}
+		\Guard{grd14}{false}{$T\_RE \neq{}  o\_RE$}{true}{}
+		\Guard{grd15}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_RE, o\_RE\}$}{true}{}
+		\Action{act2}{$Relation\_Type(RE)\bcmeq{}T\_RE$}{true}{}
+		\Action{act3}{$Relation\_corresp\_Constant(RE)\bcmeq{}o\_RE$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_RE\mapsto{} DomainModel\_corresp\_Component(DM), T\_RE\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_RE\mapsto{}o\_lg1, o\_RE\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \bunion{} \{T\_RE\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{1\mapsto{}o\_lg2\}\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{2\mapsto{}o\_CO1, 3\mapsto{}o\_CO2\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_10\_2}{false}{ordinary}{}{\\correspondence of an instance of Relation having its isVariable property set to false (case where domain  corresponds to an abstract set and range corresponds to a constant)}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{T\_RE}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{CO1}{true}{}
+		\Param{o\_CO1}{true}{}
+		\Param{CO2}{true}{}
+		\Param{o\_CO2}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO1 = Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd4}{false}{$CO1 \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd5}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$CO2 = Relation\_range\_Concept(RE)$}{true}{}
+		\Guard{grd7}{false}{$CO2 \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd8}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_RE, o\_RE\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO1 = Concept\_corresp\_AbstractSet(CO1)$}{true}{}
+		\Guard{grd14}{false}{$o\_CO2 = Concept\_corresp\_Constant(CO2)$}{true}{}
+		\Guard{grd15}{false}{$DM = Relation\_definedIn\_DomainModel(RE)$}{true}{}
+		\Guard{grd16}{false}{$T\_RE \neq{}  o\_RE$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_RE, o\_RE\}$}{true}{}
+		\Action{act2}{$Relation\_Type(RE)\bcmeq{}T\_RE$}{true}{}
+		\Action{act3}{$Relation\_corresp\_Constant(RE)\bcmeq{}o\_RE$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_RE\mapsto{} DomainModel\_corresp\_Component(DM), T\_RE\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_RE\mapsto{}o\_lg1, o\_RE\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{T\_RE\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{1\mapsto{}o\_lg2\}, o\_CO2\mapsto{}\{3\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO2)\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{2\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{2\mapsto{}o\_CO1\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_10\_3}{false}{ordinary}{}{\\correspondence of an instance of Relation having its isVariable property set to false (case where range  corresponds to an abstract set and domain corresponds to a constant)}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{T\_RE}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{CO1}{true}{}
+		\Param{o\_CO1}{true}{}
+		\Param{CO2}{true}{}
+		\Param{o\_CO2}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO1 = Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd4}{false}{$CO1 \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd5}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$CO2 = Relation\_range\_Concept(RE)$}{true}{}
+		\Guard{grd7}{false}{$CO2 \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd8}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_RE, o\_RE\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO2 = Concept\_corresp\_AbstractSet(CO2)$}{true}{}
+		\Guard{grd14}{false}{$o\_CO1 = Concept\_corresp\_Constant(CO1)$}{true}{}
+		\Guard{grd15}{false}{$DM = Relation\_definedIn\_DomainModel(RE)$}{true}{}
+		\Guard{grd16}{false}{$T\_RE \neq{}  o\_RE$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_RE, o\_RE\}$}{true}{}
+		\Action{act2}{$Relation\_Type(RE)\bcmeq{}T\_RE$}{true}{}
+		\Action{act3}{$Relation\_corresp\_Constant(RE)\bcmeq{}o\_RE$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_RE\mapsto{} DomainModel\_corresp\_Component(DM), T\_RE\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_RE\mapsto{}o\_lg1, o\_RE\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{T\_RE\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{1\mapsto{}o\_lg2\}, o\_CO1\mapsto{}\{2\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO1)\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{3\mapsto{}o\_CO2\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_10\_4}{false}{ordinary}{}{\\correspondence of an instance of Relation having its isVariable property set to false (case where domain and range correspond to constants)}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{T\_RE}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{CO1}{true}{}
+		\Param{o\_CO1}{true}{}
+		\Param{CO2}{true}{}
+		\Param{o\_CO2}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} Relation\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Relation\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO1 = Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd4}{false}{$CO2 = Relation\_range\_Concept(RE)$}{true}{}
+		\Guard{grd5}{false}{$\{CO1, CO2\} \subseteq{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd6}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd7}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd8}{false}{$\{T\_RE, o\_RE\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd9}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd11}{false}{$o\_CO1 = Concept\_corresp\_Constant(CO1)$}{true}{}
+		\Guard{grd12}{false}{$o\_CO2 = Concept\_corresp\_Constant(CO2)$}{true}{}
+		\Guard{grd13}{false}{$DM = Relation\_definedIn\_DomainModel(RE)$}{true}{}
+		\Guard{grd14}{false}{$T\_RE \neq{}  o\_RE$}{true}{}
+		\Guard{grd15}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd16}{false}{$o\_CO1 \neq{}  o\_CO2$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_RE, o\_RE\}$}{true}{}
+		\Action{act2}{$Relation\_Type(RE)\bcmeq{}T\_RE$}{true}{}
+		\Action{act3}{$Relation\_corresp\_Constant(RE)\bcmeq{}o\_RE$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_RE\mapsto{} DomainModel\_corresp\_Component(DM), T\_RE\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_RE\mapsto{}o\_lg1, o\_RE\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{T\_RE\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{1\mapsto{}o\_lg2\}, o\_CO1\mapsto{}\{2\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO1), o\_CO2\mapsto{}\{3\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO2)\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\emptyset{}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_11\_1}{false}{ordinary}{}{\\correspondence of an instance of RelationMaplet}{
+	\ANY{
+		\Param{remap}{true}{}
+		\Param{o\_remap}{true}{}
+		\Param{RE}{true}{}
+		\Param{antecedent}{true}{}
+		\Param{image}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_antecedent}{true}{}
+		\Param{o\_image}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$RelationMaplet \setminus{} dom(RelationMaplet\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$remap \in{} RelationMaplet \setminus{} dom(RelationMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Relation\_corresp\_Constant)\bunion{}dom(Relation\_corresp\_Variable) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$RelationMaplet\_mapletOf\_Relation(remap)=RE$}{true}{}
+		\Guard{grd4}{false}{$RE \in{} dom(Relation\_corresp\_Constant)\bunion{}dom(Relation\_corresp\_Variable)$}{true}{}
+		\Guard{grd5}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_remap \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$antecedent = RelationMaplet\_antecedent\_Individual(remap)$}{true}{}
+		\Guard{grd11}{false}{$image = RelationMaplet\_image\_Individual(remap)$}{true}{}
+		\Guard{grd12}{false}{$\{antecedent, image\} \subseteq{}    dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd13}{false}{$o\_antecedent = Individual\_corresp\_Constant(antecedent)$}{true}{}
+		\Guard{grd14}{false}{$o\_image = Individual\_corresp\_Constant(image)$}{true}{}
+		\Guard{grd15}{false}{$o\_antecedent \neq{}  o\_image$}{true}{\\then, for each relation already treated for which all the maplets have been processed,\\~        if it is variable, we generate the initialization, otherwise, we generate the closure property,\\~        knowing that the maplets give rise to variables in case of variable relation and constants\\~        in case of constant relationship }
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_remap\}$}{true}{}
+		\Action{act2}{$RelationMaplet\_corresp\_Constant(remap)\bcmeq{}o\_remap$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_remap) \bcmeq{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Maplet\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{o\_remap\mapsto{}\{1\mapsto{}o\_lg\}, o\_antecedent\mapsto{}\{2\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_antecedent), o\_image\mapsto{}\{3\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_image)\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_remap) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_11\_2\_1}{false}{ordinary}{}{\\correspondence  of an instance of AttributeMaplet (case where the image (of type DataValue) corresponds to a constant (it can also corresponds to a set item)}{
+	\ANY{
+		\Param{atmap}{true}{}
+		\Param{o\_atmap}{true}{}
+		\Param{AT}{true}{}
+		\Param{antecedent}{true}{}
+		\Param{image}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_antecedent}{true}{}
+		\Param{o\_image}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$atmap \in{} AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Attribute\_corresp\_Constant)\bunion{}dom(Attribute\_corresp\_Variable) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$AttributeMaplet\_mapletOf\_Attribute(atmap)=AT$}{true}{}
+		\Guard{grd4}{false}{$AT \in{} dom(Attribute\_corresp\_Constant)\bunion{}dom(Attribute\_corresp\_Variable)$}{true}{}
+		\Guard{grd5}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_atmap \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$antecedent = AttributeMaplet\_antecedent\_Individual(atmap)$}{true}{}
+		\Guard{grd11}{false}{$image = AttributeMaplet\_image\_DataValue(atmap)$}{true}{}
+		\Guard{grd12}{false}{$antecedent \in{}    dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd13}{false}{$image \in{}    dom(DataValue\_corresp\_Constant)$}{true}{}
+		\Guard{grd14}{false}{$o\_antecedent = Individual\_corresp\_Constant(antecedent)$}{true}{}
+		\Guard{grd15}{false}{$o\_image = DataValue\_corresp\_Constant(image)$}{true}{}
+		\Guard{grd16}{false}{$o\_antecedent \neq{}  o\_image$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_atmap\}$}{true}{}
+		\Action{act2}{$AttributeMaplet\_corresp\_Constant(atmap)\bcmeq{}o\_atmap$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_atmap) \bcmeq{} DomainModel\_corresp\_Component(Attribute\_definedIn\_DomainModel(AT))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Maplet\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{o\_atmap\mapsto{}\{1\mapsto{}o\_lg\}, o\_antecedent\mapsto{}\{2\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_antecedent), o\_image\mapsto{}\{3\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_image)\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act9}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Attribute\_definedIn\_DomainModel(AT))$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(o\_atmap) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_11\_2\_2}{false}{ordinary}{}{\\correspondence  of an instance of AttributeMaplet (case where the image (of type DataValue) corresponds to a set item}{
+	\ANY{
+		\Param{atmap}{true}{}
+		\Param{o\_atmap}{true}{}
+		\Param{AT}{true}{}
+		\Param{antecedent}{true}{}
+		\Param{image}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_antecedent}{true}{}
+		\Param{o\_image}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$atmap \in{} AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$dom(Attribute\_corresp\_Constant)\bunion{}dom(Attribute\_corresp\_Variable) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$AttributeMaplet\_mapletOf\_Attribute(atmap)=AT$}{true}{}
+		\Guard{grd4}{false}{$AT \in{} dom(Attribute\_corresp\_Constant)\bunion{}dom(Attribute\_corresp\_Variable)$}{true}{}
+		\Guard{grd5}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd6}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd7}{false}{$o\_atmap \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$antecedent = AttributeMaplet\_antecedent\_Individual(atmap)$}{true}{}
+		\Guard{grd11}{false}{$image = AttributeMaplet\_image\_DataValue(atmap)$}{true}{}
+		\Guard{grd12}{false}{$antecedent \in{}    dom(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd13}{false}{$image \in{}    dom(DataValue\_corresp\_SetItem)$}{true}{}
+		\Guard{grd14}{false}{$o\_antecedent = Individual\_corresp\_Constant(antecedent)$}{true}{}
+		\Guard{grd15}{false}{$o\_image = DataValue\_corresp\_SetItem(image)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{o\_atmap\}$}{true}{}
+		\Action{act2}{$AttributeMaplet\_corresp\_Constant(atmap)\bcmeq{}o\_atmap$}{true}{}
+		\Action{act3}{$Constant\_definedIn\_Component(o\_atmap) \bcmeq{} DomainModel\_corresp\_Component(Attribute\_definedIn\_DomainModel(AT))$}{true}{}
+		\Action{act4}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act5}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Maplet\_OP\}$}{true}{}
+		\Action{act7}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{o\_atmap\mapsto{}\{1\mapsto{}o\_lg\}, o\_antecedent\mapsto{}\{2\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_antecedent)\}$}{true}{}
+		\Action{act8}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act9}{$LogicFormula\_involves\_SetItems(o\_lg) \bcmeq{} \{3\mapsto{}o\_image\}$}{true}{}
+		\Action{act10}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Attribute\_definedIn\_DomainModel(AT))$}{true}{}
+		\Action{act11}{$Constant\_typing\_Property(o\_atmap) \bcmeq{}  o\_lg$}{true}{}
+	}
+}
+\EVT{rule\_12\_1}{false}{ordinary}{}{\\closure property for constant relations}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{maplets}{true}{}
+		\Param{o\_maplets}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Relation\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} dom(Relation\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_RE = Relation\_corresp\_Constant(RE)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators\converse{}[\{\{1\mapsto{}Equal2SetOf\_OP\}\}]\binter{}ran(Constant\_isInvolvedIn\_LogicFormulas(o\_RE))=\emptyset{}$}{true}{}
+		\Guard{grd4}{false}{$RelationMaplet\_mapletOf\_Relation\converse{}[\{RE\}] = maplets$}{true}{}
+		\Guard{grd5}{false}{$maplets\subseteq{}dom(RelationMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd6}{false}{$o\_maplets = RelationMaplet\_corresp\_Constant[maplets]$}{true}{}
+		\Guard{grd7}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_RE \notin{}  o\_maplets$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act2}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act3}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Equal2SetOf\_OP\}$}{true}{}
+		\Action{act4}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{}(\{o\_RE\mapsto{}\{1\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_RE)\} \bunion{} \{co\mapsto{}lgs | co\in{} o\_maplets \land{} lgs = \{2\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(co)\})$}{true}{\\appearence order does not matter}
+		\Action{act5}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act6}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
+	}
+}
+\EVT{rule\_12\_2}{false}{ordinary}{}{\\closure action for variable relations}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{o\_ia}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{maplets}{true}{}
+		\Param{o\_maplets}{true}{}
+		\Param{ex\_o\_ia}{true}{}
+		\Param{bij\_o\_maplets}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Relation\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} dom(Relation\_corresp\_Variable)$}{true}{}
+		\Guard{grd2}{false}{$o\_RE = Relation\_corresp\_Variable(RE)$}{true}{}
+		\Guard{grd3}{false}{$Variable\_init\_InitialisationAction(o\_RE)\notin{} InitialisationAction\_uses\_Operators\converse{}[\{\{1\mapsto{}BecomeEqual2SetOf\_OP\}\}]$}{true}{}
+		\Guard{grd4}{false}{$RelationMaplet\_mapletOf\_Relation\converse{}[\{RE\}] = maplets$}{true}{}
+		\Guard{grd5}{false}{$maplets\subseteq{}dom(RelationMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd6}{false}{$o\_maplets = RelationMaplet\_corresp\_Constant[maplets]$}{true}{}
+		\Guard{grd7}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd8}{false}{$InitialisationAction\_Set \setminus{} InitialisationAction \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_ia \in{} InitialisationAction\_Set \setminus{} InitialisationAction$}{true}{}
+		\Guard{grd10}{false}{$ex\_o\_ia = Variable\_init\_InitialisationAction(o\_RE)$}{true}{}
+		\Guard{grd11}{false}{$Variable\_init\_InitialisationAction\converse{}[\{ex\_o\_ia\}]= \{o\_RE\}$}{true}{\\nous sommes certains que dans le cas d'espèce, l'action d'initialisation de o$\_$RE ne fait intervenir que o$\_$RE : en effet nous l'avons explicitement definie (rule 13)}
+		\Guard{grd12}{false}{$finite(o\_maplets)$}{true}{}
+		\Guard{grd13}{false}{$bij\_o\_maplets \in{} 1\upto{}card(o\_maplets) \tbij{} o\_maplets$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$InitialisationAction \bcmeq{} (InitialisationAction\setminus{}\{ex\_o\_ia\}) \bunion{} \{o\_ia\}$}{true}{}
+		\Action{act2}{$InitialisationAction\_uses\_Operators\bcmeq{}(InitialisationAction\_uses\_Operators\setminus{}\{ex\_o\_ia\mapsto{}InitialisationAction\_uses\_Operators(ex\_o\_ia)\})\ovl{} \{o\_ia\mapsto{}\{1\mapsto{}BecomeEqual2SetOf\_OP\}\}$}{true}{}
+		\Action{act3}{$Variable\_init\_InitialisationAction(o\_RE)  \bcmeq{}  o\_ia$}{true}{}
+		\Action{act4}{$InitialisationAction\_involves\_Constants\bcmeq{}(InitialisationAction\_involves\_Constants\setminus{}\{ex\_o\_ia\mapsto{}InitialisationAction\_involves\_Constants(ex\_o\_ia)\})\ovl{} \{o\_ia\mapsto{}bij\_o\_maplets\}$}{true}{}
+	}
+}
+\EVT{rule\_13\_1}{false}{ordinary}{}{\\correspondence of an instance of Relation having its isVariable property set to true (case where domain and range correspond to abstract sets. The others cases will not explicitely included here, since they can easily be obtained based on rules 10$\_$2, 10$\_$3 and 10$\_$4)}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{T\_RE}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{CO1}{true}{}
+		\Param{o\_CO1}{true}{}
+		\Param{CO2}{true}{}
+		\Param{o\_CO2}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+		\Param{o\_ia}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Relation\_isVariable\converse{}[\{TRUE\}] \setminus{} dom(Relation\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} Relation\_isVariable\converse{}[\{TRUE\}] \setminus{} dom(Relation\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO1 = Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd4}{false}{$CO2 = Relation\_range\_Concept(RE)$}{true}{}
+		\Guard{grd5}{false}{$\{CO1, CO2\} \subseteq{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd6}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd7}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd8}{false}{$T\_RE \in{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd9}{false}{$Variable\_Set \setminus{} Variable \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$o\_RE \in{} Variable\_Set \setminus{} Variable$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO1 = Concept\_corresp\_AbstractSet(CO1)$}{true}{}
+		\Guard{grd14}{false}{$o\_CO2 = Concept\_corresp\_AbstractSet(CO2)$}{true}{}
+		\Guard{grd15}{false}{$DM = Relation\_definedIn\_DomainModel(RE)$}{true}{}
+		\Guard{grd16}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd17}{false}{$InitialisationAction\_Set \setminus{} InitialisationAction \neq{} \emptyset{}$}{true}{}
+		\Guard{grd18}{false}{$o\_ia \in{} InitialisationAction\_Set \setminus{} InitialisationAction$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_RE\}$}{true}{}
+		\Action{act2}{$Variable \bcmeq{}  Variable \bunion{}  \{o\_RE\}$}{true}{}
+		\Action{act3}{$Relation\_Type(RE)\bcmeq{}T\_RE$}{true}{}
+		\Action{act4}{$Relation\_corresp\_Variable(RE)\bcmeq{}o\_RE$}{true}{}
+		\Action{act5}{$Constant\_definedIn\_Component(T\_RE) \bcmeq{} DomainModel\_corresp\_Component(DM)$}{true}{}
+		\Action{act6}{$Variable\_definedIn\_Component(o\_RE) \bcmeq{} DomainModel\_corresp\_Component(DM)$}{true}{}
+		\Action{act7}{$Property \bcmeq{} Property \bunion{} \{o\_lg1\}$}{true}{}
+		\Action{act8}{$Invariant \bcmeq{} Invariant \bunion{} \{o\_lg2\}$}{true}{}
+		\Action{act9}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act10}{$Constant\_typing\_Property(T\_RE)\bcmeq{}  o\_lg1$}{true}{}
+		\Action{act11}{$Variable\_typing\_Invariant(o\_RE) \bcmeq{} o\_lg2$}{true}{}
+		\Action{act12}{$Constant\_isInvolvedIn\_LogicFormulas(T\_RE)\bcmeq{}  \{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act13}{$Invariant\_involves\_Variables(o\_lg2) \bcmeq{} \{1\mapsto{}o\_RE\}$}{true}{}
+		\Action{act14}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act15}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{2\mapsto{}o\_CO1, 3\mapsto{}o\_CO2\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act16}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act17}{$InitialisationAction \bcmeq{} InitialisationAction \bunion{} \{o\_ia\}$}{true}{}
+		\Action{act18}{$InitialisationAction\_uses\_Operators(o\_ia) \bcmeq{} \{1\mapsto{}BecomeEqual2EmptySet\_OP\}$}{true}{}
+		\Action{act19}{$Variable\_init\_InitialisationAction(o\_RE)  \bcmeq{}  o\_ia$}{true}{}
+		\Action{act20}{$InitialisationAction\_involves\_Constants(o\_ia) \bcmeq{} \emptyset{}$}{true}{}
+	}
+}
+\EVT{rule\_14\_1}{false}{ordinary}{}{\\correspondence of an instance of Attribute having its isVariable property set to false and its isFunctional property set to false (case where the domain  corresponds to an abstract set, knowing that the range always corresponds to a set )}{
+	\ANY{
+		\Param{AT}{true}{}
+		\Param{T\_AT}{true}{}
+		\Param{o\_AT}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_DS}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$AT \in{} Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO = Attribute\_domain\_Concept(AT)$}{true}{}
+		\Guard{grd4}{false}{$CO \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd5}{false}{$dom(DataSet\_corresp\_Set) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$DS = Attribute\_range\_DataSet(AT)$}{true}{}
+		\Guard{grd7}{false}{$DS \in{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd8}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_AT, o\_AT\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO = Concept\_corresp\_AbstractSet(CO)$}{true}{}
+		\Guard{grd14}{false}{$o\_DS = DataSet\_corresp\_Set(DS)$}{true}{}
+		\Guard{grd15}{false}{$DM = Attribute\_definedIn\_DomainModel(AT)$}{true}{}
+		\Guard{grd16}{false}{$T\_AT \neq{}  o\_AT$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd18}{false}{$AT \in{} Attribute\_isFunctional\converse{}[\{FALSE\}]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_AT, o\_AT\}$}{true}{}
+		\Action{act2}{$Attribute\_Type(AT)\bcmeq{}T\_AT$}{true}{}
+		\Action{act3}{$Attribute\_corresp\_Constant(AT)\bcmeq{}o\_AT$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_AT\mapsto{} DomainModel\_corresp\_Component(DM), T\_AT\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_AT\mapsto{}o\_lg1, o\_AT\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \bunion{} \{T\_AT\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_AT\mapsto{}\{1\mapsto{}o\_lg2\}\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{2\mapsto{}o\_CO, 3\mapsto{}o\_DS\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_14\_2}{false}{ordinary}{}{\\correspondence of an instance of Attribute having its isVariable property set to false and its isFunctional property set to false (case where the domain  corresponds to a constant, knowing that the range always corresponds to a set )}{
+	\ANY{
+		\Param{AT}{true}{}
+		\Param{T\_AT}{true}{}
+		\Param{o\_AT}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_DS}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$AT \in{} Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO = Attribute\_domain\_Concept(AT)$}{true}{}
+		\Guard{grd4}{false}{$CO \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd5}{false}{$dom(DataSet\_corresp\_Set) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$DS = Attribute\_range\_DataSet(AT)$}{true}{}
+		\Guard{grd7}{false}{$DS \in{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd8}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_AT, o\_AT\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO = Concept\_corresp\_Constant(CO)$}{true}{}
+		\Guard{grd14}{false}{$o\_DS = DataSet\_corresp\_Set(DS)$}{true}{}
+		\Guard{grd15}{false}{$DM = Attribute\_definedIn\_DomainModel(AT)$}{true}{}
+		\Guard{grd16}{false}{$T\_AT \neq{}  o\_AT$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd18}{false}{$AT \in{} Attribute\_isFunctional\converse{}[\{FALSE\}]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_AT, o\_AT\}$}{true}{}
+		\Action{act2}{$Attribute\_Type(AT)\bcmeq{}T\_AT$}{true}{}
+		\Action{act3}{$Attribute\_corresp\_Constant(AT)\bcmeq{}o\_AT$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_AT\mapsto{} DomainModel\_corresp\_Component(DM), T\_AT\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_AT\mapsto{}o\_lg1, o\_AT\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{T\_AT\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_AT\mapsto{}\{1\mapsto{}o\_lg2\}, o\_CO\mapsto{}\{2\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO)\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{3\mapsto{}o\_DS\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_14\_3}{false}{ordinary}{}{\\correspondence of an instance of Attribute having its isVariable property set to false and its isFunctional property set to true (case where the domain  corresponds to an abstract set, knowing that the range always corresponds to a set )}{
+	\ANY{
+		\Param{AT}{true}{}
+		\Param{T\_AT}{true}{}
+		\Param{o\_AT}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_DS}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$AT \in{} Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO = Attribute\_domain\_Concept(AT)$}{true}{}
+		\Guard{grd4}{false}{$CO \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd5}{false}{$dom(DataSet\_corresp\_Set) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$DS = Attribute\_range\_DataSet(AT)$}{true}{}
+		\Guard{grd7}{false}{$DS \in{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd8}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_AT, o\_AT\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO = Concept\_corresp\_AbstractSet(CO)$}{true}{}
+		\Guard{grd14}{false}{$o\_DS = DataSet\_corresp\_Set(DS)$}{true}{}
+		\Guard{grd15}{false}{$DM = Attribute\_definedIn\_DomainModel(AT)$}{true}{}
+		\Guard{grd16}{false}{$T\_AT \neq{}  o\_AT$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd18}{false}{$AT \in{} Attribute\_isFunctional\converse{}[\{TRUE\}]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_AT, o\_AT\}$}{true}{}
+		\Action{act2}{$Attribute\_Type(AT)\bcmeq{}T\_AT$}{true}{}
+		\Action{act3}{$Attribute\_corresp\_Constant(AT)\bcmeq{}o\_AT$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_AT\mapsto{} DomainModel\_corresp\_Component(DM), T\_AT\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_AT\mapsto{}o\_lg1, o\_AT\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \bunion{} \{T\_AT\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_AT\mapsto{}\{1\mapsto{}o\_lg2\}\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}FunctionSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{2\mapsto{}o\_CO, 3\mapsto{}o\_DS\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_14\_4}{false}{ordinary}{}{\\correspondence of an instance of Attribute having its isVariable property set to false and its isFunctional property set to true (case where the domain  corresponds to a constant, knowing that the range always corresponds to a set )}{
+	\ANY{
+		\Param{AT}{true}{}
+		\Param{T\_AT}{true}{}
+		\Param{o\_AT}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_DS}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{DM}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$AT \in{} Attribute\_isVariable\converse{}[\{FALSE\}] \setminus{} dom(Attribute\_Type)$}{true}{}
+		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$CO = Attribute\_domain\_Concept(AT)$}{true}{}
+		\Guard{grd4}{false}{$CO \in{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd5}{false}{$dom(DataSet\_corresp\_Set) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$DS = Attribute\_range\_DataSet(AT)$}{true}{}
+		\Guard{grd7}{false}{$DS \in{} dom(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd8}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd9}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$\{T\_AT, o\_AT\} \subseteq{} Constant\_Set \setminus{} Constant$}{true}{}
+		\Guard{grd11}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd12}{false}{$\{o\_lg1,o\_lg2\}  \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd13}{false}{$o\_CO = Concept\_corresp\_Constant(CO)$}{true}{}
+		\Guard{grd14}{false}{$o\_DS = DataSet\_corresp\_Set(DS)$}{true}{}
+		\Guard{grd15}{false}{$DM = Attribute\_definedIn\_DomainModel(AT)$}{true}{}
+		\Guard{grd16}{false}{$T\_AT \neq{}  o\_AT$}{true}{}
+		\Guard{grd17}{false}{$o\_lg1 \neq{}  o\_lg2$}{true}{}
+		\Guard{grd18}{false}{$AT \in{} Attribute\_isFunctional\converse{}[\{TRUE\}]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Constant \bcmeq{}  Constant \bunion{}  \{T\_AT, o\_AT\}$}{true}{}
+		\Action{act2}{$Attribute\_Type(AT)\bcmeq{}T\_AT$}{true}{}
+		\Action{act3}{$Attribute\_corresp\_Constant(AT)\bcmeq{}o\_AT$}{true}{}
+		\Action{act4}{$Constant\_definedIn\_Component\bcmeq{}Constant\_definedIn\_Component\bunion{}\{o\_AT\mapsto{} DomainModel\_corresp\_Component(DM), T\_AT\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+		\Action{act5}{$Property \bcmeq{} Property \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act6}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1,o\_lg2\}$}{true}{}
+		\Action{act7}{$Constant\_typing\_Property\bcmeq{}  Constant\_typing\_Property \bunion{} \{T\_AT\mapsto{}o\_lg1, o\_AT\mapsto{}o\_lg2\}$}{true}{}
+		\Action{act8}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{T\_AT\mapsto{}\{1\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}, o\_AT\mapsto{}\{1\mapsto{}o\_lg2\}, o\_CO\mapsto{}\{2\mapsto{}o\_lg1\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_CO)\}$}{true}{}
+		\Action{act9}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}FunctionSet\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Belonging\_OP\}\}$}{true}{}
+		\Action{act10}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\{3\mapsto{}o\_DS\}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act11}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(DM), o\_lg2\mapsto{} DomainModel\_corresp\_Component(DM)\}$}{true}{}
+	}
+}
+\EVT{rule\_15\_1}{false}{ordinary}{}{\\closure property for constant attribute}{
+	\ANY{
+		\Param{AT}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_AT}{true}{}
+		\Param{maplets}{true}{}
+		\Param{o\_maplets}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Attribute\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$AT \in{} dom(Attribute\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_AT = Attribute\_corresp\_Constant(AT)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators\converse{}[\{\{1\mapsto{}Equal2SetOf\_OP\}\}]\binter{}ran(Constant\_isInvolvedIn\_LogicFormulas(o\_AT))=\emptyset{}$}{true}{}
+		\Guard{grd4}{false}{$AttributeMaplet\_mapletOf\_Attribute\converse{}[\{AT\}] = maplets$}{true}{}
+		\Guard{grd5}{false}{$maplets\subseteq{}dom(AttributeMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd6}{false}{$o\_maplets = AttributeMaplet\_corresp\_Constant[maplets]$}{true}{}
+		\Guard{grd7}{false}{$Attribute\_definedIn\_DomainModel(AT) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd8}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$o\_lg \in{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$o\_AT \notin{}  o\_maplets$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Property \bcmeq{} Property \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act2}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg\}$}{true}{}
+		\Action{act3}{$LogicFormula\_uses\_Operators(o\_lg) \bcmeq{} \{1\mapsto{}Equal2SetOf\_OP\}$}{true}{}
+		\Action{act4}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} (\{o\_AT\mapsto{}(\{1\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_AT))\}\bunion{}\{co\mapsto{}lgs | co\in{} o\_maplets \land{} lgs = \{2\mapsto{}o\_lg\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(co)\})$}{true}{\\appearence order does not matter}
+		\Action{act5}{$LogicFormula\_involves\_Sets(o\_lg) \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act6}{$LogicFormula\_definedIn\_Component(o\_lg) \bcmeq{} DomainModel\_corresp\_Component(Attribute\_definedIn\_DomainModel(AT))$}{true}{}
+	}
+}
+\EVT{rule\_16\_1}{false}{ordinary}{}{\\handling the transitivity of a constant relation}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{composition}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$(dom(Relation\_corresp\_Constant)\binter{}Relation\_isTransitive\converse{}[\{TRUE\}])  \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} (dom(Relation\_corresp\_Constant)\binter{}Relation\_isTransitive\converse{}[\{TRUE\}])$}{true}{}
+		\Guard{grd2}{false}{$(\{RE\mapsto{}isTransitive\}) \notin{} dom(RelationCharacteristic\_corresp\_LogicFormula)$}{true}{}
+		\Guard{grd3}{false}{$o\_RE = Relation\_corresp\_Constant(RE)$}{true}{}
+		\Guard{grd4}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd5}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$\{o\_lg1, o\_lg2\} \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd7}{false}{$partition(\{o\_lg1, o\_lg2\}, \{o\_lg1\}, \{o\_lg2\})$}{true}{}
+		\Guard{grd8}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$composition \in{} Constant\_Set \setminus{} Constant$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$Constant \bcmeq{} Constant \bunion{} \{composition\}$}{true}{}
+		\Action{act1}{$Property \bcmeq{} Property \bunion{} \{o\_lg1, o\_lg2\}$}{true}{}
+		\Action{act2}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1, o\_lg2\}$}{true}{}
+		\Action{act3}{$Constant\_typing\_Property(composition)\bcmeq{}  o\_lg1$}{true}{}
+		\Action{act4}{$RelationCharacteristic\_corresp\_LogicFormula(\{RE\mapsto{}isTransitive\}) \bcmeq{} o\_lg2$}{true}{}
+		\Action{act5}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{composition\mapsto{}\{1\mapsto{}o\_lg1, 1\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{2\mapsto{}o\_lg1, 3\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_RE)\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}RelationComposition\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Inclusion\_OP\}\}$}{true}{}
+		\Action{act7}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\emptyset{}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act8}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE)), o\_lg2\mapsto{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))\}$}{true}{}
+		\Action{act9}{$Constant\_definedIn\_Component(composition) \bcmeq{}  DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
+	}
+}
+\EVT{rule\_16\_2}{false}{ordinary}{}{\\handling the symmetrie of a constant relation}{
+	\ANY{
+		\Param{RE}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{inverse}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$(dom(Relation\_corresp\_Constant)\binter{}Relation\_isSymmetric\converse{}[\{TRUE\}])  \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$RE \in{} (dom(Relation\_corresp\_Constant)\binter{}Relation\_isSymmetric\converse{}[\{TRUE\}])$}{true}{}
+		\Guard{grd2}{false}{$(\{RE\mapsto{}isSymmetric\}) \notin{} dom(RelationCharacteristic\_corresp\_LogicFormula)$}{true}{}
+		\Guard{grd3}{false}{$o\_RE = Relation\_corresp\_Constant(RE)$}{true}{}
+		\Guard{grd4}{false}{$Relation\_definedIn\_DomainModel(RE) \in{} dom(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd5}{false}{$LogicFormula\_Set \setminus{} LogicFormula \neq{} \emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$\{o\_lg1, o\_lg2\} \subseteq{} LogicFormula\_Set \setminus{} LogicFormula$}{true}{}
+		\Guard{grd7}{false}{$partition(\{o\_lg1, o\_lg2\}, \{o\_lg1\}, \{o\_lg2\})$}{true}{}
+		\Guard{grd8}{false}{$Constant\_Set \setminus{} Constant \neq{}\emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$inverse \in{} Constant\_Set \setminus{} Constant$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$Constant \bcmeq{} Constant \bunion{} \{inverse\}$}{true}{}
+		\Action{act1}{$Property \bcmeq{} Property \bunion{} \{o\_lg1, o\_lg2\}$}{true}{}
+		\Action{act2}{$LogicFormula \bcmeq{} LogicFormula \bunion{} \{o\_lg1, o\_lg2\}$}{true}{}
+		\Action{act3}{$Constant\_typing\_Property(inverse)\bcmeq{}  o\_lg1$}{true}{}
+		\Action{act4}{$RelationCharacteristic\_corresp\_LogicFormula(\{RE\mapsto{}isSymmetric\}) \bcmeq{} o\_lg2$}{true}{}
+		\Action{act5}{$Constant\_isInvolvedIn\_LogicFormulas\bcmeq{}  Constant\_isInvolvedIn\_LogicFormulas \ovl{} \{inverse\mapsto{}\{1\mapsto{}o\_lg1, 1\mapsto{}o\_lg2\}, o\_RE\mapsto{}\{2\mapsto{}o\_lg1, 2\mapsto{}o\_lg2\}\bunion{}Constant\_isInvolvedIn\_LogicFormulas(o\_RE)\}$}{true}{}
+		\Action{act6}{$LogicFormula\_uses\_Operators\bcmeq{}  LogicFormula\_uses\_Operators \bunion{} \{o\_lg1\mapsto{}\{1\mapsto{}Inversion\_OP\}, o\_lg2\mapsto{}\{1\mapsto{}Equality\_OP\}\}$}{true}{}
+		\Action{act7}{$LogicFormula\_involves\_Sets\bcmeq{}  LogicFormula\_involves\_Sets \bunion{} \{o\_lg1\mapsto{}\emptyset{}, o\_lg2\mapsto{}\emptyset{}\}$}{true}{}
+		\Action{act8}{$LogicFormula\_definedIn\_Component\bcmeq{}LogicFormula\_definedIn\_Component\bunion{}\{o\_lg1\mapsto{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE)), o\_lg2\mapsto{} DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))\}$}{true}{}
+		\Action{act9}{$Constant\_definedIn\_Component(inverse) \bcmeq{}  DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
+	}
+}
+\EVT{rule\_101}{false}{ordinary}{}{\\handling the addition of a new abstract set (correspondence to a concept)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_CO \in{} AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set))$}{true}{}
+		\Guard{grd2}{false}{$Set\_definedIn\_Component(o\_CO) \in{} ran(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$Concept\_Set \setminus{} Concept \neq{}\emptyset{}$}{true}{}
+		\Guard{grd4}{false}{$CO \in{} Concept\_Set \setminus{} Concept$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Concept \bcmeq{}  Concept \bunion{}  \{CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_AbstractSet(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act3}{$Concept\_definedIn\_DomainModel(CO) \bcmeq{} DomainModel\_corresp\_Component\converse{}(Set\_definedIn\_Component(o\_CO))$}{true}{}
+		\Action{act4}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
+	}
+}
+\EVT{rule\_102}{false}{ordinary}{}{\\handling the addition of a new abstract set (correspondence to a custom data set)}{
+	\ANY{
+		\Param{DS}{true}{}
+		\Param{o\_DS}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_DS \in{} AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set))$}{true}{}
+		\Guard{grd2}{false}{$Set\_definedIn\_Component(o\_DS) \in{} ran(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$DataSet\_Set \setminus{} DataSet \neq{}\emptyset{}$}{true}{}
+		\Guard{grd4}{false}{$DS \in{} DataSet\_Set \setminus{} DataSet$}{true}{}
+		\Guard{grd5}{false}{$DS \notin{} \{\_NATURAL,\_INTEGER,\_FLOAT,\_BOOL,\_STRING\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$CustomDataSet \bcmeq{}  CustomDataSet \bunion{}  \{DS\}$}{true}{}
+		\Action{act2}{$DataSet \bcmeq{}  DataSet \bunion{}  \{DS\}$}{true}{}
+		\Action{act3}{$CustomDataSet\_corresp\_AbstractSet(DS)\bcmeq{}o\_DS$}{true}{}
+		\Action{act4}{$DataSet\_definedIn\_DomainModel(DS) \bcmeq{} DomainModel\_corresp\_Component\converse{}(Set\_definedIn\_Component(o\_DS))$}{true}{}
+		\Action{act5}{$DataSet\_corresp\_Set(DS) \bcmeq{}  o\_DS$}{true}{}
+	}
+}
+\EVT{rule\_103}{false}{ordinary}{}{\\handling  the addition of an enumerated set}{
+	\ANY{
+		\Param{EDS}{true}{}
+		\Param{o\_EDS}{true}{}
+		\Param{elements}{true}{}
+		\Param{o\_elements}{true}{}
+		\Param{mapping\_elements\_o\_elements}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$EnumeratedSet \setminus{} ran(DataSet\_corresp\_Set) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_EDS \in{} EnumeratedSet \setminus{} ran(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd2}{false}{$Set\_definedIn\_Component(o\_EDS) \in{} ran(DomainModel\_corresp\_Component)$}{true}{}
+		\Guard{grd3}{false}{$DataSet\_Set \setminus{} DataSet \neq{}\emptyset{}$}{true}{}
+		\Guard{grd4}{false}{$EDS \in{} DataSet\_Set \setminus{} DataSet$}{true}{}
+		\Guard{grd5}{false}{$DataValue\_Set \setminus{} DataValue \neq{}\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$elements \subseteq{}  DataValue\_Set \setminus{} DataValue$}{true}{}
+		\Guard{grd7}{false}{$o\_elements = SetItem\_itemOf\_EnumeratedSet\converse{}[\{o\_EDS\}]$}{true}{}
+		\Guard{grd8}{false}{$card(o\_elements) = card(elements)$}{true}{}
+		\Guard{grd9}{false}{$mapping\_elements\_o\_elements \in{} elements \tbij{} o\_elements$}{true}{}
+		\Guard{grd10}{false}{$ran(DataValue\_corresp\_SetItem)\binter{}o\_elements=\emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$EDS \notin{} \{\_NATURAL,\_INTEGER,\_FLOAT,\_BOOL,\_STRING\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$EnumeratedDataSet \bcmeq{}  EnumeratedDataSet \bunion{}  \{EDS\}$}{true}{}
+		\Action{act2}{$DataSet \bcmeq{}  DataSet \bunion{}  \{EDS\}$}{true}{}
+		\Action{act3}{$EnumeratedDataSet\_corresp\_EnumeratedSet(EDS)\bcmeq{}o\_EDS$}{true}{}
+		\Action{act4}{$DataSet\_definedIn\_DomainModel(EDS) \bcmeq{} DomainModel\_corresp\_Component\converse{}(Set\_definedIn\_Component(o\_EDS))$}{true}{}
+		\Action{act5}{$DataValue \bcmeq{} DataValue \bunion{}  elements$}{true}{}
+		\Action{act6}{$DataValue\_elements\_EnumeratedDataSet \bcmeq{}  DataValue\_elements\_EnumeratedDataSet \bunion{} \{(xx\mapsto{}yy) |xx\in{}elements \land{}yy=EDS\}$}{true}{}
+		\Action{act7}{$DataValue\_corresp\_SetItem \bcmeq{}  DataValue\_corresp\_SetItem \bunion{} mapping\_elements\_o\_elements$}{true}{}
+		\Action{act8}{$DataSet\_corresp\_Set \bcmeq{}  DataSet\_corresp\_Set \ovl{} \{EDS\mapsto{}o\_EDS\}$}{true}{}
+		\Action{act9}{$DataValue\_valueOf\_DataSet \bcmeq{}  DataValue\_valueOf\_DataSet \bunion{} \{(xx\mapsto{}yy) |xx\in{}elements \land{}yy=EDS\}$}{true}{}
+		\Action{act10}{$CustomDataSet \bcmeq{}  CustomDataSet \bunion{}  \{EDS\}$}{true}{}
+	}
+}
+\EVT{rule\_104}{false}{ordinary}{}{\\handling  the addition of a new element in an existing enumerated set}{
+	\ANY{
+		\Param{EDS}{true}{}
+		\Param{o\_EDS}{true}{}
+		\Param{element}{true}{}
+		\Param{o\_element}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(SetItem\_itemOf\_EnumeratedSet) \setminus{} ran(DataValue\_corresp\_SetItem) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_element \in{} dom(SetItem\_itemOf\_EnumeratedSet) \setminus{} ran(DataValue\_corresp\_SetItem)$}{true}{}
+		\Guard{grd2}{false}{$o\_EDS = SetItem\_itemOf\_EnumeratedSet(o\_element)$}{true}{}
+		\Guard{grd3}{false}{$o\_EDS \in{} ran(EnumeratedDataSet\_corresp\_EnumeratedSet)$}{true}{}
+		\Guard{grd4}{false}{$EDS = EnumeratedDataSet\_corresp\_EnumeratedSet\converse{}(o\_EDS)$}{true}{}
+		\Guard{grd5}{false}{$DataValue\_Set \setminus{} DataValue \neq{}\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$element \in{} DataValue\_Set \setminus{} DataValue$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$DataValue \bcmeq{}  DataValue \bunion{}  \{element\}$}{true}{}
+		\Action{act2}{$DataValue\_elements\_EnumeratedDataSet(element) \bcmeq{}  EDS$}{true}{}
+		\Action{act3}{$DataValue\_corresp\_SetItem(element) \bcmeq{}  o\_element$}{true}{}
+		\Action{act4}{$DataValue\_valueOf\_DataSet(element) \bcmeq{}  EDS$}{true}{}
+	}
+}
+\EVT{rule\_105\_1}{false}{ordinary}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{PCO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_PCO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_CO)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$(2\mapsto{}o\_PCO)\in{}LogicFormula\_involves\_Sets(o\_lg)$}{true}{}
+		\Guard{grd6}{false}{$o\_PCO \in{} ran(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd7}{false}{$PCO = Concept\_corresp\_AbstractSet\converse{}(o\_PCO)$}{true}{}
+		\Guard{grd8}{false}{$Concept\_Set \setminus{} Concept \neq{}\emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$CO \in{} Concept\_Set \setminus{} Concept$}{true}{}
+		\Guard{grd10}{false}{$Constant\_definedIn\_Component(o\_CO) \in{} ran(DomainModel\_corresp\_Component)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Concept \bcmeq{}  Concept \bunion{}  \{CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Constant(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act3}{$Concept\_definedIn\_DomainModel(CO) \bcmeq{} DomainModel\_corresp\_Component\converse{}(Constant\_definedIn\_Component(o\_CO))$}{true}{}
+		\Action{act4}{$Concept\_parentConcept\_Concept(CO) \bcmeq{} PCO$}{true}{}
+		\Action{act5}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
+	}
+}
+\EVT{rule\_105\_2}{false}{ordinary}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
+	\ANY{
+		\Param{CO}{true}{}
+		\Param{o\_CO}{true}{}
+		\Param{PCO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_PCO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_CO)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$o\_PCO \in{} dom(Constant\_isInvolvedIn\_LogicFormulas)$}{true}{}
+		\Guard{grd6}{false}{$(2\mapsto{}o\_lg) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_PCO)$}{true}{}
+		\Guard{grd7}{false}{$o\_PCO \in{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd8}{false}{$PCO = Concept\_corresp\_Constant\converse{}(o\_PCO)$}{true}{}
+		\Guard{grd9}{false}{$Concept\_Set \setminus{} Concept \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$CO \in{} Concept\_Set \setminus{} Concept$}{true}{}
+		\Guard{grd11}{false}{$Constant\_definedIn\_Component(o\_CO) \in{} ran(DomainModel\_corresp\_Component)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Concept \bcmeq{}  Concept \bunion{}  \{CO\}$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Constant(CO)\bcmeq{}o\_CO$}{true}{}
+		\Action{act3}{$Concept\_definedIn\_DomainModel(CO) \bcmeq{} DomainModel\_corresp\_Component\converse{}(Constant\_definedIn\_Component(o\_CO))$}{true}{}
+		\Action{act4}{$Concept\_parentConcept\_Concept(CO) \bcmeq{} PCO$}{true}{}
+		\Action{act5}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
+	}
+}
+\EVT{rule\_106\_1}{false}{ordinary}{}{\\handling  the addition of an individual (case where the concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{ind}{true}{}
+		\Param{o\_ind}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_ind)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$(2\mapsto{}o\_CO)\in{}LogicFormula\_involves\_Sets(o\_lg)$}{true}{}
+		\Guard{grd6}{false}{$o\_CO \in{} ran(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd7}{false}{$CO = Concept\_corresp\_AbstractSet\converse{}(o\_CO)$}{true}{}
+		\Guard{grd8}{false}{$Individual\_Set \setminus{} Individual \neq{}\emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$ind \in{} Individual\_Set \setminus{} Individual$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Individual \bcmeq{}  Individual \bunion{}  \{ind\}$}{true}{}
+		\Action{act2}{$Individual\_individualOf\_Concept(ind) \bcmeq{}  CO$}{true}{}
+		\Action{act3}{$Individual\_corresp\_Constant(ind) \bcmeq{}  o\_ind$}{true}{}
+	}
+}
+\EVT{rule\_106\_2}{false}{ordinary}{}{\\handling  the addition of an individual (case where the concept corresponds to a constant)}{
+	\ANY{
+		\Param{ind}{true}{}
+		\Param{o\_ind}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_ind)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$o\_CO\in{}dom(Constant\_isInvolvedIn\_LogicFormulas)$}{true}{}
+		\Guard{grd6}{false}{$(2\mapsto{}o\_lg) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_CO)$}{true}{}
+		\Guard{grd7}{false}{$o\_CO \in{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd8}{false}{$CO = Concept\_corresp\_Constant\converse{}(o\_CO)$}{true}{}
+		\Guard{grd9}{false}{$Individual\_Set \setminus{} Individual \neq{}\emptyset{}$}{true}{}
+		\Guard{grd10}{false}{$ind \in{} Individual\_Set \setminus{} Individual$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Individual \bcmeq{}  Individual \bunion{}  \{ind\}$}{true}{}
+		\Action{act2}{$Individual\_individualOf\_Concept(ind) \bcmeq{}  CO$}{true}{}
+		\Action{act3}{$Individual\_corresp\_Constant(ind) \bcmeq{}  o\_ind$}{true}{}
+	}
+}
+\EVT{rule\_107}{false}{ordinary}{}{\\handling  the addition of a data value}{
+	\ANY{
+		\Param{dva}{true}{}
+		\Param{o\_dva}{true}{}
+		\Param{DS}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_DS}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(DataValue\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_dva \in{} dom(Constant\_typing\_Property) \setminus{} ran(DataValue\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_dva)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$(2\mapsto{}o\_DS)\in{}LogicFormula\_involves\_Sets(o\_lg)$}{true}{}
+		\Guard{grd6}{false}{$o\_DS \in{} ran(DataSet\_corresp\_Set)$}{true}{}
+		\Guard{grd7}{false}{$DS = DataSet\_corresp\_Set\converse{}(o\_DS)$}{true}{}
+		\Guard{grd8}{false}{$DataValue\_Set \setminus{} DataValue \neq{}\emptyset{}$}{true}{}
+		\Guard{grd9}{false}{$dva \in{} DataValue\_Set \setminus{} DataValue$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$DataValue \bcmeq{}  DataValue \bunion{}  \{dva\}$}{true}{}
+		\Action{act2}{$DataValue\_valueOf\_DataSet(dva) \bcmeq{}  DS$}{true}{}
+		\Action{act3}{$DataValue\_corresp\_Constant(dva) \bcmeq{}  o\_dva$}{true}{}
+	}
+}
+\EVT{rule\_108\_1}{false}{ordinary}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
+	\ANY{
+		\Param{x\_CO}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Variable\_typing\_Invariant(x\_CO)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$(2\mapsto{}o\_CO)\in{}LogicFormula\_involves\_Sets(o\_lg)$}{true}{}
+		\Guard{grd6}{false}{$o\_CO \in{} ran(Concept\_corresp\_AbstractSet)$}{true}{}
+		\Guard{grd7}{false}{$CO = Concept\_corresp\_AbstractSet\converse{}(o\_CO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Concept\_isVariable(CO) \bcmeq{}  TRUE$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Variable(CO) \bcmeq{} x\_CO$}{true}{}
+	}
+}
+\EVT{rule\_108\_2}{false}{ordinary}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
+	\ANY{
+		\Param{x\_CO}{true}{}
+		\Param{CO}{true}{}
+		\Param{o\_lg}{true}{}
+		\Param{o\_CO}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg = Variable\_typing\_Invariant(x\_CO)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$o\_CO\in{}dom(Constant\_isInvolvedIn\_LogicFormulas)$}{true}{}
+		\Guard{grd6}{false}{$(2\mapsto{}o\_lg) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_CO)$}{true}{}
+		\Guard{grd7}{false}{$o\_CO \in{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd8}{false}{$CO = Concept\_corresp\_Constant\converse{}(o\_CO)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Concept\_isVariable(CO) \bcmeq{}  TRUE$}{true}{}
+		\Action{act2}{$Concept\_corresp\_Variable(CO) \bcmeq{} x\_CO$}{true}{}
+	}
+}
+\EVT{rule\_109\_1}{false}{ordinary}{}{\\handling  the addition of a constant, defined as a maplet, element of a relation (case where the relation corresponds to a constant relation)}{
+	\ANY{
+		\Param{o\_maplet}{true}{}
+		\Param{maplet}{true}{}
+		\Param{o\_RE}{true}{}
+		\Param{RE}{true}{}
+		\Param{o\_lg1}{true}{}
+		\Param{o\_lg2}{true}{}
+		\Param{antecedent}{true}{}
+		\Param{image}{true}{}
+		\Param{o\_antecedent}{true}{}
+		\Param{o\_image}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(RelationMaplet\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$o\_maplet \in{} dom(Constant\_typing\_Property) \setminus{} ran(RelationMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd2}{false}{$o\_lg1 = Constant\_typing\_Property(o\_maplet)$}{true}{}
+		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg1) = \{1\mapsto{}Maplet\_OP\}$}{true}{}
+		\Guard{grd4}{false}{$\{o\_antecedent, o\_image\}\subseteq{}(dom(Constant\_isInvolvedIn\_LogicFormulas)\binter{}ran(Individual\_corresp\_Constant))$}{true}{}
+		\Guard{grd5}{false}{$(2\mapsto{}o\_lg1) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_antecedent)$}{true}{}
+		\Guard{grd6}{false}{$(3\mapsto{}o\_lg1) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_image)$}{true}{}
+		\Guard{grd7}{false}{$antecedent = Individual\_corresp\_Constant\converse{}(o\_antecedent)$}{true}{}
+		\Guard{grd8}{false}{$image = Individual\_corresp\_Constant\converse{}(o\_image)$}{true}{}
+		\Guard{grd9}{false}{$o\_lg2 \in{} LogicFormula$}{true}{}
+		\Guard{grd10}{false}{$LogicFormula\_uses\_Operators(o\_lg2) = \{1\mapsto{}Equal2SetOf\_OP\}$}{true}{}
+		\Guard{grd11}{false}{$(2\mapsto{}o\_lg2) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_maplet)$}{true}{}
+		\Guard{grd12}{false}{$o\_RE \in{} ran(Relation\_corresp\_Constant)$}{true}{}
+		\Guard{grd13}{false}{$(1\mapsto{}o\_lg2) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_RE)$}{true}{}
+		\Guard{grd14}{false}{$RE = Relation\_corresp\_Constant\converse{}(o\_RE)$}{true}{}
+		\Guard{grd15}{false}{$Relation\_Maplet\_Set \setminus{} RelationMaplet \neq{}\emptyset{}$}{true}{}
+		\Guard{grd16}{false}{$maplet \in{} Relation\_Maplet\_Set \setminus{} RelationMaplet$}{true}{}
+		\Guard{grd17}{false}{$Individual\_individualOf\_Concept(antecedent)=Relation\_domain\_Concept(RE)$}{true}{}
+		\Guard{grd18}{false}{$Individual\_individualOf\_Concept(image)=Relation\_range\_Concept(RE)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$RelationMaplet \bcmeq{}  RelationMaplet \bunion{}  \{maplet\}$}{true}{}
+		\Action{act2}{$RelationMaplet\_corresp\_Constant(maplet) \bcmeq{}  o\_maplet$}{true}{}
+		\Action{act3}{$RelationMaplet\_mapletOf\_Relation(maplet) \bcmeq{}RE$}{true}{}
+		\Action{act4}{$RelationMaplet\_antecedent\_Individual(maplet) \bcmeq{} antecedent$}{true}{}
+		\Action{act5}{$RelationMaplet\_image\_Individual(maplet) \bcmeq{} image$}{true}{}
+	}
+}
+}
+\END
+\end{document}
