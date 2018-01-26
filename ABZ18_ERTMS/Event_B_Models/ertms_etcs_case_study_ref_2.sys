@@ -1,0 +1,58 @@
+/* ertms_etcs_case_study_ref_2
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 25/01/2018
+*/
+
+REFINEMENT
+ertms_etcs_case_study_ref_2
+REFINES
+ertms_etcs_case_study_ref_1
+
+SETS
+TTD; VSS; VSS_STATES={OCCUPIED, FREE, UNKNOW, AMBIGUOUS}; TTD_STATES={OCCUPIED_T, FREE_T}
+
+CONSTANTS
+T_stateTTD, T_stateVSS
+
+VARIABLES
+stateTTD, stateVSS
+
+PROPERTIES
+ T_stateTTD = TTD --> TTD_STATES &
+T_stateVSS = VSS --> VSS_STATES &
+//predicate axiom1
+((TTD <: POW1(WAY))) &
+//predicate axiom2
+((union(TTD) = WAY)) &
+//predicate axiom3
+((inter(TTD) = {})) &
+//predicate axiom4
+!(ttd). ((ttd : TTD)) => ((#p,q.(p..q<:WAY & p<q & ttd=p..q)))) &
+//predicate axiom5
+((VSS <: POW1(WAY))) &
+//predicate axiom6
+((union(VSS) = WAY)) &
+//predicate axiom7
+((inter(VSS) = {})) &
+//predicate axiom8
+!(vss). ((vss : VSS)) => ((#p,q,ttd.(ttd : TTD & p..q<:ttd & p<q & vss=p..q)))) &
+//predicate inv2_5
+!(tr1, tr2). ((tr1 : dom(rear)) /\ (tr2 : dom(rear)) /\ (tr1 /= tr2)) => (((rear(tr1)..front(tr1))/\(rear(tr2)..front(tr2))={})) &
+//predicate inv2_6
+!(tr1, tr2). ((tr1 : dom(rear)) /\ (tr2 : dom(front)\dom(rear)) /\ (tr1 /= tr2)) => ((fron(tr2)<rear(tr1))) &
+//predicate inv2_7
+!(tr1, tr2, ttd). ((tr1 : dom(front)\dom(rear)) /\ (tr2 : dom(front)\dom(rear)) /\ (tr1 /= tr2) /\ (ttd : TTD) /\ (front(tr1) : ttd)) => ((fron(tr2) /: ttd))
+
+INVARIANT
+stateTTD : T_stateTTD &
+stateVSS : T_stateVSS &
+//predicate inv2_3
+!(ttd, tr). ((tr : dom(front) \ dom(rear)) /\ (ttd : TTD) /\ (front(tr) : ttd)) => ((ttd |-> OCCUPIED_T : stateTTD)) &
+//predicate inv2_4
+!(ttd, tr). ((tr : dom(rear)) /\ (ttd : TTD) /\ ((rear(tr)..front(tr))/	td /= {})) => ((ttd |-> OCCUPIED_T : stateTTD))
+
+INITIALISATION
+
+
+
+END

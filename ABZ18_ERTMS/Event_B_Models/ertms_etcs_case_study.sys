@@ -1,0 +1,42 @@
+/* ertms_etcs_case_study
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 25/01/2018
+*/
+
+SYSTEM
+ertms_etcs_case_study
+
+
+SETS
+TRAIN
+
+CONSTANTS
+WAY, T_connectedTrain, T_front, T_rear
+
+VARIABLES
+connectedTrain, front, rear
+
+PROPERTIES
+ &
+T_connectedTrain = TRAIN -+> BOOL &
+T_front = dom(connectedTrain) --> WAY &
+T_rear = dom(connectedTrain) -+> WAY &
+//predicate axiom2
+((a<b)) &
+//predicate axiom3
+((WAY=a..b)) &
+//predicate axiom4
+((b-a>=20)) &
+//predicate inv0_4
+!(tr). ((tr : dom(rear))) => ((rear(tr) < front(tr)))
+
+INVARIANT
+connectedTrain : T_connectedTrain &
+front : T_front &
+rear : T_rear
+
+INITIALISATION
+
+
+
+END
