@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.texttools.text_lastmodified="1516059444099" org.eventb.texttools.text_representation="context Domain_Metamodel_Context&#10;&#10;sets DomainModel_Set Relation_Set Concept_Set Relation_Maplet_Set Individual_Set Attribute_Maplet_Set Attribute_Set DataValue_Set DataSet_Set RelationCharacteristics_Set&#10;&#10;constants _NATURAL _INTEGER _FLOAT _BOOL _STRING isTransitive isSymmetric&#10;&#10;axioms&#10;  @axiom1 finite(DataValue_Set)&#10;  @axiom2 {_NATURAL, _INTEGER, _FLOAT, _BOOL, _STRING} ⊆  DataSet_Set&#10;  @axiom3 partition({_NATURAL, _INTEGER, _FLOAT, _BOOL, _STRING}, {_NATURAL}, {_INTEGER}, {_FLOAT}, {_BOOL}, {_STRING})&#10;  @axiom4 partition(RelationCharacteristics_Set,{isTransitive}, {isSymmetric})&#10;  @axiom5 finite(DomainModel_Set)&#10;  @axiom6 finite(Concept_Set)&#10;  @axiom7 finite(DataSet_Set)&#10;  @axiom8 finite(DataValue_Set)&#10;  @axiom9 finite(Individual_Set)&#10;  @axiom10 finite(Relation_Set)&#10;  @axiom11 finite(Attribute_Set)&#10;  @axiom12 finite(Relation_Maplet_Set)&#10;  @axiom13 finite(Attribute_Maplet_Set)&#10;&#10;end&#10;" version="3">
+<org.eventb.core.carrierSet name="_BV_s4L_oEeeny6sufONfOA" org.eventb.core.identifier="DomainModel_Set"/>
+<org.eventb.core.carrierSet name="_BV_s4b_oEeeny6sufONfOA" org.eventb.core.identifier="Relation_Set"/>
+<org.eventb.core.carrierSet name="_BV_s4r_oEeeny6sufONfOA" org.eventb.core.identifier="Concept_Set"/>
+<org.eventb.core.carrierSet name="_BV_s47_oEeeny6sufONfOA" org.eventb.core.identifier="Relation_Maplet_Set"/>
+<org.eventb.core.carrierSet name="_BV_s5L_oEeeny6sufONfOA" org.eventb.core.identifier="Individual_Set"/>
+<org.eventb.core.carrierSet name="_BV_s5b_oEeeny6sufONfOA" org.eventb.core.identifier="Attribute_Maplet_Set"/>
+<org.eventb.core.carrierSet name="_BV_s5r_oEeeny6sufONfOA" org.eventb.core.identifier="Attribute_Set"/>
+<org.eventb.core.carrierSet name="_BV_s57_oEeeny6sufONfOA" org.eventb.core.identifier="DataValue_Set"/>
+<org.eventb.core.carrierSet name="_BV_s6L_oEeeny6sufONfOA" org.eventb.core.identifier="DataSet_Set"/>
+<org.eventb.core.carrierSet name="_BV_s6b_oEeeny6sufONfOA" org.eventb.core.identifier="RelationCharacteristics_Set"/>
+<org.eventb.core.axiom name="_grr1wML7Eeeny6sufONfOA" org.eventb.core.label="axiom1" org.eventb.core.predicate="finite(DataValue_Set)"/>
+<org.eventb.core.constant name="_p9AncMMMEeeny6sufONfOA" org.eventb.core.identifier="_NATURAL"/>
+<org.eventb.core.constant name="_p9AnccMMEeeny6sufONfOA" org.eventb.core.identifier="_INTEGER"/>
+<org.eventb.core.constant name="_p9AncsMMEeeny6sufONfOA" org.eventb.core.identifier="_FLOAT"/>
+<org.eventb.core.constant name="_p9Anc8MMEeeny6sufONfOA" org.eventb.core.identifier="_BOOL"/>
+<org.eventb.core.constant name="_p9AndMMMEeeny6sufONfOA" org.eventb.core.identifier="_STRING"/>
+<org.eventb.core.axiom name="_p9AndcMMEeeny6sufONfOA" org.eventb.core.label="axiom2" org.eventb.core.predicate="{_NATURAL, _INTEGER, _FLOAT, _BOOL, _STRING} ⊆  DataSet_Set"/>
+<org.eventb.core.axiom name="_M-G5EMMVEeeny6sufONfOA" org.eventb.core.label="axiom3" org.eventb.core.predicate="partition({_NATURAL, _INTEGER, _FLOAT, _BOOL, _STRING}, {_NATURAL}, {_INTEGER}, {_FLOAT}, {_BOOL}, {_STRING})"/>
+<org.eventb.core.constant name="_FlyVMceKEeeqjIZxOWzGDQ" org.eventb.core.identifier="isTransitive"/>
+<org.eventb.core.constant name="_FlyVMseKEeeqjIZxOWzGDQ" org.eventb.core.identifier="isSymmetric"/>
+<org.eventb.core.axiom name="_Fly8QMeKEeeqjIZxOWzGDQ" org.eventb.core.label="axiom4" org.eventb.core.predicate="partition(RelationCharacteristics_Set,{isTransitive}, {isSymmetric})"/>
+<org.eventb.core.axiom name="_wOjTMPbvEeeb8tqCvONZMQ" org.eventb.core.label="axiom5" org.eventb.core.predicate="finite(DomainModel_Set)"/>
+<org.eventb.core.axiom name="_Cb9XkPpNEeemO4Qrfni0fA" org.eventb.core.label="axiom6" org.eventb.core.predicate="finite(Concept_Set)"/>
+<org.eventb.core.axiom name="_Cb9XkfpNEeemO4Qrfni0fA" org.eventb.core.label="axiom7" org.eventb.core.predicate="finite(DataSet_Set)"/>
+<org.eventb.core.axiom name="_Cb9XkvpNEeemO4Qrfni0fA" org.eventb.core.label="axiom8" org.eventb.core.predicate="finite(DataValue_Set)"/>
+<org.eventb.core.axiom name="_Cb9Xk_pNEeemO4Qrfni0fA" org.eventb.core.label="axiom9" org.eventb.core.predicate="finite(Individual_Set)"/>
+<org.eventb.core.axiom name="_Cb9-oPpNEeemO4Qrfni0fA" org.eventb.core.label="axiom10" org.eventb.core.predicate="finite(Relation_Set)"/>
+<org.eventb.core.axiom name="_Cb9-ofpNEeemO4Qrfni0fA" org.eventb.core.label="axiom11" org.eventb.core.predicate="finite(Attribute_Set)"/>
+<org.eventb.core.axiom name="_Cb9-ovpNEeemO4Qrfni0fA" org.eventb.core.label="axiom12" org.eventb.core.predicate="finite(Relation_Maplet_Set)"/>
+<org.eventb.core.axiom name="_Cb9-o_pNEeemO4Qrfni0fA" org.eventb.core.label="axiom13" org.eventb.core.predicate="finite(Attribute_Maplet_Set)"/>
+</org.eventb.core.contextFile>
