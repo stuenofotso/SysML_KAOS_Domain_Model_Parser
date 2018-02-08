@@ -1,4 +1,3 @@
-# ABZ18_ERTMS:
 This folder contains the deliverables related to the use of the FORMOSE approach (SysML/KAOS goal and domain modeling) on the ABZ2018 case study : specification of the hybrid ERTMS/ETCS Level 3 Standard (https://www.southampton.ac.uk/abz2018/information/case-study.page).
 
   # BSystem_Models
