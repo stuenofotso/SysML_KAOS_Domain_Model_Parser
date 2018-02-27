@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poFile org.eventb.core.poStamp="3">
 <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="Component_Set" org.eventb.core.type="ℙ(Component_Set)"/>
 <org.eventb.core.poIdentifier name="Constant_Set" org.eventb.core.type="ℙ(Constant_Set)"/>
@@ -26,10 +26,15 @@
 <org.eventb.core.poIdentifier name="RelationComposition_OP" org.eventb.core.type="Operator"/>
 <org.eventb.core.poIdentifier name="RelationSet_OP" org.eventb.core.type="Operator"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.bpo|org.eventb.core.poFile#EventB_Metamodel_Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.bpo|org.eventb.core.poFile#EventB_Metamodel_Context|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="3">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="finite(SetItem_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_7tMf0MLxEeeny6sufONfOA"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="{B_NATURAL,B_INTEGER,B_FLOAT,B_BOOL,B_STRING}⊆Set_Set" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_3pkr1cMREeeny6sufONfOA"/>
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="partition({B_NATURAL,B_INTEGER,B_FLOAT,B_BOOL,B_STRING},{B_NATURAL},{B_INTEGER},{B_FLOAT},{B_BOOL},{B_STRING})" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_WZwUIMMVEeeny6sufONfOA"/>
 <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="partition(Operator,{Inclusion_OP},{Belonging_OP},{BecomeEqual2SetOf_OP},{RelationSet_OP},{Maplet_OP},{Equal2SetOf_OP},{BecomeEqual2EmptySet_OP},{FunctionSet_OP},{RelationComposition_OP},{Inversion_OP},{Equality_OP})" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_tAepE8R4EeeTm8onEx2aKQ"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="finite(Variable_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_X8zfIBdzEeieCdX6haQ4Qg"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="finite(Set_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_F8Q5gBgxEeiNe9Y6wVqubg"/>
+<org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="finite(Constant_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_eHoG0BndEeiNe9Y6wVqubg"/>
+<org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="finite(Component_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_eHoG0RndEeiNe9Y6wVqubg"/>
+<org.eventb.core.poPredicate name="PRD8" org.eventb.core.predicate="finite(LogicFormula_Set)" org.eventb.core.source="/SysMLKAOSDomainModelRules_ordered_attempt2/EventB_Metamodel_Context.buc|org.eventb.core.contextFile#EventB_Metamodel_Context|org.eventb.core.axiom#_eHoG0hndEeiNe9Y6wVqubg"/>
 </org.eventb.core.poPredicateSet>
 </org.eventb.core.poFile>

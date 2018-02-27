@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase">
+<org.eventb.core.scAxiom name="'" org.eventb.core.label="axm" org.eventb.core.predicate="SB∈SteamBoiler" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context.buc|org.eventb.core.contextFile#steam_boiler_controller_context|org.eventb.core.axiom#_-5Cv4BvJEei4EKRkJdis4w" org.eventb.core.theorem="false"/>
+<org.eventb.core.scAxiom name="(" org.eventb.core.label="axm1" org.eventb.core.predicate="SteamBoiler={SB}" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context.buc|org.eventb.core.contextFile#steam_boiler_controller_context|org.eventb.core.axiom#_G4830BvtEei4EKRkJdis4w" org.eventb.core.theorem="false"/>
+<org.eventb.core.scConstant name="SB" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context.buc|org.eventb.core.contextFile#steam_boiler_controller_context|org.eventb.core.constant#_-5CI0RvJEei4EKRkJdis4w" org.eventb.core.type="SteamBoiler"/>
+<org.eventb.core.scCarrierSet name="SteamBoiler" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context.buc|org.eventb.core.contextFile#steam_boiler_controller_context|org.eventb.core.carrierSet#_-5CI0BvJEei4EKRkJdis4w" org.eventb.core.type="ℙ(SteamBoiler)"/>
+</org.eventb.core.scContextFile>

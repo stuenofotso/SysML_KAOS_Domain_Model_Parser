@@ -31,6 +31,14 @@
 	\Axiom{axiom3}{false}{$partition(\{\_NATURAL, \_INTEGER, \_FLOAT, \_BOOL, \_STRING\}, \{\_NATURAL\}, \{\_INTEGER\}, \{\_FLOAT\}, \{\_BOOL\}, \{\_STRING\})$}{}
 	\Axiom{axiom4}{false}{$partition(RelationCharacteristics\_Set,\{isTransitive\}, \{isSymmetric\})$}{}
 	\Axiom{axiom5}{false}{$finite(DomainModel\_Set)$}{}
+	\Axiom{axiom6}{false}{$finite(Concept\_Set)$}{}
+	\Axiom{axiom7}{false}{$finite(DataSet\_Set)$}{}
+	\Axiom{axiom8}{false}{$finite(DataValue\_Set)$}{}
+	\Axiom{axiom9}{false}{$finite(Individual\_Set)$}{}
+	\Axiom{axiom10}{false}{$finite(Relation\_Set)$}{}
+	\Axiom{axiom11}{false}{$finite(Attribute\_Set)$}{}
+	\Axiom{axiom12}{false}{$finite(Relation\_Maplet\_Set)$}{}
+	\Axiom{axiom13}{false}{$finite(Attribute\_Maplet\_Set)$}{}
 }
 \END
 \MultiHeader{CONTEXT}{EventB\_Metamodel\_Context}
@@ -68,6 +76,8 @@
 	\Axiom{axiom2}{false}{$\{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\} \subseteq{}  Set\_Set$}{}
 	\Axiom{axiom3}{false}{$partition(\{B\_NATURAL, B\_INTEGER, B\_FLOAT, B\_BOOL, B\_STRING\}, \{B\_NATURAL\}, \{B\_INTEGER\}, \{B\_FLOAT\}, \{B\_BOOL\}, \{B\_STRING\})$}{}
 	\Axiom{axiom4}{false}{$partition(Operator, \{Inclusion\_OP\}, \{Belonging\_OP\}, \{BecomeEqual2SetOf\_OP\}, \{RelationSet\_OP\}, \{Maplet\_OP\}, \{Equal2SetOf\_OP\}, \{BecomeEqual2EmptySet\_OP\}, \{FunctionSet\_OP\}, \{RelationComposition\_OP\}, \{Inversion\_OP\}, \{Equality\_OP\})$}{}
+	\Axiom{axiom5}{false}{$finite(Variable\_Set)$}{}
+	\Axiom{axiom6}{false}{$finite(Set\_Set)$}{}
 }
 \END
 \MultiHeader{MACHINE}{event\_b\_specs\_from\_ontologies}
@@ -360,9 +370,14 @@
 	\Invariant{inv1\_104}{false}{$EnumeratedDataSet\_corresp\_EnumeratedSet \subseteq{}  DataSet\_corresp\_Set$}{}
 	\Invariant{inv1\_105}{false}{$CustomDataSet\_corresp\_AbstractSet \subseteq{}  DataSet\_corresp\_Set$}{}
 	\Invariant{inv1\_106}{true}{$\\card(Concept \setminus{} (dom(Concept\_corresp\_AbstractSet) \bunion{} dom(Concept\_corresp\_Constant)))\\~ 	+ card(DataSet \setminus{} dom(DataSet\_corresp\_Set))\\~ 	+ card(DataValue \setminus{} (dom(DataValue\_corresp\_SetItem) \bunion{} dom(DataValue\_corresp\_Constant)))\\~ 	+ card(Individual \setminus{} dom(Individual\_corresp\_Constant))\\~ 	+ card(Concept\_isVariable\converse{}[\{TRUE\}] \setminus{} dom(Concept\_corresp\_Variable))\\~ 	+ card(Relation \setminus{} (dom(Relation\_corresp\_Constant) \bunion{} dom(Relation\_corresp\_Variable)))\\~ 	+ card(Attribute \setminus{} (dom(Attribute\_corresp\_Constant) \bunion{} dom(Attribute\_corresp\_Variable)))\\~ 	+ card(RelationMaplet \setminus{} dom(RelationMaplet\_corresp\_Constant))\\~ 	+ card(AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant)) \in{} \nat{}$}{}
+	\Invariant{inv1\_107}{false}{$\\\forall{}xx,pxx,o\_lg\qdot{}(\\~ 		(\\~ 		xx\in{}dom(Concept\_parentConcept\_Concept)\\~ 		\land{} pxx=Concept\_parentConcept\_Concept(xx)\\~ 		\land{} xx\in{} dom(Concept\_corresp\_Constant)\\~ 		\land{} pxx\in{} dom(Concept\_corresp\_AbstractSet)\\~ 		\land{} o\_lg = Constant\_typing\_Property(Concept\_corresp\_Constant(xx))\\~ 		)\\~ 		\limp{}(\\~ 		LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}\\~ 		\land{} (2\mapsto{}Concept\_corresp\_AbstractSet(pxx))\in{}LogicFormula\_involves\_Sets(o\_lg)\\~ 		)\\~ 		)$}{}
+	\Invariant{inv1\_108}{false}{$\\\forall{}o\_xx,o\_pxx,o\_lg\qdot{}(\\~ 		(\\~ 		o\_xx\in{}dom(Constant\_typing\_Property)\binter{}ran(Concept\_corresp\_Constant)\\~ 		\land{} o\_lg = Constant\_typing\_Property(o\_xx)\\~ 		\land{} LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}\\~ 		\land{} o\_pxx \in{} ran(Concept\_corresp\_AbstractSet)\\~ 		\land{} (2\mapsto{}o\_pxx)\in{}LogicFormula\_involves\_Sets(o\_lg)\\~ 		)\\~ 		\limp{}(\\~ 			Concept\_corresp\_Constant\converse{}(o\_xx)\in{}dom(Concept\_parentConcept\_Concept)\\~ 			\land{} Concept\_corresp\_AbstractSet\converse{}(o\_pxx) = Concept\_parentConcept\_Concept(Concept\_corresp\_Constant\converse{}(o\_xx))\\~ 		)\\~ 		)$}{}
+	\Invariant{inv1\_109}{true}{$\\card(AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set)))\\~ 	+ card(EnumeratedSet \setminus{} ran(DataSet\_corresp\_Set))\\~ 	+ card(dom(SetItem\_itemOf\_EnumeratedSet) \setminus{} ran(DataValue\_corresp\_SetItem))\\~ 	+ card(dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)))\\~ 	+ card(dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable)))  \in{} \nat{}$}{}
+	\Invariant{inv1\_110}{false}{$\\\forall{}xx,pxx\qdot{}(\\~ 		(xx\in{}dom(Concept\_parentConcept\_Concept)\\~ 		\land{}pxx=Concept\_parentConcept\_Concept(xx)\\~ 		\land{} pxx \notin{} dom(Concept\_corresp\_AbstractSet))\\~ 		\limp{}xx \notin{} dom(Concept\_corresp\_Constant)\\~ 		)$}{}
+	\Invariant{inv1\_111}{false}{$\\\forall{}o\_xx,o\_pxx,o\_lg\qdot{}(\\~ 		(o\_xx\in{}dom(Constant\_typing\_Property)\\~ 		\land{} o\_lg = Constant\_typing\_Property(o\_xx)\\~ 		\land{} LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}\\~ 		\land{} o\_pxx  \in{} AbstractSet\\~ 		\land{} (2\mapsto{}o\_pxx)\in{}LogicFormula\_involves\_Sets(o\_lg)\\~ 		\land{} o\_pxx \notin{} (ran(Concept\_corresp\_AbstractSet)\bunion{}ran(DataSet\_corresp\_Set)))\\~ 		\limp{}o\_xx \notin{} ran(Concept\_corresp\_Constant)\\~ 		)$}{}
 }
 \VARIANT{
-	\Variant{$\\card(Concept \setminus{} (dom(Concept\_corresp\_AbstractSet) \bunion{} dom(Concept\_corresp\_Constant)))\\~ 	+ card(DataSet \setminus{} dom(DataSet\_corresp\_Set))\\~ 	+ card(DataValue \setminus{} (dom(DataValue\_corresp\_SetItem) \bunion{} dom(DataValue\_corresp\_Constant)))\\~ 	+ card(Individual \setminus{} dom(Individual\_corresp\_Constant))\\~ 	+ card(Concept\_isVariable\converse{}[\{TRUE\}] \setminus{} dom(Concept\_corresp\_Variable))\\~ 	+ card(Relation \setminus{} (dom(Relation\_corresp\_Constant) \bunion{} dom(Relation\_corresp\_Variable)))\\~ 	+ card(Attribute \setminus{} (dom(Attribute\_corresp\_Constant) \bunion{} dom(Attribute\_corresp\_Variable)))\\~ 	+ card(RelationMaplet \setminus{} dom(RelationMaplet\_corresp\_Constant))\\~ 	+ card(AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant))$}{}
+	\Variant{$\\card(Concept \setminus{} (dom(Concept\_corresp\_AbstractSet) \bunion{} dom(Concept\_corresp\_Constant)))\\~ 	+ card(DataSet \setminus{} dom(DataSet\_corresp\_Set))\\~ 	+ card(DataValue \setminus{} (dom(DataValue\_corresp\_SetItem) \bunion{} dom(DataValue\_corresp\_Constant)))\\~ 	+ card(Individual \setminus{} dom(Individual\_corresp\_Constant))\\~ 	+ card(Concept\_isVariable\converse{}[\{TRUE\}] \setminus{} dom(Concept\_corresp\_Variable))\\~ 	+ card(Relation \setminus{} (dom(Relation\_corresp\_Constant) \bunion{} dom(Relation\_corresp\_Variable)))\\~ 	+ card(Attribute \setminus{} (dom(Attribute\_corresp\_Constant) \bunion{} dom(Attribute\_corresp\_Variable)))\\~ 	+ card(RelationMaplet \setminus{} dom(RelationMaplet\_corresp\_Constant))\\~ 	+ card(AttributeMaplet \setminus{} dom(AttributeMaplet\_corresp\_Constant))\\~ 	+\\~ 	card(AbstractSet \setminus{} (ran(Concept\_corresp\_AbstractSet) \bunion{} ran(DataSet\_corresp\_Set)))\\~ 	+ card(EnumeratedSet \setminus{} ran(DataSet\_corresp\_Set))\\~ 	+ card(dom(SetItem\_itemOf\_EnumeratedSet) \setminus{} ran(DataValue\_corresp\_SetItem))\\~ 	+ card(dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)))\\~ 	+ card(dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable)))$}{}
 }
 \EVENTS{
 \INITIALISATION{false}{}{
@@ -570,8 +585,8 @@
 		\Param{o\_PCO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} (dom(Concept\_corresp\_Constant)\bunion{}dom(Concept\_corresp\_AbstractSet)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} (dom(Concept\_corresp\_Constant)\bunion{}dom(Concept\_corresp\_AbstractSet))$}{true}{}
 		\Guard{grd2}{false}{$dom(Concept\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
 		\Guard{grd3}{false}{$PCO \in{} dom(Concept\_corresp\_AbstractSet)$}{true}{}
 		\Guard{grd4}{false}{$Concept\_parentConcept\_Concept(CO)=PCO$}{true}{}
@@ -605,8 +620,8 @@
 		\Param{o\_PCO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} dom(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$dom(Concept\_parentConcept\_Concept) \setminus{} (dom(Concept\_corresp\_Constant)\bunion{}dom(Concept\_corresp\_AbstractSet)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$CO \in{} dom(Concept\_parentConcept\_Concept) \setminus{} (dom(Concept\_corresp\_Constant)\bunion{}dom(Concept\_corresp\_AbstractSet))$}{true}{}
 		\Guard{grd2}{false}{$dom(Concept\_corresp\_Constant) \neq{} \emptyset{}$}{true}{}
 		\Guard{grd3}{false}{$PCO \in{} dom(Concept\_corresp\_Constant)$}{true}{}
 		\Guard{grd4}{false}{$Concept\_parentConcept\_Concept(CO)=PCO$}{true}{}
@@ -710,8 +725,8 @@
 		\Param{o\_DS}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(DataValue\_valueOf\_DataSet) \setminus{} dom(DataValue\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$dva \in{} dom(DataValue\_valueOf\_DataSet) \setminus{} dom(DataValue\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$dom(DataValue\_valueOf\_DataSet) \setminus{} (dom(DataValue\_corresp\_Constant)\bunion{}dom(DataValue\_corresp\_SetItem)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$dva \in{} dom(DataValue\_valueOf\_DataSet) \setminus{} (dom(DataValue\_corresp\_Constant)\bunion{}dom(DataValue\_corresp\_SetItem))$}{true}{}
 		\Guard{grd2}{false}{$dom(CustomDataSet\_corresp\_AbstractSet) \neq{} \emptyset{}$}{true}{}
 		\Guard{grd3}{false}{$DS \in{} dom(CustomDataSet\_corresp\_AbstractSet)$}{true}{}
 		\Guard{grd4}{false}{$DataValue\_valueOf\_DataSet(dva)=DS$}{true}{}
@@ -1547,7 +1562,7 @@
 		\Action{act9}{$Constant\_definedIn\_Component(inverse) \bcmeq{}  DomainModel\_corresp\_Component(Relation\_definedIn\_DomainModel(RE))$}{true}{}
 	}
 }
-\EVT{rule\_101}{false}{ordinary}{}{\\handling the addition of a new abstract set (correspondence to a concept)}{
+\EVT{rule\_101}{false}{convergent}{}{\\handling the addition of a new abstract set (correspondence to a concept)}{
 	\ANY{
 		\Param{CO}{true}{}
 		\Param{o\_CO}{true}{}
@@ -1566,7 +1581,7 @@
 		\Action{act4}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
 	}
 }
-\EVT{rule\_102}{false}{ordinary}{}{\\handling the addition of a new abstract set (correspondence to a custom data set)}{
+\EVT{rule\_102}{false}{convergent}{}{\\handling the addition of a new abstract set (correspondence to a custom data set)}{
 	\ANY{
 		\Param{DS}{true}{}
 		\Param{o\_DS}{true}{}
@@ -1587,7 +1602,7 @@
 		\Action{act5}{$DataSet\_corresp\_Set(DS) \bcmeq{}  o\_DS$}{true}{}
 	}
 }
-\EVT{rule\_103}{false}{ordinary}{}{\\handling  the addition of an enumerated set}{
+\EVT{rule\_103}{false}{convergent}{}{\\handling  the addition of an enumerated set}{
 	\ANY{
 		\Param{EDS}{true}{}
 		\Param{o\_EDS}{true}{}
@@ -1622,7 +1637,7 @@
 		\Action{act10}{$CustomDataSet \bcmeq{}  CustomDataSet \bunion{}  \{EDS\}$}{true}{}
 	}
 }
-\EVT{rule\_104}{false}{ordinary}{}{\\handling  the addition of a new element in an existing enumerated set}{
+\EVT{rule\_104}{false}{convergent}{}{\\handling  the addition of a new element in an existing enumerated set}{
 	\ANY{
 		\Param{EDS}{true}{}
 		\Param{o\_EDS}{true}{}
@@ -1645,7 +1660,7 @@
 		\Action{act4}{$DataValue\_valueOf\_DataSet(element) \bcmeq{}  EDS$}{true}{}
 	}
 }
-\EVT{rule\_105\_1}{false}{ordinary}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
+\EVT{rule\_105\_1}{false}{convergent}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
 	\ANY{
 		\Param{CO}{true}{}
 		\Param{o\_CO}{true}{}
@@ -1654,8 +1669,8 @@
 		\Param{o\_PCO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_CO)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
@@ -1674,7 +1689,7 @@
 		\Action{act5}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
 	}
 }
-\EVT{rule\_105\_2}{false}{ordinary}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
+\EVT{rule\_105\_2}{false}{convergent}{}{\\handling  the addition of a constant, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
 	\ANY{
 		\Param{CO}{true}{}
 		\Param{o\_CO}{true}{}
@@ -1683,8 +1698,8 @@
 		\Param{o\_PCO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} ran(Concept\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_CO \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_CO)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
@@ -1704,7 +1719,7 @@
 		\Action{act5}{$Concept\_isVariable(CO) \bcmeq{}  FALSE$}{true}{}
 	}
 }
-\EVT{rule\_106\_1}{false}{ordinary}{}{\\handling  the addition of an individual (case where the concept corresponds to an abstract set)}{
+\EVT{rule\_106\_1}{false}{convergent}{}{\\handling  the addition of an individual (case where the concept corresponds to an abstract set)}{
 	\ANY{
 		\Param{ind}{true}{}
 		\Param{o\_ind}{true}{}
@@ -1713,8 +1728,8 @@
 		\Param{o\_CO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_ind)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
@@ -1730,7 +1745,7 @@
 		\Action{act3}{$Individual\_corresp\_Constant(ind) \bcmeq{}  o\_ind$}{true}{}
 	}
 }
-\EVT{rule\_106\_2}{false}{ordinary}{}{\\handling  the addition of an individual (case where the concept corresponds to a constant)}{
+\EVT{rule\_106\_2}{false}{convergent}{}{\\handling  the addition of an individual (case where the concept corresponds to a constant)}{
 	\ANY{
 		\Param{ind}{true}{}
 		\Param{o\_ind}{true}{}
@@ -1739,8 +1754,8 @@
 		\Param{o\_CO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} ran(Individual\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_ind \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_ind)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
@@ -1757,7 +1772,7 @@
 		\Action{act3}{$Individual\_corresp\_Constant(ind) \bcmeq{}  o\_ind$}{true}{}
 	}
 }
-\EVT{rule\_107}{false}{ordinary}{}{\\handling  the addition of a data value}{
+\EVT{rule\_107}{false}{convergent}{}{\\handling  the addition of a data value}{
 	\ANY{
 		\Param{dva}{true}{}
 		\Param{o\_dva}{true}{}
@@ -1766,8 +1781,8 @@
 		\Param{o\_DS}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(DataValue\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_dva \in{} dom(Constant\_typing\_Property) \setminus{} ran(DataValue\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_dva \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Constant\_typing\_Property(o\_dva)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Belonging\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
@@ -1783,7 +1798,7 @@
 		\Action{act3}{$DataValue\_corresp\_Constant(dva) \bcmeq{}  o\_dva$}{true}{}
 	}
 }
-\EVT{rule\_108\_1}{false}{ordinary}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
+\EVT{rule\_108\_1}{false}{convergent}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to an abstract set)}{
 	\ANY{
 		\Param{x\_CO}{true}{}
 		\Param{CO}{true}{}
@@ -1791,21 +1806,22 @@
 		\Param{o\_CO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Variable\_typing\_Invariant(x\_CO)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) \neq{} \emptyset{}$}{true}{}
 		\Guard{grd5}{false}{$(2\mapsto{}o\_CO)\in{}LogicFormula\_involves\_Sets(o\_lg)$}{true}{}
 		\Guard{grd6}{false}{$o\_CO \in{} ran(Concept\_corresp\_AbstractSet)$}{true}{}
 		\Guard{grd7}{false}{$CO = Concept\_corresp\_AbstractSet\converse{}(o\_CO)$}{true}{}
+		\Guard{grd8}{false}{$CO \notin{} dom(Concept\_corresp\_Variable)$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$Concept\_isVariable(CO) \bcmeq{}  TRUE$}{true}{}
 		\Action{act2}{$Concept\_corresp\_Variable(CO) \bcmeq{} x\_CO$}{true}{}
 	}
 }
-\EVT{rule\_108\_2}{false}{ordinary}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
+\EVT{rule\_108\_2}{false}{convergent}{}{\\handling  the addition of a variable, sub set of an instance of Concept (case where the concept corresponds to a constant)}{
 	\ANY{
 		\Param{x\_CO}{true}{}
 		\Param{CO}{true}{}
@@ -1813,8 +1829,8 @@
 		\Param{o\_CO}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} ran(Concept\_corresp\_Variable)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\x\_CO \in{} dom(Variable\_typing\_Invariant) \setminus{} (ran(Concept\_corresp\_Variable)\\~ 											\bunion{}ran(Relation\_corresp\_Variable)\\~ 											\bunion{}ran(Attribute\_corresp\_Variable))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg = Variable\_typing\_Invariant(x\_CO)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg) = \{1\mapsto{}Inclusion\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$LogicFormula\_involves\_Sets(o\_lg) = \emptyset{}$}{true}{}
@@ -1822,13 +1838,14 @@
 		\Guard{grd6}{false}{$(2\mapsto{}o\_lg) \in{} Constant\_isInvolvedIn\_LogicFormulas(o\_CO)$}{true}{}
 		\Guard{grd7}{false}{$o\_CO \in{} ran(Concept\_corresp\_Constant)$}{true}{}
 		\Guard{grd8}{false}{$CO = Concept\_corresp\_Constant\converse{}(o\_CO)$}{true}{}
+		\Guard{grd9}{false}{$CO \notin{} dom(Concept\_corresp\_Variable)$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$Concept\_isVariable(CO) \bcmeq{}  TRUE$}{true}{}
 		\Action{act2}{$Concept\_corresp\_Variable(CO) \bcmeq{} x\_CO$}{true}{}
 	}
 }
-\EVT{rule\_109\_1}{false}{ordinary}{}{\\handling  the addition of a constant, defined as a maplet, element of a relation (case where the relation corresponds to a constant relation)}{
+\EVT{rule\_109\_1}{false}{convergent}{}{\\handling  the addition of a constant, defined as a maplet, element of a relation (case where the relation corresponds to a constant relation)}{
 	\ANY{
 		\Param{o\_maplet}{true}{}
 		\Param{maplet}{true}{}
@@ -1842,8 +1859,8 @@
 		\Param{o\_image}{true}{}
 	}
 	\GUARDS{true}{
-		\Guard{grd0}{false}{$dom(Constant\_typing\_Property) \setminus{} ran(RelationMaplet\_corresp\_Constant) \neq{}\emptyset{}$}{true}{}
-		\Guard{grd1}{false}{$o\_maplet \in{} dom(Constant\_typing\_Property) \setminus{} ran(RelationMaplet\_corresp\_Constant)$}{true}{}
+		\Guard{grd0}{false}{$\\dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type)) \neq{}\emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$\\o\_maplet \in{} dom(Constant\_typing\_Property) \setminus{} (ran(Concept\_corresp\_Constant)\\~ 											\bunion{}ran(Individual\_corresp\_Constant)\\~ 											\bunion{}ran(DataValue\_corresp\_Constant)\\~ 											\bunion{}ran(Relation\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_corresp\_Constant)\\~ 											\bunion{}ran(RelationMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(AttributeMaplet\_corresp\_Constant)\\~ 											\bunion{}ran(Attribute\_Type)\\~ 											\bunion{}ran(Relation\_Type))$}{true}{}
 		\Guard{grd2}{false}{$o\_lg1 = Constant\_typing\_Property(o\_maplet)$}{true}{}
 		\Guard{grd3}{false}{$LogicFormula\_uses\_Operators(o\_lg1) = \{1\mapsto{}Maplet\_OP\}$}{true}{}
 		\Guard{grd4}{false}{$\{o\_antecedent, o\_image\}\subseteq{}(dom(Constant\_isInvolvedIn\_LogicFormulas)\binter{}ran(Individual\_corresp\_Constant))$}{true}{}

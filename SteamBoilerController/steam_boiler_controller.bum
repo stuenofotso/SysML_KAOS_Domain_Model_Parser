@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" org.eventb.texttools.text_lastmodified="1519756685785" org.eventb.texttools.text_representation="machine steam_boiler_controller&#10;sees steam_boiler_controller_context&#10;&#10;variables waterLevel&#10;&#10;invariants&#10;&#9;@inv waterLevel ∈ SteamBoiler →   ℕ&#10;&#10;events&#10;  event INITIALISATION&#10;  &#9;then&#10;  &#9;@act waterLevel :∈  {SB}  →   ℕ&#10;  end&#10;&#10;  event ControlWaterLevel&#10;    any wlvl&#10;    where&#10;      @grd wlvl ∈ ℕ&#10;    then&#10;      @act waterLevel(SB) ≔  wlvl&#10;  end&#10;&#10;end&#10;" version="5">
+<org.eventb.core.seesContext name="_f4X3sBvKEei4EKRkJdis4w" org.eventb.core.target="steam_boiler_controller_context"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_f4X3sRvKEei4EKRkJdis4w" org.eventb.core.assignment="waterLevel :∈  {SB}  →   ℕ" org.eventb.core.label="act"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_f4YewBvKEei4EKRkJdis4w" org.eventb.core.identifier="waterLevel"/>
+<org.eventb.core.invariant name="_f4YewRvKEei4EKRkJdis4w" org.eventb.core.label="inv" org.eventb.core.predicate="waterLevel ∈ SteamBoiler →   ℕ"/>
+<org.eventb.core.event name="_f4YewhvKEei4EKRkJdis4w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ControlWaterLevel">
+<org.eventb.core.parameter name="_f4YewxvKEei4EKRkJdis4w" org.eventb.core.identifier="wlvl"/>
+<org.eventb.core.guard name="_f4YexBvKEei4EKRkJdis4w" org.eventb.core.label="grd" org.eventb.core.predicate="wlvl ∈ ℕ"/>
+<org.eventb.core.action name="_f4YexRvKEei4EKRkJdis4w" org.eventb.core.assignment="waterLevel(SB) ≔  wlvl" org.eventb.core.label="act"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>

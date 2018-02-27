@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="p2,1/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="p2,2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="p2,3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="p2,4/WD" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p2,1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p2,2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p2,3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p2,4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadWaterUnit/grd0/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadWaterUnit/grd2/WD" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadWaterUnit/grd2/GRD" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputsInRescueMode/grd0/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputsInRescueMode/grd1/GRD" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputsInRescueMode/grd2/GRD" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/grd3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/grd4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p2,1/INV" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p2,2/INV" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p2,3/INV" org.eventb.core.confidence="-99" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p2,4/INV" org.eventb.core.confidence="0" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="OpenPump/grd0/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="OpenPump/grd/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ClosePump/grd0/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ClosePump/grd/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="false"/>
+</org.eventb.core.psFile>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+<org.eventb.core.psStatus name="p1,4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="7" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="p1,5/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="7" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t1/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t1/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="t2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t2/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t3/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="t4/THM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv3/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p1,4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/p1,5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act5/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act6/FIS" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputs/grd1/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputs/inv5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadInputs/p1,4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadInputs/p1,5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadInputs/grd/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/grd2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/inv1/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p1,4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ComputeNextSystemMode/p1,5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="SendActionCommand/inv4/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="8" org.eventb.core.psManual="true"/>
+</org.eventb.core.psFile>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase" org.eventb.texttools.text_lastmodified="1519756581835" org.eventb.texttools.text_representation="context steam_boiler_controller_context&#10;&#10;&#9;sets SteamBoiler&#10;&#10;&#9;constants SB&#10;&#10;&#9;axioms&#10;&#9;&#9;@axm SB ∈  SteamBoiler&#10;&#9;&#9;@axm1 SteamBoiler = {SB}&#10;&#10;&#10;end&#10;" version="3">
+<org.eventb.core.carrierSet name="_-5CI0BvJEei4EKRkJdis4w" org.eventb.core.identifier="SteamBoiler"/>
+<org.eventb.core.constant name="_-5CI0RvJEei4EKRkJdis4w" org.eventb.core.identifier="SB"/>
+<org.eventb.core.axiom name="_-5Cv4BvJEei4EKRkJdis4w" org.eventb.core.label="axm" org.eventb.core.predicate="SB ∈  SteamBoiler"/>
+<org.eventb.core.axiom name="_G4830BvtEei4EKRkJdis4w" org.eventb.core.label="axm1" org.eventb.core.predicate="SteamBoiler = {SB}"/>
+</org.eventb.core.contextFile>

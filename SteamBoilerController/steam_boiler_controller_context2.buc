@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase" org.eventb.texttools.text_lastmodified="1519758763743" org.eventb.texttools.text_representation="context steam_boiler_controller_context2&#10;extends steam_boiler_controller_context&#10;&#10;sets Sensor Actuator Data_Set_1 Data_Set_2 Data_Set_3&#10;&#10;constants SteamBoilerSensors SteamBoilerActuators Min1 Max1 Min2 Max2&#10;&#9;&#9;degraded normal rescue defective nondefective close open&#10;&#10;axioms&#10;  @axm0 finite(SteamBoiler)&#10;  @axm1 SteamBoilerSensors ∈  SteamBoiler ↔ Sensor&#10;  @axm2 ∀x·(x∈ Sensor ⇒ card(SteamBoilerSensors∼[{x}])=1)&#10;  @axm3 SteamBoilerActuators ∈  SteamBoiler ↔ Actuator&#10;  @axm4 ∀x·(x∈ Actuator ⇒ card(SteamBoilerActuators∼[{x}])=1)&#10;  @axm5 {Min1,Max1,Min2,Max2} ⊆  ℕ&#10;  @axm6 partition (Data_Set_1, {degraded},{normal},{rescue})&#10;  @axm7 partition (Data_Set_2, {defective},{nondefective})&#10;  @axm8 partition (Data_Set_3, {close},{open})&#10;  @p1·1 Min1 &lt; Max1&#10;  @p1·2 Min2 ≤ Min1&#10;  @p1·3 Max1 ≤ Max2&#10;&#10;&#10;&#10;end&#10;" version="3">
+<org.eventb.core.extendsContext name="_doJvQBvPEei4EKRkJdis4w" org.eventb.core.target="steam_boiler_controller_context"/>
+<org.eventb.core.carrierSet name="_-5CI0BvJEei4EKRkJdis4w" org.eventb.core.identifier="Sensor"/>
+<org.eventb.core.constant name="_-5CI0RvJEei4EKRkJdis4w" org.eventb.core.identifier="SteamBoilerSensors"/>
+<org.eventb.core.axiom name="_-5Cv4BvJEei4EKRkJdis4w" org.eventb.core.label="axm0" org.eventb.core.predicate="finite(SteamBoiler)"/>
+<org.eventb.core.carrierSet name="_doKWUBvPEei4EKRkJdis4w" org.eventb.core.identifier="Actuator"/>
+<org.eventb.core.carrierSet name="_doKWURvPEei4EKRkJdis4w" org.eventb.core.identifier="Data_Set_1"/>
+<org.eventb.core.carrierSet name="_doKWUhvPEei4EKRkJdis4w" org.eventb.core.identifier="Data_Set_2"/>
+<org.eventb.core.carrierSet name="_doKWUxvPEei4EKRkJdis4w" org.eventb.core.identifier="Data_Set_3"/>
+<org.eventb.core.constant name="_doKWVBvPEei4EKRkJdis4w" org.eventb.core.identifier="SteamBoilerActuators"/>
+<org.eventb.core.constant name="_doKWVRvPEei4EKRkJdis4w" org.eventb.core.identifier="Min1"/>
+<org.eventb.core.constant name="_doK9YBvPEei4EKRkJdis4w" org.eventb.core.identifier="Max1"/>
+<org.eventb.core.constant name="_doK9YRvPEei4EKRkJdis4w" org.eventb.core.identifier="Min2"/>
+<org.eventb.core.constant name="_doK9YhvPEei4EKRkJdis4w" org.eventb.core.identifier="Max2"/>
+<org.eventb.core.constant name="_doK9YxvPEei4EKRkJdis4w" org.eventb.core.identifier="degraded"/>
+<org.eventb.core.constant name="_doK9ZBvPEei4EKRkJdis4w" org.eventb.core.identifier="normal"/>
+<org.eventb.core.constant name="_doK9ZRvPEei4EKRkJdis4w" org.eventb.core.identifier="rescue"/>
+<org.eventb.core.constant name="_doK9ZhvPEei4EKRkJdis4w" org.eventb.core.identifier="defective"/>
+<org.eventb.core.constant name="_doK9ZxvPEei4EKRkJdis4w" org.eventb.core.identifier="nondefective"/>
+<org.eventb.core.constant name="_doK9aBvPEei4EKRkJdis4w" org.eventb.core.identifier="close"/>
+<org.eventb.core.constant name="_doK9aRvPEei4EKRkJdis4w" org.eventb.core.identifier="open"/>
+<org.eventb.core.axiom name="_doK9ahvPEei4EKRkJdis4w" org.eventb.core.label="axm1" org.eventb.core.predicate="SteamBoilerSensors ∈  SteamBoiler ↔ Sensor"/>
+<org.eventb.core.axiom name="_doK9axvPEei4EKRkJdis4w" org.eventb.core.label="axm2" org.eventb.core.predicate="∀x·(x∈ Sensor ⇒ card(SteamBoilerSensors∼[{x}])=1)"/>
+<org.eventb.core.axiom name="_doLkcBvPEei4EKRkJdis4w" org.eventb.core.label="axm3" org.eventb.core.predicate="SteamBoilerActuators ∈  SteamBoiler ↔ Actuator"/>
+<org.eventb.core.axiom name="_doLkcRvPEei4EKRkJdis4w" org.eventb.core.label="axm4" org.eventb.core.predicate="∀x·(x∈ Actuator ⇒ card(SteamBoilerActuators∼[{x}])=1)"/>
+<org.eventb.core.axiom name="_doLkchvPEei4EKRkJdis4w" org.eventb.core.label="axm5" org.eventb.core.predicate="{Min1,Max1,Min2,Max2} ⊆  ℕ"/>
+<org.eventb.core.axiom name="_doLkcxvPEei4EKRkJdis4w" org.eventb.core.label="axm6" org.eventb.core.predicate="partition (Data_Set_1, {degraded},{normal},{rescue})"/>
+<org.eventb.core.axiom name="_doLkdBvPEei4EKRkJdis4w" org.eventb.core.label="axm7" org.eventb.core.predicate="partition (Data_Set_2, {defective},{nondefective})"/>
+<org.eventb.core.axiom name="_doLkdRvPEei4EKRkJdis4w" org.eventb.core.label="axm8" org.eventb.core.predicate="partition (Data_Set_3, {close},{open})"/>
+<org.eventb.core.axiom name="_doLkdhvPEei4EKRkJdis4w" org.eventb.core.label="p1·1" org.eventb.core.predicate="Min1 &lt; Max1"/>
+<org.eventb.core.axiom name="_doLkdxvPEei4EKRkJdis4w" org.eventb.core.label="p1·2" org.eventb.core.predicate="Min2 ≤ Min1"/>
+<org.eventb.core.axiom name="_LsfUwBvsEei4EKRkJdis4w" org.eventb.core.label="p1·3" org.eventb.core.predicate="Max1 ≤ Max2"/>
+</org.eventb.core.contextFile>

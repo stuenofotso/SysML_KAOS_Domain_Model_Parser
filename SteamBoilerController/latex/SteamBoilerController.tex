@@ -1,0 +1,153 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\MultiTitle{SteamBoilerController}
+\MultiHeader{CONTEXT}{steam\_boiler\_controller\_context}
+\CONTEXT{steam\_boiler\_controller\_context}{}{}
+\SETS{
+	\Set{SteamBoiler}{}
+}
+\CONSTANTS{
+	\Constant{SB}{}
+}
+\AXIOMS{
+	\Axiom{axm}{false}{$SB \in{}  SteamBoiler$}{}
+	\Axiom{axm1}{false}{$SteamBoiler = \{SB\}$}{}
+}
+\END
+\MultiHeader{CONTEXT}{steam\_boiler\_controller\_context2}
+\CONTEXT{steam\_boiler\_controller\_context2}{steam\_boiler\_controller\_context}{}
+\SETS{
+	\Set{Sensor}{}
+	\Set{Actuator}{}
+	\Set{Data\_Set\_1}{}
+	\Set{Data\_Set\_2}{}
+	\Set{Data\_Set\_3}{}
+}
+\CONSTANTS{
+	\Constant{SteamBoilerSensors}{}
+	\Constant{SteamBoilerActuators}{}
+	\Constant{Min1}{}
+	\Constant{Max1}{}
+	\Constant{Min2}{}
+	\Constant{Max2}{}
+	\Constant{degraded}{}
+	\Constant{normal}{}
+	\Constant{rescue}{}
+	\Constant{defective}{}
+	\Constant{nondefective}{}
+	\Constant{close}{}
+	\Constant{open}{}
+}
+\AXIOMS{
+	\Axiom{axm0}{false}{$finite(SteamBoiler)$}{}
+	\Axiom{axm1}{false}{$SteamBoilerSensors \in{}  SteamBoiler \rel{} Sensor$}{}
+	\Axiom{axm2}{false}{$\forall{}x\qdot{}(x\in{} Sensor \limp{} card(SteamBoilerSensors\converse{}[\{x\}])=1)$}{}
+	\Axiom{axm3}{false}{$SteamBoilerActuators \in{}  SteamBoiler \rel{} Actuator$}{}
+	\Axiom{axm4}{false}{$\forall{}x\qdot{}(x\in{} Actuator \limp{} card(SteamBoilerActuators\converse{}[\{x\}])=1)$}{}
+	\Axiom{axm5}{false}{$\{Min1,Max1,Min2,Max2\} \subseteq{}  \nat{}$}{}
+	\Axiom{axm6}{false}{$partition (Data\_Set\_1, \{degraded\},\{normal\},\{rescue\})$}{}
+	\Axiom{axm7}{false}{$partition (Data\_Set\_2, \{defective\},\{nondefective\})$}{}
+	\Axiom{axm8}{false}{$partition (Data\_Set\_3, \{close\},\{open\})$}{}
+	\Axiom{p1·1}{false}{$Min1 < Max1$}{}
+	\Axiom{p1·2}{false}{$Min2 \leq{} Min1$}{}
+	\Axiom{p1·3}{false}{$Max1 \leq{} Max2$}{}
+}
+\END
+\MultiHeader{MACHINE}{steam\_boiler\_controller}
+\MACHINE{steam\_boiler\_controller}{}{steam\_boiler\_controller\_context}{}
+\VARIABLES{
+	\Variable{waterLevel}{}
+}
+\INVARIANTS{
+	\Invariant{inv}{false}{$waterLevel \in{} SteamBoiler \tfun{}   \nat{}$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act}{$waterLevel \bcmin{}  \{SB\}  \tfun{}   \nat{}$}{true}{}
+	}
+}
+\EVT{ControlWaterLevel}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd}{false}{$wlvl \in{} \nat{}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{steam\_boiler\_controller2}
+\MACHINE{steam\_boiler\_controller2}{steam\_boiler\_controller}{steam\_boiler\_controller\_context2}{}
+\VARIABLES{
+	\Variable{waterLevel}{}
+	\Variable{operatingMode}{}
+	\Variable{sensorState}{}
+	\Variable{sensorInput}{}
+	\Variable{actuatorState}{}
+	\Variable{actuatorOutput}{}
+}
+\INVARIANTS{
+	\Invariant{inv1}{false}{$operatingMode \in{} SteamBoiler \tfun{}   Data\_Set\_1$}{}
+	\Invariant{inv2}{false}{$sensorState \in{} Sensor \tfun{}   Data\_Set\_2$}{}
+	\Invariant{inv3}{false}{$actuatorState \in{} Actuator \tfun{}   Data\_Set\_2$}{}
+	\Invariant{inv4}{false}{$actuatorOutput \in{} Actuator \tfun{}   Data\_Set\_3$}{}
+	\Invariant{inv5}{false}{$sensorInput \in{} Sensor \tfun{}   \nat{}$}{}
+	\Invariant{p1,4}{false}{$\forall{}sb\qdot{}((sb\in{}SteamBoiler \land{} operatingMode(sb)=normal) \limp{} waterLevel(sb)\in{} Min1\upto{}Max1)$}{}
+	\Invariant{p1,5}{false}{$\forall{}sb\qdot{}((sb\in{}SteamBoiler \land{} operatingMode(sb)\in{}\{degraded,rescue\}) \limp{} waterLevel(sb)\in{} Min2\upto{}Max2)$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$waterLevel \bcmeq{}  \{SB \mapsto{} Min1\}$}{true}{}
+		\Action{act2}{$operatingMode \bcmeq{}  \{SB \mapsto{} normal\}$}{true}{}
+		\Action{act3}{$sensorState \bcmeq{}  Sensor \cprod{} \{nondefective\}$}{true}{}
+		\Action{act4}{$actuatorState \bcmeq{}  Actuator \cprod{} \{nondefective\}$}{true}{}
+		\Action{act5}{$actuatorOutput \bcmin{} Actuator \tfun{}   Data\_Set\_3$}{true}{}
+		\Action{act6}{$sensorInput \bcmin{} Sensor \tfun{}   \nat{}$}{true}{}
+	}
+}
+\EVT{ReadInputs}{false}{ordinary}{ControlWaterLevel}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+		\Param{values}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$wlvl \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(operatingMode(SB)=normal))$}{true}{}
+		\Guard{grd2}{false}{$values \in{} (SteamBoilerSensors[\{SB\}]\binter{} sensorState\converse{}[\{nondefective\}])\tfun{} \nat{}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
+	}
+}
+\EVT{ComputeNextSystemMode}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{mode}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$mode \in{} Data\_Set\_1$}{true}{}
+		\Guard{grd2}{false}{$waterLevel(SB) \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(mode=normal))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act}{$operatingMode(SB) \bcmeq{}  mode$}{true}{}
+	}
+}
+\EVT{SendActionCommand}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{actions}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd}{false}{$actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} Data\_Set\_3$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act2}{$actuatorOutput \bcmeq{}  actuatorOutput\ovl{} actions$}{true}{}
+	}
+}
+}
+\END
+\end{document}
