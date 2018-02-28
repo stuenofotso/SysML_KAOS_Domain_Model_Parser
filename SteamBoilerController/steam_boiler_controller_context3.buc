@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase" org.eventb.texttools.text_lastmodified="1519760459898" org.eventb.texttools.text_representation="context steam_boiler_controller_context3 extends steam_boiler_controller_context2&#10;&#10;&#10;constants SU SteamUnit WU WaterUnit PC PumpController P Pump Controls&#10;&#10;axioms&#10;  @axm0 finite(Sensor) ∧ finite(Actuator)&#10;  @axm1 ∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerActuators[{sb}])=1)&#10;  @axm2 ∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerSensors[{sb}])=3)&#10;  @axm3 SteamUnit ⊆  Sensor&#10;  @axm4 SU ∈ SteamUnit&#10;  @axm5 SteamUnit = {SU}&#10;  @axm6 WaterUnit ⊆  Sensor&#10;  @axm7 WU ∈ WaterUnit&#10;  @axm8 WaterUnit = {WU}&#10;  @axm9 PumpController ⊆  Sensor&#10;  @axm10 PC ∈ PumpController&#10;  @axm11 PumpController = {PC}&#10;  @axm12 Pump ⊆  Actuator&#10;  @axm13 P ∈ Pump&#10;  @axm14 Pump = {P}&#10;  @axm15 Controls ∈ Pump ⤖ PumpController&#10;  @axm16 Controls = {P↦ PC}&#10;  @axm17 SteamBoilerActuators = {SB↦ P}&#10;  @axm18 SteamBoilerSensors = {SB↦ WU, SB↦SU, SB↦PC}&#10;&#10;end&#10;" version="3">
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase" org.eventb.texttools.text_lastmodified="1519782680736" org.eventb.texttools.text_representation="context steam_boiler_controller_context3 extends steam_boiler_controller_context2&#10;&#10;&#10;constants SU SteamUnit WU WaterUnit PC PumpController P Pump Controls&#10;&#10;axioms&#10;  @axm0 finite(Sensor) ∧ finite(Actuator)&#10;  @axm1 ∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerActuators[{sb}])=1)&#10;  @axm2 ∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerSensors[{sb}])=3)&#10;  @axm6 partition(Sensor,WaterUnit,PumpController,SteamUnit)&#10;  @axm4 SU ∈ SteamUnit&#10;  @axm5 SteamUnit = {SU}&#10;  @axm7 WU ∈ WaterUnit&#10;  @axm8 WaterUnit = {WU}&#10;  @axm10 PC ∈ PumpController&#10;  @axm11 PumpController = {PC}&#10;  @axm12 Pump ⊆  Actuator&#10;  @axm13 P ∈ Pump&#10;  @axm14 Pump = {P}&#10;  @axm15 Controls ∈ Pump ⤖ PumpController&#10;  @axm16 Controls = {P↦ PC}&#10;  @axm17 SteamBoilerActuators = {SB↦ P}&#10;  @axm18 SteamBoilerSensors = {SB↦ WU, SB↦SU, SB↦PC}&#10;&#10;end&#10;" version="3">
 <org.eventb.core.extendsContext name="_zdvtQBv1Eei4EKRkJdis4w" org.eventb.core.target="steam_boiler_controller_context2"/>
 <org.eventb.core.constant name="_-5CI0RvJEei4EKRkJdis4w" org.eventb.core.identifier="SU"/>
 <org.eventb.core.axiom name="_-5Cv4BvJEei4EKRkJdis4w" org.eventb.core.label="axm0" org.eventb.core.predicate="finite(Sensor) ∧ finite(Actuator)"/>
@@ -13,20 +13,18 @@
 <org.eventb.core.constant name="_doK9ZRvPEei4EKRkJdis4w" org.eventb.core.identifier="Controls"/>
 <org.eventb.core.axiom name="_doK9ahvPEei4EKRkJdis4w" org.eventb.core.label="axm1" org.eventb.core.predicate="∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerActuators[{sb}])=1)"/>
 <org.eventb.core.axiom name="_doK9axvPEei4EKRkJdis4w" org.eventb.core.label="axm2" org.eventb.core.predicate="∀sb·(sb∈ SteamBoiler ⇒ card(SteamBoilerSensors[{sb}])=3)"/>
-<org.eventb.core.axiom name="_doLkcBvPEei4EKRkJdis4w" org.eventb.core.label="axm3" org.eventb.core.predicate="SteamUnit ⊆  Sensor"/>
+<org.eventb.core.axiom name="_doLkcBvPEei4EKRkJdis4w" org.eventb.core.label="axm6" org.eventb.core.predicate="partition(Sensor,WaterUnit,PumpController,SteamUnit)"/>
 <org.eventb.core.axiom name="_doLkcRvPEei4EKRkJdis4w" org.eventb.core.label="axm4" org.eventb.core.predicate="SU ∈ SteamUnit"/>
 <org.eventb.core.axiom name="_doLkchvPEei4EKRkJdis4w" org.eventb.core.label="axm5" org.eventb.core.predicate="SteamUnit = {SU}"/>
-<org.eventb.core.axiom name="_doLkcxvPEei4EKRkJdis4w" org.eventb.core.label="axm6" org.eventb.core.predicate="WaterUnit ⊆  Sensor"/>
-<org.eventb.core.axiom name="_doLkdBvPEei4EKRkJdis4w" org.eventb.core.label="axm7" org.eventb.core.predicate="WU ∈ WaterUnit"/>
-<org.eventb.core.axiom name="_doLkdRvPEei4EKRkJdis4w" org.eventb.core.label="axm8" org.eventb.core.predicate="WaterUnit = {WU}"/>
-<org.eventb.core.axiom name="_doLkdhvPEei4EKRkJdis4w" org.eventb.core.label="axm9" org.eventb.core.predicate="PumpController ⊆  Sensor"/>
-<org.eventb.core.axiom name="_doLkdxvPEei4EKRkJdis4w" org.eventb.core.label="axm10" org.eventb.core.predicate="PC ∈ PumpController"/>
-<org.eventb.core.axiom name="_LsfUwBvsEei4EKRkJdis4w" org.eventb.core.label="axm11" org.eventb.core.predicate="PumpController = {PC}"/>
-<org.eventb.core.axiom name="_zdwUUBv1Eei4EKRkJdis4w" org.eventb.core.label="axm12" org.eventb.core.predicate="Pump ⊆  Actuator"/>
-<org.eventb.core.axiom name="_zdw7YBv1Eei4EKRkJdis4w" org.eventb.core.label="axm13" org.eventb.core.predicate="P ∈ Pump"/>
-<org.eventb.core.axiom name="_zdw7YRv1Eei4EKRkJdis4w" org.eventb.core.label="axm14" org.eventb.core.predicate="Pump = {P}"/>
-<org.eventb.core.axiom name="_zdw7Yhv1Eei4EKRkJdis4w" org.eventb.core.label="axm15" org.eventb.core.predicate="Controls ∈ Pump ⤖ PumpController"/>
-<org.eventb.core.axiom name="_zdw7Yxv1Eei4EKRkJdis4w" org.eventb.core.label="axm16" org.eventb.core.predicate="Controls = {P↦ PC}"/>
-<org.eventb.core.axiom name="_zdw7ZBv1Eei4EKRkJdis4w" org.eventb.core.label="axm17" org.eventb.core.predicate="SteamBoilerActuators = {SB↦ P}"/>
-<org.eventb.core.axiom name="_IxHkQBv2Eei4EKRkJdis4w" org.eventb.core.label="axm18" org.eventb.core.predicate="SteamBoilerSensors = {SB↦ WU, SB↦SU, SB↦PC}"/>
+<org.eventb.core.axiom name="_doLkcxvPEei4EKRkJdis4w" org.eventb.core.label="axm7" org.eventb.core.predicate="WU ∈ WaterUnit"/>
+<org.eventb.core.axiom name="_doLkdBvPEei4EKRkJdis4w" org.eventb.core.label="axm8" org.eventb.core.predicate="WaterUnit = {WU}"/>
+<org.eventb.core.axiom name="_doLkdRvPEei4EKRkJdis4w" org.eventb.core.label="axm10" org.eventb.core.predicate="PC ∈ PumpController"/>
+<org.eventb.core.axiom name="_doLkdhvPEei4EKRkJdis4w" org.eventb.core.label="axm11" org.eventb.core.predicate="PumpController = {PC}"/>
+<org.eventb.core.axiom name="_doLkdxvPEei4EKRkJdis4w" org.eventb.core.label="axm12" org.eventb.core.predicate="Pump ⊆  Actuator"/>
+<org.eventb.core.axiom name="_LsfUwBvsEei4EKRkJdis4w" org.eventb.core.label="axm13" org.eventb.core.predicate="P ∈ Pump"/>
+<org.eventb.core.axiom name="_zdwUUBv1Eei4EKRkJdis4w" org.eventb.core.label="axm14" org.eventb.core.predicate="Pump = {P}"/>
+<org.eventb.core.axiom name="_zdw7YBv1Eei4EKRkJdis4w" org.eventb.core.label="axm15" org.eventb.core.predicate="Controls ∈ Pump ⤖ PumpController"/>
+<org.eventb.core.axiom name="_zdw7YRv1Eei4EKRkJdis4w" org.eventb.core.label="axm16" org.eventb.core.predicate="Controls = {P↦ PC}"/>
+<org.eventb.core.axiom name="_zdw7Yhv1Eei4EKRkJdis4w" org.eventb.core.label="axm17" org.eventb.core.predicate="SteamBoilerActuators = {SB↦ P}"/>
+<org.eventb.core.axiom name="_zdw7Yxv1Eei4EKRkJdis4w" org.eventb.core.label="axm18" org.eventb.core.predicate="SteamBoilerSensors = {SB↦ WU, SB↦SU, SB↦PC}"/>
 </org.eventb.core.contextFile>

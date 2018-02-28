@@ -54,6 +54,39 @@
 	\Axiom{p1·3}{false}{$Max1 \leq{} Max2$}{}
 }
 \END
+\MultiHeader{CONTEXT}{steam\_boiler\_controller\_context3}
+\CONTEXT{steam\_boiler\_controller\_context3}{steam\_boiler\_controller\_context2}{}
+\CONSTANTS{
+	\Constant{SU}{}
+	\Constant{SteamUnit}{}
+	\Constant{WU}{}
+	\Constant{WaterUnit}{}
+	\Constant{PC}{}
+	\Constant{PumpController}{}
+	\Constant{P}{}
+	\Constant{Pump}{}
+	\Constant{Controls}{}
+}
+\AXIOMS{
+	\Axiom{axm0}{false}{$finite(Sensor) \land{} finite(Actuator)$}{}
+	\Axiom{axm1}{false}{$\forall{}sb\qdot{}(sb\in{} SteamBoiler \limp{} card(SteamBoilerActuators[\{sb\}])=1)$}{}
+	\Axiom{axm2}{false}{$\forall{}sb\qdot{}(sb\in{} SteamBoiler \limp{} card(SteamBoilerSensors[\{sb\}])=3)$}{}
+	\Axiom{axm6}{false}{$partition(Sensor,WaterUnit,PumpController,SteamUnit)$}{}
+	\Axiom{axm4}{false}{$SU \in{} SteamUnit$}{}
+	\Axiom{axm5}{false}{$SteamUnit = \{SU\}$}{}
+	\Axiom{axm7}{false}{$WU \in{} WaterUnit$}{}
+	\Axiom{axm8}{false}{$WaterUnit = \{WU\}$}{}
+	\Axiom{axm10}{false}{$PC \in{} PumpController$}{}
+	\Axiom{axm11}{false}{$PumpController = \{PC\}$}{}
+	\Axiom{axm12}{false}{$Pump \subseteq{}  Actuator$}{}
+	\Axiom{axm13}{false}{$P \in{} Pump$}{}
+	\Axiom{axm14}{false}{$Pump = \{P\}$}{}
+	\Axiom{axm15}{false}{$Controls \in{} Pump \tbij{} PumpController$}{}
+	\Axiom{axm16}{false}{$Controls = \{P\mapsto{} PC\}$}{}
+	\Axiom{axm17}{false}{$SteamBoilerActuators = \{SB\mapsto{} P\}$}{}
+	\Axiom{axm18}{false}{$SteamBoilerSensors = \{SB\mapsto{} WU, SB\mapsto{}SU, SB\mapsto{}PC\}$}{}
+}
+\END
 \MultiHeader{MACHINE}{steam\_boiler\_controller}
 \MACHINE{steam\_boiler\_controller}{}{steam\_boiler\_controller\_context}{}
 \VARIABLES{
@@ -99,6 +132,10 @@
 	\Invariant{inv5}{false}{$sensorInput \in{} Sensor \tfun{}   \nat{}$}{}
 	\Invariant{p1,4}{false}{$\forall{}sb\qdot{}((sb\in{}SteamBoiler \land{} operatingMode(sb)=normal) \limp{} waterLevel(sb)\in{} Min1\upto{}Max1)$}{}
 	\Invariant{p1,5}{false}{$\forall{}sb\qdot{}((sb\in{}SteamBoiler \land{} operatingMode(sb)\in{}\{degraded,rescue\}) \limp{} waterLevel(sb)\in{} Min2\upto{}Max2)$}{}
+	\Invariant{t1}{true}{$\\\forall{}wlvl,values\qdot{}((\\~ 						(wlvl \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(operatingMode(SB)=normal)))\\~ 						\land{} (values \in{} (SteamBoilerSensors[\{SB\}]\binter{} sensorState\converse{}[\{nondefective\}])\tfun{} \nat{})\\~ 						) \limp{}\\~ 						(wlvl \in{} \nat{})\\~ 						)$}{}
+	\Invariant{t2}{true}{$\\(\forall{}mode\qdot{}(\\~ 						(mode \in{} Data\_Set\_1)\\~ 						\land{} (waterLevel(SB) \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(mode=normal)))\\~ 						)) \limp{}\\~ 						(\exists{}wlvl\qdot{}(wlvl \in{} \nat{}))$}{}
+	\Invariant{t3}{true}{$\\(\forall{}actions\qdot{}(\\~ 						(actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} Data\_Set\_3)\\~ 						)) \limp{}\\~ 						(\exists{}wlvl\qdot{}(wlvl \in{} \nat{}))$}{}
+	\Invariant{t4}{true}{$\\\forall{}wlvl,values,mode,actions\qdot{}((\\~ 						(wlvl \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(operatingMode(SB)=normal)))\\~ 						\land{} (values \in{} (SteamBoilerSensors[\{SB\}]\binter{} sensorState\converse{}[\{nondefective\}])\tfun{} \nat{})\\~ 						\land{}(mode \in{} Data\_Set\_1)\\~ 						\land{} (waterLevel(SB) \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(mode=normal)))\\~ 						\land{} (actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} Data\_Set\_3)\\~ 						) \limp{}\\~ 						(wlvl = wlvl)\\~ 						)$}{}
 }
 \EVENTS{
 \INITIALISATION{false}{}{
@@ -118,7 +155,7 @@
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$wlvl \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(operatingMode(SB)=normal))$}{true}{}
-		\Guard{grd2}{false}{$values \in{} (SteamBoilerSensors[\{SB\}]\binter{} sensorState\converse{}[\{nondefective\}])\tfun{} \nat{}$}{true}{}
+		\Guard{grd2}{false}{$values \in{} (SteamBoilerSensors[\{SB\}]\binter{} sensorState\converse{}[\{nondefective\}])\pfun{} \nat{}$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
@@ -143,6 +180,109 @@
 	}
 	\GUARDS{true}{
 		\Guard{grd}{false}{$actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} Data\_Set\_3$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act2}{$actuatorOutput \bcmeq{}  actuatorOutput\ovl{} actions$}{true}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{steam\_boiler\_controller3}
+\MACHINE{steam\_boiler\_controller3}{steam\_boiler\_controller2}{steam\_boiler\_controller\_context3}{}
+\VARIABLES{
+	\Variable{waterLevel}{}
+	\Variable{operatingMode}{}
+	\Variable{sensorState}{}
+	\Variable{sensorInput}{}
+	\Variable{actuatorState}{}
+	\Variable{actuatorOutput}{}
+}
+\INVARIANTS{
+	\Invariant{p2,1}{false}{$sensorState(WU)=defective \limp{} operatingMode(SB) = rescue$}{}
+	\Invariant{p2,2}{false}{$(sensorState(WU)=nondefective \land{} defective \in{} sensorState[\{SU,PC\}]\bunion{}actuatorState[\{P\}]) \limp{} operatingMode(SB) = degraded$}{}
+	\Invariant{p2,3}{false}{$(sensorState[\{WU,PC,SU\}]=\{nondefective\} \land{} actuatorState(P)=nondefective) \limp{} operatingMode(SB) = normal$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$waterLevel \bcmeq{}  \{SB \mapsto{} Min1\}$}{true}{}
+		\Action{act2}{$operatingMode \bcmeq{}  \{SB \mapsto{} normal\}$}{true}{}
+		\Action{act3}{$sensorState \bcmeq{}  Sensor \cprod{} \{nondefective\}$}{true}{}
+		\Action{act4}{$actuatorState \bcmeq{}  Actuator \cprod{} \{nondefective\}$}{true}{}
+		\Action{act5}{$actuatorOutput \bcmin{} Actuator \tfun{}   Data\_Set\_3$}{true}{}
+		\Action{act6}{$sensorInput \bcmin{} Sensor \tfun{}   \nat{}$}{true}{}
+	}
+}
+\EVT{ReadWaterUnit}{false}{ordinary}{ReadInputs}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+		\Param{values}{true}{}
+		\Param{val}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$sensorState(WU)=nondefective$}{true}{}
+		\Guard{grd1}{false}{$val \in{} \nat{}$}{true}{}
+		\Guard{grd2}{false}{$values = \{WU\mapsto{}val\}$}{true}{}
+		\Guard{grd3}{false}{$wlvl = values(WU)$}{true}{}
+		\Guard{grd4}{false}{$wlvl \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(operatingMode(SB)=normal))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
+	}
+}
+\EVT{ReadInputsInRescueMode}{false}{ordinary}{ReadInputs}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+		\Param{values}{true}{}
+		\Param{val1}{true}{}
+		\Param{val2}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$sensorState(WU)=defective \land{} sensorState[\{SU, PC\}]=\{nondefective\}$}{true}{}
+		\Guard{grd1}{false}{$\{val1, val2\}\subseteq{}\nat{}$}{true}{}
+		\Guard{grd2}{false}{$values = \{SU\mapsto{}val1, PC\mapsto{}val2\}$}{true}{}
+		\Guard{grd3}{false}{$wlvl \in{} Min2\upto{}Max2$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
+	}
+}
+\EVT{ComputeNextSystemMode}{false}{ordinary}{ComputeNextSystemMode}{}{
+	\ANY{
+		\Param{mode}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$mode \in{} Data\_Set\_1$}{true}{}
+		\Guard{grd2}{false}{$waterLevel(SB) \in{} (\{TRUE \mapsto{} Min1\upto{}Max1, FALSE \mapsto{} Min2\upto{}Max2\})(bool(mode=normal))$}{true}{}
+		\Guard{grd3}{false}{$sensorState(WU)=defective \limp{} mode=rescue$}{true}{}
+		\Guard{grd4}{false}{$(sensorState(WU)=nondefective \land{} defective \in{} sensorState[\{SU,PC\}]\bunion{}actuatorState[\{P\}]) \limp{} mode = degraded$}{true}{}
+		\Guard{grd5}{false}{$(sensorState[\{WU,PC,SU\}]=\{nondefective\} \land{} actuatorState(P)=nondefective) \limp{} mode = normal$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act}{$operatingMode(SB) \bcmeq{}  mode$}{true}{}
+	}
+}
+\EVT{OpenPump}{false}{ordinary}{SendActionCommand}{}{
+	\ANY{
+		\Param{actions}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$waterLevel(SB) < (\{TRUE \mapsto{} Max1, FALSE \mapsto{} Max2\})(bool(operatingMode(SB)=normal))$}{true}{}
+		\Guard{grd1}{false}{$actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} \{open\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act2}{$actuatorOutput \bcmeq{}  actuatorOutput\ovl{} actions$}{true}{}
+	}
+}
+\EVT{ClosePump}{false}{ordinary}{SendActionCommand}{}{
+	\ANY{
+		\Param{actions}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$waterLevel(SB) > (\{TRUE \mapsto{} Min1, FALSE \mapsto{} Min2\})(bool(operatingMode(SB)=normal))$}{true}{}
+		\Guard{grd1}{false}{$actions \in{} (SteamBoilerActuators[\{SB\}]\binter{} actuatorState\converse{}[\{nondefective\}])\tfun{} \{close\}$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act2}{$actuatorOutput \bcmeq{}  actuatorOutput\ovl{} actions$}{true}{}
