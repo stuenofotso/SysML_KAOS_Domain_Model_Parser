@@ -3137,10 +3137,10 @@
 <org.eventb.core.prPred name="p15" org.eventb.core.predicate="partition(Component,System,Refinement)"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/act3/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="Component_Set,DomainModel_Set">
 <org.eventb.core.lang name="L"/>
@@ -4982,16 +4982,16 @@
 <org.eventb.core.prPred name="p19" org.eventb.core.predicate="¬o_DM∈Component"/>
 <org.eventb.core.prPred name="p9" org.eventb.core.predicate="partition(Component,System,Refinement)"/>
 <org.eventb.core.prPred name="p10" org.eventb.core.predicate="DM∈DomainModel"/>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/inv0_7/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx,px" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14" org.eventb.core.prSets="Component_Set,DomainModel_Set" org.eventb.core.psManual="true">
 <org.eventb.core.lang name="L"/>
@@ -5208,16 +5208,16 @@
 <org.eventb.core.prPred name="p43" org.eventb.core.predicate="¬DomainModel_parent_DomainModel(xx)∈dom(DomainModel_corresp_Component)">
 <org.eventb.core.prIdent name="xx" org.eventb.core.type="DomainModel_Set"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="inv0_7/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx,px" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2" org.eventb.core.prSets="Component_Set,DomainModel_Set">
 <org.eventb.core.lang name="L"/>
@@ -6998,14 +6998,14 @@
 <org.eventb.core.prPred name="p81" org.eventb.core.predicate="¬Equal2SetOf_OP=Equality_OP"/>
 <org.eventb.core.prPred name="p89" org.eventb.core.predicate="¬_NATURAL=_INTEGER"/>
 <org.eventb.core.prPred name="p83" org.eventb.core.predicate="¬Maplet_OP=Inversion_OP"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
 <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_1/NAT" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19" org.eventb.core.prSets="Component_Set,DataSet_Set,DataValue_Set,DomainModel_Set,Operator,RelationCharacteristics_Set,SetItem_Set,Set_Set">
 <org.eventb.core.lang name="L"/>
@@ -7478,15 +7478,15 @@
 <org.eventb.core.prPred name="p84" org.eventb.core.predicate="¬Equal2SetOf_OP=Equality_OP"/>
 <org.eventb.core.prPred name="p92" org.eventb.core.predicate="¬_NATURAL=_INTEGER"/>
 <org.eventb.core.prPred name="p86" org.eventb.core.predicate="¬Maplet_OP=Inversion_OP"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
 <org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/NAT" org.eventb.core.confidence="1000" org.eventb.core.prFresh="" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22" org.eventb.core.prSets="Component_Set,DataSet_Set,DataValue_Set,DomainModel_Set,Operator,RelationCharacteristics_Set,SetItem_Set,Set_Set">
 <org.eventb.core.lang name="L"/>
@@ -9743,32 +9743,32 @@
 <org.eventb.core.prExpr name="e3" org.eventb.core.expression="pxx">
 <org.eventb.core.prIdent name="pxx" org.eventb.core.type="DomainModel_Set"/>
 </org.eventb.core.prExpr>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
-<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
-<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
-<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r24" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
 <org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
-<org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.exF"/>
+<org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
 <org.eventb.core.prReas name="r19" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
-<org.eventb.core.prReas name="r25" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
-<org.eventb.core.prReas name="r15" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
-<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
-<org.eventb.core.prReas name="r24" org.eventb.core.prRID="org.eventb.core.seqprover.locEq"/>
-<org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
+<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r25" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
 <org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+<org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.exF"/>
+<org.eventb.core.prReas name="r15" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
+<org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/inv0_8/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx,pxx,ae,ae1,ae0" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25" org.eventb.core.prSets="Component_Set,DataSet_Set,DataValue_Set,DomainModel_Set,Operator,RelationCharacteristics_Set,SetItem_Set,Set_Set" org.eventb.core.psManual="true">
 <org.eventb.core.lang name="L"/>
@@ -11153,30 +11153,30 @@
 <org.eventb.core.prExpr name="e1" org.eventb.core.expression="pxx">
 <org.eventb.core.prIdent name="pxx" org.eventb.core.type="DomainModel_Set"/>
 </org.eventb.core.prExpr>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
+<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
 <org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
 <org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
-<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
-<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
-<org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
 <org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
+<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
 <org.eventb.core.prReas name="r19" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
-<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
+<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
+<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
 <org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
 <org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
-<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
+<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.falseHyp"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="inv0_9/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="o_xx,o_pxx" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25" org.eventb.core.prSets="Attribute_Maplet_Set,Attribute_Set,Component_Set,Concept_Set,Constant_Set,DataSet_Set,DataValue_Set,DomainModel_Set,Individual_Set,LogicFormula_Set,Operator,RelationCharacteristics_Set,Relation_Maplet_Set,Relation_Set,SetItem_Set,Set_Set,Variable_Set">
 <org.eventb.core.lang name="L"/>
@@ -13171,29 +13171,29 @@
 <org.eventb.core.prExpr name="e4" org.eventb.core.expression="o_pxx">
 <org.eventb.core.prIdent name="o_pxx" org.eventb.core.type="Component_Set"/>
 </org.eventb.core.prExpr>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
-<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
-<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
-<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
 <org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
-<org.eventb.core.prReas name="r19" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
-<org.eventb.core.prReas name="r14" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
 <org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.convRewrites"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
+<org.eventb.core.prReas name="r14" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
+<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
+<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
 <org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
 <org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
-<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r19" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/inv0_9/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="o_xx,ae,o_pxx,ae1,ae0" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25" org.eventb.core.prSets="Component_Set,DataSet_Set,DataValue_Set,DomainModel_Set,Operator,RelationCharacteristics_Set,SetItem_Set,Set_Set" org.eventb.core.psManual="true">
 <org.eventb.core.lang name="L"/>
@@ -14472,31 +14472,31 @@
 <org.eventb.core.prExpr name="e0" org.eventb.core.expression="o_pxx">
 <org.eventb.core.prIdent name="o_pxx" org.eventb.core.type="Component_Set"/>
 </org.eventb.core.prExpr>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
-<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.convRewrites"/>
+<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
 <org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
 <org.eventb.core.prReas name="r22" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
-<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
-<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
-<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.convRewrites"/>
-<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
-<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
-<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
-<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
 <org.eventb.core.prReas name="r19" org.eventb.core.prRID="org.eventb.core.seqprover.allD"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
-<org.eventb.core.prReas name="r24" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
-<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
+<org.eventb.core.prReas name="r18" org.eventb.core.prRID="org.eventb.core.seqprover.ri"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
+<org.eventb.core.prReas name="r23" org.eventb.core.prRID="org.eventb.core.seqprover.genMPL3"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r24" org.eventb.core.prRID="org.eventb.core.seqprover.disjE"/>
 <org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
+<org.eventb.core.prReas name="r20" org.eventb.core.prRID="org.eventb.core.seqprover.hyp"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r15" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
+<org.eventb.core.prReas name="r21" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="inv0_10/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="DomainModel_Set">
 <org.eventb.core.lang name="L"/>
@@ -17554,24 +17554,24 @@
 </org.eventb.core.prPred>
 <org.eventb.core.prExpr name="e0" org.eventb.core.expression="Refinement"/>
 <org.eventb.core.prExpr name="e1" org.eventb.core.expression="ran({DM} ⩤ DomainModel_corresp_Component)∪{o_DM}"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
-<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
-<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
-<org.eventb.core.prReas name="r15" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
-<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
-<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
 <org.eventb.core.prReas name="r14" org.eventb.core.prRID="org.eventb.core.seqprover.rn"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalML:1"/>
+<org.eventb.core.prReas name="r13" org.eventb.core.prRID="org.eventb.core.seqprover.rmL1"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r16" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.ae"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r15" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
+<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
 <org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
 <org.eventb.core.prReas name="r11" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
-<org.eventb.core.prReas name="r17" org.eventb.core.prRID="org.eventb.core.seqprover.partitionRewrites"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r12" org.eventb.core.prRID="org.eventb.core.seqprover.mngHyp"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.cut"/>
 </org.eventb.core.prProof>
 <org.eventb.core.prProof name="rule_2/inv0_11/INV" org.eventb.core.confidence="1000" org.eventb.core.prFresh="o_xx,o_pxx" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4,p5,p6,p7,p8,p9,p10" org.eventb.core.prSets="Component_Set,DomainModel_Set" org.eventb.core.psManual="true">
 <org.eventb.core.lang name="L"/>
@@ -17777,16 +17777,16 @@
 <org.eventb.core.prPred name="p47" org.eventb.core.predicate="¬o_xx=o_DM">
 <org.eventb.core.prIdent name="o_xx" org.eventb.core.type="Component_Set"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
 <org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
 <org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
-<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
+<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
 <org.eventb.core.prReas name="r10" org.eventb.core.prRID="org.eventb.core.seqprover.funImgSimplifies:0"/>
 <org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.relOvrRewrites"/>
-<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
 <org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
-<org.eventb.core.prReas name="r8" org.eventb.core.prRID="org.eventb.core.seqprover.funOvr:1"/>
-<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.domRanUnionDistRewrites"/>
-<org.eventb.core.prReas name="r9" org.eventb.core.prRID="com.clearsy.atelierb.provers.core.externalPP:1"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.he:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
 </org.eventb.core.prProof>
 </org.eventb.core.prFile>
