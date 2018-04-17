@@ -294,26 +294,20 @@
 \MACHINE{RescueSensors}{steam\_boiler\_controller3}{steam\_boiler\_controller\_context3}{}
 \VARIABLES{
 	\Variable{waterLevel}{}
-	\Variable{operatingMode}{}
 	\Variable{sensorState}{}
 	\Variable{sensorInput}{}
-	\Variable{actuatorState}{}
-	\Variable{actuatorOutput}{}
-	\Variable{flag}{}
+	\Variable{measures}{}
 }
 \INVARIANTS{
-	\Invariant{inv}{false}{$flag \in{} \{-1, 0, 1\}$}{}
+	\Invariant{inv}{false}{$measures \in{} \{SU, PC\} \pfun{}   \nat{}$}{}
 }
 \EVENTS{
 \INITIALISATION{false}{}{
 	\ACTIONS{false}{
 		\Action{act1}{$waterLevel \bcmeq{}  \{SB \mapsto{} Min1\}$}{true}{}
-		\Action{act2}{$operatingMode \bcmeq{}  \{SB \mapsto{} normal\}$}{true}{}
-		\Action{act3}{$sensorState \bcmeq{}  Sensor \cprod{} \{nondefective\}$}{true}{}
-		\Action{act4}{$actuatorState \bcmeq{}  Actuator \cprod{} \{nondefective\}$}{true}{}
-		\Action{act5}{$actuatorOutput \bcmin{} Actuator \tfun{}   Data\_Set\_3$}{true}{}
-		\Action{act6}{$sensorInput \bcmin{} Sensor \tfun{}   \nat{}$}{true}{}
-		\Action{act7}{$flag \bcmeq{} -1$}{true}{}
+		\Action{act2}{$sensorState \bcmeq{}  Sensor \cprod{} \{nondefective\}$}{true}{}
+		\Action{act3}{$sensorInput \bcmin{} Sensor \tfun{}   \nat{}$}{true}{}
+		\Action{act4}{$measures \bcmeq{} \emptyset{}$}{true}{}
 	}
 }
 \EVT{ReadSteamUnit}{false}{ordinary}{ReadInputsInRescueMode}{}{
@@ -326,13 +320,14 @@
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$sensorState(WU)=defective \land{} sensorState[\{SU, PC\}]=\{nondefective\}$}{true}{}
 		\Guard{grd1}{false}{$\{val1, val2\}\subseteq{}\nat{}$}{true}{}
-		\Guard{grd2}{false}{$values = \{SU\mapsto{}val1\}$}{true}{}
-		\Guard{grd3}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(flag=1))$}{true}{}
+		\Guard{grd2}{false}{$SU \notin{} dom(measures)$}{true}{}
+		\Guard{grd3}{false}{$values = \{SU\mapsto{}val1\}$}{true}{}
+		\Guard{grd4}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(PC \in{} dom(measures)))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
 		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
-		\Action{act3}{$flag \bcmeq{}  \{TRUE\mapsto{}flag+1, FALSE \mapsto{} -1\}(bool(flag<1))$}{true}{}
+		\Action{act3}{$measures \bcmeq{}  \{TRUE\mapsto{}\emptyset{}, FALSE \mapsto{} values\}(bool(PC \in{} dom(measures)))$}{true}{}
 	}
 }
 \EVT{ReadPumpController}{false}{ordinary}{ReadInputsInRescueMode}{}{
@@ -345,13 +340,14 @@
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$sensorState(WU)=defective \land{} sensorState[\{SU, PC\}]=\{nondefective\}$}{true}{}
 		\Guard{grd1}{false}{$\{val1, val2\}\subseteq{}\nat{}$}{true}{}
-		\Guard{grd2}{false}{$values = \{PC\mapsto{}val2\}$}{true}{}
-		\Guard{grd3}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(flag=1))$}{true}{}
+		\Guard{grd2}{false}{$PC \notin{} dom(measures)$}{true}{}
+		\Guard{grd3}{false}{$values = \{PC\mapsto{}val2\}$}{true}{}
+		\Guard{grd4}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(SU \in{} dom(measures)))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
 		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
-		\Action{act3}{$flag \bcmeq{}  \{TRUE\mapsto{}flag+1, FALSE \mapsto{} -1\}(bool(flag<1))$}{true}{}
+		\Action{act3}{$measures \bcmeq{}  \{TRUE\mapsto{}\emptyset{}, FALSE \mapsto{} values\}(bool(SU \in{} dom(measures)))$}{true}{}
 	}
 }
 }

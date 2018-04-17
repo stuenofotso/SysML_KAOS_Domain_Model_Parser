@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <org.eventb.core.psFile>
-<org.eventb.core.psStatus name="INITIALISATION/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="5" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="ReadSteamUnit/grd3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadSteamUnit/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadSteamUnit/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="ReadSteamUnit/grd3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadSteamUnit/act3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadPumpController/grd3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadPumpController/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadPumpController/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadPumpController/grd3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="ReadPumpController/act3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="6" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="INITIALISATION/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act3/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="INITIALISATION/act6/SIM" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadSteamUnit/grd4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadSteamUnit/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadSteamUnit/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadSteamUnit/grd3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadSteamUnit/act3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadPumpController/grd4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadPumpController/inv/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadPumpController/grd2/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="ReadPumpController/grd3/GRD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="ReadPumpController/act3/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="14" org.eventb.core.psManual="true"/>
 </org.eventb.core.psFile>
