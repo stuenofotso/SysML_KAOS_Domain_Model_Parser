@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\SingleHeader{RescueSensors}
+\MACHINE{RescueSensors}{steam\_boiler\_controller3}{steam\_boiler\_controller\_context3}{}
+\VARIABLES{
+	\Variable{waterLevel}{}
+	\Variable{operatingMode}{}
+	\Variable{sensorState}{}
+	\Variable{sensorInput}{}
+	\Variable{actuatorState}{}
+	\Variable{actuatorOutput}{}
+	\Variable{flag}{}
+}
+\INVARIANTS{
+	\Invariant{inv}{false}{$flag \in{} \{-1, 0, 1\}$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$waterLevel \bcmeq{}  \{SB \mapsto{} Min1\}$}{true}{}
+		\Action{act2}{$operatingMode \bcmeq{}  \{SB \mapsto{} normal\}$}{true}{}
+		\Action{act3}{$sensorState \bcmeq{}  Sensor \cprod{} \{nondefective\}$}{true}{}
+		\Action{act4}{$actuatorState \bcmeq{}  Actuator \cprod{} \{nondefective\}$}{true}{}
+		\Action{act5}{$actuatorOutput \bcmin{} Actuator \tfun{}   Data\_Set\_3$}{true}{}
+		\Action{act6}{$sensorInput \bcmin{} Sensor \tfun{}   \nat{}$}{true}{}
+		\Action{act7}{$flag \bcmeq{} -1$}{true}{}
+	}
+}
+\EVT{ReadSteamUnit}{false}{ordinary}{ReadInputsInRescueMode}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+		\Param{values}{true}{}
+		\Param{val1}{true}{}
+		\Param{val2}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$sensorState(WU)=defective \land{} sensorState[\{SU, PC\}]=\{nondefective\}$}{true}{}
+		\Guard{grd1}{false}{$\{val1, val2\}\subseteq{}\nat{}$}{true}{}
+		\Guard{grd2}{false}{$values = \{SU\mapsto{}val1\}$}{true}{}
+		\Guard{grd3}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(flag=1))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
+		\Action{act3}{$flag \bcmeq{}  \{TRUE\mapsto{}flag+1, FALSE \mapsto{} -1\}(bool(flag<1))$}{true}{}
+	}
+}
+\EVT{ReadPumpController}{false}{ordinary}{ReadInputsInRescueMode}{}{
+	\ANY{
+		\Param{wlvl}{true}{}
+		\Param{values}{true}{}
+		\Param{val1}{true}{}
+		\Param{val2}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$sensorState(WU)=defective \land{} sensorState[\{SU, PC\}]=\{nondefective\}$}{true}{}
+		\Guard{grd1}{false}{$\{val1, val2\}\subseteq{}\nat{}$}{true}{}
+		\Guard{grd2}{false}{$values = \{PC\mapsto{}val2\}$}{true}{}
+		\Guard{grd3}{false}{$wlvl \in{}  \{TRUE\mapsto{}Min2\upto{}Max2, FALSE\mapsto{}\{waterLevel(SB)\}\}(bool(flag=1))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$waterLevel(SB) \bcmeq{}  wlvl$}{true}{}
+		\Action{act2}{$sensorInput \bcmeq{}  sensorInput\ovl{} values$}{true}{}
+		\Action{act3}{$flag \bcmeq{}  \{TRUE\mapsto{}flag+1, FALSE \mapsto{} -1\}(bool(flag<1))$}{true}{}
+	}
+}
+}
+\END
+\end{document}

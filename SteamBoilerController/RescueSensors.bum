@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" org.eventb.texttools.text_lastmodified="1523975134725" org.eventb.texttools.text_representation="machine RescueSensors refines steam_boiler_controller3&#10;sees steam_boiler_controller_context3&#10;&#10;variables waterLevel operatingMode sensorState sensorInput actuatorState actuatorOutput flag&#10;&#10;invariants&#10;&#9;@inv flag ∈ {−1, 0, 1}&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @act1 waterLevel ≔  {SB ↦ Min1}&#10;      @act2 operatingMode ≔  {SB ↦ normal}&#10;      @act3 sensorState ≔  Sensor × {nondefective}&#10;      @act4 actuatorState ≔  Actuator × {nondefective}&#10;      @act5 actuatorOutput :∈ Actuator →   Data_Set_3&#10;      @act6 sensorInput :∈ Sensor →   ℕ&#10;      @act7 flag ≔ −1&#10;  end&#10;&#10;&#10;event ReadSteamUnit refines ReadInputsInRescueMode&#10;    any wlvl values val1 val2&#10;    where&#10;      @grd0 sensorState(WU)=defective ∧ sensorState[{SU, PC}]={nondefective}&#10;      @grd1 {val1, val2}⊆ℕ&#10;      @grd2 values = {SU↦val1}&#10;      @grd3 wlvl ∈  {TRUE↦Min2‥Max2, FALSE↦{waterLevel(SB)}}(bool(flag=1))&#10;    then&#10;      @act1 waterLevel(SB) ≔  wlvl&#10;      @act2 sensorInput ≔  sensorInput values&#10;      @act3 flag ≔  {TRUE↦flag+1, FALSE ↦ −1}(bool(flag&lt;1))&#10;  end&#10;&#10;  event ReadPumpController refines ReadInputsInRescueMode&#10;    any wlvl values val1 val2&#10;    where&#10;      @grd0 sensorState(WU)=defective ∧ sensorState[{SU, PC}]={nondefective}&#10;      @grd1 {val1, val2}⊆ℕ&#10;      @grd2 values = {PC↦val2}&#10;      @grd3 wlvl ∈  {TRUE↦Min2‥Max2, FALSE↦{waterLevel(SB)}}(bool(flag=1))&#10;    then&#10;      @act1 waterLevel(SB) ≔  wlvl&#10;      @act2 sensorInput ≔  sensorInput values&#10;      @act3 flag ≔  {TRUE↦flag+1, FALSE ↦ −1}(bool(flag&lt;1))&#10;  end&#10;&#10;end&#10;" version="5">
+<org.eventb.core.refinesMachine name="_ekbt0D9cEei-S8r9FZ5NsA" org.eventb.core.target="steam_boiler_controller3"/>
+<org.eventb.core.seesContext name="_XJL2ARv2Eei4EKRkJdis4w" org.eventb.core.target="steam_boiler_controller_context3"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_f4X3sRvKEei4EKRkJdis4w" org.eventb.core.assignment="waterLevel ≔  {SB ↦ Min1}" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="_f4YexRvKEei4EKRkJdis4w" org.eventb.core.assignment="operatingMode ≔  {SB ↦ normal}" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_8Rp-cRvrEei4EKRkJdis4w" org.eventb.core.assignment="sensorState ≔  Sensor × {nondefective}" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="_8Rp-chvrEei4EKRkJdis4w" org.eventb.core.assignment="actuatorState ≔  Actuator × {nondefective}" org.eventb.core.label="act4"/>
+<org.eventb.core.action name="_8Rp-cxvrEei4EKRkJdis4w" org.eventb.core.assignment="actuatorOutput :∈ Actuator →   Data_Set_3" org.eventb.core.label="act5"/>
+<org.eventb.core.action name="_8Rp-dBvrEei4EKRkJdis4w" org.eventb.core.assignment="sensorInput :∈ Sensor →   ℕ" org.eventb.core.label="act6"/>
+<org.eventb.core.action name="_8RrMkhvrEei4EKRkJdis4w" org.eventb.core.assignment="flag ≔ −1" org.eventb.core.label="act7"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_f4YewBvKEei4EKRkJdis4w" org.eventb.core.identifier="waterLevel"/>
+<org.eventb.core.event name="_f4YewhvKEei4EKRkJdis4w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ReadSteamUnit">
+<org.eventb.core.refinesEvent name="_ekcU4D9cEei-S8r9FZ5NsA" org.eventb.core.target="ReadInputsInRescueMode"/>
+<org.eventb.core.parameter name="_f4YewxvKEei4EKRkJdis4w" org.eventb.core.identifier="wlvl"/>
+<org.eventb.core.guard name="_f4YexBvKEei4EKRkJdis4w" org.eventb.core.label="grd0" org.eventb.core.predicate="sensorState(WU)=defective ∧ sensorState[{SU, PC}]={nondefective}"/>
+<org.eventb.core.parameter name="_8RrMkBvrEei4EKRkJdis4w" org.eventb.core.identifier="values"/>
+<org.eventb.core.guard name="_8RrMkRvrEei4EKRkJdis4w" org.eventb.core.label="grd1" org.eventb.core.predicate="{val1, val2}⊆ℕ"/>
+<org.eventb.core.action name="_8RrMkxvrEei4EKRkJdis4w" org.eventb.core.assignment="waterLevel(SB) ≔  wlvl" org.eventb.core.label="act1"/>
+<org.eventb.core.guard name="_8RrzqxvrEei4EKRkJdis4w" org.eventb.core.label="grd2" org.eventb.core.predicate="values = {SU↦val1}"/>
+<org.eventb.core.guard name="_8RsasxvrEei4EKRkJdis4w" org.eventb.core.label="grd3" org.eventb.core.predicate="wlvl ∈  {TRUE↦Min2‥Max2, FALSE↦{waterLevel(SB)}}(bool(flag=1))"/>
+<org.eventb.core.parameter name="_8RrzqhvrEei4EKRkJdis4w" org.eventb.core.identifier="val1"/>
+<org.eventb.core.parameter name="_8RsashvrEei4EKRkJdis4w" org.eventb.core.identifier="val2"/>
+<org.eventb.core.action name="_8RsasBvrEei4EKRkJdis4w" org.eventb.core.assignment="sensorInput ≔  sensorInput values" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_8RsatBvrEei4EKRkJdis4w" org.eventb.core.assignment="flag ≔  {TRUE↦flag+1, FALSE ↦ −1}(bool(flag&lt;1))" org.eventb.core.label="act3"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_8RrMlBvrEei4EKRkJdis4w" org.eventb.core.identifier="operatingMode"/>
+<org.eventb.core.variable name="_8RrMlRvrEei4EKRkJdis4w" org.eventb.core.identifier="sensorState"/>
+<org.eventb.core.variable name="_8RrzoBvrEei4EKRkJdis4w" org.eventb.core.identifier="sensorInput"/>
+<org.eventb.core.variable name="_8RrzoRvrEei4EKRkJdis4w" org.eventb.core.identifier="actuatorState"/>
+<org.eventb.core.variable name="_8RrzohvrEei4EKRkJdis4w" org.eventb.core.identifier="actuatorOutput"/>
+<org.eventb.core.event name="_8RrzqRvrEei4EKRkJdis4w" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ReadPumpController">
+<org.eventb.core.refinesEvent name="_ekdjAD9cEei-S8r9FZ5NsA" org.eventb.core.target="ReadInputsInRescueMode"/>
+<org.eventb.core.guard name="_pxLeIBvxEei4EKRkJdis4w" org.eventb.core.label="grd0" org.eventb.core.predicate="sensorState(WU)=defective ∧ sensorState[{SU, PC}]={nondefective}"/>
+<org.eventb.core.guard name="_EgkbcBv-Eei4EKRkJdis4w" org.eventb.core.label="grd1" org.eventb.core.predicate="{val1, val2}⊆ℕ"/>
+<org.eventb.core.guard name="_EgkbcRv-Eei4EKRkJdis4w" org.eventb.core.label="grd2" org.eventb.core.predicate="values = {PC↦val2}"/>
+<org.eventb.core.parameter name="_Egkbcxv-Eei4EKRkJdis4w" org.eventb.core.identifier="wlvl"/>
+<org.eventb.core.parameter name="_EglCghv-Eei4EKRkJdis4w" org.eventb.core.identifier="values"/>
+<org.eventb.core.guard name="_EgkbdBv-Eei4EKRkJdis4w" org.eventb.core.label="grd3" org.eventb.core.predicate="wlvl ∈  {TRUE↦Min2‥Max2, FALSE↦{waterLevel(SB)}}(bool(flag=1))"/>
+<org.eventb.core.parameter name="_ikGJsEG_Eei-S8r9FZ5NsA" org.eventb.core.identifier="val1"/>
+<org.eventb.core.parameter name="_8jiTgEJJEei-S8r9FZ5NsA" org.eventb.core.identifier="val2"/>
+<org.eventb.core.action name="_zFRz4EJKEei-S8r9FZ5NsA" org.eventb.core.assignment="waterLevel(SB) ≔  wlvl" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="_MQjJgEJLEei-S8r9FZ5NsA" org.eventb.core.assignment="sensorInput ≔  sensorInput values" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_MQjJgUJLEei-S8r9FZ5NsA" org.eventb.core.assignment="flag ≔  {TRUE↦flag+1, FALSE ↦ −1}(bool(flag&lt;1))" org.eventb.core.label="act3"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_zFSa8EJKEei-S8r9FZ5NsA" org.eventb.core.identifier="flag"/>
+<org.eventb.core.invariant name="_zFSa8UJKEei-S8r9FZ5NsA" org.eventb.core.label="inv" org.eventb.core.predicate="flag ∈ {−1, 0, 1}"/>
+</org.eventb.core.machineFile>

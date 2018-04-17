@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="4">
-<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="1">
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="SteamBoiler" org.eventb.core.type="ℙ(SteamBoiler)"/>
 <org.eventb.core.poIdentifier name="SB" org.eventb.core.type="SteamBoiler"/>
 <org.eventb.core.poPredicate name="SteamBoiles" org.eventb.core.predicate="SB∈SteamBoiler" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context.buc|org.eventb.core.contextFile#steam_boiler_controller_context|org.eventb.core.axiom#_-5Cv4BvJEei4EKRkJdis4w"/>
@@ -45,25 +45,25 @@
 <org.eventb.core.poIdentifier name="WU" org.eventb.core.type="Sensor"/>
 <org.eventb.core.poIdentifier name="WaterUnit" org.eventb.core.type="ℙ(Sensor)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="axm1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="3">
+<org.eventb.core.poSequent name="axm1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context3"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀sb⦂SteamBoiler·sb∈SteamBoiler⇒finite(SteamBoilerActuators[{sb}])" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9ahvPEei4EKRkJdis4w"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9ahvPEei4EKRkJdis4w"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context3"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="axm2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="3">
+<org.eventb.core.poSequent name="axm2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context4"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀sb⦂SteamBoiler·sb∈SteamBoiler⇒finite(SteamBoilerSensors[{sb}])" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9axvPEei4EKRkJdis4w"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9axvPEei4EKRkJdis4w"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context4"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="HYPsteam_boiler_controller_context3" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="3">
+<org.eventb.core.poPredicateSet name="HYPsteam_boiler_controller_context3" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="finite(Sensor)∧finite(Actuator)" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_-5Cv4BvJEei4EKRkJdis4w"/>
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poPredicateSet name="HYPsteam_boiler_controller_context4" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context3" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="∀sb⦂SteamBoiler·sb∈SteamBoiler⇒card(SteamBoilerActuators[{sb}])=1" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9ahvPEei4EKRkJdis4w"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context4" org.eventb.core.poStamp="4">
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SteamBoilerController/steam_boiler_controller_context3.bpo|org.eventb.core.poFile#steam_boiler_controller_context3|org.eventb.core.poPredicateSet#HYPsteam_boiler_controller_context4" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="∀sb⦂SteamBoiler·sb∈SteamBoiler⇒card(SteamBoilerSensors[{sb}])=3" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doK9axvPEei4EKRkJdis4w"/>
 <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="partition(Sensor,WaterUnit,PumpController,SteamUnit)" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doLkcBvPEei4EKRkJdis4w"/>
 <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="SU∈SteamUnit" org.eventb.core.source="/SteamBoilerController/steam_boiler_controller_context3.buc|org.eventb.core.contextFile#steam_boiler_controller_context3|org.eventb.core.axiom#_doLkcRvPEei4EKRkJdis4w"/>
