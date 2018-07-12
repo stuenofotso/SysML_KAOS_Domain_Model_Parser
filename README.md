@@ -17,7 +17,7 @@ This folder contains the source of the Event-B specification, under Rodin, of th
 
 ## SysMLKaosDomainModeling :
 This folder contains the source of the tool supporting the SysML/KAOS domain modeling language. It allows the construction of
-domain ontologies  and generates the corresponding B System specifications. It is build through Jetbrains Meta Programming System, a tool to design domain specific languages using language-oriented programming.
+domain ontologies  and generates the corresponding B System specifications. It is build through Jetbrains Meta Programming System, a tool to design domain specific languages using language-oriented programming. Please, open the folder for additional informations.
 
 ## Domain_Model_Formalization-formal_syntax_for_rules_EventB_specification_full_version.pdf :
 This file fully presents the SysML/KAOS domain modeling language, the context surrounding it and the rules for the translation of domain models to B System specifications, along with their Event-B expression.
