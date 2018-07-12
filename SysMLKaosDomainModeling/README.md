@@ -6,12 +6,19 @@ JetBrains MPS is an efficient and reliable development tool used to build domain
 To use the SysML/KAOS domain modeling language and create SysML/KAOS domain models, you need to download the content of this folder. It defines the structure (concepts and their properties, childrens and references), constraints, behavior, editors and generators of the language.
 
 To create a SysML/KAOS domain model,
+
     - Open JetBrains MPS;
+    
     - Clic to Open a Project and select the folder SysMLKaosDomainModeling (this folder downloaded on your computer);
+    
     - Right clic on the root of the 'Logical View' (SysMLKaosDomainModeling) and select new > Solution to create a new Jetbrains MPS solution which will contain the domain models; give a name to the solution, choose its location and validate;
+    
     - Right clic on the solution in  'Logical View' and select new > Model to create a model which will contain domain models of a specific system; give a name to the model and validate;
+    
     - A popup window will appear allowing you to add dependencies and  languages which will be used by the model; select tab 'Used Languages'  and clic to add a used language; select 'SysMLKaosDomainModeling' and validate;
+    
     - Right clic on tab model in  'Logical View' and select new > DomainModel to create a new domain model;
+    
     - A tab will appear allowing you to give a name to the domain model and to provide its elements (concepts, relations, predicates, etc.). To add an element, just clic in the corresponding section of the tab and press Enter. Once the domain model is sufficiently populated, right clic on the domain model in  'Logical View' and select 'Preview Generated Text' to access the generated java code that should be run to obtain the resulted B System specification. The java code is generated using a Jetbrains MPS implementation of  translation rules from SysML/KAOS domain models to B System specifications. 
     
     
