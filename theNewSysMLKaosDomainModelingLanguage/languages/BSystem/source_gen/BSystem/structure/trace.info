@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root>
+    <file name="ConceptPresentationAspectImpl.java">
+      <unit at="11,0,128,0" name="BSystem.structure.ConceptPresentationAspectImpl" />
+    </file>
+    <file name="IconContainer.java">
+      <unit at="7,0,11,0" name="BSystem.structure.IconContainer" />
+    </file>
+    <file name="LanguageConceptSwitch.java">
+      <unit at="10,0,52,0" name="BSystem.structure.LanguageConceptSwitch" />
+    </file>
+    <file name="StructureAspectDescriptor.java">
+      <unit at="14,0,188,0" name="BSystem.structure.StructureAspectDescriptor" />
+    </file>
+  </root>
+</debug-info>
+

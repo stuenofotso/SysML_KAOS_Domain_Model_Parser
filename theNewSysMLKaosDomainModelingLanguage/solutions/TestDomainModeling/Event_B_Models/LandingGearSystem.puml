@@ -1,0 +1,5 @@
+@startuml
+package LandingGearSystem <<Folder>> {
+LandingSet "3" -- "1" LandingGear : LGofLS
+}
+@enduml

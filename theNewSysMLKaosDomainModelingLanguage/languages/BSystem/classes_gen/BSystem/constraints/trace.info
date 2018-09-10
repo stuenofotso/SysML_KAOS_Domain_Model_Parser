@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="ConstraintsAspectDescriptor.java">
+      <unit at="13,0,31,0" name="BSystem.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:9bb48be0-54da-44bd-a9ec-bf297f37d826(BSystem.constraints)/1549159778497514876">
+    <file name="System_Constraints.java">
+      <node id="1549159778497514876" at="25,0,26,0" concept="7" trace="LOG" />
+      <node id="1549159778497514876" at="26,31,27,132" concept="8" />
+      <node id="1549159778497514876" at="31,90,32,131" concept="4" />
+      <node id="1549159778497514876" at="35,52,36,20" concept="5" />
+      <node id="1549159778497514876" at="39,116,40,20" concept="5" />
+      <node id="5795948090140673755" at="45,46,46,145" concept="1" />
+      <node id="5795948090138181394" at="47,11,48,200" concept="1" />
+      <node id="1549159778497520963" at="50,197,51,189" concept="1" />
+      <node id="1549159778497526978" at="53,197,54,185" concept="1" />
+      <node id="1549159778497526487" at="55,9,56,0" concept="6" />
+      <node id="1549159778497514876" at="60,56,61,42" concept="5" />
+      <node id="1549159778497514876" at="63,7,64,22" concept="5" />
+      <node id="1549159778497514876" at="26,0,29,0" concept="0" trace="System_Constraints#()V" />
+      <node id="5795948090140673755" at="44,47,47,11" concept="2" />
+      <node id="1549159778497516977" at="49,9,52,9" concept="2" />
+      <node id="1549159778497526976" at="52,9,55,9" concept="2" />
+      <node id="1549159778497514876" at="34,0,38,0" concept="3" trace="hasOwnOnReferenceSetHandler#()Z" />
+      <node id="1549159778497514876" at="38,0,42,0" concept="3" trace="validate#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1549159778497514876" at="58,0,63,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="5795948090138177372" at="43,119,49,9" concept="2" />
+      <node id="1549159778497514876" at="42,0,58,0" concept="3" trace="onReferenceSet#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1549159778497514876" at="32,131,63,7" concept="1" />
+      <node id="1549159778497514876" at="30,0,66,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1549159778497514876" at="26,31,27,132" />
+      <scope id="1549159778497514876" at="35,52,36,20" />
+      <scope id="1549159778497514876" at="39,116,40,20" />
+      <scope id="5795948090140673755" at="45,46,46,145" />
+      <scope id="1549159778497516979" at="50,197,51,189" />
+      <scope id="1549159778497526977" at="53,197,54,185" />
+      <scope id="1549159778497514876" at="60,56,61,42" />
+      <scope id="1549159778497514876" at="26,0,29,0" />
+      <scope id="1549159778497514876" at="34,0,38,0" />
+      <scope id="1549159778497514876" at="38,0,42,0">
+        <var name="newReferentNode" id="1549159778497514876" />
+        <var name="oldReferentNode" id="1549159778497514876" />
+        <var name="referenceNode" id="1549159778497514876" />
+      </scope>
+      <scope id="5795948090138177374" at="44,47,48,200" />
+      <scope id="1549159778497514876" at="58,0,63,0" />
+      <scope id="1549159778497514880" at="43,119,56,0" />
+      <scope id="1549159778497514876" at="42,0,58,0">
+        <var name="newReferentNode" id="1549159778497514876" />
+        <var name="oldReferentNode" id="1549159778497514876" />
+        <var name="referenceNode" id="1549159778497514876" />
+      </scope>
+      <scope id="1549159778497514876" at="31,90,64,22">
+        <var name="references" id="1549159778497514876" />
+      </scope>
+      <scope id="1549159778497514876" at="30,0,66,0" />
+      <unit id="1549159778497514876" at="61,19,61,41" name="BSystem.constraints.System_Constraints$1$1" />
+      <unit id="1549159778497514876" at="33,155,63,5" name="BSystem.constraints.System_Constraints$1" />
+      <unit id="1549159778497514876" at="24,0,67,0" name="BSystem.constraints.System_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:9bb48be0-54da-44bd-a9ec-bf297f37d826(BSystem.constraints)/6584746176826187649">
+    <file name="BSystemConcept_Constraints.java">
+      <node id="6584746176826187649" at="9,39,10,140" concept="8" />
+      <node id="6584746176826187649" at="9,0,12,0" concept="0" trace="BSystemConcept_Constraints#()V" />
+      <scope id="6584746176826187649" at="9,39,10,140" />
+      <scope id="6584746176826187649" at="9,0,12,0" />
+      <unit id="6584746176826187649" at="8,0,14,0" name="BSystem.constraints.BSystemConcept_Constraints" />
+    </file>
+  </root>
+</debug-info>
+
