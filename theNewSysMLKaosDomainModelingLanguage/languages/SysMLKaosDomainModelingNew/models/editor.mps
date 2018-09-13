@@ -24,6 +24,7 @@
       <concept id="1237375020029" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem" flags="ln" index="pj6Ft" />
       <concept id="1142886221719" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeCondition" flags="in" index="pkWqt" />
       <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
+      <concept id="1237385578942" name="jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" flags="ln" index="pVoyu" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
@@ -190,9 +191,6 @@
       <node concept="3F0A7n" id="5pTzie7ESR4" role="3EZMnx">
         <ref role="1NtTu8" to="rl8x:3mfMsnpdoMv" resolve="isVariable" />
       </node>
-      <node concept="3F0ifn" id="5pTzie7F6C8" role="3EZMnx">
-        <property role="3F0ifm" value="  " />
-      </node>
       <node concept="3F0ifn" id="5pTzie7F6Co" role="3EZMnx">
         <property role="3F0ifm" value="initial value" />
         <node concept="pkWqt" id="5pTzie7F6Cx" role="pqm2j">
@@ -206,6 +204,9 @@
               </node>
             </node>
           </node>
+        </node>
+        <node concept="pVoyu" id="5pTzieh5Oyi" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
       <node concept="1iCGBv" id="5pTzie7F7Vq" role="3EZMnx">
@@ -267,10 +268,9 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="3F0ifn" id="51Jm1hDpiby" role="3EZMnx">
-          <property role="3F0ifm" value="is variable" />
+          <property role="3F0ifm" value="is variable:" />
         </node>
         <node concept="3F0ifn" id="51Jm1hDpibz" role="3EZMnx">
-          <property role="3F0ifm" value=":" />
           <node concept="11L4FC" id="51Jm1hDpib$" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
@@ -281,16 +281,24 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
-        <node concept="3F0ifn" id="51Jm1hDpibB" role="3EZMnx">
-          <node concept="ljvvj" id="51Jm1hDpibC" role="3F10Kt">
+        <node concept="3F0ifn" id="5pTziehnFBA" role="3EZMnx">
+          <property role="3F0ifm" value="is an enumeration: " />
+        </node>
+        <node concept="3F0A7n" id="5pTziehnFCk" role="3EZMnx">
+          <ref role="1NtTu8" to="rl8x:3mfMsnpdoLR" resolve="isEnumeration" />
+        </node>
+        <node concept="3F0ifn" id="5pTziehCB9N" role="3EZMnx">
+          <node concept="pVoyu" id="5pTziehCBac" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
         </node>
         <node concept="3F0ifn" id="51Jm1hDpibD" role="3EZMnx">
-          <property role="3F0ifm" value="individuals" />
+          <property role="3F0ifm" value="individuals:" />
+          <node concept="pVoyu" id="5pTziehnFCI" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
         </node>
         <node concept="3F0ifn" id="51Jm1hDpibE" role="3EZMnx">
-          <property role="3F0ifm" value=":" />
           <node concept="11L4FC" id="51Jm1hDpibF" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
@@ -691,7 +699,7 @@
           </node>
         </node>
         <node concept="3F0ifn" id="1UOmw3hBqid" role="3EZMnx">
-          <property role="3F0ifm" value="relations" />
+          <property role="3F0ifm" value="associations" />
         </node>
         <node concept="3F0ifn" id="1UOmw3hBqie" role="3EZMnx">
           <property role="3F0ifm" value=":" />
@@ -703,7 +711,7 @@
           </node>
         </node>
         <node concept="3F2HdR" id="1UOmw3hBqih" role="3EZMnx">
-          <ref role="1NtTu8" to="rl8x:51Jm1hDioeB" resolve="relations" />
+          <ref role="1NtTu8" to="rl8x:51Jm1hDioeB" resolve="associations" />
           <node concept="l2Vlx" id="1UOmw3hBqii" role="2czzBx" />
           <node concept="pj6Ft" id="1UOmw3hBqij" role="3F10Kt">
             <property role="VOm3f" value="true" />

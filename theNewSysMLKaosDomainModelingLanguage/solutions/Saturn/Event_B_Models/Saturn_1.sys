@@ -1,0 +1,33 @@
+/* Saturn_1
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 13/09/2018
+*/
+
+SYSTEM
+Saturn_1
+
+
+SETS
+T_IN; T_OUT
+
+CONSTANTS
+inconst, outconst, FB
+
+VARIABLES
+in, out
+
+PROPERTIES
+inconst : T_IN &
+outconst : T_OUT &
+FB : T_IN --> T_OUT
+
+INVARIANT
+in : T_IN &
+out : T_OUT
+
+INITIALISATION
+in :: T_IN ||
+out :: T_OUT
+
+
+END

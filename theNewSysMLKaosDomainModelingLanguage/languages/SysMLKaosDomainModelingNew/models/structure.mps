@@ -99,7 +99,7 @@
     <node concept="1TJgyj" id="51Jm1hDioeB" role="1TKVEi">
       <property role="IQ2ns" value="5795948090138133415" />
       <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="relations" />
+      <property role="20kJfa" value="associations" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="51Jm1hDio9c" resolve="Association" />
     </node>

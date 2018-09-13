@@ -1,0 +1,24 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+
+package Saturn_1 <<Folder>> {
+	class T_IN <<concept>>  {
+	}
+	 object in <<individual>>  <<variable>> 
+	T_IN *-- in : individualOf 
+	 object inconst <<individual>> 
+	T_IN *-- inconst : individualOf 
+	class T_OUT <<concept>>  {
+	}
+	 object out <<individual>>  <<variable>> 
+	T_OUT *-- out : individualOf 
+	 object outconst <<individual>> 
+	T_OUT *-- outconst : individualOf 
+	T_IN "*" -- "1" T_OUT : FB > 
+}
+
+@enduml

@@ -60,10 +60,10 @@ public class map_DomainModel {
       pw.println("LGofLS");
 
       pw.println("\nPROPERTIES");
-      pw.println("LG1 : LandingGear &\nLS1 : LandingSet &\nLS2 : LandingSet &\nLS3 : LandingSet &\nG1 : Gear");
+      pw.println("LG1 : LandingGear &\nLS1 : LandingSet &\nLS2 : LandingSet &\nLS3 : LandingSet &\nG1 : Gear &\n//logical formula p1\n!(x1, x2). (((x1 : LandingGear & x2: LandingSet) => x2 |-> x1 : LGofLS))");
 
       pw.println("\nINVARIANT");
-      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\n//logical formula p1\n!(x1, x2). (((x1 : LandingGear & x2: LandingSet) => x2 |-> x1 : LGofLS))");
+      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS");
 
       pw.println("\nINITIALISATION");
       pw.println("LGofLS := {LS2|->LG1, LS3|->LG1, LS1|->LG1}");
@@ -73,11 +73,25 @@ public class map_DomainModel {
       pw.close();
 
       pwGraph.println("@startuml");
+
+      pwGraph.println("\nskinparam class {\n BackgroundColor<<association>> Darkorange \n BackgroundColor<<concept>>  Snow \n} ");
+
+
+
+      pwGraph.println("");
+
+
       pwGraph.println("package " + "LandingGearSystem" + " <<Folder>> {");
 
-      pwGraph.println("LandingSet \"3\" -- \"1\" LandingGear : LGofLS");
+      pwGraph.println("	class LandingGear <<concept>>  {\n	}\n	 object LG1 <<individual>> \n	LandingGear *-- LG1 : individualOf \n	class LandingSet <<concept>>  {\n	}\n	 object LS1 <<individual>> \n	LandingSet *-- LS1 : individualOf \n	 object LS2 <<individual>> \n	LandingSet *-- LS2 : individualOf \n	 object LS3 <<individual>> \n	LandingSet *-- LS3 : individualOf \n	class Gear <<concept>>  {\n	}\n	 object G1 <<individual>> \n	Gear *-- G1 : individualOf ");
+
+
+      pwGraph.println("	LandingSet \"3\" -- \"1\" LandingGear : > \n	 (LandingSet, LandingGear) .. LGofLS\n	 class LGofLS <<association>>  <<variable>>  {\n	}\n	 object _ <<maplet>> \n	LGofLS *-- _ : individualOf \n	 \"LS2 <-- _\" : antecedent \n	 \"LG1\" x-- \"_\" : image \n	 object _ <<maplet>> \n	LGofLS *-- _ : individualOf \n	 \"LS3 <-- _\" : antecedent \n	 \"LG1\" x-- \"_\" : image \n	 object _ <<maplet>> \n	LGofLS *-- _ : individualOf \n	 \"LS1 <-- _\" : antecedent \n	 \"LG1\" x-- \"_\" : image ");
 
       pwGraph.println("}");
+
+      pwGraph.println("");
+
 
       pwGraph.println("@enduml");
       pwGraph.close();
