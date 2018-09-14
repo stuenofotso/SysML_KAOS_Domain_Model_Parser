@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="TestDomainModeling.models.map_DomainModel" file="map_DomainModel.java">
+  <dependency className="LandingGearSystem.models.map_DomainModel" file="map_DomainModel.java">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.io.FileNotFoundException" />
     <classNode dependClassName="java.io.IOException" />
