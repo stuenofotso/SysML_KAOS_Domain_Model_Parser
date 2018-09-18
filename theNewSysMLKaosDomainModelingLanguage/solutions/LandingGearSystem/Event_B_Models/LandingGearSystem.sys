@@ -1,6 +1,6 @@
 /* LandingGearSystem
 * Author: SysML/KAOS Domain Model Parser
-* Creation date: 13/09/2018
+* Creation date: 14/09/2018
 */
 
 SYSTEM
@@ -8,32 +8,28 @@ LandingGearSystem
 
 
 SETS
-LandingGear; LandingSet={LS1, LS2, LS3}; Gear
+LandingGear={LG1}; LandingSet={LS1, LS2, LS3}; LG_STATES={lg_extended, lg_retracted}
 
 CONSTANTS
-LG1, G1
+LGofLS
 
 VARIABLES
-LGofLS, LGofHD, lgState
+lgState
 
 PROPERTIES
-LG1 : LandingGear &
-G1 : Gear &
-//logical formula p1
-!(x1, x2). (((x1 : LandingGear & x2: LandingSet) => x2 |-> x1 : LGofLS))
-
-INVARIANT
 LGofLS : LandingSet --> LandingGear & 
  !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &
 LS2 |-> LG1 : LGofLS &
 LS3 |-> LG1 : LGofLS &
 LS1 |-> LG1 : LGofLS &
-LGofHD : Gear >->> LandingGear &
-lgState : LandingGear --> STRING &
+//logical formula p1
+!(x1, x2). (((x1 : LandingGear & x2: LandingSet) => x2 |-> x1 : LGofLS))
+
+INVARIANT
+lgState : LandingGear --> LG_STATES &
 LG1 |-> lg_extended : lgState
 
 INITIALISATION
-LGofLS := {LS2|->LG1, LS3|->LG1, LS1|->LG1} ||
 lgState := {LG1|->lg_extended}
 
 

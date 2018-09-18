@@ -6,13 +6,10 @@ skinparam class {
 } 
 
 package LandingGearSystem <<Folder>> {
-	class LandingGear <<concept>>  {
-		lgState : STRING
+	class LandingGear <<concept>>  <<enumeration>>  {
 	}
 	 object LG1 <<individual>> 
 	LandingGear *-- LG1 : individualOf 
-
-	LG1 : lgState = "lg_extended"
 	class LandingSet <<concept>>  <<enumeration>>  {
 	}
 	 object LS1 <<individual>> 
@@ -21,17 +18,16 @@ package LandingGearSystem <<Folder>> {
 	LandingSet *-- LS2 : individualOf 
 	 object LS3 <<individual>> 
 	LandingSet *-- LS3 : individualOf 
-	class Gear <<concept>>  {
+	class LG_STATES <<concept>>  <<enumeration>>  {
 	}
-	 object G1 <<individual>> 
-	Gear *-- G1 : individualOf 
-	LandingSet "3" -- "1" LandingGear : > 
-	 (LandingSet, LandingGear) .. LGofLS
-	 class LGofLS <<association>>  <<variable>>  {
-	}
-	Gear "1" -- "1" LandingGear : > 
-	 (Gear, LandingGear) .. LGofHD
-	 class LGofHD <<association>>  <<variable>>  {
+	 object lg_extended <<individual>> 
+	LG_STATES *-- lg_extended : individualOf 
+	 object lg_retracted <<individual>> 
+	LG_STATES *-- lg_retracted : individualOf 
+	LandingSet "3" -- "1" LandingGear : LGofLS > 
+	LandingGear "*" -- "1" LG_STATES : > 
+	 (LandingGear, LG_STATES) .. lgState
+	 class lgState <<association>>  <<variable>>  {
 	}
 }
 

@@ -17,8 +17,8 @@ public class map_DomainModel {
 
 
   public static void main(String[] args) {
-    File eventBModelFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_1" + EVENT_B_MODELS_FILE_EXTENSION);
-    File graphFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_1" + GRAPH_FILE_EXTENSION);
+    File eventBModelFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + EVENT_B_MODELS_FILE_EXTENSION);
+    File graphFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + GRAPH_FILE_EXTENSION);
 
     if (!(eventBModelFile.getParentFile().exists())) {
       eventBModelFile.getParentFile().mkdirs();
@@ -37,8 +37,8 @@ public class map_DomainModel {
 
 
 
-    System.out.println("Path to Event-B Model File corresponding to " + "Saturn_1" + " : " + eventBModelFile);
-    System.out.println("Path to graph File corresponding to " + "Saturn_1" + " : " + graphFile);
+    System.out.println("Path to Event-B Model File corresponding to " + "Saturn_7" + " : " + eventBModelFile);
+    System.out.println("Path to graph File corresponding to " + "Saturn_7" + " : " + graphFile);
 
     try {
       PrintWriter pw = new PrintWriter(eventBModelFile);
@@ -46,27 +46,27 @@ public class map_DomainModel {
 
 
 
-      pw.println("/* " + "Saturn_1" + "\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date()) + "\n*/");
-      pw.println("\nSYSTEM\nSaturn_1");
+      pw.println("/* " + "Saturn_7" + "\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date()) + "\n*/");
+      pw.println("\nSYSTEM\nSaturn_7");
       pw.println("");
 
       pw.println("\nSETS");
-      pw.println("T_IN; T_OUT");
+      pw.println("");
 
       pw.println("\nCONSTANTS");
-      pw.println("inconst, outconst, FB");
+      pw.println("");
 
       pw.println("\nVARIABLES");
-      pw.println("in, out");
+      pw.println("In_Ch, Out_Ch");
 
       pw.println("\nPROPERTIES");
-      pw.println("inconst : T_IN &\noutconst : T_OUT &\nFB : T_IN --> T_OUT");
+      pw.println("");
 
       pw.println("\nINVARIANT");
-      pw.println("in : T_IN &\nout : T_OUT");
+      pw.println("In_Ch : agents_in +-> TT &\nOut_Ch : agents_out +-> TT &\n//logical formula p1\n");
 
       pw.println("\nINITIALISATION");
-      pw.println("in :: T_IN ||\nout :: T_OUT");
+      pw.println("");
 
 
       pw.println("\n\nEND");
@@ -81,12 +81,12 @@ public class map_DomainModel {
       pwGraph.println("");
 
 
-      pwGraph.println("package " + "Saturn_1" + " <<Folder>> {");
+      pwGraph.println("package " + "Saturn_7" + " <<Folder>> {");
 
-      pwGraph.println("	class T_IN <<concept>>  {\n	}\n	 object in <<individual>>  <<variable>> \n	T_IN *-- in : individualOf \n	 object inconst <<individual>> \n	T_IN *-- inconst : individualOf \n	class T_OUT <<concept>>  {\n	}\n	 object out <<individual>>  <<variable>> \n	T_OUT *-- out : individualOf \n	 object outconst <<individual>> \n	T_OUT *-- outconst : individualOf ");
+      pwGraph.println("	class \"Saturn_4/agents_in\" as agents_in <<concept>> \n	class \"Saturn_4/agents_out\" as agents_out <<concept>> \n	class \"Saturn_4/TT\" as TT <<concept>> ");
 
 
-      pwGraph.println("	T_IN \"*\" -- \"1\" T_OUT : FB > ");
+      pwGraph.println("	agents_in \"*\" -- \"0..1\" TT : > \n	 (agents_in, TT) .. In_Ch\n	 class In_Ch <<association>>  <<variable>>  {\n	}\n	agents_out \"*\" -- \"0..1\" TT : > \n	 (agents_out, TT) .. Out_Ch\n	 class Out_Ch <<association>>  <<variable>>  {\n	}");
 
       pwGraph.println("}");
 

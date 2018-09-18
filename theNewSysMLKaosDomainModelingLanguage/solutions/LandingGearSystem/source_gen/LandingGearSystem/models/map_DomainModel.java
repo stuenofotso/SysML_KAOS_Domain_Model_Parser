@@ -51,22 +51,22 @@ public class map_DomainModel {
       pw.println("");
 
       pw.println("\nSETS");
-      pw.println("LandingGear; LandingSet={LS1, LS2, LS3}; Gear");
+      pw.println("LandingGear={LG1}; LandingSet={LS1, LS2, LS3}; LG_STATES={lg_extended, lg_retracted}");
 
       pw.println("\nCONSTANTS");
-      pw.println("LG1, G1");
+      pw.println("LGofLS");
 
       pw.println("\nVARIABLES");
-      pw.println("LGofLS, LGofHD, lgState");
+      pw.println("lgState");
 
       pw.println("\nPROPERTIES");
-      pw.println("LG1 : LandingGear &\nG1 : Gear &\n//logical formula p1\n!(x1, x2). (((x1 : LandingGear & x2: LandingSet) => x2 |-> x1 : LGofLS))");
+      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\n//logical formula p1\n!(x1, x2). ( ( x1 : LandingGear & x2 LandingSet ) => x2 |-> x1 : LGofLS)");
 
       pw.println("\nINVARIANT");
-      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\nLGofHD : Gear >->> LandingGear &\nlgState : LandingGear --> STRING &\nLG1 |-> lg_extended : lgState");
+      pw.println("lgState : LandingGear --> LG_STATES");
 
       pw.println("\nINITIALISATION");
-      pw.println("LGofLS := {LS2|->LG1, LS3|->LG1, LS1|->LG1} ||\nlgState := {LG1|->lg_extended}");
+      pw.println("lgState := {LG1|->lg_extended}");
 
 
       pw.println("\n\nEND");
@@ -83,10 +83,10 @@ public class map_DomainModel {
 
       pwGraph.println("package " + "LandingGearSystem" + " <<Folder>> {");
 
-      pwGraph.println("	class LandingGear <<concept>>  {\n		lgState : STRING\n	}\n	 object LG1 <<individual>> \n	LandingGear *-- LG1 : individualOf \n\n	LG1 : lgState = \"lg_extended\"\n	class LandingSet <<concept>>  <<enumeration>>  {\n	}\n	 object LS1 <<individual>> \n	LandingSet *-- LS1 : individualOf \n	 object LS2 <<individual>> \n	LandingSet *-- LS2 : individualOf \n	 object LS3 <<individual>> \n	LandingSet *-- LS3 : individualOf \n	class Gear <<concept>>  {\n	}\n	 object G1 <<individual>> \n	Gear *-- G1 : individualOf ");
+      pwGraph.println("	class LandingGear <<concept>>  <<enumeration>>  {\n	}\n	 object LG1 <<individual>> \n	LandingGear *-- LG1 : individualOf \n	class LandingSet <<concept>>  <<enumeration>>  {\n	}\n	 object LS1 <<individual>> \n	LandingSet *-- LS1 : individualOf \n	 object LS2 <<individual>> \n	LandingSet *-- LS2 : individualOf \n	 object LS3 <<individual>> \n	LandingSet *-- LS3 : individualOf \n	class LG_STATES <<concept>>  <<enumeration>>  {\n	}\n	 object lg_extended <<individual>> \n	LG_STATES *-- lg_extended : individualOf \n	 object lg_retracted <<individual>> \n	LG_STATES *-- lg_retracted : individualOf ");
 
 
-      pwGraph.println("	LandingSet \"3\" -- \"1\" LandingGear : > \n	 (LandingSet, LandingGear) .. LGofLS\n	 class LGofLS <<association>>  <<variable>>  {\n	}\n	Gear \"1\" -- \"1\" LandingGear : > \n	 (Gear, LandingGear) .. LGofHD\n	 class LGofHD <<association>>  <<variable>>  {\n	}");
+      pwGraph.println("	LandingSet \"3\" -- \"1\" LandingGear : LGofLS > \n	LandingGear \"*\" -- \"1\" LG_STATES : > \n	 (LandingGear, LG_STATES) .. lgState\n	 class lgState <<association>>  <<variable>>  {\n	}");
 
       pwGraph.println("}");
 
