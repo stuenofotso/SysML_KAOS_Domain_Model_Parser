@@ -1,5 +1,5 @@
 # SysML KAOS Domain Model Language : Tools, Rules and Case Studies
-This repository contains the sources and deliverables associated with the SysML/KAOS Domain Modeling language, with the  rules allowing the translation of domain models to formal specifications with their formal expression, verification and validation and finally with the application of the FORMOSE approach (SysML/KAOS goal and domain modeling) on case studies.
+This repository contains the sources and deliverables associated with the SysML/KAOS Domain Modeling language, with the  rules allowing the translation of domain models to formal specifications along with their formal expression, verification and validation and finally with the application of the SysML/KAOS method (SysML/KAOS goal and domain modeling) on some case studies.
 
 The repository was initialy build for an open source tool allowing the parsing of an OWL ontology and the generation of the corresponding Event-B specification. The project has evolved, but the root directory still contains the source code of the parser implemented with Java and OWL API.
 
@@ -17,7 +17,12 @@ This folder contains the source of the Event-B specification, under Rodin, of th
 
 ## SysMLKaosDomainModeling :
 This folder contains the source of the tool supporting the SysML/KAOS domain modeling language. It allows the construction of
-domain ontologies  and generates the corresponding B System specifications. It is build through Jetbrains Meta Programming System, a tool to design domain specific languages using language-oriented programming. Please, open the folder for additional informations.
+domain ontologies and generates the corresponding B System specifications. It is build through Jetbrains Meta Programming System, a tool to design domain specific languages using language-oriented programming. Please, open the folder for additional informations. 
+
+The language has been enriched and adapted, based on the work done on some case studies, to better suite the specificities of the B System specification language. The source code of the prototype of the updated language is located in folder theNewSysMLKaosDomainModelingLanguage.
+
+Video at https://www.youtube.com/watch?v=DOU1xjgc-es illustrates the behavior of the prototype.
+
 
 ## Domain_Model_Formalization-formal_syntax_for_rules_EventB_specification_full_version.pdf :
 This file fully presents the SysML/KAOS domain modeling language, the context surrounding it and the rules for the translation of domain models to B System specifications, along with their Event-B expression.
