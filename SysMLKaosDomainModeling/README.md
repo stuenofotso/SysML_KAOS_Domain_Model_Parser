@@ -1,6 +1,8 @@
 # The new SysMLKaos Domain Modeling Tool:
 This folder contains the source of the implementation of the new SysML/KAOS Domain Modeling language which should be opened in the Jetbrains Meta Programing System tool to allow the construction of SysML/KAOS domain models. It makes it possible to construct  domain ontologies  and generate the corresponding B System specifications. It is build through Jetbrains Meta Programming System (Jetbrains MPS), a tool to design domain specific languages using language-oriented programming. Our purpose is to provide a proof of concept.
 
+Video at https://www.youtube.com/watch?v=DOU1xjgc-es illustrates the behavior of the prototype.
+
 JetBrains MPS is an efficient and reliable development tool used to build domain specific languages. The tutorial Fast Track to MPS (https://confluence.jetbrains.com/display/MPSD20181/Fast+Track+to+MPS) provides a quick start to the use of Jetbrains MPS. The tool can be downloaded at https://www.jetbrains.com/mps/download/index.html.
 
 To use the new SysML/KAOS domain modeling language and create SysML/KAOS domain models, you need to download the content of this folder. It defines the structure (concepts and their properties, childrens and references), constraints, behavior, editors and generators of the language.
