@@ -1,0 +1,56 @@
+/* Saturn_4
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 18/09/2018
+*/
+
+REFINEMENT
+Saturn_4
+REFINES
+Saturn_3
+
+SETS
+MI; MO; TT
+
+CONSTANTS
+agents_in, agents_out, VIN, s_in_r, VOUT, s_out_r, vec_to_in, vec_to_out, VBF
+
+VARIABLES
+s_in_l, s_out_l
+
+PROPERTIES
+agents_in <: MI &
+agents_out <: MO &
+VIN : agents_in >-> TT &
+s_in_r : VIN &
+VOUT : agents_out >-> TT &
+s_out_r : VOUT &
+vec_to_in : VIN >-> T_IN &
+s_in_l |-> in_l : vec_to_in &
+s_in_r |-> in_r : vec_to_in &
+vec_to_out : VOUT >-> T_OUT &
+s_out_l |-> out_l : vec_to_out &
+s_out_r |-> out_r : vec_to_out &
+VBF : VIN --> VOUT &
+//logical formula p1
+(agents_in /=  {} ) &
+//logical formula p2
+(agents_out /=  {} ) &
+//logical formula p3
+(ran(vec_to_out) <: ran(FB)) &
+//logical formula P4
+(VBF = (vec_to_in;FB;vec_to_out~ ) )
+
+INVARIANT
+s_in_l : VIN &
+s_out_l : VOUT &
+s_in_l |-> in_l : vec_to_in &
+s_in_r |-> in_r : vec_to_in &
+s_out_l |-> out_l : vec_to_out &
+s_out_r |-> out_r : vec_to_out
+
+INITIALISATION
+s_in_l :: VIN ||
+s_out_l :: VOUT
+
+
+END

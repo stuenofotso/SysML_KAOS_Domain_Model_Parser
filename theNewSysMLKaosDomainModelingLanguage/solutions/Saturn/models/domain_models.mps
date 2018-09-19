@@ -23,19 +23,12 @@
       <concept id="5130769876374405947" name="BSystem.structure.Variable" flags="ng" index="26DAGZ" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j" />
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="linkRole" index="3V$3am" />
-      </concept>
     </language>
     <language id="9715e310-dbcb-448e-9303-5bfaafdcf84d" name="SysMLKaosDomainModelingNew">
+      <concept id="5795948090138515245" name="SysMLKaosDomainModelingNew.structure.Term" flags="ng" index="T80WT" />
       <concept id="5795948090138131714" name="SysMLKaosDomainModelingNew.structure.DomainModel" flags="ng" index="T9ykm">
         <reference id="5795948090138132354" name="parentDomainModel" index="T9yum" />
         <child id="5795948090138133415" name="associations" index="T9HIN" />
@@ -74,17 +67,17 @@
         <reference id="5795948090138133394" name="image" index="T9HI6" />
         <reference id="5795948090138133391" name="antecedent" index="T9HIr" />
       </concept>
+      <concept id="6231166743535036946" name="SysMLKaosDomainModelingNew.structure.DefaultAtomString" flags="ng" index="3aQUsL">
+        <child id="6231166743535036976" name="atomStrings" index="3aQUsj" />
+      </concept>
       <concept id="6231166743494756990" name="SysMLKaosDomainModelingNew.structure.AtomPart" flags="ng" index="3cgwtt">
         <reference id="6231166743494757018" name="atom" index="3cgwuT" />
       </concept>
-      <concept id="6231166743507948534" name="SysMLKaosDomainModelingNew.structure.aAtomString" flags="ng" index="3dvlVl" />
+      <concept id="6231166743507948534" name="SysMLKaosDomainModelingNew.structure.AtomString" flags="ng" index="3dvlVl" />
       <concept id="2212492276510809717" name="SysMLKaosDomainModelingNew.structure.AssociationRange" flags="ng" index="3f38hP">
         <reference id="2212492276510809718" name="association" index="3f38hQ" />
       </concept>
       <concept id="3859525257270097244" name="SysMLKaosDomainModelingNew.structure.DefaultDataType" flags="ng" index="3GHbMp" />
-      <concept id="3859525257270495162" name="SysMLKaosDomainModelingNew.structure.ConceptPowerSet" flags="ng" index="3GN$TZ">
-        <reference id="3859525257270495163" name="concept" index="3GN$TY" />
-      </concept>
     </language>
   </registry>
   <node concept="T9ykm" id="5pTzie9Cid6">
@@ -178,13 +171,13 @@
     <ref role="T9yum" node="5pTzie9Cid6" resolve="Saturn_1" />
     <node concept="T9H$7" id="5pTzierK4Wv" role="T9HJa">
       <property role="TrG5h" value="p1" />
-      <node concept="3cgwtt" id="5pTzierK4WA" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesJgsp" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieeEPxi" resolve="in" />
       </node>
-      <node concept="3dvlVl" id="5pTzierK4WE" role="3cvL2y">
-        <property role="TrG5h" value="=" />
+      <node concept="3cgwtt" id="5pTziesOlQh" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
       </node>
-      <node concept="3cgwtt" id="5pTzierK4WJ" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlQw" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieoDm5W" resolve="in_l" />
       </node>
     </node>
@@ -213,13 +206,13 @@
     <ref role="T9yum" node="5pTzien26R5" resolve="Saturn_2" />
     <node concept="T9H$7" id="5pTzierK4WN" role="T9HJa">
       <property role="TrG5h" value="p1" />
-      <node concept="3cgwtt" id="5pTzierK4WR" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlRU" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieeEPxk" resolve="out" />
       </node>
-      <node concept="3dvlVl" id="5pTzierK4WW" role="3cvL2y">
-        <property role="TrG5h" value="=" />
+      <node concept="3cgwtt" id="5pTziesOlRY" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
       </node>
-      <node concept="3cgwtt" id="5pTzierK4X1" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlS3" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieoDm6W" resolve="out_l" />
       </node>
     </node>
@@ -246,65 +239,73 @@
   <node concept="T9ykm" id="5pTzieoDm73">
     <property role="TrG5h" value="Saturn_4" />
     <ref role="T9yum" node="5pTzieoDm63" resolve="Saturn_3" />
-    <node concept="T9H$7" id="5pTzierK4X5" role="T9HJa">
+    <node concept="T9H$7" id="5pTziesOlTt" role="T9HJa">
       <property role="TrG5h" value="p1" />
-      <node concept="3cgwtt" id="5pTzierK4X9" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlTP" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieoDm86" resolve="agents_in" />
       </node>
-      <node concept="3dvlVl" id="5pTzierK4Xe" role="3cvL2y">
-        <property role="TrG5h" value="!= {}" />
+      <node concept="3cgwtt" id="5pTziesOlU0" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOL" resolve=" /= " />
+      </node>
+      <node concept="3cgwtt" id="5pTziesOlU5" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlP3" resolve=" {} " />
       </node>
     </node>
-    <node concept="T9H$7" id="5pTzierK529" role="T9HJa">
+    <node concept="T9H$7" id="5pTziesOlU9" role="T9HJa">
       <property role="TrG5h" value="p2" />
-      <node concept="3cgwtt" id="5pTzierK52m" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlUz" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieoDm8i" resolve="agents_out" />
       </node>
-      <node concept="3dvlVl" id="5pTzierK52b" role="3cvL2y">
-        <property role="TrG5h" value="!= {}" />
+      <node concept="3cgwtt" id="5pTziesOlUb" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOL" resolve=" /= " />
+      </node>
+      <node concept="3cgwtt" id="5pTziesOlUc" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlP3" resolve=" {} " />
       </node>
     </node>
-    <node concept="T9H$7" id="5pTzierK52q" role="T9HJa">
+    <node concept="T9H$7" id="5pTziesOlUK" role="T9HJa">
       <property role="TrG5h" value="p3" />
-      <node concept="3cgwtt" id="5pTzies9c$j" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlVa" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzierZaIy" resolve="ran(vec_to_out)" />
       </node>
-      <node concept="3dvlVl" id="5pTzierP6u8" role="3cvL2y">
-        <property role="TrG5h" value=" &lt;: " />
+      <node concept="3cgwtt" id="5pTziesOlVf" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOU" resolve=" &lt;: " />
       </node>
-      <node concept="3cgwtt" id="5pTzies9c$D" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlVk" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzies9c$u" resolve="ran(FB)" />
       </node>
-      <node concept="3DQ70j" id="5pTzierP6uc" role="lGtFl">
-        <property role="3V$3am" value="atoms" />
-        <property role="3V$3ak" value="9715e310-dbcb-448e-9303-5bfaafdcf84d/5795948090138132755/6231166743491288449" />
-      </node>
     </node>
-    <node concept="T9H$7" id="5pTzies9c_t" role="T9HJa">
-      <property role="TrG5h" value="p4" />
-      <node concept="3cgwtt" id="5pTzies9c_G" role="3cvL2y">
+    <node concept="T9H$7" id="5pTziesOlVP" role="T9HJa">
+      <property role="TrG5h" value="P4" />
+      <node concept="3cgwtt" id="5pTziesOlWe" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzies9c$I" resolve="VBF" />
       </node>
-      <node concept="3dvlVl" id="5pTzies9cC_" role="3cvL2y">
-        <property role="TrG5h" value="= (" />
+      <node concept="3cgwtt" id="5pTziesOlWj" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
       </node>
-      <node concept="3cgwtt" id="5pTzies9cCE" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOlWo" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOp" resolve="(" />
+      </node>
+      <node concept="3cgwtt" id="5pTziesOlWu" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieq1DHU" resolve="vec_to_in" />
       </node>
-      <node concept="3dvlVl" id="5pTzies9cCK" role="3cvL2y">
-        <property role="TrG5h" value=";" />
+      <node concept="3cgwtt" id="5pTziesOmUd" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlW_" resolve=";" />
       </node>
-      <node concept="3cgwtt" id="5pTzies9cCR" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOmUl" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzie9U8su" resolve="FB" />
       </node>
-      <node concept="3dvlVl" id="5pTzies9cCZ" role="3cvL2y">
-        <property role="TrG5h" value=";" />
+      <node concept="3cgwtt" id="5pTziesOmUu" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlW_" resolve=";" />
       </node>
-      <node concept="3cgwtt" id="5pTzies9cD8" role="3cvL2y">
+      <node concept="3cgwtt" id="5pTziesOmUC" role="3cvL2y">
         <ref role="3cgwuT" node="5pTzieq1DIg" resolve="vec_to_out" />
       </node>
-      <node concept="3dvlVl" id="5pTzies9cDi" role="3cvL2y">
-        <property role="TrG5h" value="~)" />
+      <node concept="3cgwtt" id="5pTziesOmUN" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOz" resolve="~ " />
+      </node>
+      <node concept="3cgwtt" id="5pTziesOmV8" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOq" resolve=") " />
       </node>
     </node>
     <node concept="T9H$7" id="5pTzierK520" role="3hZS0M">
@@ -564,111 +565,310 @@
       <property role="TrG5h" value="Communication_Set" />
     </node>
   </node>
-  <node concept="T9ykm" id="5pTziesyXZw">
+  <node concept="3aQUsL" id="5pTziesOlOl">
+    <property role="TrG5h" value="DefaultPredicateLiterals" />
+    <node concept="T80WT" id="5pTziesOlOm" role="3aQUsj">
+      <property role="TrG5h" value=" &amp; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOn" role="3aQUsj">
+      <property role="TrG5h" value=" or " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOo" role="3aQUsj">
+      <property role="TrG5h" value=" /\ " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOp" role="3aQUsj">
+      <property role="TrG5h" value="(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOq" role="3aQUsj">
+      <property role="TrG5h" value=") " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOr" role="3aQUsj">
+      <property role="TrG5h" value=" +-&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOs" role="3aQUsj">
+      <property role="TrG5h" value=" --&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOt" role="3aQUsj">
+      <property role="TrG5h" value=" +-&gt;&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOu" role="3aQUsj">
+      <property role="TrG5h" value=" --&gt;&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOv" role="3aQUsj">
+      <property role="TrG5h" value=" % " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOw" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;+ " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOx" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;-&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOy" role="3aQUsj">
+      <property role="TrG5h" value=" |-&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOz" role="3aQUsj">
+      <property role="TrG5h" value="~ " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlO$" role="3aQUsj">
+      <property role="TrG5h" value=" * " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlO_" role="3aQUsj">
+      <property role="TrG5h" value=" - " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOA" role="3aQUsj">
+      <property role="TrG5h" value=" / " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOB" role="3aQUsj">
+      <property role="TrG5h" value=" ** " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOC" role="3aQUsj">
+      <property role="TrG5h" value=" + " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOD" role="3aQUsj">
+      <property role="TrG5h" value=" &lt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOE" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;= " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOF" role="3aQUsj">
+      <property role="TrG5h" value=" &gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOG" role="3aQUsj">
+      <property role="TrG5h" value=" &gt;= " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOH" role="3aQUsj">
+      <property role="TrG5h" value=" PI " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOI" role="3aQUsj">
+      <property role="TrG5h" value=" SIGMA " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOJ" role="3aQUsj">
+      <property role="TrG5h" value=" # " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOK" role="3aQUsj">
+      <property role="TrG5h" value=" !" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOL" role="3aQUsj">
+      <property role="TrG5h" value=" /= " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOM" role="3aQUsj">
+      <property role="TrG5h" value=" = " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlON" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;=&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOO" role="3aQUsj">
+      <property role="TrG5h" value=" =&gt; " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOP" role="3aQUsj">
+      <property role="TrG5h" value=" neg(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOQ" role="3aQUsj">
+      <property role="TrG5h" value=" : " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOR" role="3aQUsj">
+      <property role="TrG5h" value=" /: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOS" role="3aQUsj">
+      <property role="TrG5h" value=" /&lt;: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOT" role="3aQUsj">
+      <property role="TrG5h" value=" /&lt;&lt;: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOU" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOV" role="3aQUsj">
+      <property role="TrG5h" value=" &lt;&lt;: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOW" role="3aQUsj">
+      <property role="TrG5h" value=" FIN(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOX" role="3aQUsj">
+      <property role="TrG5h" value=" FIN1(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOY" role="3aQUsj">
+      <property role="TrG5h" value=" INTER" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlOZ" role="3aQUsj">
+      <property role="TrG5h" value=" POW(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlP0" role="3aQUsj">
+      <property role="TrG5h" value=" POW1(" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlP1" role="3aQUsj">
+      <property role="TrG5h" value=" UNION" />
+    </node>
+    <node concept="T80WT" id="5pTziesOlP2" role="3aQUsj">
+      <property role="TrG5h" value=" \/ " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlP3" role="3aQUsj">
+      <property role="TrG5h" value=" {} " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlP4" role="3aQUsj">
+      <property role="TrG5h" value=" :: " />
+    </node>
+    <node concept="T80WT" id="5pTziesOlW_" role="3aQUsj">
+      <property role="TrG5h" value=";" />
+    </node>
+  </node>
+  <node concept="T9ykm" id="5pTzietpj20">
     <property role="TrG5h" value="Saturn_7" />
-    <node concept="T9H$7" id="5pTziesyY0b" role="T9HJa">
+    <ref role="T9yum" node="5pTziesyXYP" resolve="Saturn_6" />
+    <node concept="T9H$7" id="5pTzieuretM" role="T9HJa">
       <property role="TrG5h" value="p1" />
-      <node concept="3cgwtt" id="5pTziesyY0f" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTziesyXYL" resolve="Implementation" />
+      <node concept="3cgwtt" id="5pTzieureu4" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTzieuresS" resolve="Pow_MI" />
       </node>
-      <node concept="3dvlVl" id="5pTziesyY0k" role="3cvL2y">
-        <property role="TrG5h" value=" = " />
+      <node concept="3cgwtt" id="5pTzieureuc" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
       </node>
-      <node concept="3cgwtt" id="5pTziesyY0p" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTziesyXYy" resolve="Distributed" />
+      <node concept="3cgwtt" id="5pTzieureuk" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOZ" resolve=" POW(" />
       </node>
-      <node concept="3dvlVl" id="5pTziesyY0v" role="3cvL2y">
-        <property role="TrG5h" value="&amp;" />
+      <node concept="3cgwtt" id="5pTzieureuu" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTzieoDm7W" resolve="MI" />
       </node>
-      <node concept="3cgwtt" id="5pTziesyY0A" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTziesyXZ1" resolve="Communication" />
-      </node>
-      <node concept="3dvlVl" id="5pTziesyY0I" role="3cvL2y">
-        <property role="TrG5h" value="= " />
-      </node>
-      <node concept="3cgwtt" id="5pTziesyY0R" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTziesyXYW" resolve="Broadcast" />
-      </node>
-      <node concept="3dvlVl" id="5pTziesyY11" role="3cvL2y">
-        <property role="TrG5h" value="=&gt;" />
-      </node>
-      <node concept="3cgwtt" id="5pTziesyY1J" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTziesyY08" resolve="Req_Out_Ch" />
-      </node>
-      <node concept="3dvlVl" id="5pTziesyY1V" role="3cvL2y">
-        <property role="TrG5h" value="= " />
-      </node>
-      <node concept="3cgwtt" id="5pTziesyY9J" role="3cvL2y">
-        <ref role="3cgwuT" node="5pTzieoDm8i" resolve="agents_out" />
+      <node concept="3cgwtt" id="5pTzieureuE" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOq" resolve=") " />
       </node>
     </node>
-    <node concept="T9HCe" id="5pTziesyXZO" role="31tVRY">
+    <node concept="T9yuh" id="5pTzieuresS" role="T9HIQ">
+      <property role="TrG5h" value="Pow_MI" />
+    </node>
+    <node concept="T9yuh" id="5pTzieuret0" role="T9HIQ">
+      <property role="TrG5h" value="Pow_MO" />
+    </node>
+    <node concept="T9HCe" id="5pTzieuretb" role="31tVRY">
       <property role="3GI$lq" value="true" />
       <property role="TrG5h" value="Req_In_Ch" />
-      <ref role="T9HCD" node="5pTziesyXZJ" resolve="POW(MI)" />
+      <ref role="T9HCD" node="5pTzieuresS" resolve="Pow_MI" />
     </node>
-    <node concept="T9HCe" id="5pTziesyY08" role="31tVRY">
+    <node concept="T9HCe" id="5pTzieuretf" role="31tVRY">
       <property role="3GI$lq" value="true" />
       <property role="TrG5h" value="Req_Out_Ch" />
-      <ref role="T9HCD" node="5pTziesyY01" resolve="POW(MO)" />
+      <ref role="T9HCD" node="5pTzieuret0" resolve="Pow_MO" />
     </node>
-    <node concept="T9HDo" id="5pTziesyXZz" role="T9HIN">
+    <node concept="T9H$7" id="5pTzieureuX" role="T9HJa">
+      <property role="TrG5h" value="p2" />
+      <node concept="3cgwtt" id="5pTzieurevl" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTzieuret0" resolve="Pow_MO" />
+      </node>
+      <node concept="3cgwtt" id="5pTzieurevx" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
+      </node>
+      <node concept="3cgwtt" id="5pTzieurevD" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOZ" resolve=" POW(" />
+      </node>
+      <node concept="3cgwtt" id="5pTzieurevN" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTzieoDm80" resolve="MO" />
+      </node>
+      <node concept="3cgwtt" id="5pTzieurevZ" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOq" resolve=") " />
+      </node>
+    </node>
+    <node concept="T9H$7" id="5pTzietpj3v" role="T9HJa">
+      <property role="TrG5h" value="Transfer_In_Values" />
+      <node concept="3cgwtt" id="5pTzietpj3z" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOp" resolve="(" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj3C" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesyXYL" resolve="Implementation" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj3H" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj3N" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesyXYy" resolve="Distributed" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj3U" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOm" resolve=" &amp; " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj42" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesyXZ1" resolve="Communication" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj4b" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj4l" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesyXYW" resolve="Broadcast" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj4w" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOq" resolve=") " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj4G" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOO" resolve=" =&gt; " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj4T" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTzietpj2Y" resolve="In_Ch" />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj57" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziesOlOM" resolve=" = " />
+      </node>
+      <node concept="3cgwtt" id="5pTzietpj5m" role="3cvL2y">
+        <ref role="3cgwuT" node="5pTziepWRmc" resolve="s_in_r" />
+      </node>
+    </node>
+    <node concept="T9HDo" id="5pTzietpj2Y" role="T9HIN">
       <property role="TrG5h" value="In_Ch" />
       <property role="T9yuK" value="true" />
       <ref role="T9HEf" node="5pTzieoDm86" resolve="agents_in" />
       <ref role="T9HEa" node="5pTzieoDm90" resolve="TT" />
-      <node concept="T9HFj" id="5pTziesyXZ$" role="T9HHR">
+      <node concept="T9HFj" id="5pTzietpj2Z" role="T9HHR">
         <property role="T9HEF" value="0" />
         <property role="T9HFm" value="-1" />
       </node>
-      <node concept="T9HFR" id="5pTziesyXZ_" role="T9HHY">
+      <node concept="T9HFR" id="5pTzietpj30" role="T9HHY">
         <property role="T9HEF" value="0" />
         <property role="T9HFm" value="1" />
       </node>
     </node>
-    <node concept="T9HDo" id="5pTziesyXZQ" role="T9HIN">
+    <node concept="T9HDo" id="5pTzietpj3d" role="T9HIN">
       <property role="TrG5h" value="Out_Ch" />
       <property role="T9yuK" value="true" />
-      <ref role="T9HEa" node="5pTzieoDm90" resolve="TT" />
       <ref role="T9HEf" node="5pTzieoDm8i" resolve="agents_out" />
-      <node concept="T9HFj" id="5pTziesyXZR" role="T9HHR">
+      <ref role="T9HEa" node="5pTzieoDm90" resolve="TT" />
+      <node concept="T9HFj" id="5pTzietpj3e" role="T9HHR">
         <property role="T9HEF" value="0" />
         <property role="T9HFm" value="-1" />
       </node>
-      <node concept="T9HFR" id="5pTziesyXZS" role="T9HHY">
+      <node concept="T9HFR" id="5pTzietpj3f" role="T9HHY">
         <property role="T9HEF" value="0" />
         <property role="T9HFm" value="1" />
       </node>
     </node>
-    <node concept="3GN$TZ" id="5pTziesyXZJ" role="3feyxv">
-      <property role="T9yuK" value="false" />
-      <property role="TrG5h" value="POW(MI)" />
-      <ref role="3GN$TY" node="5pTzieoDm7W" resolve="MI" />
-    </node>
-    <node concept="3GN$TZ" id="5pTziesyY01" role="3feyxv">
-      <property role="T9yuK" value="false" />
-      <property role="TrG5h" value="POW(MO)" />
-      <ref role="3GN$TY" node="5pTzieoDm80" resolve="MO" />
-    </node>
   </node>
-  <node concept="26DAFA" id="5pTziesyXZx">
-    <property role="1cPgp9" value="SYSTEM " />
+  <node concept="26DAFA" id="5pTzietpj2s">
+    <property role="1cPgp9" value="REFINEMENT " />
     <property role="TrG5h" value="Saturn_7" />
-    <ref role="26DAGB" node="5pTziesyXZy" resolve="C_Saturn_7" />
-    <node concept="26DAGZ" id="5pTziesyXZF" role="26DAHi">
+    <ref role="26DAGB" node="5pTzietpj2t" resolve="C_Saturn_7" />
+    <ref role="26_YK5" node="5pTziesyXYQ" resolve="Saturn_6" />
+    <node concept="26DAGZ" id="5pTzietpj36" role="26DAHi">
+      <property role="TrG5h" value="X_In_Ch" />
+    </node>
+    <node concept="26DAGZ" id="5pTzietpj3q" role="26DAHi">
       <property role="TrG5h" value="X_Out_Ch" />
     </node>
   </node>
-  <node concept="26DAF2" id="5pTziesyXZy">
+  <node concept="26DAF2" id="5pTzietpj2t">
     <property role="TrG5h" value="C_Saturn_7" />
-    <node concept="26DAG6" id="5pTziesyXZD" role="26DAH5">
+    <node concept="26DAG6" id="5pTzietpj34" role="26DAH5">
+      <property role="TrG5h" value="In_Ch" />
+    </node>
+    <node concept="26DAG6" id="5pTzietpj3n" role="26DAH5">
       <property role="TrG5h" value="Out_Ch" />
     </node>
-    <node concept="26DAG6" id="5pTziesyXZL" role="26DAH5">
+    <node concept="26DAG6" id="5pTzieurahV" role="26DAH5">
       <property role="TrG5h" value="POW(MI)" />
     </node>
-    <node concept="26DAG6" id="5pTziesyY04" role="26DAH5">
+    <node concept="26DAG6" id="5pTzieuraid" role="26DAH5">
       <property role="TrG5h" value="POW(MO)" />
+    </node>
+    <node concept="26DAG6" id="5pTzieuresU" role="26DAH5">
+      <property role="TrG5h" value="Pow_MI" />
+    </node>
+    <node concept="26DAG6" id="5pTzieuret3" role="26DAH5">
+      <property role="TrG5h" value="Pow_MO" />
     </node>
   </node>
 </model>

@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="Saturn.domain_models.map_DomainModel" file="map_DomainModel.java">
+  <dependency className="Saturn.domain_models.Saturn_1_handler" file="Saturn_1_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_2_handler" file="Saturn_2_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_3_handler" file="Saturn_3_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_4_handler" file="Saturn_4_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_5_handler" file="Saturn_5_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_6_handler" file="Saturn_6_handler.java">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.FileNotFoundException" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.text.SimpleDateFormat" />
+    <classNode dependClassName="java.util.Date" />
+  </dependency>
+  <dependency className="Saturn.domain_models.Saturn_7_handler" file="Saturn_7_handler.java">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.io.FileNotFoundException" />
     <classNode dependClassName="java.io.IOException" />

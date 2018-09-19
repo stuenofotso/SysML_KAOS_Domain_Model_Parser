@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.FileNotFoundException;
 
-public class map_DomainModel {
+public class LandingGearSystem_handler {
 
   public static String EVENT_B_MODELS_DIR_NAME = "Event_B_Models/";
   public static String EVENT_B_MODELS_FILE_EXTENSION = ".sys";
@@ -17,8 +17,10 @@ public class map_DomainModel {
 
 
   public static void main(String[] args) {
-    File eventBModelFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "LandingGearSystem" + EVENT_B_MODELS_FILE_EXTENSION);
-    File graphFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "LandingGearSystem" + GRAPH_FILE_EXTENSION);
+
+
+    File eventBModelFile = new File(new File(LandingGearSystem_handler.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "LandingGearSystem" + EVENT_B_MODELS_FILE_EXTENSION);
+    File graphFile = new File(new File(LandingGearSystem_handler.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "LandingGearSystem" + GRAPH_FILE_EXTENSION);
 
     if (!(eventBModelFile.getParentFile().exists())) {
       eventBModelFile.getParentFile().mkdirs();
@@ -60,10 +62,10 @@ public class map_DomainModel {
       pw.println("lgState");
 
       pw.println("\nPROPERTIES");
-      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\n//logical formula p1\n!(x1, x2). ( ( x1 : LandingGear & x2 LandingSet ) => x2 |-> x1 : LGofLS)");
+      pw.println("LGofLS : LandingSet --> LandingGear & \n !xx.(xx:LandingGear=> card(LGofLS~[{xx}]) = 3) &\nLS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\n//logical formula p1\n!(x1, x2).((x1:LandingGear&x2LandingSet) =>x2|->x1:LGofLS)");
 
       pw.println("\nINVARIANT");
-      pw.println("lgState : LandingGear --> LG_STATES");
+      pw.println("LS2 |-> LG1 : LGofLS &\nLS3 |-> LG1 : LGofLS &\nLS1 |-> LG1 : LGofLS &\nlgState : LandingGear --> LG_STATES &\nLG1 |-> lg_extended : lgState");
 
       pw.println("\nINITIALISATION");
       pw.println("lgState := {LG1|->lg_extended}");

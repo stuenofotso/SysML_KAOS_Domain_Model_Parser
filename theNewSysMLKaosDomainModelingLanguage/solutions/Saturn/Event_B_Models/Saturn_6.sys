@@ -1,31 +1,29 @@
-/* Saturn_1
+/* Saturn_6
 * Author: SysML/KAOS Domain Model Parser
 * Creation date: 18/09/2018
 */
 
 SYSTEM
-Saturn_1
+Saturn_6
 
 
 SETS
-T_IN; T_OUT
+Communication_Set={Broadcast, PointToPoint}
 
 CONSTANTS
-FB
+
 
 VARIABLES
-in, out
+Communication
 
 PROPERTIES
-FB : T_IN --> T_OUT
+
 
 INVARIANT
-in : T_IN &
-out : T_OUT
+Communication : Communication_Set
 
 INITIALISATION
-in :: T_IN ||
-out :: T_OUT
+Communication :: Communication_Set
 
 
 END

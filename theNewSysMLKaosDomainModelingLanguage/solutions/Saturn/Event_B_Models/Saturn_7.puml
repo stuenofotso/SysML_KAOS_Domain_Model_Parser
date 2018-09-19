@@ -1,0 +1,31 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+package Saturn_6  <<Folder>> {
+}
+package Saturn_7 <<Folder>> {
+	class "Saturn_4/agents_in" as agents_in <<concept>> 
+	class "Saturn_4/agents_out" as agents_out <<concept>> 
+	class "Saturn_4/TT" as TT <<concept>> 
+	class Pow_MI <<concept>>  {
+	}
+	 object Req_In_Ch <<individual>>  <<variable>> 
+	Pow_MI *-- Req_In_Ch : individualOf 
+	class Pow_MO <<concept>>  {
+	}
+	 object Req_Out_Ch <<individual>>  <<variable>> 
+	Pow_MO *-- Req_Out_Ch : individualOf 
+	agents_in "*" -- "0..1" TT : > 
+	 (agents_in, TT) .. In_Ch
+	 class In_Ch <<association>>  <<variable>>  {
+	}
+	agents_out "*" -- "0..1" TT : > 
+	 (agents_out, TT) .. Out_Ch
+	 class Out_Ch <<association>>  <<variable>>  {
+	}
+}
+Saturn_6 <|-- Saturn_7
+@enduml

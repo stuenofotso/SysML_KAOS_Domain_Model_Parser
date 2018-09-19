@@ -1,0 +1,21 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+package Saturn_4  <<Folder>> {
+}
+package Saturn_5 <<Folder>> {
+	class Implementation_Set <<concept>>  <<enumeration>>  {
+	}
+	 object Distributed <<individual>> 
+	Implementation_Set *-- Distributed : individualOf 
+	 object Centralised <<individual>> 
+	Implementation_Set *-- Centralised : individualOf 
+	 object Implementation <<individual>>  <<variable>> 
+	Implementation_Set *-- Implementation : individualOf 
+
+}
+Saturn_4 <|-- Saturn_5
+@enduml

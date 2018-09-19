@@ -1,31 +1,34 @@
-/* Saturn_1
+/* Saturn_2
 * Author: SysML/KAOS Domain Model Parser
 * Creation date: 18/09/2018
 */
 
-SYSTEM
+REFINEMENT
+Saturn_2
+REFINES
 Saturn_1
 
-
 SETS
-T_IN; T_OUT
+
 
 CONSTANTS
-FB
+
 
 VARIABLES
-in, out
+in_l, in_r
 
 PROPERTIES
-FB : T_IN --> T_OUT
+
 
 INVARIANT
-in : T_IN &
-out : T_OUT
+in_l : T_IN &
+in_r : T_IN &
+//logical formula p1
+(in = in_l)
 
 INITIALISATION
-in :: T_IN ||
-out :: T_OUT
+in_l :: T_IN ||
+in_r :: T_IN
 
 
 END

@@ -1,0 +1,30 @@
+/* Saturn_5
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 18/09/2018
+*/
+
+REFINEMENT
+Saturn_5
+REFINES
+Saturn_4
+
+SETS
+Implementation_Set={Distributed, Centralised}
+
+CONSTANTS
+
+
+VARIABLES
+Implementation
+
+PROPERTIES
+
+
+INVARIANT
+Implementation : Implementation_Set
+
+INITIALISATION
+Implementation :: Implementation_Set
+
+
+END

@@ -1,0 +1,20 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+
+package Saturn_6 <<Folder>> {
+	class Communication_Set <<concept>>  <<enumeration>>  {
+	}
+	 object Broadcast <<individual>> 
+	Communication_Set *-- Broadcast : individualOf 
+	 object PointToPoint <<individual>> 
+	Communication_Set *-- PointToPoint : individualOf 
+	 object Communication <<individual>>  <<variable>> 
+	Communication_Set *-- Communication : individualOf 
+
+}
+
+@enduml

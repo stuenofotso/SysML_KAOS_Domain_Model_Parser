@@ -1,0 +1,45 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+package Saturn_3  <<Folder>> {
+}
+package Saturn_4 <<Folder>> {
+	class "Saturn_1/T_IN" as T_IN <<concept>> 
+	class "Saturn_1/T_OUT" as T_OUT <<concept>> 
+	class MI <<concept>>  {
+	}
+	class MO <<concept>>  {
+	}
+	class agents_in <<concept>>  {
+	}
+	MI <|-- agents_in
+	class agents_out <<concept>>  {
+	}
+	MO <|-- agents_out
+	class TT <<concept>>  {
+	}
+	agents_in "0..1" -- "1" TT : > 
+	 (agents_in, TT) .. VIN
+	 class VIN <<association>>  {
+	}
+	 object s_in_l <<maplet>>  <<variable>> 
+	VIN *-- s_in_l : individualOf 
+	 object s_in_r <<maplet>> 
+	VIN *-- s_in_r : individualOf 
+	agents_out "0..1" -- "1" TT : > 
+	 (agents_out, TT) .. VOUT
+	 class VOUT <<association>>  {
+	}
+	 object s_out_l <<maplet>>  <<variable>> 
+	VOUT *-- s_out_l : individualOf 
+	 object s_out_r <<maplet>> 
+	VOUT *-- s_out_r : individualOf 
+	VIN "0..1" -- "1" T_IN : vec_to_in > 
+	VOUT "0..1" -- "1" T_OUT : vec_to_out > 
+	VIN "*" -- "1" VOUT : VBF > 
+}
+Saturn_3 <|-- Saturn_4
+@enduml

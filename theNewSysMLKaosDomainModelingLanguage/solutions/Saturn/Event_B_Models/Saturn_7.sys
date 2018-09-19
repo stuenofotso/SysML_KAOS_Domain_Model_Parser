@@ -1,0 +1,39 @@
+/* Saturn_7
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 18/09/2018
+*/
+
+REFINEMENT
+Saturn_7
+REFINES
+Saturn_6
+
+SETS
+Pow_MI; Pow_MO
+
+CONSTANTS
+
+
+VARIABLES
+Req_In_Ch, Req_Out_Ch, In_Ch, Out_Ch
+
+PROPERTIES
+//logical formula p1
+(Pow_MI =  POW(MI) ) &
+//logical formula p2
+(Pow_MO =  POW(MO) )
+
+INVARIANT
+Req_In_Ch : Pow_MI &
+Req_Out_Ch : Pow_MO &
+In_Ch : agents_in +-> TT &
+Out_Ch : agents_out +-> TT &
+//logical formula Transfer_In_Values
+((Implementation = Distributed & Communication = Broadcast)  => In_Ch = s_in_r)
+
+INITIALISATION
+Req_In_Ch :: Pow_MI ||
+Req_Out_Ch :: Pow_MO
+
+
+END

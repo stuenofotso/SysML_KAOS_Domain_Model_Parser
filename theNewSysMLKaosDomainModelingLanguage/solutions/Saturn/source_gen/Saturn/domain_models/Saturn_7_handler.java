@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.io.FileNotFoundException;
 
-public class map_DomainModel {
+public class Saturn_7_handler {
 
   public static String EVENT_B_MODELS_DIR_NAME = "Event_B_Models/";
   public static String EVENT_B_MODELS_FILE_EXTENSION = ".sys";
@@ -17,8 +17,10 @@ public class map_DomainModel {
 
 
   public static void main(String[] args) {
-    File eventBModelFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + EVENT_B_MODELS_FILE_EXTENSION);
-    File graphFile = new File(new File(map_DomainModel.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + GRAPH_FILE_EXTENSION);
+
+
+    File eventBModelFile = new File(new File(Saturn_7_handler.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + EVENT_B_MODELS_FILE_EXTENSION);
+    File graphFile = new File(new File(Saturn_7_handler.class.getProtectionDomain().getCodeSource().getLocation().getFile()).getParentFile(), EVENT_B_MODELS_DIR_NAME + "Saturn_7" + GRAPH_FILE_EXTENSION);
 
     if (!(eventBModelFile.getParentFile().exists())) {
       eventBModelFile.getParentFile().mkdirs();
@@ -47,26 +49,26 @@ public class map_DomainModel {
 
 
       pw.println("/* " + "Saturn_7" + "\n* Author: SysML/KAOS Domain Model Parser\n* Creation date: " + new SimpleDateFormat("dd/MM/yyyy").format(new Date()) + "\n*/");
-      pw.println("\nSYSTEM\nSaturn_7");
-      pw.println("");
+      pw.println("\nREFINEMENT\nSaturn_7");
+      pw.println("REFINES\nSaturn_6");
 
       pw.println("\nSETS");
-      pw.println("");
+      pw.println("Pow_MI; Pow_MO");
 
       pw.println("\nCONSTANTS");
       pw.println("");
 
       pw.println("\nVARIABLES");
-      pw.println("In_Ch, Out_Ch");
+      pw.println("Req_In_Ch, Req_Out_Ch, In_Ch, Out_Ch");
 
       pw.println("\nPROPERTIES");
-      pw.println("");
+      pw.println("//logical formula p1\n(Pow_MI =  POW(MI) ) &\n//logical formula p2\n(Pow_MO =  POW(MO) )");
 
       pw.println("\nINVARIANT");
-      pw.println("In_Ch : agents_in +-> TT &\nOut_Ch : agents_out +-> TT &\n//logical formula p1\n");
+      pw.println("Req_In_Ch : Pow_MI &\nReq_Out_Ch : Pow_MO &\nIn_Ch : agents_in +-> TT &\nOut_Ch : agents_out +-> TT &\n//logical formula Transfer_In_Values\n((Implementation = Distributed & Communication = Broadcast)  => In_Ch = s_in_r)");
 
       pw.println("\nINITIALISATION");
-      pw.println("");
+      pw.println("Req_In_Ch :: Pow_MI ||\nReq_Out_Ch :: Pow_MO");
 
 
       pw.println("\n\nEND");
@@ -78,19 +80,19 @@ public class map_DomainModel {
 
 
 
-      pwGraph.println("");
+      pwGraph.println("package Saturn_6  <<Folder>> {\n}");
 
 
       pwGraph.println("package " + "Saturn_7" + " <<Folder>> {");
 
-      pwGraph.println("	class \"Saturn_4/agents_in\" as agents_in <<concept>> \n	class \"Saturn_4/agents_out\" as agents_out <<concept>> \n	class \"Saturn_4/TT\" as TT <<concept>> ");
+      pwGraph.println("	class \"Saturn_4/agents_in\" as agents_in <<concept>> \n	class \"Saturn_4/agents_out\" as agents_out <<concept>> \n	class \"Saturn_4/TT\" as TT <<concept>> \n	class Pow_MI <<concept>>  {\n	}\n	 object Req_In_Ch <<individual>>  <<variable>> \n	Pow_MI *-- Req_In_Ch : individualOf \n	class Pow_MO <<concept>>  {\n	}\n	 object Req_Out_Ch <<individual>>  <<variable>> \n	Pow_MO *-- Req_Out_Ch : individualOf ");
 
 
       pwGraph.println("	agents_in \"*\" -- \"0..1\" TT : > \n	 (agents_in, TT) .. In_Ch\n	 class In_Ch <<association>>  <<variable>>  {\n	}\n	agents_out \"*\" -- \"0..1\" TT : > \n	 (agents_out, TT) .. Out_Ch\n	 class Out_Ch <<association>>  <<variable>>  {\n	}");
 
       pwGraph.println("}");
 
-      pwGraph.println("");
+      pwGraph.println("Saturn_6 <|-- Saturn_7");
 
 
       pwGraph.println("@enduml");
