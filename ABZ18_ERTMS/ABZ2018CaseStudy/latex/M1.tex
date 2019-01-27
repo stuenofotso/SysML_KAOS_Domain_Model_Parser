@@ -1,0 +1,123 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\SingleHeader{M1}
+\MACHINE{M1}{M0}{C0}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+}
+\INVARIANTS{
+	\Invariant{inv1\_1}{false}{$MA \in{} dom(connectedTrain) \pfun{} \pow{}(WAY)$}{}
+	\Invariant{inv1\_2}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MA)\limp{}(\exists{}p,q\qdot{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q\land{}MA(tr)=p\upto{}q )))$}{}
+	\Invariant{inv1\_3}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MA)\limp{}front(tr)\in{}MA(tr))$}{}
+	\Invariant{inv1\_4}{false}{$\forall{}tr\qdot{}(tr\in{}dom(rear)\binter{}dom(MA)\limp{}rear(tr)\in{}MA(tr))$}{}
+	\Invariant{inv1\_5}{false}{$\forall{}tr1,tr2\qdot{}((\{tr1,tr2\}\subseteq{}dom(MA)\land{}tr1\neq{}tr2)\limp{}MA(tr1)\binter{}MA(tr2)=\emptyset{})$}{}
+	\Invariant{inv1\_6}{false}{$MAtemp \in{} dom(connectedTrain) \pfun{} \pow{}(WAY)$}{}
+	\Invariant{inv1\_7}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MAtemp)\limp{}(\exists{}p,q\qdot{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q\land{}MAtemp(tr)=p\upto{}q )))$}{\\SYSML/KAOS PROOF OBLIGATIONS}
+	\Invariant{sysml\_kaos\_po\_1\_1}{true}{$\\\forall{}tr,p,q,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_1\_2}{true}{$\\\forall{}tr,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MAtemp))\\~ 										\land{}(front(tr)\in{}MAtemp(tr))\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}MAtemp(tr))\\~ 										\land{}(MAtemp(tr) \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_1\_3}{true}{$\\\forall{}tr,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA))\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} MA(tr))\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_1\_123}{true}{$\\\forall{}tr,len,p,q,front1,rear1\qdot{}(\\~ 									(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}( front1 = front(tr))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear1 = rear(tr))\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front1\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear1\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(tr \in{} dom(MA))\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} MA(tr))\\~ 									)\limp{}\\~ 									(\\~ 									  (\\~ 										( MA(tr) = p\upto{}q)\\~ 										\land{}(front(tr) = front1+len)\\~ 										\land{}(rear =  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear1+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear))))\\~ 									  )\\~ 										\limp{}\\~ 									  (\\~ 										(front(tr) = front1+len)\\~ 										\land{}(rear =  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear1+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear))))\\~ 									  )\\~ 								   )\\~ 								)$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+	}
+}
+\EVT{ComputeTrainMA}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{p}{true}{}
+		\Param{q}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$p\upto{}q\subseteq{}WAY \land{} p\leq{}q$}{true}{}
+		\Guard{grd3}{false}{$front(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd5}{false}{$p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd7}{false}{$front(tr)+len \in{} WAY$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MAtemp(tr) \bcmeq{} p\upto{}q$}{true}{}
+	}
+}
+\EVT{AssignMAtoTrain}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MAtemp)$}{true}{}
+		\Guard{grd2}{false}{$front(tr)\in{}MAtemp(tr)$}{true}{}
+		\Guard{grd3}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}MAtemp(tr)$}{true}{}
+		\Guard{grd4}{false}{$MAtemp(tr) \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd6}{false}{$front(tr)+len \in{} WAY$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MA(tr) \bcmeq{} MAtemp(tr)$}{true}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{true}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+}
+\END
+\end{document}

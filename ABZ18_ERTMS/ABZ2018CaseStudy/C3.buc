@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1548238787892" org.eventb.texttools.text_representation="context C3 extends C2&#10;&#10;sets&#10;&#9;TIMER_STATUS&#10;&#10;constants&#10;&#9;INACTIVE STARTED EXPIRED&#10;&#10;axioms&#10;&#9;@axm1 partition(TIMER_STATUS, {INACTIVE}, {STARTED}, {EXPIRED})&#10;&#10;end&#10;" version="3">
+<org.eventb.core.extendsContext name="'" org.eventb.core.target="C2"/>
+<org.eventb.core.carrierSet name="_aU30cB74Eeme7KoBnXCYEA" org.eventb.core.generated="false" org.eventb.core.identifier="TIMER_STATUS"/>
+<org.eventb.core.constant name="_aU30cR74Eeme7KoBnXCYEA" org.eventb.core.generated="false" org.eventb.core.identifier="INACTIVE"/>
+<org.eventb.core.constant name="_aU30ch74Eeme7KoBnXCYEA" org.eventb.core.generated="false" org.eventb.core.identifier="STARTED"/>
+<org.eventb.core.constant name="_aU30cx74Eeme7KoBnXCYEA" org.eventb.core.generated="false" org.eventb.core.identifier="EXPIRED"/>
+<org.eventb.core.axiom name="_aU30dB74Eeme7KoBnXCYEA" org.eventb.core.generated="false" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(TIMER_STATUS, {INACTIVE}, {STARTED}, {EXPIRED})"/>
+</org.eventb.core.contextFile>

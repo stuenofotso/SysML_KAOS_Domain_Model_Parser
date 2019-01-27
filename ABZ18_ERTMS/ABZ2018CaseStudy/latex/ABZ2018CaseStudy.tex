@@ -1,0 +1,1142 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\MultiTitle{ABZ2018CaseStudy}
+\MultiHeader{CONTEXT}{C0}
+\CONTEXT{C0}{}{}
+\SETS{
+	\Set{TRAIN}{}
+}
+\CONSTANTS{
+	\Constant{a}{}
+	\Constant{b}{}
+	\Constant{WAY}{}
+}
+\AXIOMS{
+	\Axiom{axiom1}{false}{$\{a,b\}\subseteq{}\nat{}$}{}
+	\Axiom{axiom2}{false}{$a<b$}{}
+	\Axiom{axiom3}{false}{$WAY=a\upto{}b$}{}
+	\Axiom{axiom4}{false}{$b-a\geq{}20$}{}
+}
+\END
+\MultiHeader{CONTEXT}{C2}
+\CONTEXT{C2}{C0}{}
+\SETS{
+	\Set{STATES}{}
+}
+\CONSTANTS{
+	\Constant{TTD}{}
+	\Constant{VSS}{}
+	\Constant{OCCUPIED}{}
+	\Constant{FREE}{}
+	\Constant{UNKNOW}{}
+	\Constant{AMBIGUOUS}{}
+}
+\AXIOMS{
+	\Axiom{axiom1}{false}{$TTD \subseteq{}  \pown{}(WAY)$}{}
+	\Axiom{axiom2}{false}{$union(TTD) = WAY$}{}
+	\Axiom{axiom3}{false}{$inter(TTD) = \emptyset{}$}{}
+	\Axiom{axiom4}{false}{$\forall{}ttd\qdot{}(ttd\in{}TTD\limp{}(\exists{}p,q\qdot{}(p\upto{}q\subseteq{}WAY \land{} p<q\land{}ttd=p\upto{}q )))$}{}
+	\Axiom{axiom5}{false}{$VSS \subseteq{}  \pown{}(WAY)$}{}
+	\Axiom{axiom6}{false}{$union(VSS) = WAY$}{}
+	\Axiom{axiom7}{false}{$inter(VSS) = \emptyset{}$}{}
+	\Axiom{axiom8}{false}{$\forall{}vss\qdot{}(vss\in{}VSS\limp{}(\exists{}p,q,ttd\qdot{}(ttd\in{}TTD \land{} p\upto{}q\subseteq{}ttd \land{} p<q \land{} vss=p\upto{}q )))$}{}
+	\Axiom{axiom9}{false}{$partition(STATES, \{OCCUPIED\}, \{FREE\}, \{UNKNOW\}, \{AMBIGUOUS\})$}{}
+}
+\END
+\MultiHeader{CONTEXT}{C3}
+\CONTEXT{C3}{C2}{}
+\SETS{
+	\Set{TIMER\_STATUS}{}
+}
+\CONSTANTS{
+	\Constant{INACTIVE}{}
+	\Constant{STARTED}{}
+	\Constant{EXPIRED}{}
+}
+\AXIOMS{
+	\Axiom{axm1}{false}{$partition(TIMER\_STATUS, \{INACTIVE\}, \{STARTED\}, \{EXPIRED\})$}{}
+}
+\END
+\MultiHeader{MACHINE}{M0}
+\MACHINE{M0}{}{C0}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+}
+\INVARIANTS{
+	\Invariant{inv0\_1}{false}{$connectedTrain \in{} TRAIN \pfun{} BOOL$}{}
+	\Invariant{inv0\_2}{false}{$front \in{} dom(connectedTrain) \tfun{} WAY$}{}
+	\Invariant{inv0\_3}{false}{$rear \in{} dom(connectedTrain) \pfun{} WAY$}{}
+	\Invariant{inv0\_4}{false}{$\forall{}tr\qdot{}(tr\in{}dom(rear)\limp{}rear(tr)<front(tr))$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+	}
+}
+\EVT{MoveTrainOnTrack}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} WAY$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{fr}{true}{}
+		\Param{re}{true}{}
+		\Param{integer}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{true}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{true}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{true}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{true}{}
+		\Guard{grd5}{false}{$re < fr$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{true}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{true}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{true}{}
+	}
+}
+\EVT{\_exitTrain}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{true}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M1}
+\MACHINE{M1}{M0}{C0}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+}
+\INVARIANTS{
+	\Invariant{inv1\_1}{false}{$MA \in{} dom(connectedTrain) \pfun{} \pow{}(WAY)$}{}
+	\Invariant{inv1\_2}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MA)\limp{}(\exists{}p,q\qdot{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q\land{}MA(tr)=p\upto{}q )))$}{}
+	\Invariant{inv1\_3}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MA)\limp{}front(tr)\in{}MA(tr))$}{}
+	\Invariant{inv1\_4}{false}{$\forall{}tr\qdot{}(tr\in{}dom(rear)\binter{}dom(MA)\limp{}rear(tr)\in{}MA(tr))$}{}
+	\Invariant{inv1\_5}{false}{$\forall{}tr1,tr2\qdot{}((\{tr1,tr2\}\subseteq{}dom(MA)\land{}tr1\neq{}tr2)\limp{}MA(tr1)\binter{}MA(tr2)=\emptyset{})$}{}
+	\Invariant{inv1\_6}{false}{$MAtemp \in{} dom(connectedTrain) \pfun{} \pow{}(WAY)$}{}
+	\Invariant{inv1\_7}{false}{$\forall{}tr\qdot{}(tr\in{}dom(MAtemp)\limp{}(\exists{}p,q\qdot{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q\land{}MAtemp(tr)=p\upto{}q )))$}{\\SYSML/KAOS PROOF OBLIGATIONS}
+	\Invariant{sysml\_kaos\_po\_G1-Guard=>G-Guard}{true}{$\\\forall{}tr,p,q,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{\\remplacement de toute reference a MAtemp par (($\{$tr$\}$$\domsub{}$MAtemp)$\bunion{}$$\{$tr$\mapsto{}$p$\upto{}$q$\}$)}
+	\Invariant{sysml\_kaos\_po\_G1-Post=>G2-Guard}{true}{$\\\forall{}tr,p,q,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} p\upto{}q)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})))\\~ 										\land{}(front(tr)\in{}((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr))\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr))\\~ 										\land{}(((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr) \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{} front(tr)+len \in{} ((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr)\\~ 									))$}{\\remplacement de toute reference a MA par (($\{$tr$\}$$\domsub{}$MA)$\bunion{}$$\{$tr$\mapsto{}$MAtemp(tr)$\}$)}
+	\Invariant{sysml\_kaos\_po\_G2-Post=>G3-Guard}{true}{$\\\forall{}tr,len\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MAtemp))\\~ 										\land{}(front(tr)\in{}MAtemp(tr))\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}MAtemp(tr))\\~ 										\land{}(MAtemp(tr) \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{} front(tr)+len \in{} MAtemp(tr)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(((\{tr\}\domsub{}MA)\bunion{}\{tr\mapsto{}MAtemp(tr)\})))\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} ((\{tr\}\domsub{}MA)\bunion{}\{tr\mapsto{}MAtemp(tr)\})(tr))\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G3-Post=>G-Post}{true}{$\\\forall{}tr,len\qdot{}(\\~ 									(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA))\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} MA(tr))\\~ 									)\limp{}\\~ 									(\\~ 									(front(tr)+len = front(tr)+len)\\~ 									\land{} (tr\in{}dom(rear)\limp{}((\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})=(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})))\\~ 								   )\\~ 								)$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+	}
+}
+\EVT{ComputeTrainMA}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{p}{true}{}
+		\Param{q}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$p\upto{}q\subseteq{}WAY \land{} p\leq{}q$}{true}{}
+		\Guard{grd3}{false}{$front(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd5}{false}{$p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd6}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd7}{false}{$front(tr)+len \in{} WAY$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MAtemp(tr) \bcmeq{} p\upto{}q$}{true}{}
+	}
+}
+\EVT{AssignMAtoTrain}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MAtemp)$}{true}{}
+		\Guard{grd2}{false}{$front(tr)\in{}MAtemp(tr)$}{true}{}
+		\Guard{grd3}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}MAtemp(tr)$}{true}{}
+		\Guard{grd4}{false}{$MAtemp(tr) \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd5}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd6}{false}{$front(tr)+len \in{} MAtemp(tr)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MA(tr) \bcmeq{} MAtemp(tr)$}{true}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{false}{ordinary}{MoveTrainOnTrack}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{len}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{true}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{true}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{true}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M2}
+\MACHINE{M2}{M1}{C2}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+	\Variable{stateTTD}{}
+	\Variable{stateVSS}{}
+}
+\INVARIANTS{
+	\Invariant{inv2\_1}{false}{$stateTTD \in{} TTD \tfun{} \{OCCUPIED, FREE\}$}{}
+	\Invariant{inv2\_2}{false}{$stateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{}
+	\Invariant{inv2\_3}{false}{$\forall{}ttd,tr\qdot{}((tr\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr)\in{}ttd)\limp{}stateTTD(ttd)=OCCUPIED)$}{}
+	\Invariant{inv2\_4}{false}{$\forall{}ttd,tr\qdot{}((tr\in{}dom(rear)\land{}ttd\in{}TTD\land{}(rear(tr)\upto{}front(tr))\binter{}ttd\neq{}\emptyset{})\limp{}stateTTD(ttd)=OCCUPIED)$}{}
+	\Invariant{inv2\_5}{false}{$\forall{}tr1,tr2\qdot{}((tr1\in{}dom(rear)\land{}tr2\in{}dom(rear)\land{}tr1\neq{}tr2)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr2)\upto{}front(tr2))=\emptyset{})$}{}
+	\Invariant{inv2\_6}{false}{$\forall{}tr1,tr2\qdot{}((tr1\in{}dom(rear)\land{}tr2\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr2)\limp{}front(tr2) < rear(tr1))$}{}
+	\Invariant{inv2\_7}{false}{$\forall{}tr1,tr2,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr2\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr2\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr2) \notin{} ttd)$}{\\SYSML/KAOS PROOF OBLIGATIONS}
+	\Invariant{sysml\_kaos\_po\_G1-Guard=>G-Guard}{true}{$\\\forall{}tr,p,q,len,ttds,ttds1,p0,p1,q1\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(ttds\subseteq{} stateTTD\converse{}[\{FREE\}])\\~ 										\land{}(union(ttds) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(ttds1 \subseteq{} TTD)\\~ 										\land{}(union(ttds1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(ttds \bunion{} ttds1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G2-Guard=>G-Guard}{true}{$\\\forall{}tr,p,q,len,vsss,vsss1,p0,p1,q1,newstateVSS\qdot{}((\\~ 										(newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 										\land{}(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(vsss\subseteq{} newstateVSS\converse{}[\{FREE\}])\\~ 										\land{}(union(vsss) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(vsss1 \subseteq{} VSS)\\~ 										\land{}(union(vsss1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(vsss \bunion{} vsss1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G1-Post=>G-Post}{true}{$\\\forall{}tr,p,q,len,ttds,ttds1,p0,p1,q1\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(ttds\subseteq{} stateTTD\converse{}[\{FREE\}])\\~ 										\land{}(union(ttds) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(ttds1 \subseteq{} TTD)\\~ 										\land{}(union(ttds1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(ttds \bunion{} ttds1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 									(\\~ 									(p\upto{}q = p\upto{}q)\\~ 								   )\\~ 								)$}{}
+	\Invariant{sysml\_kaos\_po\_G2-Post=>G-Post}{true}{$\\\forall{}tr,p,q,len,vsss,vsss1,p0,p1,q1,newstateVSS\qdot{}((\\~ 										(newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 										\land{}(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(vsss\subseteq{} newstateVSS\converse{}[\{FREE\}])\\~ 										\land{}(union(vsss) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(vsss1 \subseteq{} VSS)\\~ 										\land{}(union(vsss1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(vsss \bunion{} vsss1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 									(\\~ 									(p\upto{}q = p\upto{}q)\\~ 								   )\\~ 								)$}{\\remplacement de MAtemp par (($\{$tr$\}$$\domsub{}$MAtemp)$\bunion{}$$\{$tr$\mapsto{}$p$\upto{}$q$\}$)}
+	\Invariant{sysml\_kaos\_po\_G1-Post=>not(G2-Guard)}{true}{$\\\forall{}tr,p,q,len,ttds,ttds1,p0,p1,q1\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(ttds\subseteq{} stateTTD\converse{}[\{FREE\}])\\~ 										\land{}(union(ttds) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(ttds1 \subseteq{} TTD)\\~ 										\land{}(union(ttds1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(ttds \bunion{} ttds1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 									\lnot{}(\exists{} vsss,vsss1,newstateVSS\qdot{}(\\~ 									(newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 										\land{}(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(vsss\subseteq{} newstateVSS\converse{}[\{FREE\}])\\~ 										\land{}(union(vsss) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(vsss1 \subseteq{} VSS)\\~ 										\land{}(union(vsss1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(vsss \bunion{} vsss1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})) \lor{} ((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr) \neq{} p\upto{}q)\\~ 									)\\~ 								   )\\~ 								)$}{\\remplacement de MAtemp par (($\{$tr$\}$$\domsub{}$MAtemp)$\bunion{}$$\{$tr$\mapsto{}$p$\upto{}$q$\}$)}
+	\Invariant{sysml\_kaos\_po\_G2-Post=>not(G1-Guard)}{true}{$\\\forall{}tr,p,q,len,vsss,vsss1,p0,p1,q1,newstateVSS\qdot{}((\\~ 										(newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 										\land{}(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(vsss\subseteq{} newstateVSS\converse{}[\{FREE\}])\\~ 										\land{}(union(vsss) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(vsss1 \subseteq{} VSS)\\~ 										\land{}(union(vsss1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(vsss \bunion{} vsss1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 									\lnot{}(\exists{}ttds,ttds1\qdot{}(\\~ 									(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(ttds\subseteq{} stateTTD\converse{}[\{FREE\}])\\~ 										\land{}(union(ttds) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(ttds1 \subseteq{} TTD)\\~ 										\land{}(union(ttds1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(ttds \bunion{} ttds1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})) \lor{} ((\{tr\}\domsub{}MAtemp)\bunion{}\{tr\mapsto{}p\upto{}q\})(tr) \neq{} p\upto{}q)\\~ 									)\\~ 								   )\\~ 								)$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$stateTTD\bcmeq{} TTD \cprod{} \{OCCUPIED\}$}{true}{}
+		\Action{act7}{$stateVSS\bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+	}
+}
+\EVT{ComputeTrainMAFollowingTTDStates}{false}{ordinary}{ComputeTrainMA}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{ttds}{true}{}
+		\Param{p}{true}{}
+		\Param{q}{true}{}
+		\Param{ttds1}{true}{}
+		\Param{p0}{true}{}
+		\Param{p1}{true}{}
+		\Param{q1}{true}{}
+		\Param{len}{true}{ttds1 designe l'ensemble des ttd sur lesquels le train est succeptible de se trouver}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$ttds\subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd3}{false}{$union(ttds) = p1\upto{}q1$}{true}{}
+		\Guard{grd4}{false}{$p1\geq{}front(tr)$}{true}{}
+		\Guard{grd5}{false}{$ttds1 \subseteq{} TTD$}{true}{}
+		\Guard{grd6}{false}{$union(ttds1) = p0\upto{}(p1-1)$}{true}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0$}{true}{}
+		\Guard{grd8}{false}{$tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0$}{true}{}
+		\Guard{grd9}{false}{$p\upto{}q \subseteq{} union(ttds \bunion{} ttds1)$}{true}{}
+		\Guard{grd10}{false}{$p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$front(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd12}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd13}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd14}{false}{$front(tr)+len \in{} WAY$}{true}{}
+		\Guard{grd15}{false}{$tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MAtemp(tr) \bcmeq{} p\upto{}q$}{true}{}
+	}
+}
+\EVT{ComputeTrainMAFollowingVSSStates}{false}{ordinary}{ComputeTrainMA}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{vsss}{true}{}
+		\Param{p}{true}{}
+		\Param{q}{true}{}
+		\Param{vsss1}{true}{}
+		\Param{p0}{true}{}
+		\Param{p1}{true}{}
+		\Param{q1}{true}{}
+		\Param{newstateVSS}{true}{}
+		\Param{len}{true}{vsss1 designe l'ensemble des vss sur lesquels le train est succeptible de se trouver}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$vsss\subseteq{} newstateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd3}{false}{$union(vsss) = p1\upto{}q1$}{true}{}
+		\Guard{grd4}{false}{$p1\geq{}front(tr)$}{true}{}
+		\Guard{grd5}{false}{$vsss1 \subseteq{} VSS$}{true}{}
+		\Guard{grd6}{false}{$union(vsss1) = p0\upto{}(p1-1)$}{true}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0$}{true}{}
+		\Guard{grd8}{false}{$tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0$}{true}{}
+		\Guard{grd9}{false}{$p\upto{}q \subseteq{} union(vsss \bunion{} vsss1)$}{true}{}
+		\Guard{grd10}{false}{$p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$front(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd12}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd13}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd14}{false}{$front(tr)+len \in{} WAY$}{true}{}
+		\Guard{grd15}{false}{$tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MAtemp(tr) \bcmeq{} p\upto{}q$}{true}{}
+		\Action{act2}{$stateVSS \bcmeq{} newstateVSS$}{true}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{len}{false}{}
+		\Param{ttds}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
+		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{true}{}
+		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{true}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{true}{}
+		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{true}{}
+		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+		\Param{ttds}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{true}{}
+		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{true}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{true}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{true}{}
+		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{true}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M3}
+\MACHINE{M3}{M2}{C0,C2}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+	\Variable{stateTTD}{}
+	\Variable{stateVSS}{}
+	\Variable{newstateVSScomputed}{}
+}
+\INVARIANTS{
+	\Invariant{inv3\_1}{false}{$newstateVSScomputed \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$stateTTD\bcmeq{} TTD \cprod{} \{OCCUPIED\}$}{true}{}
+		\Action{act7}{$stateVSS\bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+		\Action{act8}{$newstateVSScomputed \bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+	}
+}
+\EVT{ComputeVSSStates}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{ComputeTrainMAUsingVSSStates}{false}{ordinary}{ComputeTrainMAFollowingVSSStates}{}{
+	\ANY{
+		\Param{tr}{true}{}
+		\Param{vsss}{true}{}
+		\Param{p}{true}{}
+		\Param{q}{true}{}
+		\Param{vsss1}{true}{}
+		\Param{p0}{true}{}
+		\Param{p1}{true}{}
+		\Param{q1}{true}{}
+		\Param{len}{true}{}
+		\Param{newstateVSS}{true}{vsss1 designe l'ensemble des vss sur lesquels le train est succeptible de se trouver}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$newstateVSS = newstateVSScomputed$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd2}{false}{$vsss\subseteq{} newstateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd3}{false}{$union(vsss) = p1\upto{}q1$}{true}{}
+		\Guard{grd4}{false}{$p1\geq{}front(tr)$}{true}{}
+		\Guard{grd5}{false}{$vsss1 \subseteq{} VSS$}{true}{}
+		\Guard{grd6}{false}{$union(vsss1) = p0\upto{}(p1-1)$}{true}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0$}{true}{}
+		\Guard{grd8}{false}{$tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0$}{true}{}
+		\Guard{grd9}{false}{$p\upto{}q \subseteq{} union(vsss \bunion{} vsss1)$}{true}{}
+		\Guard{grd10}{false}{$p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{}$}{true}{}
+		\Guard{grd11}{false}{$front(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd12}{false}{$tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q$}{true}{}
+		\Guard{grd13}{false}{$len \in{} \natn{}$}{true}{}
+		\Guard{grd14}{false}{$front(tr)+len \in{} WAY$}{true}{}
+		\Guard{grd15}{false}{$tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$MAtemp(tr) \bcmeq{} p\upto{}q$}{true}{}
+		\Action{act2}{$stateVSS \bcmeq{} newstateVSS$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{len}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
+		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M4}
+\MACHINE{M4}{M3}{C0,C2}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+	\Variable{stateTTD}{}
+	\Variable{stateVSS}{}
+	\Variable{newstateVSScomputed}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$stateTTD\bcmeq{} TTD \cprod{} \{OCCUPIED\}$}{true}{}
+		\Action{act7}{$stateVSS\bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+		\Action{act8}{$newstateVSScomputed \bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+	}
+}
+\EVT{ComputeVSSStatesFollowingTTDStates}{false}{ordinary}{ComputeVSSStates}{}{
+	\ANY{
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{ComputeVSSStateswoTTDStates}{false}{ordinary}{ComputeVSSStates}{}{
+	\ANY{
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{len}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
+		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M5}
+\MACHINE{M5}{M4}{C0,C2}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+	\Variable{stateTTD}{}
+	\Variable{stateVSS}{}
+	\Variable{newstateVSScomputed}{SYSML/KAOS PROOF OBLIGATIONS}
+}
+\INVARIANTS{
+	\Invariant{sysml\_kaos\_po\_G1-Guard=>G-Guard}{true}{$\\\forall{}vss,vss1,vss2,vss3,vss4,newstateVSScomputed1\qdot{}((\\~ 										(vss = stateVSS\converse{}[\{UNKNOW\}])\\~ 										\land{}(partition(vss, vss1, vss2, vss3, vss4))\\~ 										\land{}(newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\})))\\~ 									) \limp{}\\~ 							  		(\\~ 										(newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G2-Guard=>G-Guard}{true}{$\\\forall{}vss,vss1,vss2,vss3,vss4,newstateVSScomputed1\qdot{}((\\~ 										(vss = stateVSS\converse{}[\{OCCUPIED\}])\\~ 										\land{}(partition(vss, vss1, vss2, vss3, vss4))\\~ 										\land{}(newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\})))\\~ 									) \limp{}\\~ 							  		(\\~ 										(newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G3-Guard=>G-Guard}{true}{$\\\forall{}vss,vss1,vss2,vss3,vss4,newstateVSScomputed1\qdot{}((\\~ 										(vss = stateVSS\converse{}[\{AMBIGUOUS\}])\\~ 										\land{}(partition(vss, vss1, vss2, vss3, vss4))\\~ 										\land{}(newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\})))\\~ 									) \limp{}\\~ 							  		(\\~ 										(newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G4-Guard=>G-Guard}{true}{$\\\forall{}vss,vss1,vss2,vss3,vss4,newstateVSScomputed1\qdot{}((\\~ 										(vss = stateVSS\converse{}[\{FREE\}])\\~ 										\land{}(partition(vss, vss1, vss2, vss3, vss4))\\~ 										\land{}(newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\})))\\~ 									) \limp{}\\~ 							  		(\\~ 										(newstateVSScomputed1 \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 									))$}{}
+	\Invariant{sysml\_kaos\_po\_G1-G2-G3-G4-G5-Post=>G-Post
+}{true}{$\\\forall{}vss1,vss11,vss12,vss13,vss14,vss2,vss21,vss22,vss23,vss24,vss3,vss31,vss32,vss33,vss34,vss4,vss41,vss42,vss43,vss44\qdot{}(\\~ 									(\\~ 										(vss1 = stateVSS\converse{}[\{UNKNOW\}])\\~ 										\land{}(partition(vss1, vss11, vss12, vss13, vss14))\\~ 										\land{}(vss2 = stateVSS\converse{}[\{OCCUPIED\}])\\~ 										\land{}(partition(vss2, vss21, vss22, vss23, vss24))\\~ 										\land{}(vss3 = stateVSS\converse{}[\{AMBIGUOUS\}])\\~ 										\land{}(partition(vss3, vss31, vss32, vss33, vss34))\\~ 										\land{}(vss4 = stateVSS\converse{}[\{FREE\}])\\~ 										\land{}(partition(vss4, vss41, vss42, vss43, vss44))\\~ 									)\limp{}\\~ 									(\\~ 									(stateVSS\ovl{}((vss11\cprod{}\{OCCUPIED\})\bunion{}(vss12\cprod{}\{FREE\})\bunion{}(vss13\cprod{}\{AMBIGUOUS\})\bunion{}(vss14\cprod{}\{UNKNOW\})))\\~ 									\ovl{}(stateVSS\ovl{}((vss21\cprod{}\{OCCUPIED\})\bunion{}(vss22\cprod{}\{FREE\})\bunion{}(vss23\cprod{}\{AMBIGUOUS\})\bunion{}(vss24\cprod{}\{UNKNOW\})))\\~ 									\ovl{}(stateVSS\ovl{}((vss31\cprod{}\{OCCUPIED\})\bunion{}(vss32\cprod{}\{FREE\})\bunion{}(vss33\cprod{}\{AMBIGUOUS\})\bunion{}(vss34\cprod{}\{UNKNOW\})))\\~ 									\ovl{}(stateVSS\ovl{}((vss41\cprod{}\{OCCUPIED\})\bunion{}(vss42\cprod{}\{FREE\})\bunion{}(vss43\cprod{}\{AMBIGUOUS\})\bunion{}(vss44\cprod{}\{UNKNOW\})))\\~ 									\in{}VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\}\\~ 								   )\\~ 								)$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$stateTTD\bcmeq{} TTD \cprod{} \{OCCUPIED\}$}{true}{}
+		\Action{act7}{$stateVSS\bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+		\Action{act8}{$newstateVSScomputed \bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinUnknowState}{false}{ordinary}{ComputeVSSStatesFollowingTTDStates}{}{
+	\ANY{
+		\Param{vss}{true}{}
+		\Param{vss1}{true}{}
+		\Param{vss2}{true}{}
+		\Param{vss3}{true}{}
+		\Param{vss4}{true}{}
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss = stateVSS\converse{}[\{UNKNOW\}]$}{true}{}
+		\Guard{grd2}{false}{$partition(vss, vss1, vss2, vss3, vss4)$}{true}{}
+		\Guard{grd3}{false}{$newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinOccupiedState}{false}{ordinary}{ComputeVSSStatesFollowingTTDStates}{}{
+	\ANY{
+		\Param{vss}{true}{}
+		\Param{vss1}{true}{}
+		\Param{vss2}{true}{}
+		\Param{vss3}{true}{}
+		\Param{vss4}{true}{}
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss = stateVSS\converse{}[\{OCCUPIED\}]$}{true}{}
+		\Guard{grd2}{false}{$partition(vss, vss1, vss2, vss3, vss4)$}{true}{}
+		\Guard{grd3}{false}{$newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinAmbiguousState}{false}{ordinary}{ComputeVSSStatesFollowingTTDStates}{}{
+	\ANY{
+		\Param{vss}{true}{}
+		\Param{vss1}{true}{}
+		\Param{vss2}{true}{}
+		\Param{vss3}{true}{}
+		\Param{vss4}{true}{}
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss = stateVSS\converse{}[\{AMBIGUOUS\}]$}{true}{}
+		\Guard{grd2}{false}{$partition(vss, vss1, vss2, vss3, vss4)$}{true}{}
+		\Guard{grd3}{false}{$newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinFreeState}{false}{ordinary}{ComputeVSSStatesFollowingTTDStates}{}{
+	\ANY{
+		\Param{vss}{true}{}
+		\Param{vss1}{true}{}
+		\Param{vss2}{true}{}
+		\Param{vss3}{true}{}
+		\Param{vss4}{true}{}
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss = stateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd2}{false}{$partition(vss, vss1, vss2, vss3, vss4)$}{true}{}
+		\Guard{grd3}{false}{$newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{len}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
+		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{M6}
+\MACHINE{M6}{M5}{C2,C3}{}
+\VARIABLES{
+	\Variable{connectedTrain}{}
+	\Variable{front}{}
+	\Variable{rear}{}
+	\Variable{MA}{}
+	\Variable{MAtemp}{}
+	\Variable{stateTTD}{}
+	\Variable{stateVSS}{}
+	\Variable{newstateVSScomputed}{}
+	\Variable{freeVssChangingtoFree}{}
+	\Variable{freeVssChangingtoUnknow}{}
+	\Variable{freeVssChangingtoOccupied}{}
+	\Variable{freeVssChangingtoAmbiguous}{}
+	\Variable{muteTimer}{}
+	\Variable{waitIntegrityTimer}{}
+}
+\INVARIANTS{
+	\Invariant{inv6\_1}{false}{$freeVssChangingtoFree \subseteq{} VSS$}{}
+	\Invariant{inv6\_2}{false}{$freeVssChangingtoUnknow \subseteq{} VSS$}{}
+	\Invariant{inv6\_3}{false}{$freeVssChangingtoOccupied \subseteq{} VSS$}{}
+	\Invariant{inv6\_4}{false}{$freeVssChangingtoAmbiguous \subseteq{} VSS$}{}
+	\Invariant{inv6\_5}{false}{$muteTimer \in{}  TRAIN \tfun{} TIMER\_STATUS$}{}
+	\Invariant{inv6\_6}{false}{$waitIntegrityTimer \in{}  TRAIN \tfun{} TIMER\_STATUS$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$connectedTrain\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act2}{$front\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act3}{$rear\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act4}{$MA\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act5}{$MAtemp\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act6}{$stateTTD\bcmeq{} TTD \cprod{} \{OCCUPIED\}$}{true}{}
+		\Action{act7}{$stateVSS\bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+		\Action{act8}{$newstateVSScomputed \bcmeq{} VSS \cprod{} \{UNKNOW\}$}{true}{}
+		\Action{act10}{$freeVssChangingtoFree\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act11}{$freeVssChangingtoUnknow\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act12}{$freeVssChangingtoOccupied\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act13}{$freeVssChangingtoAmbiguous\bcmeq{}\emptyset{}$}{true}{}
+		\Action{act14}{$muteTimer \bcmeq{}  TRAIN \cprod{}  \{INACTIVE\}$}{true}{}
+		\Action{act15}{$waitIntegrityTimer \bcmeq{}  TRAIN \cprod{}  \{INACTIVE\}$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinFreeStateWhenTTDisFree}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{vssTtdFree}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vssTtdFree \subseteq{} stateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd2}{false}{$\forall{}vss\qdot{}(vss\in{}vssTtdFree\limp{}vss \subseteq{} union(stateTTD\converse{}[\{FREE\}]))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$freeVssChangingtoFree \bcmeq{} freeVssChangingtoFree \bunion{}  vssTtdFree$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinFreeStateWhenTTDisOccupiedandNoTrainisLocatedandNoMAisIssued}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{vssTtdOccupiedwithNoTrainAndNoMA}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vssTtdOccupiedwithNoTrainAndNoMA \subseteq{} stateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd2}{false}{$\forall{}vss\qdot{}(vss\in{}vssTtdOccupiedwithNoTrainAndNoMA\limp{}vss \subseteq{} union(stateTTD\converse{}[\{OCCUPIED\}]))$}{true}{}
+		\Guard{grd3}{false}{$\forall{}vss,p,q\qdot{}((vss\in{}vssTtdOccupiedwithNoTrainAndNoMA\land{}p\upto{}q\in{}TTD\land{}vss\subseteq{}p\upto{}q)\limp{}(\forall{}tr\qdot{}tr\in{}connectedTrain\converse{}[\{TRUE\}]\land{}tr\in{}dom(rear)\limp{}(front(tr)<p \lor{} rear(tr)>q)))$}{true}{}
+		\Guard{grd4}{false}{$\forall{}vss,p,q\qdot{}((vss\in{}vssTtdOccupiedwithNoTrainAndNoMA\land{}p\upto{}q\in{}TTD\land{}vss\subseteq{}p\upto{}q)\limp{}(\forall{}tr\qdot{}tr\in{}connectedTrain\converse{}[\{TRUE\}]\land{}tr\notin{}dom(rear)\limp{}(front(tr)<p \lor{} front(tr)>q)))$}{true}{}
+		\Guard{grd5}{false}{$\forall{}vss,ttd\qdot{}((vss\in{}vssTtdOccupiedwithNoTrainAndNoMA\land{}ttd\in{}TTD\land{}vss\subseteq{}ttd)\limp{}(union(ran(MA))\binter{}ttd=\emptyset{}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$freeVssChangingtoUnknow \bcmeq{} freeVssChangingtoUnknow \bunion{}  vssTtdOccupiedwithNoTrainAndNoMA$}{true}{}
+	}
+}
+\EVT{ComputeStatesOfVSSinFreeStateFollowing\_1B}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{vss\_1B}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss\_1B \subseteq{} stateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd2}{false}{$\forall{}vss\qdot{}(vss\in{}vss\_1B\limp{}vss \subseteq{} union(stateTTD\converse{}[\{OCCUPIED\}]))$}{true}{}
+		\Guard{grd3}{false}{$\forall{}vss\qdot{}(vss\in{}vss\_1B\limp{} \exists{}tr\qdot{}(tr\in{} dom(MA) \land{} vss\subseteq{} MA(tr) \land{} muteTimer(tr) = EXPIRED))$}{true}{}
+		\Guard{grd4}{false}{$\forall{}vss,tr,p,q\qdot{}((vss\in{}vss\_1B\land{}tr\in{} dom(MA)\land{} vss\subseteq{} MA(tr)\land{} muteTimer(tr) = EXPIRED\land{}vss=p\upto{}q)\limp{} p\geq{}front(tr))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$freeVssChangingtoUnknow \bcmeq{} freeVssChangingtoUnknow \bunion{}  vss\_1B$}{true}{}
+	}
+}
+\EVT{FullComputeStatesOfVSSinFreeState}{false}{ordinary}{ComputeStatesOfVSSinFreeState}{}{
+	\ANY{
+		\Param{vss}{true}{}
+		\Param{vss1}{true}{}
+		\Param{vss2}{true}{}
+		\Param{vss3}{true}{}
+		\Param{vss4}{true}{}
+		\Param{newstateVSScomputed1}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vss = stateVSS\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd2}{false}{$partition(vss, vss1, vss2, vss3, vss4)$}{true}{}
+		\Guard{grd3}{false}{$freeVssChangingtoFree \subseteq{}  vss2$}{true}{\\lorsque toutes les transitions seront implementees, ceci deviendra une egalite}
+		\Guard{grd4}{false}{$freeVssChangingtoUnknow \subseteq{}  vss4$}{true}{\\lorsque toutes les transitions seront implementees, ceci deviendra une egalite}
+		\Guard{grd5}{false}{$newstateVSScomputed1 = stateVSS\ovl{}((vss1\cprod{}\{OCCUPIED\})\bunion{}(vss2\cprod{}\{FREE\})\bunion{}(vss3\cprod{}\{AMBIGUOUS\})\bunion{}(vss4\cprod{}\{UNKNOW\}))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$newstateVSScomputed \bcmeq{} newstateVSScomputed1$}{true}{}
+	}
+}
+\EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{fr}{false}{}
+		\Param{re}{false}{}
+		\Param{integer}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$TRAIN\setminus{}dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} TRAIN\setminus{}dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$fr \in{} WAY$}{false}{}
+		\Guard{grd3}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd4}{false}{$integer = TRUE \limp{} re \in{} WAY$}{false}{}
+		\Guard{grd5}{false}{$re < fr$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain(tr) \bcmeq{} TRUE$}{false}{}
+		\Action{act2}{$front(tr) \bcmeq{} fr$}{false}{}
+		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
+		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+		\Action{act5}{$muteTimer(tr)\bcmeq{} STARTED$}{true}{}
+		\Action{act6}{$waitIntegrityTimer \bcmeq{} (\{TRUE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}STARTED\}, FALSE\mapsto{}waitIntegrityTimer\})(integer)$}{true}{}
+	}
+}
+\EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$muteTimer \bcmeq{} (\{TRUE\mapsto{}muteTimer, FALSE\mapsto{}muteTimer\ovl{}\{tr\mapsto{}STARTED\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
+	}
+}
+\EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
+	\ANY{
+		\Param{tr}{false}{}
+		\Param{len}{false}{}
+		\Param{ttds}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
+		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
+		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
+		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+		\Action{act4}{$muteTimer(tr)\bcmeq{} STARTED$}{true}{}
+	}
+}
+\EVT{expireMuteTimer}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{true}{}
+		\Guard{grd2}{false}{$muteTimer(tr) = STARTED$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$muteTimer(tr) \bcmeq{} EXPIRED$}{true}{}
+	}
+}
+\EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
+	\ANY{
+		\Param{tr}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$front \bcmeq{} \{tr\}\domsub{}front$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}rear, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act3}{$connectedTrain \bcmeq{} \{tr\}\domsub{}connectedTrain$}{false}{}
+		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
+		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
+		\Action{act6}{$muteTimer(tr) \bcmeq{} INACTIVE$}{true}{}
+	}
+}
+}
+\END
+\end{document}

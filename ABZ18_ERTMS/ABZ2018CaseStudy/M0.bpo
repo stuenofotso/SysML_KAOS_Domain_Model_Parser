@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="TRAIN" org.eventb.core.type="ℙ(TRAIN)"/>
+<org.eventb.core.poIdentifier name="WAY" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="a" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="b" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="TRAIO" org.eventb.core.predicate="{a,b}⊆ℕ" org.eventb.core.source="/ABZ2018CaseStudy/C0.buc|org.eventb.core.contextFile#C0|org.eventb.core.axiom#_lbObsQCAEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="TRAIP" org.eventb.core.predicate="a&lt;b" org.eventb.core.source="/ABZ2018CaseStudy/C0.buc|org.eventb.core.contextFile#C0|org.eventb.core.axiom#_lbPCwACAEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="TRAIQ" org.eventb.core.predicate="WAY=a ‥ b" org.eventb.core.source="/ABZ2018CaseStudy/C0.buc|org.eventb.core.contextFile#C0|org.eventb.core.axiom#_lbPCwQCAEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="TRAIR" org.eventb.core.predicate="b − a≥20" org.eventb.core.source="/ABZ2018CaseStudy/C0.buc|org.eventb.core.contextFile#C0|org.eventb.core.axiom#_xFYdMAFmEeiY5d3q2fNKcg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
+<org.eventb.core.poIdentifier name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="inv0_4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀tr⦂TRAIN·tr∈dom(rear)⇒rear∈TRAIN ⇸ ℤ∧tr∈dom(front)∧front∈TRAIN ⇸ ℤ" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/inv0_1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraio"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(TRAIN×BOOL))∈TRAIN ⇸ BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#INITIALISATION\/inv0_1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/inv0_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraio"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(TRAIN×ℤ))∈dom(∅ ⦂ ℙ(TRAIN×BOOL)) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#INITIALISATION\/inv0_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/inv0_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraio"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(TRAIN×ℤ))∈dom(∅ ⦂ ℙ(TRAIN×BOOL)) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#INITIALISATION\/inv0_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="INITIALISATION/inv0_4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraio"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀tr⦂TRAIN·tr∈dom(∅ ⦂ ℙ(TRAIN×ℤ))⇒(∅ ⦂ ℙ(TRAIN×ℤ))(tr)&lt;(∅ ⦂ ℙ(TRAIN×ℤ))(tr)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#'"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#INITIALISATION\/inv0_4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTconnectedTraio" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
+<org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="front'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPconnectedTraio" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTIDENTconnectedTraio" org.eventb.core.poStamp="0"/>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/grd3/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTHYPconnectedTraip("/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(front)∧front∈TRAIN ⇸ ℤ" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.guard#_96ylEACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.guard#_96ylEACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTHYPconnectedTraip("/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/inv0_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="front{tr ↦ front(tr)+len}∈dom(connectedTrain) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#MoveTrainOnTrack\/inv0_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/inv0_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ rear{tr ↦ rear(tr)+len},FALSE ↦ rear}(bool(tr∈dom(rear)))∈dom(connectedTrain) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#MoveTrainOnTrack\/inv0_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/inv0_4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀tr0⦂TRAIN·tr0∈dom({TRUE ↦ rear{tr ↦ rear(tr)+len},FALSE ↦ rear}(bool(tr∈dom(rear))))⇒{TRUE ↦ rear{tr ↦ rear(tr)+len},FALSE ↦ rear}(bool(tr∈dom(rear)))(tr0)&lt;(front{tr ↦ front(tr)+len})(tr0)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#MoveTrainOnTrack\/inv0_4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/act1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(front)∧front∈TRAIN ⇸ ℤ" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.action#_AuU5JQCEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.action#_AuU5JQCEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="MoveTrainOnTrack/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(rear)∧rear∈TRAIN ⇸ ℤ∧bool(tr∈dom(rear))∈dom({TRUE ↦ rear{tr ↦ rear(tr)+len},FALSE ↦ rear})∧{TRUE ↦ rear{tr ↦ rear(tr)+len},FALSE ↦ rear}∈BOOL ⇸ ℙ(TRAIN × ℤ)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.action#_AuVgMACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.action#_AuVgMACEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraip"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTconnectedTraip" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="front'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="len" org.eventb.core.type="ℤ"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPconnectedTraip(" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTIDENTconnectedTraip" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tr∈connectedTrain∼[{TRUE}]" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.guard#_AuU5IwCEEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="len∈ℕ1" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.guard#_AuU5JACEEeiY5d3q2fNKcg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPconnectedTraip" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTHYPconnectedTraip(" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="front(tr)+len∈WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_AuU5IACEEeiY5d3q2fNKcg|org.eventb.core.guard#_96ylEACEEeiY5d3q2fNKcg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="_connectTrain/inv0_1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="connectedTrain{tr ↦ TRUE}∈TRAIN ⇸ BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_connectTrain\/inv0_1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_connectTrain/inv0_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="front{tr ↦ fr}∈dom(connectedTrain{tr ↦ TRUE}) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_connectTrain\/inv0_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_connectTrain/inv0_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ rear{tr ↦ re},FALSE ↦ rear}(integer)∈dom(connectedTrain{tr ↦ TRUE}) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_connectTrain\/inv0_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_connectTrain/inv0_4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀tr0⦂TRAIN·tr0∈dom({TRUE ↦ rear{tr ↦ re},FALSE ↦ rear}(integer))⇒{TRUE ↦ rear{tr ↦ re},FALSE ↦ rear}(integer)(tr0)&lt;(front{tr ↦ fr})(tr0)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_connectTrain\/inv0_4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_connectTrain/act3/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="integer∈dom({TRUE ↦ rear{tr ↦ re},FALSE ↦ rear})∧{TRUE ↦ rear{tr ↦ re},FALSE ↦ rear}∈BOOL ⇸ ℙ(TRAIN × ℤ)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.action#_nE4KCQMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.action#_nE4KCQMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTraiq"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTconnectedTraiq" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
+<org.eventb.core.poIdentifier name="fr" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="integer" org.eventb.core.type="BOOL"/>
+<org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="re" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="front'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPconnectedTraiq" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTIDENTconnectedTraiq" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="TRAIN ∖ dom(connectedTrain)≠(∅ ⦂ ℙ(TRAIN))" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KAQMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="tr∈TRAIN ∖ dom(connectedTrain)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KAgMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="fr∈WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KAwMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="integer∈BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KBAMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="integer=TRUE⇒re∈WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KBQMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="re&lt;fr" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE3i8AMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KBgMFEei8oumrzUKFEg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="_exitTrain/inv0_1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{tr} ⩤ connectedTrain∈TRAIN ⇸ BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_exitTrain\/inv0_1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_exitTrain/inv0_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{tr} ⩤ front∈dom({tr} ⩤ connectedTrain) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_exitTrain\/inv0_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_exitTrain/inv0_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ {tr} ⩤ rear,FALSE ↦ rear}(bool(tr∈dom(rear)))∈dom({tr} ⩤ connectedTrain) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_exitTrain\/inv0_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_exitTrain/inv0_4/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀tr0⦂TRAIN·tr0∈dom({TRUE ↦ {tr} ⩤ rear,FALSE ↦ rear}(bool(tr∈dom(rear))))⇒{TRUE ↦ {tr} ⩤ rear,FALSE ↦ rear}(bool(tr∈dom(rear)))(tr0)&lt;({tr} ⩤ front)(tr0)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_exitTrain\/inv0_4\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD3"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_exitTrain/act2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="bool(tr∈dom(rear))∈dom({TRUE ↦ {tr} ⩤ rear,FALSE ↦ rear})∧{TRUE ↦ {tr} ⩤ rear,FALSE ↦ rear}∈BOOL ⇸ ℙ(TRAIN × ℤ)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg|org.eventb.core.action#_CmKmkB_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg|org.eventb.core.action#_CmKmkB_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrair"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTconnectedTrair" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
+<org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.poIdentifier name="front'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPconnectedTrair" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTIDENTconnectedTrair" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tr∈connectedTrain∼[{TRUE}]" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg|org.eventb.core.guard#_nE4KDAMFEei8oumrzUKFEg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv0_1/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrais"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ connectedTrain{tr ↦ FALSE},FALSE ↦ connectedTrain{tr ↦ TRUE}}(bool(connectedTrain(tr)=TRUE))∈TRAIN ⇸ BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_toggleTrainConnexionStatus\/inv0_1\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD0"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv0_2/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrais"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="front∈dom({TRUE ↦ connectedTrain{tr ↦ FALSE},FALSE ↦ connectedTrain{tr ↦ TRUE}}(bool(connectedTrain(tr)=TRUE))) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_toggleTrainConnexionStatus\/inv0_2\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD1"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv0_3/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrais"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="rear∈dom({TRUE ↦ connectedTrain{tr ↦ FALSE},FALSE ↦ connectedTrain{tr ↦ TRUE}}(bool(connectedTrain(tr)=TRUE))) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poSequent#_toggleTrainConnexionStatus\/inv0_3\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3|org.eventb.core.poPredicate#PRD2"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/act1/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrais"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(connectedTrain)∧connectedTrain∈TRAIN ⇸ BOOL∧bool(connectedTrain(tr)=TRUE)∈dom({TRUE ↦ connectedTrain{tr ↦ FALSE},FALSE ↦ connectedTrain{tr ↦ TRUE}})∧{TRUE ↦ connectedTrain{tr ↦ FALSE},FALSE ↦ connectedTrain{tr ↦ TRUE}}∈BOOL ⇸ ℙ(TRAIN × BOOL)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.action#_OisC8B_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.action#_OisC8B_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTALLHYPconnectedTrais"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTconnectedTrais" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
+<org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPconnectedTrais" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#EVTIDENTconnectedTrais" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="dom(connectedTrain)≠(∅ ⦂ ℙ(TRAIN))" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.guard#_nE4KDQMFEei8oumrzUKFEg"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="tr∈dom(connectedTrain)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.guard#_CmLNoB_AEeme7KoBnXCYEA"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="HYPC3" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="connectedTrain∈TRAIN ⇸ BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIACCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="front∈dom(connectedTrain) → WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIQCCEeiY5d3q2fNKcg"/>
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="rear∈dom(connectedTrain) ⇸ WAY" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIgCCEeiY5d3q2fNKcg"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M0.bpo|org.eventb.core.poFile#M0|org.eventb.core.poPredicateSet#HYPC3" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="∀tr⦂TRAIN·tr∈dom(rear)⇒rear(tr)&lt;front(tr)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.invariant#_-KYLIwCCEeiY5d3q2fNKcg"/>
+</org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

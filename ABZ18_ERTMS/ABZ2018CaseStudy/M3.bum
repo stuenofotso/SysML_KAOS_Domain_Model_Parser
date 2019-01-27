@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1548519676637" org.eventb.texttools.text_representation="machine M3 refines M2  sees  C2&#10;&#10;variables connectedTrain front rear MA MAtemp stateTTD stateVSS newstateVSScomputed&#10;&#10;invariants&#10;  @inv3_1 newstateVSScomputed ∈ VSS → {OCCUPIED, FREE, UNKNOW, AMBIGUOUS}&#10;&#10;events&#10;  event INITIALISATION&#10;    then&#10;      @act1 connectedTrain≔∅&#10;      @act2 front≔∅&#10;      @act3 rear≔∅&#10;      @act4 MA≔∅&#10;      @act5 MAtemp≔∅&#10;      @act6 stateTTD≔ TTD × {OCCUPIED}&#10;      @act7 stateVSS≔ VSS × {UNKNOW}&#10;      @act8 newstateVSScomputed ≔ VSS × {UNKNOW}&#10;  end&#10;&#10;  event ComputeVSSStates&#10;    any newstateVSScomputed1&#10;    where&#10;      @grd0 newstateVSScomputed1 ∈ VSS → {OCCUPIED, FREE, UNKNOW, AMBIGUOUS}&#10;    then&#10;      @act1 newstateVSScomputed ≔ newstateVSScomputed1&#10;  end&#10;&#10;  event ComputeTrainMAUsingVSSStates refines  ComputeTrainMAFollowingVSSStates&#10;    any tr vsss p q vsss1 p0 p1 q1 len&#10;        newstateVSS // vsss1 designe l'ensemble des vss sur lesquels le train est succeptible de se trouver&#10;&#10;    where&#10;      @grd0 newstateVSS = newstateVSScomputed&#10;      @grd1 tr ∈ connectedTrain∼[{TRUE}]&#10;      @grd2 vsss⊆ newstateVSS∼[{FREE}]&#10;      @grd3 union(vsss) = p1‥q1&#10;      @grd4 p1≥front(tr)&#10;      @grd5 vsss1 ⊆ VSS&#10;      @grd6 union(vsss1) = p0‥(p1−1)&#10;      @grd7 tr∈dom(rear)⇒ rear(tr) ≥p0&#10;      @grd8 tr∉dom(rear)⇒ front(tr)≥ p0&#10;      @grd9 p‥q ⊆ union(vsss ∪ vsss1)&#10;      @grd10 p‥q ∩ union(ran({tr}⩤MA))=∅&#10;      @grd11 front(tr)∈p‥q&#10;      @grd12 tr∈dom(rear)⇒rear(tr)∈p‥q&#10;      @grd13 len ∈ ℕ1&#10;      @grd14 front(tr)+len ∈ WAY&#10;      @grd15 tr∉dom(MAtemp) ∨ MAtemp(tr) ≠ p‥q&#10;    then&#10;      @act1 MAtemp(tr) ≔ p‥q&#10;      @act2 stateVSS ≔ newstateVSS&#10;  end&#10;&#10;  event _connectTrain&#10;  extends _connectTrain&#10;  end&#10;&#10;  event _toggleTrainConnexionStatus&#10;  extends _toggleTrainConnexionStatus&#10;  end&#10;&#10;  event MoveTrainFollowingItsMA&#10;  extends MoveTrainFollowingItsMA&#10;  end&#10;&#10;  event _exitTrain&#10;  extends _exitTrain&#10;  end&#10;&#10;&#10;end&#10;" version="5">
+<org.eventb.core.refinesMachine name="_0xx9oAE-EeiY5d3q2fNKcg" org.eventb.core.target="M2"/>
+<org.eventb.core.seesContext name="_-KW9AACCEeiY5d3q2fNKcg" org.eventb.core.target="C0"/>
+<org.eventb.core.seesContext name="_y6hXgQEyEeiY5d3q2fNKcg" org.eventb.core.target="C2"/>
+<org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="INITIALISATION">
+<org.eventb.core.action name="_-KW9AQCCEeiY5d3q2fNKcg" org.eventb.core.assignment="connectedTrain≔∅" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="_-KXkEACCEeiY5d3q2fNKcg" org.eventb.core.assignment="front≔∅" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+<org.eventb.core.action name="_-KXkEQCCEeiY5d3q2fNKcg" org.eventb.core.assignment="rear≔∅" org.eventb.core.generated="false" org.eventb.core.label="act3"/>
+<org.eventb.core.action name="_AuU5JQCEEeiY5d3q2fNKcg" org.eventb.core.assignment="MA≔∅" org.eventb.core.generated="false" org.eventb.core.label="act4"/>
+<org.eventb.core.action name="_AuVgMACEEeiY5d3q2fNKcg" org.eventb.core.assignment="MAtemp≔∅" org.eventb.core.generated="false" org.eventb.core.label="act5"/>
+<org.eventb.core.action name="_DdsIxgCMEeiY5d3q2fNKcg" org.eventb.core.assignment="stateTTD≔ TTD × {OCCUPIED}" org.eventb.core.generated="false" org.eventb.core.label="act6"/>
+<org.eventb.core.action name="_DdrhswCMEeiY5d3q2fNKcg" org.eventb.core.assignment="stateVSS≔ VSS × {UNKNOW}" org.eventb.core.generated="false" org.eventb.core.label="act7"/>
+<org.eventb.core.action name="_Ddsv0wCMEeiY5d3q2fNKcg" org.eventb.core.assignment="newstateVSScomputed ≔ VSS × {UNKNOW}" org.eventb.core.generated="false" org.eventb.core.label="act8"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_-KXkEgCCEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="connectedTrain"/>
+<org.eventb.core.variable name="_-KXkEwCCEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="front"/>
+<org.eventb.core.variable name="_-KXkFACCEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="rear"/>
+<org.eventb.core.event name="_AuU5IACEEeiY5d3q2fNKcg" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ComputeVSSStates">
+<org.eventb.core.parameter name="_AuU5IQCEEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="newstateVSScomputed1"/>
+<org.eventb.core.guard name="_AuU5IwCEEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd0" org.eventb.core.predicate="newstateVSScomputed1 ∈ VSS → {OCCUPIED, FREE, UNKNOW, AMBIGUOUS}"/>
+<org.eventb.core.action name="_DpmN0gE8EeiY5d3q2fNKcg" org.eventb.core.assignment="newstateVSScomputed ≔ newstateVSScomputed1" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_DdrhtACMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="MA"/>
+<org.eventb.core.variable name="_DdrhtQCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="MAtemp"/>
+<org.eventb.core.variable name="_y6jMsAEyEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="stateTTD"/>
+<org.eventb.core.variable name="_y6jMsQEyEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="stateVSS"/>
+<org.eventb.core.event name="_Dpk_sAE8EeiY5d3q2fNKcg" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.generated="false" org.eventb.core.label="ComputeTrainMAUsingVSSStates">
+<org.eventb.core.refinesEvent name="_4DPD4AudEei2FOY8Ow_VsA" org.eventb.core.target="ComputeTrainMAFollowingVSSStates"/>
+<org.eventb.core.parameter name="_AuU5IgCEEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="tr"/>
+<org.eventb.core.parameter name="_DdrhsACMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="vsss"/>
+<org.eventb.core.parameter name="_DdsIwQCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="p"/>
+<org.eventb.core.parameter name="_DdsIyQCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="q"/>
+<org.eventb.core.parameter name="_DdsIygCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="vsss1"/>
+<org.eventb.core.parameter name="_y6iloAEyEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="p0"/>
+<org.eventb.core.parameter name="_y6iloQEyEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="p1"/>
+<org.eventb.core.parameter name="_Dpk_sgE8EeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="q1"/>
+<org.eventb.core.guard name="_AuU5JACEEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd0" org.eventb.core.predicate="newstateVSS = newstateVSScomputed"/>
+<org.eventb.core.guard name="_96ylEACEEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd1" org.eventb.core.predicate="tr ∈ connectedTrain∼[{TRUE}]"/>
+<org.eventb.core.guard name="_DdrhsQCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd2" org.eventb.core.predicate="vsss⊆ newstateVSS∼[{FREE}]"/>
+<org.eventb.core.guard name="_DdrhsgCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd3" org.eventb.core.predicate="union(vsss) = p1‥q1"/>
+<org.eventb.core.guard name="_DdsIwgCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd4" org.eventb.core.predicate="p1≥front(tr)"/>
+<org.eventb.core.guard name="_DdsIwwCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd5" org.eventb.core.predicate="vsss1 ⊆ VSS"/>
+<org.eventb.core.guard name="_DdsIxACMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd6" org.eventb.core.predicate="union(vsss1) = p0‥(p1−1)"/>
+<org.eventb.core.guard name="_DdsIxQCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd7" org.eventb.core.predicate="tr∈dom(rear)⇒ rear(tr) ≥p0"/>
+<org.eventb.core.guard name="_Ddsv0ACMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd8" org.eventb.core.predicate="tr∉dom(rear)⇒ front(tr)≥ p0"/>
+<org.eventb.core.guard name="_Ddsv0QCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd9" org.eventb.core.predicate="p‥q ⊆ union(vsss ∪ vsss1)"/>
+<org.eventb.core.guard name="_Ddsv0gCMEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd10" org.eventb.core.predicate="p‥q ∩ union(ran({tr}⩤MA))=∅"/>
+<org.eventb.core.guard name="_DplmxQE8EeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd11" org.eventb.core.predicate="front(tr)∈p‥q"/>
+<org.eventb.core.action name="_jo3fcAE_EeiY5d3q2fNKcg" org.eventb.core.assignment="MAtemp(tr) ≔ p‥q" org.eventb.core.generated="false" org.eventb.core.label="act1"/>
+<org.eventb.core.action name="_jo3fcQE_EeiY5d3q2fNKcg" org.eventb.core.assignment="stateVSS ≔ newstateVSS" org.eventb.core.generated="false" org.eventb.core.label="act2"/>
+<org.eventb.core.parameter name="_GpDrwAFAEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="len"/>
+<org.eventb.core.guard name="_GpDrwQFAEeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="grd12" org.eventb.core.predicate="tr∈dom(rear)⇒rear(tr)∈p‥q"/>
+<org.eventb.core.parameter name="_TR2xUAueEei2FOY8Ow_VsA" org.eventb.core.comment="vsss1 designe l'ensemble des vss sur lesquels le train est succeptible de se trouver" org.eventb.core.generated="false" org.eventb.core.identifier="newstateVSS"/>
+<org.eventb.core.guard name="_TR2xUQueEei2FOY8Ow_VsA" org.eventb.core.generated="false" org.eventb.core.label="grd13" org.eventb.core.predicate="len ∈ ℕ1"/>
+<org.eventb.core.guard name="_TR2xUgueEei2FOY8Ow_VsA" org.eventb.core.generated="false" org.eventb.core.label="grd14" org.eventb.core.predicate="front(tr)+len ∈ WAY"/>
+<org.eventb.core.guard name="_TR2xUwueEei2FOY8Ow_VsA" org.eventb.core.generated="false" org.eventb.core.label="grd15" org.eventb.core.predicate="tr∉dom(MAtemp) ∨ MAtemp(tr) ≠ p‥q"/>
+</org.eventb.core.event>
+<org.eventb.core.variable name="_jo3fcgE_EeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.identifier="newstateVSScomputed"/>
+<org.eventb.core.invariant name="_jo3fcwE_EeiY5d3q2fNKcg" org.eventb.core.generated="false" org.eventb.core.label="inv3_1" org.eventb.core.predicate="newstateVSScomputed ∈ VSS → {OCCUPIED, FREE, UNKNOW, AMBIGUOUS}"/>
+<org.eventb.core.event name="_GySMUB79Eeme7KoBnXCYEA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="_connectTrain">
+<org.eventb.core.refinesEvent name="_GySMUR79Eeme7KoBnXCYEA" org.eventb.core.target="_connectTrain"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GySMUh79Eeme7KoBnXCYEA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="_toggleTrainConnexionStatus">
+<org.eventb.core.refinesEvent name="_GySMUx79Eeme7KoBnXCYEA" org.eventb.core.target="_toggleTrainConnexionStatus"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_GySMVB79Eeme7KoBnXCYEA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="MoveTrainFollowingItsMA">
+<org.eventb.core.refinesEvent name="_GySMVR79Eeme7KoBnXCYEA" org.eventb.core.target="MoveTrainFollowingItsMA"/>
+</org.eventb.core.event>
+<org.eventb.core.event name="_TKOOwB_AEeme7KoBnXCYEA" org.eventb.core.convergence="0" org.eventb.core.extended="true" org.eventb.core.generated="false" org.eventb.core.label="_exitTrain">
+<org.eventb.core.refinesEvent name="_TKOOwR_AEeme7KoBnXCYEA" org.eventb.core.target="_exitTrain"/>
+</org.eventb.core.event>
+</org.eventb.core.machineFile>
