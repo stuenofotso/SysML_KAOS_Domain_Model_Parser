@@ -10003,6 +10003,10 @@
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p62" org.eventb.core.predicate="connectedTrain∈TRAIN ⇸ BOOL"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p55" org.eventb.core.predicate="inter(TTD)=(∅ ⦂ ℙ(ℤ))">
 <org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 </org.eventb.core.prPred>
@@ -10014,9 +10018,6 @@
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prPred name="p23" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)">
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p52" org.eventb.core.predicate="WAY=a ‥ b">
 <org.eventb.core.prIdent name="a" org.eventb.core.type="ℤ"/>
 <org.eventb.core.prIdent name="b" org.eventb.core.type="ℤ"/>
@@ -10025,9 +10026,6 @@
 <org.eventb.core.prIdent name="VSS" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p22" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))">
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p24" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p61" org.eventb.core.predicate="partition(STATES,{OCCUPIED},{FREE},{UNKNOW},{AMBIGUOUS})">
@@ -10187,6 +10185,10 @@
 <org.eventb.core.prPred name="p15" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p14" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧(p ‥ q⊆WAY∧p≤q)∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∧(tr∈dom(rear)⇒rear(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr))∧(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)">
@@ -10585,12 +10587,13 @@
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p50" org.eventb.core.predicate="tr∈dom(rear)"/>
+<org.eventb.core.prPred name="p23" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p15" org.eventb.core.predicate="∀tr⦂TRAIN,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∩dom(MAtemp)∧front(tr)∈MAtemp(tr)∧(tr∈dom(rear)⇒rear(tr)∈MAtemp(tr))∧MAtemp(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈MAtemp(tr)⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MA)∪{tr ↦ MAtemp(tr)})∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MA)∪{tr ↦ MAtemp(tr)})(tr)">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
-<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p22" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p7" org.eventb.core.predicate="VSS≠(∅ ⦂ ℙ(ℙ(ℤ)))">
@@ -10598,9 +10601,6 @@
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p0" org.eventb.core.predicate="tr∈dom(rear)⇒rear∈TRAIN ⇸ ℤ"/>
 <org.eventb.core.prPred name="p21" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))">
-<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p23" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ,ttds⦂ℙ(ℙ(ℤ)),ttds1⦂ℙ(ℙ(ℤ)),p0⦂ℤ,p1⦂ℤ,q1⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧ttds⊆stateTTD∼[{FREE}]∧union(ttds)=p1 ‥ q1∧p1≥front(tr)∧ttds1⊆TTD∧union(ttds1)=p0 ‥ p1 − 1∧(tr∈dom(rear)⇒rear(tr)≥p0)∧(¬tr∈dom(rear)⇒front(tr)≥p0)∧p ‥ q⊆union(ttds∪ttds1)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧len∈ℕ1∧front(tr)+len∈WAY∧(¬tr∈dom(MAtemp)∨¬MAtemp(tr)=p ‥ q)⇒tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈WAY">
@@ -10718,6 +10718,10 @@
 <org.eventb.core.prPred name="p14" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p22" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p13" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧(p ‥ q⊆WAY∧p≤q)∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∧(tr∈dom(rear)⇒rear(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr))∧(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)">
@@ -11008,6 +11012,9 @@
 <org.eventb.core.prIdent name="WAY" org.eventb.core.type="ℙ(ℤ)"/>
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 </org.eventb.core.prPred>
+<org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p16" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
@@ -11019,7 +11026,9 @@
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prPred name="p24" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)"/>
+<org.eventb.core.prPred name="p24" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p15" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧(p ‥ q⊆WAY∧p≤q)∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∧(tr∈dom(rear)⇒rear(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr))∧(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
@@ -11070,7 +11079,6 @@
 <org.eventb.core.prPred name="p38" org.eventb.core.predicate="⊤"/>
 <org.eventb.core.prPred name="p22" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧tr1≠tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))"/>
 <org.eventb.core.prPred name="p23" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))"/>
-<org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)"/>
 <org.eventb.core.prPred name="p21" org.eventb.core.predicate="∀ttd⦂ℙ(ℤ),tr⦂TRAIN·tr∈dom(rear)∧ttd∈TTD∧¬rear(tr) ‥ front(tr)∩ttd=(∅ ⦂ ℙ(ℤ))⇒stateTTD(ttd)=OCCUPIED">
 <org.eventb.core.prIdent name="OCCUPIED" org.eventb.core.type="STATES"/>
 <org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
@@ -11263,6 +11271,10 @@
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
+<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p18" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
@@ -11276,7 +11288,8 @@
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prPred name="p26" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prPred name="p26" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p17" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧(p ‥ q⊆WAY∧p≤q)∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∧(tr∈dom(rear)⇒rear(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr))∧(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)">
@@ -11340,9 +11353,6 @@
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))">
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p40" org.eventb.core.predicate="tr∉dom(rear)⇒front(tr)≥p0">
@@ -15113,6 +15123,10 @@
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
+<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p18" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="MAtemp" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
@@ -15126,7 +15140,8 @@
 <org.eventb.core.prIdent name="connectedTrain" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
-<org.eventb.core.prPred name="p26" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prPred name="p26" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p17" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧(p ‥ q⊆WAY∧p≤q)∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∧(tr∈dom(rear)⇒rear(tr)∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr))∧(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})(tr)">
@@ -15190,9 +15205,6 @@
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p25" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))">
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p40" org.eventb.core.predicate="tr∉dom(rear)⇒front(tr)≥p0">
@@ -15500,6 +15512,11 @@
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p68" org.eventb.core.predicate="connectedTrain∈TRAIN ⇸ BOOL"/>
 <org.eventb.core.prPred name="p43" org.eventb.core.predicate="¬tr∈dom(MAtemp)∨(tr∈dom(MAtemp)∧MAtemp∈TRAIN ⇸ ℙ(ℤ))"/>
+<org.eventb.core.prPred name="p28" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2∧ttd∈TTD∧¬rear(tr1) ‥ front(tr1)∩ttd=(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
 <org.eventb.core.prPred name="p61" org.eventb.core.predicate="inter(TTD)=(∅ ⦂ ℙ(ℤ))">
 <org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 </org.eventb.core.prPred>
@@ -15508,10 +15525,6 @@
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p20" org.eventb.core.predicate="∀tr⦂TRAIN,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∩dom(MAtemp)∧front(tr)∈MAtemp(tr)∧(tr∈dom(rear)⇒rear(tr)∈MAtemp(tr))∧MAtemp(tr)∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈MAtemp(tr)⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MA)∪{tr ↦ MAtemp(tr)})∧len∈ℕ1∧front(tr)+len∈(({tr} ⩤ MA)∪{tr ↦ MAtemp(tr)})(tr)">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
-<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
@@ -15526,10 +15539,6 @@
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p26" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(rear)∧¬tr1=tr2⇒rear(tr1) ‥ front(tr1)∩rear(tr2) ‥ front(tr2)=(∅ ⦂ ℙ(ℤ))">
-<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
-</org.eventb.core.prPred>
-<org.eventb.core.prPred name="p28" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧¬tr1=tr2⇒front(tr2)&lt;rear(tr1)">
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>
@@ -15707,6 +15716,11 @@
 </org.eventb.core.prPred>
 <org.eventb.core.prPred name="p19" org.eventb.core.predicate="∀tr⦂TRAIN,p⦂ℤ,q⦂ℤ,len⦂ℤ·tr∈connectedTrain∼[{TRUE}]∧p ‥ q⊆WAY∧p≤q∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q⇒tr∈connectedTrain∼[{TRUE}]∩dom(({tr} ⩤ MAtemp)∪{tr ↦ p ‥ q})∧front(tr)∈p ‥ q∧(tr∈dom(rear)⇒rear(tr)∈p ‥ q)∧p ‥ q∩union(ran({tr} ⩤ MA))=(∅ ⦂ ℙ(ℤ))∧len∈ℕ1∧front(tr)+len∈p ‥ q">
 <org.eventb.core.prIdent name="MA" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
+<org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+<org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p27" org.eventb.core.predicate="∀tr1⦂TRAIN,tr2⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr2∈dom(front) ∖ dom(rear)∧tr1≠tr2∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr2)∈ttd⇒front(tr2)&lt;rear(tr1)">
+<org.eventb.core.prIdent name="TTD" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.prIdent name="front" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 <org.eventb.core.prIdent name="rear" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.prPred>

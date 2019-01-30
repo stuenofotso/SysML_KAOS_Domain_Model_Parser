@@ -83,15 +83,18 @@
 	\ANY{
 		\Param{tr}{true}{}
 		\Param{len}{true}{}
+		\Param{n\_rear}{true}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]$}{true}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{true}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} WAY$}{true}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{true}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{true}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{true}{}
 	}
 }
 \EVT{\_connectTrain}{false}{ordinary}{}{}{
@@ -131,13 +134,18 @@
 \EVT{\_toggleTrainConnexionStatus}{false}{ordinary}{}{}{
 	\ANY{
 		\Param{tr}{true}{}
+		\Param{integer}{true}{}
+		\Param{re}{true}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{true}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{true}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{true}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{true}{}
 	}
 }
 }
@@ -215,15 +223,18 @@
 	\ANY{
 		\Param{tr}{true}{}
 		\Param{len}{true}{}
+		\Param{n\_rear}{true}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{true}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{true}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{true}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{true}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{true}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{true}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{true}{}
 	}
 }
 \EVT{\_connectTrain}{true}{ordinary}{\_connectTrain}{}{
@@ -250,13 +261,19 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
 	}
 }
 \EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
@@ -293,7 +310,7 @@
 	\Invariant{inv2\_3}{false}{$\forall{}ttd,tr\qdot{}((tr\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr)\in{}ttd)\limp{}stateTTD(ttd)=OCCUPIED)$}{}
 	\Invariant{inv2\_4}{false}{$\forall{}ttd,tr\qdot{}((tr\in{}dom(rear)\land{}ttd\in{}TTD\land{}(rear(tr)\upto{}front(tr))\binter{}ttd\neq{}\emptyset{})\limp{}stateTTD(ttd)=OCCUPIED)$}{}
 	\Invariant{inv2\_5}{false}{$\forall{}tr1,tr2\qdot{}((tr1\in{}dom(rear)\land{}tr2\in{}dom(rear)\land{}tr1\neq{}tr2)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr2)\upto{}front(tr2))=\emptyset{})$}{}
-	\Invariant{inv2\_6}{false}{$\forall{}tr1,tr2\qdot{}((tr1\in{}dom(rear)\land{}tr2\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr2)\limp{}front(tr2) < rear(tr1))$}{}
+	\Invariant{inv2\_6}{false}{$\forall{}tr1,tr2,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr2\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr2\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr2)\in{}ttd)\limp{}front(tr2) < rear(tr1))$}{}
 	\Invariant{inv2\_7}{false}{$\forall{}tr1,tr2,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr2\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr2\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr2) \notin{} ttd)$}{\\SYSML/KAOS PROOF OBLIGATIONS}
 	\Invariant{sysml\_kaos\_po\_G1-Guard=>G-Guard}{true}{$\\\forall{}tr,p,q,len,ttds,ttds1,p0,p1,q1\qdot{}((\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(ttds\subseteq{} stateTTD\converse{}[\{FREE\}])\\~ 										\land{}(union(ttds) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(ttds1 \subseteq{} TTD)\\~ 										\land{}(union(ttds1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(ttds \bunion{} ttds1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
 	\Invariant{sysml\_kaos\_po\_G2-Guard=>G-Guard}{true}{$\\\forall{}tr,p,q,len,vsss,vsss1,p0,p1,q1,newstateVSS\qdot{}((\\~ 										(newstateVSS \in{} VSS \tfun{} \{OCCUPIED, FREE, UNKNOW, AMBIGUOUS\})\\~ 										\land{}(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(vsss\subseteq{} newstateVSS\converse{}[\{FREE\}])\\~ 										\land{}(union(vsss) = p1\upto{}q1)\\~ 										\land{}(p1\geq{}front(tr))\\~ 										\land{}(vsss1 \subseteq{} VSS)\\~ 										\land{}(union(vsss1) = p0\upto{}(p1-1))\\~ 										\land{}(tr\in{}dom(rear)\limp{} rear(tr) \geq{}p0)\\~ 										\land{}(tr\notin{}dom(rear)\limp{} front(tr)\geq{} p0)\\~ 										\land{}(p\upto{}q \subseteq{} union(vsss \bunion{} vsss1))\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 										\land{}(tr\notin{}dom(MAtemp) \lor{} MAtemp(tr) \neq{} p\upto{}q)\\~ 									) \limp{}\\~ 							  		(\\~ 										(tr \in{} connectedTrain\converse{}[\{TRUE\}])\\~ 										\land{}(p\upto{}q\subseteq{}WAY \land{} p\leq{}q)\\~ 										\land{}(front(tr)\in{}p\upto{}q)\\~ 										\land{}(tr\in{}dom(rear)\limp{}rear(tr)\in{}p\upto{}q)\\~ 										\land{}(p\upto{}q \binter{} union(ran(\{tr\}\domsub{}MA))=\emptyset{})\\~ 										\land{}(len \in{} \natn{})\\~ 										\land{}(front(tr)+len \in{} WAY)\\~ 									))$}{}
@@ -387,22 +404,25 @@
 	\ANY{
 		\Param{tr}{false}{}
 		\Param{len}{false}{}
+		\Param{n\_rear}{false}{}
 		\Param{ttds}{true}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
-		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
-		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{true}{}
-		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{true}{}
-		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{true}{}
-		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{true}{}
-		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{true}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{false}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(n\_rear)\land{}((n\_rear(tr)\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{true}{}
+		\Guard{grd8}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(n\_rear(tr)\upto{}front(tr)+len)=\emptyset{}))$}{true}{}
+		\Guard{grd9}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}n\_rear(tr)\upto{}(front(tr)+len)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < n\_rear(tr)))$}{true}{}
+		\Guard{grd10}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}(front(tr)+len)\in{}ttd)\limp{}front(tr)+len < rear(tr1)))$}{true}{}
+		\Guard{grd11}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{true}{}
 	}
 }
@@ -424,8 +444,8 @@
 		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
 		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{true}{}
 		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{true}{}
-		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{true}{}
-		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{true}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}re\upto{}fr\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{true}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}fr\in{}ttd)\limp{}fr < rear(tr1)))$}{true}{}
 		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{true}{}
 	}
 	\ACTIONS{true}{
@@ -438,13 +458,27 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
+		\Param{ttds}{true}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{false}{}
+		\Guard{grd5}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{true}{}
+		\Guard{grd6}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} (connectedTrain(tr)=FALSE\land{}integer = TRUE\land{}((re\upto{}front(tr))\binter{}ttd\neq{}\emptyset{}))\limp{}ttd\in{}ttds)$}{true}{}
+		\Guard{grd7}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}front(tr))=\emptyset{}))$}{true}{}
+		\Guard{grd8}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}re\upto{}front(tr)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{true}{}
+		\Guard{grd9}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr)\in{}ttd)\limp{}front(tr) < rear(tr1)))$}{true}{}
+		\Guard{grd10}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD)\limp{}((front(tr1)\in{}ttd\limp{}front(tr) \notin{} ttd)\land{}(front(tr)\in{}ttd\limp{}front(tr1) \notin{} ttd))))$}{true}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{true}{}
 	}
 }
 \EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
@@ -557,8 +591,8 @@
 		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
 		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
 		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
-		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
-		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}re\upto{}fr\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}fr\in{}ttd)\limp{}fr < rear(tr1)))$}{false}{}
 		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
@@ -571,35 +605,52 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
+		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{false}{}
+		\Guard{grd5}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd6}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} (connectedTrain(tr)=FALSE\land{}integer = TRUE\land{}((re\upto{}front(tr))\binter{}ttd\neq{}\emptyset{}))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd7}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}front(tr))=\emptyset{}))$}{false}{}
+		\Guard{grd8}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}re\upto{}front(tr)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd9}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr)\in{}ttd)\limp{}front(tr) < rear(tr1)))$}{false}{}
+		\Guard{grd10}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD)\limp{}((front(tr1)\in{}ttd\limp{}front(tr) \notin{} ttd)\land{}(front(tr)\in{}ttd\limp{}front(tr1) \notin{} ttd))))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
 \EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
 	\ANY{
 		\Param{tr}{false}{}
 		\Param{len}{false}{}
+		\Param{n\_rear}{false}{}
 		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
-		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
-		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
-		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
-		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
-		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
-		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{false}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(n\_rear)\land{}((n\_rear(tr)\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(n\_rear(tr)\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}n\_rear(tr)\upto{}(front(tr)+len)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < n\_rear(tr)))$}{false}{}
+		\Guard{grd10}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}(front(tr)+len)\in{}ttd)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
@@ -685,8 +736,8 @@
 		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
 		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
 		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
-		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
-		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}re\upto{}fr\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}fr\in{}ttd)\limp{}fr < rear(tr1)))$}{false}{}
 		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
@@ -699,35 +750,52 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
+		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{false}{}
+		\Guard{grd5}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd6}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} (connectedTrain(tr)=FALSE\land{}integer = TRUE\land{}((re\upto{}front(tr))\binter{}ttd\neq{}\emptyset{}))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd7}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}front(tr))=\emptyset{}))$}{false}{}
+		\Guard{grd8}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}re\upto{}front(tr)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd9}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr)\in{}ttd)\limp{}front(tr) < rear(tr1)))$}{false}{}
+		\Guard{grd10}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD)\limp{}((front(tr1)\in{}ttd\limp{}front(tr) \notin{} ttd)\land{}(front(tr)\in{}ttd\limp{}front(tr1) \notin{} ttd))))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
 \EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
 	\ANY{
 		\Param{tr}{false}{}
 		\Param{len}{false}{}
+		\Param{n\_rear}{false}{}
 		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
-		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
-		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
-		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
-		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
-		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
-		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{false}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(n\_rear)\land{}((n\_rear(tr)\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(n\_rear(tr)\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}n\_rear(tr)\upto{}(front(tr)+len)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < n\_rear(tr)))$}{false}{}
+		\Guard{grd10}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}(front(tr)+len)\in{}ttd)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
@@ -871,8 +939,8 @@
 		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
 		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
 		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
-		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
-		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}re\upto{}fr\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}fr\in{}ttd)\limp{}fr < rear(tr1)))$}{false}{}
 		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
@@ -885,35 +953,52 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
+		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{false}{}
+		\Guard{grd5}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd6}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} (connectedTrain(tr)=FALSE\land{}integer = TRUE\land{}((re\upto{}front(tr))\binter{}ttd\neq{}\emptyset{}))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd7}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}front(tr))=\emptyset{}))$}{false}{}
+		\Guard{grd8}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}re\upto{}front(tr)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd9}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr)\in{}ttd)\limp{}front(tr) < rear(tr1)))$}{false}{}
+		\Guard{grd10}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD)\limp{}((front(tr1)\in{}ttd\limp{}front(tr) \notin{} ttd)\land{}(front(tr)\in{}ttd\limp{}front(tr1) \notin{} ttd))))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
 \EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
 	\ANY{
 		\Param{tr}{false}{}
 		\Param{len}{false}{}
+		\Param{n\_rear}{false}{}
 		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
-		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
-		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
-		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
-		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
-		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
-		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{false}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(n\_rear)\land{}((n\_rear(tr)\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(n\_rear(tr)\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}n\_rear(tr)\upto{}(front(tr)+len)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < n\_rear(tr)))$}{false}{}
+		\Guard{grd10}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}(front(tr)+len)\in{}ttd)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 	}
 }
@@ -1058,8 +1143,8 @@
 		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
 		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((fr\in{}ttd) \lor{} (integer=TRUE\land{}((re\upto{}fr)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
 		\Guard{grd8}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}fr)=\emptyset{}))$}{false}{}
-		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(front)\setminus{}dom(rear)\limp{}front(tr1) < re))$}{false}{}
-		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1\qdot{}(tr1\in{}dom(rear)\limp{}fr < rear(tr1)))$}{false}{}
+		\Guard{grd9}{false}{$integer=TRUE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}re\upto{}fr\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd10}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}fr\in{}ttd)\limp{}fr < rear(tr1)))$}{false}{}
 		\Guard{grd11}{false}{$integer=FALSE \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}fr \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
@@ -1074,36 +1159,53 @@
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
 	\ANY{
 		\Param{tr}{false}{}
+		\Param{integer}{false}{}
+		\Param{re}{false}{}
+		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{false}{}
 		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{false}{}
+		\Guard{grd2}{false}{$integer \in{} BOOL$}{false}{}
+		\Guard{grd3}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (re \in{} WAY\land{}re<front(tr))$}{false}{}
+		\Guard{grd4}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{} (tr\in{}dom(MA)\land{}re \in{} MA(tr))$}{false}{}
+		\Guard{grd5}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd6}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} (connectedTrain(tr)=FALSE\land{}integer = TRUE\land{}((re\upto{}front(tr))\binter{}ttd\neq{}\emptyset{}))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd7}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(re\upto{}front(tr))=\emptyset{}))$}{false}{}
+		\Guard{grd8}{false}{$(connectedTrain(tr)=FALSE\land{}integer = TRUE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}re\upto{}front(tr)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < re))$}{false}{}
+		\Guard{grd9}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}front(tr)\in{}ttd)\limp{}front(tr) < rear(tr1)))$}{false}{}
+		\Guard{grd10}{false}{$(connectedTrain(tr)=FALSE\land{}integer = FALSE) \limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD)\limp{}((front(tr1)\in{}ttd\limp{}front(tr) \notin{} ttd)\land{}(front(tr)\in{}ttd\limp{}front(tr1) \notin{} ttd))))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$connectedTrain \bcmeq{} (\{TRUE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}FALSE\}, FALSE\mapsto{}connectedTrain\ovl{}\{tr\mapsto{}TRUE\}\})(bool(connectedTrain(tr)=TRUE))$}{false}{}
-		\Action{act2}{$muteTimer \bcmeq{} (\{TRUE\mapsto{}muteTimer, FALSE\mapsto{}muteTimer\ovl{}\{tr\mapsto{}STARTED\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
+		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
+		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
+		\Action{act4}{$muteTimer \bcmeq{} (\{TRUE\mapsto{}muteTimer, FALSE\mapsto{}muteTimer\ovl{}\{tr\mapsto{}STARTED\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
 	}
 }
 \EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
 	\ANY{
 		\Param{tr}{false}{}
 		\Param{len}{false}{}
+		\Param{n\_rear}{false}{}
 		\Param{ttds}{false}{}
 	}
 	\GUARDS{true}{
 		\Guard{grd1}{false}{$tr \in{} connectedTrain\converse{}[\{TRUE\}]\binter{}dom(MA)$}{false}{}
 		\Guard{grd2}{false}{$len \in{} \natn{}$}{false}{}
 		\Guard{grd3}{false}{$front(tr)+len \in{} MA(tr)$}{false}{}
-		\Guard{grd4}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
-		\Guard{grd5}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(rear)\land{}((rear(tr)+len\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
-		\Guard{grd6}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(rear(tr)+len\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
-		\Guard{grd7}{false}{$tr\in{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr1) < rear(tr)+len))$}{false}{}
-		\Guard{grd8}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
-		\Guard{grd9}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
+		\Guard{grd4}{false}{$tr\in{}dom(rear)\limp{}n\_rear =  rear\ovl{}\{tr\mapsto{}rear(tr)+len\}$}{false}{}
+		\Guard{grd5}{false}{$tr\notin{}dom(rear)\limp{}n\_rear =  rear$}{false}{}
+		\Guard{grd6}{false}{$ttds \subseteq{} stateTTD\converse{}[\{FREE\}]$}{false}{}
+		\Guard{grd7}{false}{$\forall{}ttd\qdot{}(ttd\in{}stateTTD\converse{}[\{FREE\}] \land{} ((front(tr)+len\in{}ttd) \lor{} (tr\in{}dom(n\_rear)\land{}((n\_rear(tr)\upto{}front(tr)+len)\binter{}ttd\neq{}\emptyset{})))\limp{}ttd\in{}ttds)$}{false}{}
+		\Guard{grd8}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr)\limp{}(rear(tr1)\upto{}front(tr1))\binter{}(n\_rear(tr)\upto{}front(tr)+len)=\emptyset{}))$}{false}{}
+		\Guard{grd9}{false}{$tr\in{}dom(n\_rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}n\_rear(tr)\upto{}(front(tr)+len)\binter{}ttd\neq{}\emptyset{}\land{}front(tr1)\in{}ttd)\limp{}front(tr1) < n\_rear(tr)))$}{false}{}
+		\Guard{grd10}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}rear(tr1)\upto{}front(tr1)\binter{}ttd\neq{}\emptyset{}\land{}(front(tr)+len)\in{}ttd)\limp{}front(tr)+len < rear(tr1)))$}{false}{}
+		\Guard{grd11}{false}{$tr\in{}dom(front)\setminus{}dom(rear)\limp{}(\forall{}tr1,ttd\qdot{}((tr1\in{}dom(front)\setminus{}dom(rear)\land{}tr1\neq{}tr\land{}ttd\in{}TTD\land{}front(tr1)\in{}ttd)\limp{}front(tr)+len \notin{} ttd))$}{false}{}
 	}
 	\ACTIONS{true}{
 		\Action{act1}{$front(tr) \bcmeq{} front(tr)+len$}{false}{}
-		\Action{act2}{$rear \bcmeq{}  (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}rear(tr)+len\}, FALSE\mapsto{}rear\})(bool(tr\in{}dom(rear)))$}{false}{}
+		\Action{act2}{$rear \bcmeq{}  n\_rear$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 		\Action{act4}{$muteTimer(tr)\bcmeq{} STARTED$}{true}{}
 	}
