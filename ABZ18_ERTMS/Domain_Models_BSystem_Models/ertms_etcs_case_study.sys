@@ -1,0 +1,45 @@
+/* ertms_etcs_case_study
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 12/12/2018
+*/
+
+SYSTEM
+ertms_etcs_case_study
+
+
+SETS
+TRAIN
+
+CONSTANTS
+TRACK, a, b
+
+VARIABLES
+Connected_Train, connectedTrain, front, rear
+
+PROPERTIES
+TRACK <: NATURAL &
+a : NATURAL &
+b : NATURAL &
+/* logical formula p0.1 */
+(a < b) &
+/* logical formula p0.2 */
+(TRACK = a .. b)
+
+INVARIANT
+Connected_Train <: TRAIN &
+connectedTrain : TRAIN +-> BOOL &
+front : Connected_Train --> TRACK &
+rear : Connected_Train +-> TRACK &
+/*logical formula p0.3*/
+!(tr).(tr : dom(rear) => rear(tr)  < front(tr) ) &
+/*logical formula p0.4*/
+(Connected_Train = dom(connectedTrain))
+
+INITIALISATION
+Connected_Train : (Connected_Train <: TRAIN) ||
+connectedTrain :: TRAIN +-> BOOL ||
+front :: Connected_Train --> TRACK ||
+rear :: Connected_Train +-> TRACK
+
+
+END

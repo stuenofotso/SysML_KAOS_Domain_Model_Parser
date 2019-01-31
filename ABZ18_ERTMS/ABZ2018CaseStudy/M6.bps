@@ -14,12 +14,18 @@
 <org.eventb.core.psStatus name="ComputeStatesOfVSSinFreeStateFollowing_1B/grd4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="ComputeStatesOfVSSinFreeStateFollowing_1B/inv6_2/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="_connectTrain/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="_connectTrain/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="_connectTrain/act6/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="15" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/act4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="15" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="_connectTrain/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="_connectTrain/act6/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/act4/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="_toggleTrainConnexionStatus/act5/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="false"/>
 <org.eventb.core.psStatus name="MoveTrainFollowingItsMA/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="13" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="expireMuteTimer/grd2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="false"/>
-<org.eventb.core.psStatus name="expireMuteTimer/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="true"/>
-<org.eventb.core.psStatus name="_exitTrain/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="12" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="expireMuteTimer/grd2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="expireMuteTimer/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="expireMuteTimer/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="17" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="expireWaitIntegrityTimer/grd2/WD" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="false"/>
+<org.eventb.core.psStatus name="expireWaitIntegrityTimer/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="_exitTrain/inv6_5/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="true"/>
+<org.eventb.core.psStatus name="_exitTrain/inv6_6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="16" org.eventb.core.psManual="true"/>
 </org.eventb.core.psFile>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<org.eventb.core.poFile org.eventb.core.poStamp="15">
+<org.eventb.core.poFile org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="TRAIN" org.eventb.core.type="ℙ(TRAIN)"/>
 <org.eventb.core.poIdentifier name="WAY" org.eventb.core.type="ℙ(ℤ)"/>
@@ -262,18 +262,18 @@
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_connectTrain\/inv6_5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="_connectTrain/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="_connectTrain/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouy"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer}(integer)∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}(integer)∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ABZ2018CaseStudy/M5.bum|org.eventb.core.machineFile#M5|org.eventb.core.event#_IWaRgB79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIR79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_connectTrain\/inv6_6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="_connectTrain/act6/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="_connectTrain/act6/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouy"/>
-<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="integer∈dom({TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer})∧{TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer}∈BOOL ⇸ ℙ(TRAIN × TIMER_STATUS)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIR79Eeme7KoBnXCYEA|org.eventb.core.action#_YyfZdR-tEeme7KoBnXCYEA"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="integer∈dom({TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}})∧{TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}∈BOOL ⇸ ℙ(TRAIN × TIMER_STATUS)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIR79Eeme7KoBnXCYEA|org.eventb.core.action#_YyfZdR-tEeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIR79Eeme7KoBnXCYEA|org.eventb.core.action#_YyfZdR-tEeme7KoBnXCYEA"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouy"/>
 </org.eventb.core.poSequent>
@@ -304,7 +304,7 @@
 <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="integer=FALSE⇒(∀tr1⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧fr∈ttd⇒fr&lt;rear(tr1))" org.eventb.core.source="/ABZ2018CaseStudy/M2.bum|org.eventb.core.machineFile#M2|org.eventb.core.event#_4IWHcB78Eeme7KoBnXCYEA|org.eventb.core.guard#_PbYxFB-2Eeme7KoBnXCYEA"/>
 <org.eventb.core.poPredicate name="PRD11" org.eventb.core.predicate="integer=FALSE⇒(∀tr1⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(front) ∖ dom(rear)∧ttd∈TTD∧front(tr1)∈ttd⇒fr∉ttd)" org.eventb.core.source="/ABZ2018CaseStudy/M2.bum|org.eventb.core.machineFile#M2|org.eventb.core.event#_4IWHcB78Eeme7KoBnXCYEA|org.eventb.core.guard#_PbYxFR-2Eeme7KoBnXCYEA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="15">
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ muteTimer,FALSE ↦ muteTimer{tr ↦ STARTED}}(bool(connectedTrain(tr)=TRUE))∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_JzukEh79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ABZ2018CaseStudy/M5.bum|org.eventb.core.machineFile#M5|org.eventb.core.event#_IWaRgh79Eeme7KoBnXCYEA"/>
@@ -313,23 +313,39 @@
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_toggleTrainConnexionStatus\/inv6_5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/act4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="15">
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="{TRUE ↦ waitIntegrityTimer{tr ↦ INACTIVE},FALSE ↦ {TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}(integer)}(bool(tr∈dom(rear)∧re≠rear(tr)))∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ABZ2018CaseStudy/M5.bum|org.eventb.core.machineFile#M5|org.eventb.core.event#_IWaRgh79Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIx79Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_toggleTrainConnexionStatus\/inv6_6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/act4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="16">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(connectedTrain)∧connectedTrain∈TRAIN ⇸ BOOL∧bool(connectedTrain(tr)=TRUE)∈dom({TRUE ↦ muteTimer,FALSE ↦ muteTimer{tr ↦ STARTED}})∧{TRUE ↦ muteTimer,FALSE ↦ muteTimer{tr ↦ STARTED}}∈BOOL ⇸ ℙ(TRAIN × TIMER_STATUS)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIx79Eeme7KoBnXCYEA|org.eventb.core.action#_xxZbIB-6Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIx79Eeme7KoBnXCYEA|org.eventb.core.action#_xxZbIB-6Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguouz" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="_toggleTrainConnexionStatus/act5/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of action" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="integer∈dom({TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}})∧{TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}∈BOOL ⇸ ℙ(TRAIN × TIMER_STATUS)∧(tr∈dom(rear)⇒rear∈TRAIN ⇸ ℤ)∧bool(tr∈dom(rear)∧re≠rear(tr))∈dom({TRUE ↦ waitIntegrityTimer{tr ↦ INACTIVE},FALSE ↦ {TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}(integer)})∧{TRUE ↦ waitIntegrityTimer{tr ↦ INACTIVE},FALSE ↦ {TRUE ↦ waitIntegrityTimer{tr ↦ STARTED},FALSE ↦ waitIntegrityTimer{tr ↦ INACTIVE}}(integer)}∈BOOL ⇸ ℙ(TRAIN × TIMER_STATUS)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIx79Eeme7KoBnXCYEA|org.eventb.core.action#_Wl6vAB-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_JzvLIx79Eeme7KoBnXCYEA|org.eventb.core.action#_Wl6vAB-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguouz"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguouz" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="16">
 <org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.poIdentifier name="integer" org.eventb.core.type="BOOL"/>
 <org.eventb.core.poIdentifier name="stateTTD'" org.eventb.core.type="ℙ(ℙ(ℤ)×STATES)"/>
 <org.eventb.core.poIdentifier name="muteTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 <org.eventb.core.poIdentifier name="ttds" org.eventb.core.type="ℙ(ℙ(ℤ))"/>
 <org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="waitIntegrityTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 <org.eventb.core.poIdentifier name="re" org.eventb.core.type="ℤ"/>
 <org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguouz" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguouz" org.eventb.core.poStamp="15">
+<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguouz" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguouz" org.eventb.core.poStamp="16">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="dom(connectedTrain)≠(∅ ⦂ ℙ(TRAIN))" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.guard#_x6LZICIqEeme7KoBnXCYEA"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="tr∈dom(connectedTrain)" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.guard#_x6LZISIqEeme7KoBnXCYEA"/>
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="integer∈BOOL" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_CmKmkR_AEeme7KoBnXCYEA|org.eventb.core.guard#_lCUrACIsEeme7KoBnXCYEA"/>
@@ -374,13 +390,13 @@
 <org.eventb.core.poPredicate name="PRD9" org.eventb.core.predicate="tr∈dom(front) ∖ dom(rear)⇒(∀tr1⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(rear)∧tr1≠tr∧ttd∈TTD∧rear(tr1) ‥ front(tr1)∩ttd≠(∅ ⦂ ℙ(ℤ))∧front(tr)+len∈ttd⇒front(tr)+len&lt;rear(tr1))" org.eventb.core.source="/ABZ2018CaseStudy/M2.bum|org.eventb.core.machineFile#M2|org.eventb.core.event#_YDCaEAFmEeiY5d3q2fNKcg|org.eventb.core.guard#_vXYM0QFyEeiY5d3q2fNKcg"/>
 <org.eventb.core.poPredicate name="PRD10" org.eventb.core.predicate="tr∈dom(front) ∖ dom(rear)⇒(∀tr1⦂TRAIN,ttd⦂ℙ(ℤ)·tr1∈dom(front) ∖ dom(rear)∧tr1≠tr∧ttd∈TTD∧front(tr1)∈ttd⇒front(tr)+len∉ttd)" org.eventb.core.source="/ABZ2018CaseStudy/M2.bum|org.eventb.core.machineFile#M2|org.eventb.core.event#_YDCaEAFmEeiY5d3q2fNKcg|org.eventb.core.guard#_vXYM0gFyEeiY5d3q2fNKcg"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="expireMuteTimer/grd2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="expireMuteTimer/grd2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou\|("/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(muteTimer)∧muteTimer∈TRAIN ⇸ TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA|org.eventb.core.guard#_xxY0Fx-6Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA|org.eventb.core.guard#_xxY0Fx-6Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou\|("/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poSequent name="expireMuteTimer/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="expireMuteTimer/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguou\|"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="muteTimer{tr ↦ EXPIRED}∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_JzukEh79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA"/>
@@ -388,36 +404,80 @@
 <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#expireMuteTimer\/inv6_5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguou|" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="expireMuteTimer/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="17">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguou\|"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="waitIntegrityTimer{tr ↦ INACTIVE}∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#expireMuteTimer\/inv6_6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguou|" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="17">
 <org.eventb.core.poIdentifier name="muteTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 <org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="waitIntegrityTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTHYPfreeVssChangingtoAmbiguou|(" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguou\|" org.eventb.core.poStamp="12">
+<org.eventb.core.poPredicateSet name="EVTHYPfreeVssChangingtoAmbiguou|(" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguou\|" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="dom(connectedTrain)≠(∅ ⦂ ℙ(TRAIN))" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA|org.eventb.core.guard#_xxY0FR-6Eeme7KoBnXCYEA"/>
 <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="tr∈dom(connectedTrain)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA|org.eventb.core.guard#_xxY0Fh-6Eeme7KoBnXCYEA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguou|" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou\|(" org.eventb.core.poStamp="12">
+<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguou|" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou\|(" org.eventb.core.poStamp="17">
 <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="muteTimer(tr)=STARTED" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_xxY0Ex-6Eeme7KoBnXCYEA|org.eventb.core.guard#_xxY0Fx-6Eeme7KoBnXCYEA"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poSequent name="_exitTrain/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="expireWaitIntegrityTimer/grd2/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Guard" org.eventb.core.poStamp="16">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou}("/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="tr∈dom(waitIntegrityTimer)∧waitIntegrityTimer∈TRAIN ⇸ TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA|org.eventb.core.guard#_YFqYwyTIEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA|org.eventb.core.guard#_YFqYwyTIEeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou}("/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poSequent name="expireWaitIntegrityTimer/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
 <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguou}"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="waitIntegrityTimer{tr ↦ EXPIRED}∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#expireWaitIntegrityTimer\/inv6_6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguou}" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="16">
+<org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="waitIntegrityTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTHYPfreeVssChangingtoAmbiguou}(" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguou}" org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="dom(connectedTrain)≠(∅ ⦂ ℙ(TRAIN))" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA|org.eventb.core.guard#_YFqYwSTIEeme7KoBnXCYEA"/>
+<org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="tr∈dom(connectedTrain)" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA|org.eventb.core.guard#_YFqYwiTIEeme7KoBnXCYEA"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguou}" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTHYPfreeVssChangingtoAmbiguou}(" org.eventb.core.poStamp="16">
+<org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="waitIntegrityTimer(tr)=STARTED" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA|org.eventb.core.guard#_YFqYwyTIEeme7KoBnXCYEA"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poSequent name="_exitTrain/inv6_5/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguou~"/>
 <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="muteTimer{tr ↦ INACTIVE}∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_JzukEh79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ABZ2018CaseStudy/M5.bum|org.eventb.core.machineFile#M5|org.eventb.core.event#_VbwzkB_AEeme7KoBnXCYEA"/>
-<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_apqyYCGuEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_YFqYxSTIEeme7KoBnXCYEA"/>
 <org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_JzukEh79Eeme7KoBnXCYEA"/>
 <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_exitTrain\/inv6_5\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
 <org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD4"/>
 </org.eventb.core.poSequent>
-<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguou}" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="12">
+<org.eventb.core.poSequent name="_exitTrain/inv6_6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="16">
+<org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTALLHYPfreeVssChangingtoAmbiguou~"/>
+<org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="waitIntegrityTimer{tr ↦ INACTIVE}∈TRAIN → TIMER_STATUS" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="ABSTRACT" org.eventb.core.source="/ABZ2018CaseStudy/M5.bum|org.eventb.core.machineFile#M5|org.eventb.core.event#_VbwzkB_AEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="CONCRETE" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.event#_YFqYxSTIEeme7KoBnXCYEA"/>
+<org.eventb.core.poSource name="SEQHYT" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/ABZ2018CaseStudy/M6.bum|org.eventb.core.machineFile#M6|org.eventb.core.invariant#_Wl6vAh-_Eeme7KoBnXCYEA"/>
+<org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poSequent#_exitTrain\/inv6_6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+<org.eventb.core.poSelHint name="SEQHYV" org.eventb.core.poSelHintFst="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD5"/>
+</org.eventb.core.poSequent>
+<org.eventb.core.poPredicateSet name="EVTIDENTfreeVssChangingtoAmbiguou~" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="0">
 <org.eventb.core.poIdentifier name="connectedTrain'" org.eventb.core.type="ℙ(TRAIN×BOOL)"/>
 <org.eventb.core.poIdentifier name="MA'" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 <org.eventb.core.poIdentifier name="muteTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 <org.eventb.core.poIdentifier name="tr" org.eventb.core.type="TRAIN"/>
+<org.eventb.core.poIdentifier name="waitIntegrityTimer'" org.eventb.core.type="ℙ(TRAIN×TIMER_STATUS)"/>
 <org.eventb.core.poIdentifier name="rear'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 <org.eventb.core.poIdentifier name="front'" org.eventb.core.type="ℙ(TRAIN×ℤ)"/>
 <org.eventb.core.poIdentifier name="MAtemp'" org.eventb.core.type="ℙ(TRAIN×ℙ(ℤ))"/>
 </org.eventb.core.poPredicateSet>
-<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguou}" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguou}" org.eventb.core.poStamp="12">
+<org.eventb.core.poPredicateSet name="EVTALLHYPfreeVssChangingtoAmbiguou~" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#EVTIDENTfreeVssChangingtoAmbiguou~" org.eventb.core.poStamp="0">
 <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="tr∈connectedTrain∼[{TRUE}]" org.eventb.core.source="/ABZ2018CaseStudy/M0.bum|org.eventb.core.machineFile#M0|org.eventb.core.event#_nE4KCgMFEei8oumrzUKFEg|org.eventb.core.guard#_CmLNoB_AEeme7KoBnXCYEA"/>
 </org.eventb.core.poPredicateSet>
 <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ABZ2018CaseStudy/M6.bpo|org.eventb.core.poFile#M6|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="12">

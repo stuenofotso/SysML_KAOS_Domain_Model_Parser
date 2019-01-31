@@ -1,0 +1,27 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+
+package ertms_etcs_case_study <<Folder>> {
+	class "NATURAL" as NATURAL <<concept>> 
+	class TRAIN <<concept>>  {
+		connectedTrain : BOOL <<variable>> (0..1) 
+	}
+	class TRACK <<concept>>  {
+	}
+	NATURAL <|-- TRACK
+	class Connected_Train <<concept>>  <<variable>>  {
+	}
+	TRAIN <|-- Connected_Train
+	 object a <<individual>> 
+	NATURAL *-- a : individualOf 
+	 object b <<individual>> 
+	NATURAL *-- b : individualOf 
+	Connected_Train "*" -- "1" TRACK : > front  <<variable>>	 
+	Connected_Train "*" -- "0..1" TRACK : > rear  <<variable>>
+}
+
+@enduml

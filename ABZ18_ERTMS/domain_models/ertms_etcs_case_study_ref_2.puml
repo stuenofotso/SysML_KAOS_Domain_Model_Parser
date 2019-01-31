@@ -1,0 +1,34 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+package ertms_etcs_case_study_ref_1  <<Folder>> {
+}
+package ertms_etcs_case_study_ref_2 <<Folder>> {
+	class TTD <<concept>>  {
+	}
+	class VSS <<concept>>  {
+	}
+	class TTD_STATES <<concept>>  <<enumeration>>  {
+	}
+	 object T_OCCUPIED <<individual>> 
+	TTD_STATES *-- T_OCCUPIED : individualOf 
+	 object T_FREE <<individual>> 
+	TTD_STATES *-- T_FREE : individualOf 
+	class VSS_STATES <<concept>>  <<enumeration>>  {
+	}
+	 object V_OCCUPIED <<individual>> 
+	VSS_STATES *-- V_OCCUPIED : individualOf 
+	 object V_FREE <<individual>> 
+	VSS_STATES *-- V_FREE : individualOf 
+	 object V_UNKNOWN <<individual>> 
+	VSS_STATES *-- V_UNKNOWN : individualOf 
+	 object V_AMBIGUOUS <<individual>> 
+	VSS_STATES *-- V_AMBIGUOUS : individualOf 
+	TTD "*" -- "1" TTD_STATES : > stateTTD <<variable>> 
+	VSS "*" -- "1" VSS_STATES : >  stateVSS <<variable>>
+}
+ertms_etcs_case_study_ref_1 <|-- ertms_etcs_case_study_ref_2
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+skinparam class {
+ BackgroundColor<<association>> Darkorange 
+ BackgroundColor<<concept>>  Snow 
+} 
+package ertms_etcs_case_study  <<Folder>> {
+}
+package ertms_etcs_case_study_ref_1 <<Folder>> {
+	class "ertms_etcs_case_study/Connected_Train" as Connected_Train <<concept>> 
+	Connected_Train "*" -- "0..1" "POW(TRACK)"  : > MA <<variable>>
+	 
+}
+ertms_etcs_case_study <|-- ertms_etcs_case_study_ref_1
+@enduml

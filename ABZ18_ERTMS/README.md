@@ -1,10 +1,16 @@
 This folder contains the deliverables related to the use of the FORMOSE approach (SysML/KAOS goal and domain modeling) on the ABZ2018 case study : specification of the hybrid ERTMS/ETCS Level 3 Standard (https://www.southampton.ac.uk/abz2018/information/case-study.page).
 
-  ## BSystem_Models
+  ## Domain_Models_BSystem_Models
   This folder contains the B System specifications automatically generated from the SysML/KAOS domain models.
   
   ## goal_diagrams
-  This folder contains a preview of the SysML/KAOS goal diagrams.
+  This folder contains a preview of  SysML/KAOS goal diagrams.
+  
+  ## domain_models
+  This folder contains a preview of SysML/KAOS domain models.
+  
+   ## RodinProject_ERTMS_ETCS_updated_2019.zip
+  This archive contains the updated version of Rodin components related to the Event-B specification of the hybrid ERTMS/ETCS Level 3 Standard (following updates on hybrid ERTMS/ETCS Level 3 principles).
   
   ## ABZ2018-_ERTMS_Case_Study_old_full_version.pdf
   This file represents a rough paper describing the application of the FORMOSE approach on the ABZ2018 case study.

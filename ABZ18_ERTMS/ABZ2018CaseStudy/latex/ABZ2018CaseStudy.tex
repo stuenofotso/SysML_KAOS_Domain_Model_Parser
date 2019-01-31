@@ -1153,7 +1153,7 @@
 		\Action{act3}{$rear \bcmeq{} (\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}rear\})(integer)$}{false}{}
 		\Action{act4}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 		\Action{act5}{$muteTimer(tr)\bcmeq{} STARTED$}{true}{}
-		\Action{act6}{$waitIntegrityTimer \bcmeq{} (\{TRUE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}STARTED\}, FALSE\mapsto{}waitIntegrityTimer\})(integer)$}{true}{}
+		\Action{act6}{$waitIntegrityTimer \bcmeq{} (\{TRUE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}STARTED\}, FALSE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}INACTIVE\}\})(integer)$}{true}{}
 	}
 }
 \EVT{\_toggleTrainConnexionStatus}{true}{ordinary}{\_toggleTrainConnexionStatus}{}{
@@ -1181,6 +1181,7 @@
 		\Action{act2}{$rear \bcmeq{} (\{TRUE\mapsto{}(\{TRUE\mapsto{}rear\ovl{}\{tr\mapsto{}re\}, FALSE\mapsto{}\{tr\}\domsub{}rear\})(bool(integer = TRUE)), FALSE\mapsto{}rear\})(bool(connectedTrain(tr)=FALSE))$}{false}{}
 		\Action{act3}{$stateTTD \bcmeq{} stateTTD \ovl{} (ttds \cprod{} \{OCCUPIED\})$}{false}{}
 		\Action{act4}{$muteTimer \bcmeq{} (\{TRUE\mapsto{}muteTimer, FALSE\mapsto{}muteTimer\ovl{}\{tr\mapsto{}STARTED\}\})(bool(connectedTrain(tr)=TRUE))$}{true}{}
+		\Action{act5}{$waitIntegrityTimer \bcmeq{} (\{TRUE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}INACTIVE\}, FALSE\mapsto{}((\{TRUE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}STARTED\}, FALSE\mapsto{}waitIntegrityTimer\ovl{}\{tr\mapsto{}INACTIVE\}\})(integer))\})(bool(tr\in{}dom(rear)\land{}re\neq{}rear(tr)))$}{true}{}
 	}
 }
 \EVT{MoveTrainFollowingItsMA}{true}{ordinary}{MoveTrainFollowingItsMA}{}{
@@ -1221,6 +1222,20 @@
 	}
 	\ACTIONS{true}{
 		\Action{act0}{$muteTimer(tr) \bcmeq{} EXPIRED$}{true}{}
+		\Action{act1}{$waitIntegrityTimer(tr) \bcmeq{} INACTIVE$}{true}{}
+	}
+}
+\EVT{expireWaitIntegrityTimer}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{tr}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$dom(connectedTrain) \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$tr \in{} dom(connectedTrain)$}{true}{}
+		\Guard{grd2}{false}{$waitIntegrityTimer(tr) = STARTED$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$waitIntegrityTimer(tr) \bcmeq{} EXPIRED$}{true}{}
 	}
 }
 \EVT{\_exitTrain}{true}{ordinary}{\_exitTrain}{}{
@@ -1237,6 +1252,7 @@
 		\Action{act4}{$MA \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MA, FALSE\mapsto{}MA\})(bool(tr\in{}dom(MA)))$}{false}{}
 		\Action{act5}{$MAtemp \bcmeq{}  (\{TRUE\mapsto{}\{tr\}\domsub{}MAtemp, FALSE\mapsto{}MAtemp\})(bool(tr\in{}dom(MAtemp)))$}{false}{}
 		\Action{act6}{$muteTimer(tr) \bcmeq{} INACTIVE$}{true}{}
+		\Action{act7}{$waitIntegrityTimer(tr) \bcmeq{} INACTIVE$}{true}{}
 	}
 }
 }

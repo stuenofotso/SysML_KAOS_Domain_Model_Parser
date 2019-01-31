@@ -1,0 +1,38 @@
+/* ertms_etcs_case_study_ref_1
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 12/12/2018
+*/
+
+REFINEMENT
+ertms_etcs_case_study_ref_1
+REFINES
+ertms_etcs_case_study
+
+SETS
+
+
+CONSTANTS
+
+
+VARIABLES
+MA
+
+PROPERTIES
+
+
+INVARIANT
+MA : Connected_Train +-> POW(TRACK) &
+/*logical formula p1.1*/
+!(tr).(tr : dom(MA) =>  # p,q . (p .. q <: TRACK & p <= q & MA(tr)  = p .. q) ) &
+/*logical formula p1.2*/
+!(tr).(tr : dom(MA) => front(tr)  : MA(tr) ) &
+/*logical formula p1.1*/
+!(tr).(tr : dom(rear) & tr : dom(MA) => rear(tr)  : MA(tr) ) &
+/*logical formula p1.1*/
+!(tr1, tr2).((tr1 : dom(MA) & tr2 : dom(MA) & tr1 /= tr2)  => MA(tr1)  /\ MA(tr2)  =  {} )
+
+INITIALISATION
+MA :: Connected_Train +-> POW(TRACK)
+
+
+END
