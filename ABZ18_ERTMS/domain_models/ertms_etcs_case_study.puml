@@ -8,7 +8,7 @@ skinparam class {
 package ertms_etcs_case_study <<Folder>> {
 	class "NATURAL" as NATURAL <<concept>> 
 	class TRAIN <<concept>>  {
-		connectedTrain : BOOL <<variable>> (0..1) 
+		connectedTrain : BOOL (0..1) <<variable>> 
 	}
 	class TRACK <<concept>>  {
 	}
