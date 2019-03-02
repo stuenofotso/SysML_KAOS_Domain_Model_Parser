@@ -1,6 +1,6 @@
 /* ertms_etcs_case_study_ref_2
 * Author: SysML/KAOS Domain Model Parser
-* Creation date: 18/12/2018
+* Creation date: 25/01/2018
 */
 
 REFINEMENT
@@ -9,49 +9,50 @@ REFINES
 ertms_etcs_case_study_ref_1
 
 SETS
-TTD; VSS; TTD_STATES={T_OCCUPIED, T_FREE}; VSS_STATES={V_OCCUPIED, V_FREE, V_UNKNOWN, V_AMBIGUOUS}
+TTD; VSS; VSS_STATES={OCCUPIED, FREE, UNKNOW, AMBIGUOUS}; TTD_STATES={OCCUPIED_T, FREE_T}
 
 CONSTANTS
-
+T_stateTTD, T_stateVSS
 
 VARIABLES
 stateTTD, stateVSS
 
 PROPERTIES
-/* logical formula p2.1 */
-(TTD <: POW(TRACK)) &
-/* logical formula p2.2 */
-(union(TTD)  = TRACK) &
-/* logical formula p2.3 */
-(inter(TTD)  =  {} ) &
-/* logical formula p2.4 */
-!(ttd).(ttd : TTD =>  # p,q . (p .. q <: TRACK & p < q & ttd = p .. q) ) &
-/* logical formula p2.5 */
-(VSS <: POW(TRACK)) &
-/* logical formula p2.6 */
-(union(VSS)  = TRACK) &
-/* logical formula p2.7 */
-(inter(VSS)  =  {} ) &
-/* logical formula p2.8 */
-!(vss).(vss : VSS =>  # p,q,ttd . (ttd : TTD & p .. q <: TTD & p < q & vss = p .. q) )
+ T_stateTTD = TTD --> TTD_STATES &
+T_stateVSS = VSS --> VSS_STATES &
+//predicate axiom1
+((TTD <: POW1(WAY))) &
+//predicate axiom2
+((union(TTD) = WAY)) &
+//predicate axiom3
+((inter(TTD) = {})) &
+//predicate axiom4
+!(ttd). ((ttd : TTD)) => ((#p,q.(p..q<:WAY & p<q & ttd=p..q)))) &
+//predicate axiom5
+((VSS <: POW1(WAY))) &
+//predicate axiom6
+((union(VSS) = WAY)) &
+//predicate axiom7
+((inter(VSS) = {})) &
+//predicate axiom8
+!(vss). ((vss : VSS)) => ((#p,q,ttd.(ttd : TTD & p..q<:ttd & p<q & vss=p..q)))) &
+//predicate inv2_5
+!(tr1, tr2). ((tr1 : dom(rear)) /\ (tr2 : dom(rear)) /\ (tr1 /= tr2)) => (((rear(tr1)..front(tr1))/\(rear(tr2)..front(tr2))={})) &
+//predicate inv2_6
+!(tr1, tr2). ((tr1 : dom(rear)) /\ (tr2 : dom(front)\dom(rear)) /\ (tr1 /= tr2)) => ((fron(tr2)<rear(tr1))) &
+//predicate inv2_7
+!(tr1, tr2, ttd). ((tr1 : dom(front)\dom(rear)) /\ (tr2 : dom(front)\dom(rear)) /\ (tr1 /= tr2) /\ (ttd : TTD) /\ (front(tr1) : ttd)) => ((fron(tr2) /: ttd))
 
 INVARIANT
-stateTTD : TTD --> TTD_STATES &
-stateVSS : VSS --> VSS_STATES &
-/*logical formula p2.9*/
-!(ttd, tr).((tr : dom(front)\dom(rear) & ttd : TTD & front(tr)  : ttd)  => (ttd |-> T_OCCUPIED)  : stateTTD) &
-/*logical formula p2.10*/
-!(ttd, tr).((tr : dom(rear) & ttd : TTD & rear(tr)  .. front(tr)  /\ ttd /=  {} )  => (ttd |-> T_OCCUPIED)  : stateTTD) &
-/*logical formula p2.11*/
-!(tr1, tr2).((tr1 : dom(rear) & tr2 : dom(rear) & tr1 /= tr2)  => rear(tr1)  .. front(tr1)  /\ rear(tr2)  .. front(tr2)  =  {} ) &
-/*logical formula p2.12*/
-!(tr1, tr2, ttd).((tr1 : dom(rear) & tr2 : dom(front)\dom(rear) & tr1 /= tr2 & ttd : TTD & front(tr2)  : ttd & rear(tr1)  .. front(tr1)  /\ ttd /=  {} )  => front(tr2)  < rear(tr1) ) &
-/*logical formula p2.13*/
-!(tr1, tr2, ttd).((tr1 : dom(front)\dom(rear) & tr2 : dom(front)\dom(rear) & tr1 /= tr2 & ttd : TTD & front(tr1)  : ttd)  => front(tr2)  /: ttd)
+stateTTD : T_stateTTD &
+stateVSS : T_stateVSS &
+//predicate inv2_3
+!(ttd, tr). ((tr : dom(front) \ dom(rear)) /\ (ttd : TTD) /\ (front(tr) : ttd)) => ((ttd |-> OCCUPIED_T : stateTTD)) &
+//predicate inv2_4
+!(ttd, tr). ((tr : dom(rear)) /\ (ttd : TTD) /\ ((rear(tr)..front(tr))/	td /= {})) => ((ttd |-> OCCUPIED_T : stateTTD))
 
 INITIALISATION
-stateTTD :: TTD --> TTD_STATES ||
-stateVSS :: VSS --> VSS_STATES
+
 
 
 END
