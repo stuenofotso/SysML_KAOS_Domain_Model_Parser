@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1545243970826" org.eventb.texttools.text_representation="context bonaventure_1_ctxt extends bonaventure_0_ctxt&#10;&#10;sets TRAFFIC_LEVEL&#10;&#10;constants NORMAL DENSE SLOWED CONGESTION OTHER MAXIMAL_TUNNEL_OCCUPATION&#10;&#10;axioms&#10;  @axm1_1 partition(TRAFFIC_LEVEL, {NORMAL}, {DENSE}, {SLOWED}, {CONGESTION}, {OTHER})&#10;  @axm1_2 MAXIMAL_TUNNEL_OCCUPATION ∈ ℕ1&#10;&#10;  @anim1_1 MAXIMAL_TUNNEL_OCCUPATION = 4&#10;end&#10;" version="3">
+<org.eventb.core.extendsContext name="'" org.eventb.core.target="bonaventure_0_ctxt"/>
+<org.eventb.core.carrierSet name="(" org.eventb.core.generated="false" org.eventb.core.identifier="TRAFFIC_LEVEL"/>
+<org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" de.prob.units.inferredUnitPragmaAttribute="" de.prob.units.unitPragmaAttribute="" name=")" org.eventb.core.generated="false" org.eventb.core.identifier="NORMAL"/>
+<org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" de.prob.units.inferredUnitPragmaAttribute="" de.prob.units.unitPragmaAttribute="" name="*" org.eventb.core.generated="false" org.eventb.core.identifier="DENSE"/>
+<org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" de.prob.units.inferredUnitPragmaAttribute="" de.prob.units.unitPragmaAttribute="" name="+" org.eventb.core.generated="false" org.eventb.core.identifier="SLOWED"/>
+<org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" de.prob.units.inferredUnitPragmaAttribute="" de.prob.units.unitPragmaAttribute="" name="," org.eventb.core.generated="false" org.eventb.core.identifier="CONGESTION"/>
+<org.eventb.core.axiom name="-" org.eventb.core.generated="false" org.eventb.core.label="axm1_1" org.eventb.core.predicate="partition(TRAFFIC_LEVEL, {NORMAL}, {DENSE}, {SLOWED}, {CONGESTION}, {OTHER})"/>
+<org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" de.prob.units.inferredUnitPragmaAttribute="" de.prob.units.unitPragmaAttribute="" name="." org.eventb.core.generated="false" org.eventb.core.identifier="OTHER"/>
+<org.eventb.core.axiom name="/" org.eventb.core.generated="false" org.eventb.core.label="axm1_2" org.eventb.core.predicate="MAXIMAL_TUNNEL_OCCUPATION ∈ ℕ1"/>
+<org.eventb.core.axiom name="_5WB7oAOqEemie74np5lKrw" org.eventb.core.generated="false" org.eventb.core.label="anim1_1" org.eventb.core.predicate="MAXIMAL_TUNNEL_OCCUPATION = 4"/>
+<org.eventb.core.constant name="_jzsL0AO7Eemie74np5lKrw" org.eventb.core.generated="false" org.eventb.core.identifier="MAXIMAL_TUNNEL_OCCUPATION"/>
+</org.eventb.core.contextFile>

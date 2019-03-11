@@ -1,0 +1,66 @@
+/* bonaventure_0
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 20/11/2018
+*/
+
+SYSTEM
+bonaventure_0
+
+
+SETS
+VEHICLE; TUNNEL_TRAVEL_LANE={TRAVEL_LANE_I, TRAVEL_LANE_II}
+
+CONSTANTS
+Tunnel, bb, Tunnel_part1, aa, Tunnel_part2, cc, Vehicle_Length, Visibility_Limit
+
+VARIABLES
+Vehicle, Speed_Limit_Range, Vehicle_Front_Position, Vehicle_Travel_Lane, Speed_Limit, Min_Brake_Distance
+
+PROPERTIES
+Tunnel <: NATURAL &
+bb : Tunnel &
+Tunnel_part1 <: Tunnel &
+aa : Tunnel_part1 &
+Tunnel_part2 <: Tunnel &
+cc : Tunnel_part2 &
+Vehicle_Length : VEHICLE --> NATURAL &
+Visibility_Limit : Tunnel_part1 +-> Tunnel &
+/* logical formula p0_1 */
+(aa < bb) &
+/* logical formula p0_2 */
+(bb < cc) &
+/* logical formula p0_3 */
+(Tunnel_part1 = aa..bb) &
+/* logical formula p0_4 */
+(Tunnel_part2 = bb..cc) &
+/* logical formula p0_5 */
+(Tunnel = Tunnel_part1 \/ Tunnel_part2) &
+/* logical formula p0_7 */
+!(xx).(xx : dom(Visibility_Limit) => Visibility_Limit(xx)  > xx)
+
+INVARIANT
+Vehicle <: VEHICLE &
+Speed_Limit_Range <: NATURAL &
+Vehicle_Front_Position : Vehicle --> Tunnel &
+Vehicle_Travel_Lane : Vehicle --> TUNNEL_TRAVEL_LANE &
+Speed_Limit : Tunnel --> NATURAL &
+Min_Brake_Distance : Speed_Limit_Range --> NATURAL &
+/*logical formula p0_6*/
+!(xx).((xx : Vehicle & Vehicle_Front_Position(xx)  : Tunnel_part1)  => Vehicle_Travel_Lane(xx)  = TRAVEL_LANE_I) &
+/*logical formula p0_8*/
+!(xx).(xx : dom(Visibility_Limit) => Visibility_Limit(xx)  - xx >= Min_Brake_Distance(Speed_Limit(xx) ) ) &
+/*logical formula p0_9*/
+(Speed_Limit_Range = ran(Speed_Limit)) &
+/*logical formula p0_10*/
+!(xx1, xx2).((xx1 : Vehicle & xx2 : Vehicle & xx1 /= xx2)  => ((Vehicle_Front_Position(xx1)  - Vehicle_Length(xx1) ) ..Vehicle_Front_Position(xx1)  /\ (Vehicle_Front_Position(xx2)  - Vehicle_Length(xx2) ) ..Vehicle_Front_Position(xx2)  =  {}  or Vehicle_Travel_Lane(xx1)  /= Vehicle_Travel_Lane(xx2) ) )
+
+INITIALISATION
+Vehicle : (Vehicle <: VEHICLE) ||
+Speed_Limit_Range : (Speed_Limit_Range <: NATURAL) ||
+Vehicle_Front_Position :: Vehicle --> Tunnel ||
+Vehicle_Travel_Lane :: Vehicle --> TUNNEL_TRAVEL_LANE ||
+Speed_Limit :: Tunnel --> NATURAL ||
+Min_Brake_Distance :: Speed_Limit_Range --> NATURAL
+
+
+END

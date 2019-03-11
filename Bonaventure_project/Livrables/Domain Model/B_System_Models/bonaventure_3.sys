@@ -1,0 +1,86 @@
+/* bonaventure_3
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 04/12/2018
+*/
+
+REFINEMENT
+bonaventure_3
+REFINES
+bonaventure_2
+
+SETS
+Sensor; OPERATING_MODE={NORMAL_MODE, DEGRADED_MODE_I, DEGRADED_MODE_II}; Traffic_Light; COLOR={RED, GREEN, ORANGE}
+
+CONSTANTS
+VdM_Sensor, MtQ_Sensor, AID, Traffic_Light_William, Traffic_Light_Wellington, Traffic_Light_Position, Traffic_Light_Coverage_Rear, Traffic_Light_Color, Sensor_Position, Sensor_Coverage_Front, Sensor_Coverage_Rear, Sensor_Detection_Accuracy
+
+VARIABLES
+operating_mode, Traffic_Signal_Program, Sensor_Observed_Traffic_Level, Sensor_Observed_Vehicle, Sensor_Observed_Vehicle_Speed, Is_Sensor_Detection_Available, tsc_observed_traffic_level
+
+PROPERTIES
+VdM_Sensor <: Sensor &
+MtQ_Sensor <: Sensor &
+AID : MtQ_Sensor &
+Traffic_Light_William : Traffic_Light &
+Traffic_Light_Wellington : Traffic_Light &
+Traffic_Light_Position : Traffic_Light --> Tunnel &
+Traffic_Light_Coverage_Rear : Traffic_Light --> Tunnel &
+Traffic_Light_Color : Traffic_Light <-> COLOR & 
+ !xx.(xx:COLOR=> card(Traffic_Light_Color~[{xx}]) = 2) & 
+ !xx.(xx:Traffic_Light=> card(Traffic_Light_Color[{xx}]) = 3) &
+Traffic_Light_William |-> GREEN : Traffic_Light_Color &
+Traffic_Light_William |-> ORANGE : Traffic_Light_Color &
+Traffic_Light_William |-> RED : Traffic_Light_Color &
+Traffic_Light_Wellington |-> GREEN : Traffic_Light_Color &
+Traffic_Light_Wellington |-> ORANGE : Traffic_Light_Color &
+Traffic_Light_Wellington |-> RED : Traffic_Light_Color &
+Sensor_Position : Sensor --> Tunnel &
+AID |-> cc : Sensor_Position &
+Sensor_Coverage_Front : Sensor --> Tunnel &
+AID |-> cc : Sensor_Coverage_Front &
+Sensor_Coverage_Rear : Sensor --> Tunnel &
+AID |-> aa : Sensor_Coverage_Rear &
+Sensor_Detection_Accuracy : Sensor --> NATURAL &
+AID |-> 1 : Sensor_Detection_Accuracy &
+/* logical formula p3_1 */
+!(xx).(xx : VdM_Sensor => Sensor_Detection_Accuracy(xx)  >= Sensor_Detection_Accuracy(AID) )
+
+INVARIANT
+operating_mode : OPERATING_MODE &
+Traffic_Signal_Program : Traffic_Light_Color --> NATURAL &
+Sensor_Observed_Traffic_Level : Sensor +-> TRAFFIC_LEVEL &
+Sensor_Observed_Vehicle : Sensor <-> Observed_Vehicle & 
+ !xx.(xx:Observed_Vehicle=> card(Sensor_Observed_Vehicle~[{xx}]) >= 1) &
+Sensor_Observed_Vehicle_Speed : Sensor_Observed_Vehicle --> NATURAL &
+Is_Sensor_Detection_Available : Sensor --> BOOL &
+tsc_observed_traffic_level : TRAFFIC_LEVEL &
+/*logical formula p3_2*/
+(operating_mode = NORMAL_MODE => observed_traffic_level = Sensor_Observed_Traffic_Level(AID) ) &
+/*logical formula p3_3*/
+(operating_mode : {DEGRADED_MODE_I,DEGRADED_MODE_II} => observed_traffic_level : Sensor_Observed_Traffic_Level[VdM_Sensor]) &
+/*logical formula p3_5*/
+(operating_mode = NORMAL_MODE => Is_Sensor_Detection_Available(AID)  = TRUE) &
+/*logical formula p3_6*/
+(operating_mode : {DEGRADED_MODE_I,DEGRADED_MODE_II} => Is_Sensor_Detection_Available(AID)  = FALSE) &
+/*logical formula p3_7*/
+!(xx).(xx : dom(Sensor_Observed_Traffic_Level) & Sensor_Observed_Traffic_Level(xx)  = NORMAL => (((card(Sensor_Observed_Vehicle[{xx}])  * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !yy.(yy : Sensor_Observed_Vehicle[{xx}] => Sensor_Observed_Vehicle_Speed(xx |-> yy)  >= 40) ) ) ) &
+/*logical formula p3_8*/
+!(xx).(xx : dom(Sensor_Observed_Traffic_Level) & Sensor_Observed_Traffic_Level(xx)  = DENSE => (((card(Sensor_Observed_Vehicle[{xx}])  * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !yy.(yy : Sensor_Observed_Vehicle[{xx}] => Sensor_Observed_Vehicle_Speed(xx |-> yy)  : 35..39) ) ) ) &
+/*logical formula p3_9*/
+!(xx).(xx : dom(Sensor_Observed_Traffic_Level) & Sensor_Observed_Traffic_Level(xx)  = SLOWED => (((card(Sensor_Observed_Vehicle[{xx}])  * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !yy.(yy : Sensor_Observed_Vehicle[{xx}] => Sensor_Observed_Vehicle_Speed(xx |-> yy)  : 25..34) ) ) ) &
+/*logical formula p3_10*/
+!(xx).(xx : dom(Sensor_Observed_Traffic_Level) & Sensor_Observed_Traffic_Level(xx)  = CONGESTION => (((card(Sensor_Observed_Vehicle[{xx}])  * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !yy.(yy : Sensor_Observed_Vehicle[{xx}] => Sensor_Observed_Vehicle_Speed(xx |-> yy)  < 15) ) ) ) &
+/*logical formula p3_11*/
+!(xx, yy).(xx : dom(Sensor_Observed_Traffic_Level) & yy : Sensor_Observed_Vehicle[{xx}] => Vehicle_Length(yy) ..Vehicle_Front_Position(yy)  /\ Sensor_Coverage_Rear(xx) ..Sensor_Coverage_Front(xx)  /=  {} )
+
+INITIALISATION
+operating_mode := NORMAL_MODE ||
+Traffic_Signal_Program :: Traffic_Light_Color --> NATURAL ||
+Sensor_Observed_Traffic_Level :: Sensor +-> TRAFFIC_LEVEL ||
+Sensor_Observed_Vehicle :: Sensor <-> Observed_Vehicle ||
+Sensor_Observed_Vehicle_Speed :: Sensor_Observed_Vehicle --> NATURAL ||
+Is_Sensor_Detection_Available :: Sensor --> BOOL ||
+tsc_observed_traffic_level := NORMAL
+
+
+END

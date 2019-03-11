@@ -1,0 +1,764 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage{bsymb,b2latex}
+\begin{document}
+\MultiTitle{ProjetBonaventure}
+\MultiHeader{CONTEXT}{bonaventure\_0\_ctxt}
+\CONTEXT{bonaventure\_0\_ctxt}{}{}
+\SETS{
+	\Set{VEHICLE}{}
+	\Set{TUNNEL\_TRAVEL\_LANE}{}
+}
+\CONSTANTS{
+	\Constant{TRAVEL\_LANE\_I}{}
+	\Constant{TRAVEL\_LANE\_II}{}
+	\Constant{Tunnel}{}
+	\Constant{Tunnel\_part1}{}
+	\Constant{Tunnel\_part2}{}
+	\Constant{Visibility\_Limit}{}
+	\Constant{aa}{}
+	\Constant{bb}{}
+	\Constant{cc}{}
+	\Constant{Vehicle\_Length}{}
+}
+\AXIOMS{
+	\Axiom{axm0\_1}{false}{$partition(TUNNEL\_TRAVEL\_LANE, \{TRAVEL\_LANE\_I\}, \{TRAVEL\_LANE\_II\})$}{}
+	\Axiom{axm0\_2}{false}{$Tunnel \subseteq{} \nat{}$}{}
+	\Axiom{axm0\_3}{false}{$Tunnel\_part1 \subseteq{} Tunnel$}{}
+	\Axiom{axm0\_4}{false}{$Tunnel\_part2 \subseteq{} Tunnel$}{}
+	\Axiom{axm0\_5}{false}{$Visibility\_Limit \in{} Tunnel\_part1 \pfun{} Tunnel$}{}
+	\Axiom{axm0\_6}{false}{$aa \in{} \nat{}$}{}
+	\Axiom{axm0\_7}{false}{$bb \in{} \nat{}$}{}
+	\Axiom{axm0\_8}{false}{$cc \in{} \nat{}$}{}
+	\Axiom{axm0\_9}{false}{$finite(VEHICLE)$}{}
+	\Axiom{axm0\_10}{false}{$Vehicle\_Length \in{} VEHICLE \tfun{} \nat{}$}{}
+	\Axiom{p0\_1}{false}{$aa < bb$}{}
+	\Axiom{p0\_2}{false}{$bb < cc$}{}
+	\Axiom{p0\_3}{false}{$Tunnel\_part1 = aa\upto{}bb$}{}
+	\Axiom{p0\_4}{false}{$Tunnel\_part2 = bb\upto{}cc$}{}
+	\Axiom{p0\_5}{false}{$Tunnel = Tunnel\_part1 \bunion{} Tunnel\_part2$}{}
+	\Axiom{p0\_7}{false}{$\forall{} xx\qdot{}(xx \in{} dom(Visibility\_Limit) \limp{} Visibility\_Limit(xx)  > xx)$}{}
+}
+\END
+\MultiHeader{CONTEXT}{bonaventure\_1\_ctxt}
+\CONTEXT{bonaventure\_1\_ctxt}{bonaventure\_0\_ctxt}{}
+\SETS{
+	\Set{TRAFFIC\_LEVEL}{}
+}
+\CONSTANTS{
+	\Constant{NORMAL}{}
+	\Constant{DENSE}{}
+	\Constant{SLOWED}{}
+	\Constant{CONGESTION}{}
+	\Constant{MAXIMAL\_TUNNEL\_OCCUPATION}{}
+}
+\AXIOMS{
+	\Axiom{axm1\_1}{false}{$partition(TRAFFIC\_LEVEL, \{NORMAL\}, \{DENSE\}, \{SLOWED\}, \{CONGESTION\})$}{}
+	\Axiom{axm1\_2}{false}{$MAXIMAL\_TUNNEL\_OCCUPATION \in{} \natn{}$}{}
+}
+\END
+\MultiHeader{CONTEXT}{bonaventure\_2\_ctxt}
+\CONTEXT{bonaventure\_2\_ctxt}{bonaventure\_1\_ctxt}{}
+\END
+\MultiHeader{CONTEXT}{bonaventure\_3\_ctxt}
+\CONTEXT{bonaventure\_3\_ctxt}{bonaventure\_2\_ctxt}{}
+\SETS{
+	\Set{Sensor}{}
+	\Set{OPERATING\_MODE}{}
+	\Set{Traffic\_Light}{}
+	\Set{COLOR}{}
+}
+\CONSTANTS{
+	\Constant{NORMAL\_MODE}{}
+	\Constant{DEGRADED\_MODE\_I}{}
+	\Constant{DEGRADED\_MODE\_II}{}
+	\Constant{RED}{}
+	\Constant{GREEN}{}
+	\Constant{ORANGE}{}
+	\Constant{VdM\_Sensor}{}
+	\Constant{MtQ\_Sensor}{}
+	\Constant{AID}{}
+	\Constant{Traffic\_Light\_William}{}
+	\Constant{Traffic\_Light\_Wellington}{}
+	\Constant{Traffic\_Light\_Position}{}
+	\Constant{Traffic\_Light\_Coverage\_Rear}{}
+	\Constant{Traffic\_Light\_Color}{}
+	\Constant{Sensor\_Position}{}
+	\Constant{Sensor\_Coverage\_Front}{}
+	\Constant{Sensor\_Coverage\_Rear}{}
+	\Constant{Sensor\_Detection\_Accuracy}{}
+}
+\AXIOMS{
+	\Axiom{axm1}{false}{$\\partition(OPERATING\_MODE, \{NORMAL\_MODE\}, \{DEGRADED\_MODE\_I\},\\~ \{DEGRADED\_MODE\_II\})$}{}
+	\Axiom{axm2}{false}{$partition(COLOR, \{RED\}, \{GREEN\}, \{ORANGE\})$}{\\@axm3 VdM$\_$Sensor $\subseteq{}$ Sensor}
+	\Axiom{axm4}{false}{$partition(Sensor, VdM\_Sensor, MtQ\_Sensor)$}{}
+	\Axiom{axm5}{false}{$AID \in{} MtQ\_Sensor$}{}
+	\Axiom{axm6}{false}{$Traffic\_Light\_William \in{} Traffic\_Light$}{}
+	\Axiom{axm7}{false}{$Traffic\_Light\_Wellington \in{} Traffic\_Light$}{}
+	\Axiom{axm8}{false}{$Traffic\_Light\_Position \in{} Traffic\_Light \tfun{} Tunnel$}{}
+	\Axiom{axm9}{false}{$Traffic\_Light\_Coverage\_Rear \in{} Traffic\_Light \tfun{} Tunnel$}{}
+	\Axiom{axm10}{false}{$Traffic\_Light\_Color = Traffic\_Light \cprod{} COLOR$}{}
+	\Axiom{axm11}{false}{$Sensor\_Position \in{} Sensor \tfun{} Tunnel$}{}
+	\Axiom{axm12}{false}{$AID \mapsto{} cc \in{} Sensor\_Position$}{}
+	\Axiom{axm13}{false}{$Sensor\_Coverage\_Front \in{} Sensor \tfun{} Tunnel$}{}
+	\Axiom{axm14}{false}{$AID \mapsto{} cc \in{} Sensor\_Coverage\_Front$}{}
+	\Axiom{axm15}{false}{$Sensor\_Coverage\_Rear \in{} Sensor \tfun{} Tunnel$}{}
+	\Axiom{axm16}{false}{$AID \mapsto{} aa \in{} Sensor\_Coverage\_Rear$}{}
+	\Axiom{axm17}{false}{$Sensor\_Detection\_Accuracy \in{} Sensor \tfun{} \nat{}$}{}
+	\Axiom{axm18}{false}{$AID \mapsto{} 1 \in{} Sensor\_Detection\_Accuracy$}{}
+	\Axiom{axm19}{false}{$VdM\_Sensor \neq{}  \emptyset{}$}{}
+	\Axiom{axm20}{false}{$finite(Sensor)$}{}
+	\Axiom{p3\_1}{false}{$\forall{}xx\qdot{}(xx \in{} VdM\_Sensor \limp{} Sensor\_Detection\_Accuracy(xx)  \geq{} Sensor\_Detection\_Accuracy(AID) )$}{}
+}
+\END
+\MultiHeader{MACHINE}{bonaventure\_0\_mch}
+\MACHINE{bonaventure\_0\_mch}{}{bonaventure\_0\_ctxt}{}
+\VARIABLES{
+	\Variable{Vehicle}{}
+	\Variable{Vehicle\_Front\_Position}{}
+	\Variable{Vehicle\_Travel\_Lane}{}
+	\Variable{Speed\_Limit}{}
+	\Variable{Min\_Brake\_Distance}{}
+}
+\INVARIANTS{
+	\Invariant{inv0\_1}{false}{$Vehicle \subseteq{} VEHICLE$}{}
+	\Invariant{inv0\_2}{false}{$Vehicle\_Front\_Position \in{} Vehicle \tfun{} Tunnel$}{}
+	\Invariant{inv0\_3}{false}{$Vehicle\_Travel\_Lane \in{} Vehicle \tfun{} TUNNEL\_TRAVEL\_LANE$}{}
+	\Invariant{inv0\_4}{false}{$Speed\_Limit \in{} Tunnel \tfun{} \nat{}$}{}
+	\Invariant{inv0\_5}{false}{$Min\_Brake\_Distance \in{} ran(Speed\_Limit) \tfun{} \nat{}$}{}
+	\Invariant{p0\_6}{false}{$\forall{} xx\qdot{}((xx \in{} Vehicle \land{} Vehicle\_Front\_Position(xx)  \in{} Tunnel\_part1)  \limp{} Vehicle\_Travel\_Lane(xx)  = TRAVEL\_LANE\_I)$}{}
+	\Invariant{p0\_8}{false}{$\forall{} xx\qdot{}(xx \in{} dom(Visibility\_Limit) \limp{} Visibility\_Limit(xx)  - xx \geq{} Min\_Brake\_Distance(Speed\_Limit(xx) ) )$}{}
+	\Invariant{p0\_10}{false}{$\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle \land{} xx2 \in{} Vehicle \land{} xx1 \neq{} xx2)  \limp{} ((Vehicle\_Front\_Position(xx1)  - Vehicle\_Length(xx1) ) \upto{}Vehicle\_Front\_Position(xx1)  \binter{} (Vehicle\_Front\_Position(xx2)  - Vehicle\_Length(xx2) ) \upto{}Vehicle\_Front\_Position(xx2)  =  \emptyset{}  \lor{} Vehicle\_Travel\_Lane(xx1)  \neq{} Vehicle\_Travel\_Lane(xx2) ) )$}{}
+}
+\EVENTS{
+\INITIALISATION{false}{\\introduire un evenement de simulation pour l'entree des vehicules}{
+	\ACTIONS{false}{
+		\Action{act1}{$Vehicle \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act4}{$Speed\_Limit \bcmeq{}  Tunnel \cprod{} \{70\}$}{true}{}
+		\Action{act5}{$Min\_Brake\_Distance \bcmeq{} \{70 \mapsto{}0\}$}{true}{}
+	}
+}
+\EVT{ctrl\_BringVehicleInsideTunnel}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{vehicle}{true}{}
+		\Param{front}{true}{}
+		\Param{travelLane}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{} VEHICLE \setminus{} Vehicle$}{true}{}
+		\Guard{grd2}{false}{$front \in{} Tunnel$}{true}{}
+		\Guard{grd3}{false}{$travelLane \in{} TUNNEL\_TRAVEL\_LANE$}{true}{}
+		\Guard{grd4}{false}{$front  \in{} Tunnel\_part1  \limp{} travelLane  = TRAVEL\_LANE\_I$}{true}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle  \limp{} ((Vehicle\_Front\_Position(xx)  - Vehicle\_Length(xx) ) \upto{}Vehicle\_Front\_Position(xx)  \binter{} (front  - Vehicle\_Length(vehicle) ) \upto{}front  =  \emptyset{}  \lor{} Vehicle\_Travel\_Lane(xx)  \neq{} travelLane ) )$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{} Vehicle \bunion{} \{vehicle\}$}{true}{}
+		\Action{act2}{$Vehicle\_Front\_Position(vehicle) \bcmeq{} front$}{true}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane(vehicle) \bcmeq{} travelLane$}{true}{}
+	}
+}
+\EVT{BringOutEachVehiclePresentInTunnel}{false}{ordinary}{}{\\LA TACHE DE VERIFICATION SYSML/KAOS FAIT APPARAÎTRE QU'IL DOIT S'AGIR ICI D'UN RAFFINEMENT MILESTONE ET PAS AND}{
+	\ANY{
+		\Param{Vehicle\_Out}{true}{}
+		\Param{Vehicle\_In}{true}{}
+		\Param{newVehicleFronts}{true}{}
+		\Param{newTravelLanes}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$Vehicle \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$partition(Vehicle, Vehicle\_Out, Vehicle\_In)$}{true}{}
+		\Guard{grd2}{false}{$newVehicleFronts \in{} Vehicle\_In \tfun{} Tunnel$}{true}{}
+		\Guard{grd3}{false}{$newTravelLanes \in{} Vehicle\_In \tfun{}TUNNEL\_TRAVEL\_LANE$}{true}{}
+		\Guard{grd4}{false}{$\forall{} xx\qdot{}((xx \in{} Vehicle\_In \land{} newVehicleFronts(xx)  \in{} Tunnel\_part1)  \limp{} newTravelLanes(xx)  = TRAVEL\_LANE\_I)$}{true}{}
+		\Guard{grd5}{false}{$\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle\_In \land{} xx2 \in{} Vehicle\_In \land{} xx1 \neq{} xx2)  \limp{} ((newVehicleFronts(xx1)  - Vehicle\_Length(xx1) ) \upto{}newVehicleFronts(xx1)  \binter{} (newVehicleFronts(xx2)  - Vehicle\_Length(xx2) ) \upto{}newVehicleFronts(xx2)  =  \emptyset{}  \lor{} newTravelLanes(xx1)  \neq{} newTravelLanes(xx2) ) )$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{} Vehicle \setminus{} Vehicle\_Out$}{true}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} newVehicleFronts$}{true}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} newTravelLanes$}{true}{}
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{bonaventure\_1\_mch}
+\MACHINE{bonaventure\_1\_mch}{bonaventure\_0\_mch}{bonaventure\_1\_ctxt}{}
+\VARIABLES{
+	\Variable{Vehicle}{}
+	\Variable{Vehicle\_Front\_Position}{}
+	\Variable{Vehicle\_Travel\_Lane}{}
+	\Variable{Speed\_Limit}{}
+	\Variable{Min\_Brake\_Distance}{}
+	\Variable{traffic\_level}{}
+	\Variable{Vehicle\_Speed}{}
+}
+\INVARIANTS{
+	\Invariant{inv1\_1}{false}{$traffic\_level \in{} TRAFFIC\_LEVEL$}{}
+	\Invariant{inv1\_2}{false}{$Vehicle\_Speed \in{} Vehicle \tfun{} \nat{}$}{}
+	\Invariant{p1\_1}{false}{$\forall{} xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \leq{} Speed\_Limit(Vehicle\_Front\_Position(xx) ) )$}{}
+	\Invariant{p1\_2}{false}{$(traffic\_level = NORMAL \limp{} (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \geq{} 40) ) ) )$}{}
+	\Invariant{p1\_3}{false}{$(traffic\_level = DENSE \limp{} (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ) ) )$}{}
+	\Invariant{p1\_4}{false}{$(traffic\_level = SLOWED \limp{} (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ) ) )$}{}
+	\Invariant{p1\_5}{false}{$(traffic\_level = CONGESTION \limp{} (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  < 15) ) ) )$}{\\@sysmlkaos$\_$(MoveVehicle$\_$Guard=$>$BringOutEachVehiclePresentInTunnel$\_$Guard) : prouvé par le raffinement classique Event-B}
+	\Invariant{sysmlkaos\_(MoveVehicle\_Post=>ManageCongestion\_Guard)}{true}{$\\\forall{}delay,newTravelLanes,updatedVehicleFronts,newVehicleSpeeds,Vehicle\_Out,Vehicle\_In,\\~ trafficLevel,newVehicleFronts\qdot{}(\\~ 			(\\~~~~  			delay \in{} \natn{}\\~~~~  			\land{} Vehicle \neq{} \emptyset{}\\~~~~      		\land{} updatedVehicleFronts = (\lambda{}xx\qdot{}xx\in{}Vehicle|Vehicle\_Front\_Position(xx)+Vehicle\_Speed(xx)*delay)\\~~~~      		\land{} Vehicle\_In = updatedVehicleFronts\converse{}[Tunnel]\\~~~~      		\land{} Vehicle\_Out = Vehicle\setminus{}  Vehicle\_In\\~~~~      		\land{} newVehicleSpeeds \in{} Vehicle\_In \tfun{} \nat{}\\~~~~      		\land{} (\forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx) \in{} 0\upto{}Speed\_Limit(updatedVehicleFronts(xx))))\\~~~~      		\land{} newTravelLanes \in{} Vehicle\_In \tfun{}TUNNEL\_TRAVEL\_LANE\\~~~~      		\land{} newVehicleFronts = Vehicle\_Out\domsub{}updatedVehicleFronts\\~~~~      		\land{} trafficLevel \in{} TRAFFIC\_LEVEL\\~~~~      		\land{} (trafficLevel = NORMAL \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \geq{} 40) ) ) )\\~~~~      		\land{} (trafficLevel = DENSE \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 35\upto{}39) ) ) )\\~~~~      		\land{} (trafficLevel = SLOWED \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 25\upto{}34) ) ) )\\~~~~      		\land{} (trafficLevel = CONGESTION \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  < 15) ) ) )\\~~~~      		\land{} (\forall{} xx\qdot{}((xx \in{} Vehicle\_In \land{} newVehicleFronts(xx)  \in{} Tunnel\_part1)  \limp{} newTravelLanes(xx)  = TRAVEL\_LANE\_I))\\~~~~      		\land{} (\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle\_In \land{} xx2 \in{} Vehicle\_In \land{} xx1 \neq{} xx2)  \limp{} ((newVehicleFronts(xx1)  - Vehicle\_Length(xx1) ) \upto{}newVehicleFronts(xx1)  \binter{} (newVehicleFronts(xx2)  - Vehicle\_Length(xx2) ) \upto{}newVehicleFronts(xx2)  =  \emptyset{}  \lor{} newTravelLanes(xx1)  \neq{} newTravelLanes(xx2) ) ))\\~~~~      	)\\~     		\limp{} (TRUE=TRUE))$}{\\@sysmlkaos$\_$(ManageCongestion$\_$Post=$>$BringOutEachVehiclePresentInTunnel$\_$Post) : prouvé par le raffinement classique Event-B, car ManageCongestion préserve la post-condition de MoveVehicle.\\~  ON PEUT CONSTATER QUE SANS LE BUT MoveVehicle, IL N'AURAIT PAS ÉTÉ POSSIBLE DE SATISFAIRE BringOutEachVehiclePresentInTunnel ET LES PREUVES SYSML/KAOS AURAIENT PERMIS DE DETECTER CET ETAT DE FAITS }
+}
+\EVENTS{
+\INITIALISATION{true}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$Vehicle \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act4}{$Speed\_Limit \bcmeq{}  Tunnel \cprod{} \{70\}$}{false}{}
+		\Action{act5}{$Min\_Brake\_Distance \bcmeq{} \{70 \mapsto{}0\}$}{false}{}
+		\Action{act7}{$traffic\_level \bcmeq{} NORMAL$}{true}{}
+		\Action{act8}{$Vehicle\_Speed \bcmeq{} \emptyset{}$}{true}{}
+	}
+}
+\EVT{ctrl\_BringVehicleInsideTunnel}{true}{ordinary}{ctrl\_BringVehicleInsideTunnel}{}{
+	\ANY{
+		\Param{vehicle}{false}{}
+		\Param{front}{false}{}
+		\Param{travelLane}{false}{}
+		\Param{speed}{true}{}
+		\Param{trafficLevel}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{} VEHICLE \setminus{} Vehicle$}{false}{}
+		\Guard{grd2}{false}{$front \in{} Tunnel$}{false}{}
+		\Guard{grd3}{false}{$travelLane \in{} TUNNEL\_TRAVEL\_LANE$}{false}{}
+		\Guard{grd4}{false}{$front  \in{} Tunnel\_part1  \limp{} travelLane  = TRAVEL\_LANE\_I$}{false}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle  \limp{} ((Vehicle\_Front\_Position(xx)  - Vehicle\_Length(xx) ) \upto{}Vehicle\_Front\_Position(xx)  \binter{} (front  - Vehicle\_Length(vehicle) ) \upto{}front  =  \emptyset{}  \lor{} Vehicle\_Travel\_Lane(xx)  \neq{} travelLane ) )$}{false}{}
+		\Guard{grd6}{false}{$speed \in{} 0\upto{}Speed\_Limit(front)$}{true}{}
+		\Guard{grd7}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{true}{}
+		\Guard{grd8}{false}{$\\trafficLevel = NORMAL \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{true}{}
+		\Guard{grd9}{false}{$\\trafficLevel = DENSE \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{true}{}
+		\Guard{grd10}{false}{$\\trafficLevel = SLOWED \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{true}{}
+		\Guard{grd11}{false}{$\\trafficLevel = CONGESTION \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  < 15) ))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{} Vehicle \bunion{} \{vehicle\}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position(vehicle) \bcmeq{} front$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane(vehicle) \bcmeq{} travelLane$}{false}{}
+		\Action{act4}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{true}{}
+		\Action{act5}{$traffic\_level \bcmeq{}  trafficLevel$}{true}{}
+	}
+}
+\EVT{ctrl\_ChangeSpeed}{false}{ordinary}{}{}{
+	\ANY{
+		\Param{vehicle}{true}{}
+		\Param{speed}{true}{}
+		\Param{trafficLevel}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{}  Vehicle$}{true}{}
+		\Guard{grd2}{false}{$speed \in{} 0\upto{}Speed\_Limit(Vehicle\_Front\_Position(vehicle))\setminus{}\{Vehicle\_Speed(vehicle)\}$}{true}{}
+		\Guard{grd3}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{true}{}
+		\Guard{grd4}{false}{$\\trafficLevel = NORMAL \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{true}{}
+		\Guard{grd5}{false}{$\\trafficLevel = DENSE \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{true}{}
+		\Guard{grd6}{false}{$\\trafficLevel = SLOWED \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{true}{}
+		\Guard{grd7}{false}{$\\trafficLevel = CONGESTION \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  < 15) ))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{true}{}
+		\Action{act2}{$traffic\_level \bcmeq{}  trafficLevel$}{true}{}
+	}
+}
+\EVT{MoveVehicle}{false}{ordinary}{BringOutEachVehiclePresentInTunnel}{}{
+	\ANY{
+		\Param{delay}{true}{}
+		\Param{newTravelLanes}{true}{}
+		\Param{updatedVehicleFronts}{true}{}
+		\Param{newVehicleSpeeds}{true}{}
+		\Param{Vehicle\_Out}{true}{}
+		\Param{Vehicle\_In}{true}{}
+		\Param{trafficLevel}{true}{}
+		\Param{newVehicleFronts}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$delay \in{} \natn{}$}{true}{}
+		\Guard{grd01}{false}{$Vehicle \neq{} \emptyset{}$}{true}{}
+		\Guard{grd1}{false}{$updatedVehicleFronts = (\lambda{}xx\qdot{}xx\in{}Vehicle|Vehicle\_Front\_Position(xx)+Vehicle\_Speed(xx)*delay)$}{true}{\\les prouveurs ont beaucoup de mal avec ce type de definition: il est necessaire a chaque fois d'expliciter le resultat ou de donner le superset dans le cas de la cardinalite}
+		\Guard{grd2}{false}{$Vehicle\_In = updatedVehicleFronts\converse{}[Tunnel]$}{true}{}
+		\Guard{grd3}{false}{$Vehicle\_Out = Vehicle\setminus{}  Vehicle\_In$}{true}{}
+		\Guard{grd4}{false}{$newVehicleSpeeds \in{} Vehicle\_In \tfun{} \nat{}$}{true}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx) \in{} 0\upto{}Speed\_Limit(updatedVehicleFronts(xx)))$}{true}{}
+		\Guard{grd6}{false}{$newTravelLanes \in{} Vehicle\_In \tfun{}TUNNEL\_TRAVEL\_LANE$}{true}{}
+		\Guard{grd7}{false}{$newVehicleFronts = Vehicle\_Out\domsub{}updatedVehicleFronts$}{true}{}
+		\Guard{grd8}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{true}{}
+		\Guard{grd9}{false}{$\\(trafficLevel = NORMAL \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \geq{} 40) ) ) )$}{true}{}
+		\Guard{grd10}{false}{$\\(trafficLevel = DENSE \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 35\upto{}39) ) ) )$}{true}{}
+		\Guard{grd11}{false}{$\\(trafficLevel = SLOWED \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 25\upto{}34) ) ) )$}{true}{}
+		\Guard{grd12}{false}{$\\(trafficLevel = CONGESTION \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  < 15) ) ) )$}{true}{}
+		\Guard{grd13}{false}{$\forall{} xx\qdot{}((xx \in{} Vehicle\_In \land{} newVehicleFronts(xx)  \in{} Tunnel\_part1)  \limp{} newTravelLanes(xx)  = TRAVEL\_LANE\_I)$}{true}{}
+		\Guard{grd14}{false}{$\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle\_In \land{} xx2 \in{} Vehicle\_In \land{} xx1 \neq{} xx2)  \limp{} ((newVehicleFronts(xx1)  - Vehicle\_Length(xx1) ) \upto{}newVehicleFronts(xx1)  \binter{} (newVehicleFronts(xx2)  - Vehicle\_Length(xx2) ) \upto{}newVehicleFronts(xx2)  =  \emptyset{}  \lor{} newTravelLanes(xx1)  \neq{} newTravelLanes(xx2) ) )$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{}Vehicle\_In$}{true}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} newVehicleFronts$}{true}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} newTravelLanes$}{true}{}
+		\Action{act4}{$traffic\_level \bcmeq{}  trafficLevel$}{true}{}
+		\Action{act5}{$Vehicle\_Speed \bcmeq{} newVehicleSpeeds$}{true}{}
+	}
+}
+\EVT{ManageCongestion}{false}{ordinary}{}{}{
+	\ACTIONS{false}{
+		\Skip
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{bonaventure\_2\_mch}
+\MACHINE{bonaventure\_2\_mch}{bonaventure\_1\_mch}{bonaventure\_1\_ctxt}{}
+\VARIABLES{
+	\Variable{trafficReaded}{}
+	\Variable{Vehicle}{}
+	\Variable{Vehicle\_Front\_Position}{}
+	\Variable{Vehicle\_Travel\_Lane}{}
+	\Variable{Speed\_Limit}{}
+	\Variable{Min\_Brake\_Distance}{}
+	\Variable{traffic\_level}{}
+	\Variable{Vehicle\_Speed}{}
+	\Variable{Observed\_Vehicle}{}
+	\Variable{Observed\_Vehicle\_Speed}{}
+	\Variable{Observed\_Vehicle\_Front\_Position}{}
+	\Variable{Observed\_Vehicle\_Travel\_Lane}{}
+	\Variable{observed\_traffic\_level}{}
+}
+\INVARIANTS{
+	\Invariant{inv0}{false}{$trafficReaded \in{} BOOL$}{}
+	\Invariant{inv01}{false}{$Observed\_Vehicle \subseteq{} VEHICLE$}{}
+	\Invariant{inv1}{false}{$trafficReaded = TRUE \limp{} Observed\_Vehicle \subseteq{} Vehicle$}{}
+	\Invariant{inv2}{false}{$Observed\_Vehicle\_Speed \in{} Observed\_Vehicle \tfun{} \nat{}$}{}
+	\Invariant{inv3}{false}{$Observed\_Vehicle\_Front\_Position \in{} Observed\_Vehicle \tfun{} Tunnel$}{}
+	\Invariant{inv4}{false}{$Observed\_Vehicle\_Travel\_Lane \in{} Observed\_Vehicle \tfun{} TUNNEL\_TRAVEL\_LANE$}{}
+	\Invariant{inv5}{false}{$observed\_traffic\_level \in{} TRAFFIC\_LEVEL$}{}
+	\Invariant{p2\_1}{false}{$\\observed\_traffic\_level = NORMAL\\~ \limp{} (((card(Observed\_Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~ \land{} ( \forall{}xx\qdot{}(xx \in{} Observed\_Vehicle \limp{} Observed\_Vehicle\_Speed(xx)  \geq{} 40) ) )$}{}
+	\Invariant{p2\_2}{false}{$\\observed\_traffic\_level = DENSE\\~ \limp{} (((card(Observed\_Vehicle) * 100) / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~ \land{} ( \forall{}xx\qdot{}(xx \in{} Observed\_Vehicle \limp{} Observed\_Vehicle\_Speed(xx)  \in{} 35\upto{}39) ) )$}{}
+	\Invariant{p2\_3}{false}{$\\observed\_traffic\_level = SLOWED\\~ \limp{} (((card(Observed\_Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~ \land{} ( \forall{}xx\qdot{}(xx \in{} Observed\_Vehicle \limp{} Observed\_Vehicle\_Speed(xx)  \in{} 25\upto{}34) ) )$}{}
+	\Invariant{p2\_4}{false}{$\\observed\_traffic\_level = CONGESTION\\~ \limp{} (((card(Observed\_Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~ \land{} ( \forall{}xx\qdot{}(xx \in{} Observed\_Vehicle \limp{} Observed\_Vehicle\_Speed(xx)  < 15) ) )$}{}
+	\Invariant{p2\_5}{false}{$\\\forall{}xx\qdot{}((xx \in{} Observed\_Vehicle \land{} Observed\_Vehicle\_Front\_Position(xx)  \in{} Tunnel\_part1)\\~ \limp{} Observed\_Vehicle\_Travel\_Lane(xx)  = TRAVEL\_LANE\_I)$}{}
+	\Invariant{p2\_6}{false}{$\\\forall{}xx1, xx2\qdot{}((xx1 \in{} Observed\_Vehicle \land{} xx2 \in{} Observed\_Vehicle \land{} xx1 \neq{} xx2)\\~ \limp{} ((Observed\_Vehicle\_Front\_Position(xx1)  - Vehicle\_Length(xx1) )\upto{}Observed\_Vehicle\_Front\_Position(xx1)\\~ \binter{} (Observed\_Vehicle\_Front\_Position(xx2) - Vehicle\_Length(xx2) )\upto{}Observed\_Vehicle\_Front\_Position(xx2)\\~ = \emptyset{} \lor{} Observed\_Vehicle\_Travel\_Lane(xx1)  \neq{} Observed\_Vehicle\_Travel\_Lane(xx2) ) )$}{}
+	\Invariant{p2\_7}{false}{$\\\forall{}xx\qdot{}(xx \in{} Observed\_Vehicle\\~ \limp{} Observed\_Vehicle\_Speed(xx)  \leq{} Speed\_Limit(Observed\_Vehicle\_Front\_Position(xx) ) )$}{}
+}
+\EVENTS{
+\INITIALISATION{true}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$Vehicle \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act4}{$Speed\_Limit \bcmeq{}  Tunnel \cprod{} \{70\}$}{false}{}
+		\Action{act5}{$Min\_Brake\_Distance \bcmeq{} \{70 \mapsto{}0\}$}{false}{}
+		\Action{act7}{$traffic\_level \bcmeq{} NORMAL$}{false}{}
+		\Action{act8}{$Vehicle\_Speed \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act9}{$Observed\_Vehicle \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act10}{$Observed\_Vehicle\_Speed \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act11}{$Observed\_Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act12}{$Observed\_Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act13}{$observed\_traffic\_level \bcmeq{} NORMAL$}{true}{}
+		\Action{act14}{$trafficReaded \bcmeq{}  FALSE$}{true}{}
+	}
+}
+\EVT{ctrl\_BringVehicleInsideTunnel}{true}{ordinary}{ctrl\_BringVehicleInsideTunnel}{}{
+	\ANY{
+		\Param{vehicle}{false}{}
+		\Param{front}{false}{}
+		\Param{travelLane}{false}{}
+		\Param{speed}{false}{}
+		\Param{trafficLevel}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{} VEHICLE \setminus{} Vehicle$}{false}{}
+		\Guard{grd2}{false}{$front \in{} Tunnel$}{false}{}
+		\Guard{grd3}{false}{$travelLane \in{} TUNNEL\_TRAVEL\_LANE$}{false}{}
+		\Guard{grd4}{false}{$front  \in{} Tunnel\_part1  \limp{} travelLane  = TRAVEL\_LANE\_I$}{false}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle  \limp{} ((Vehicle\_Front\_Position(xx)  - Vehicle\_Length(xx) ) \upto{}Vehicle\_Front\_Position(xx)  \binter{} (front  - Vehicle\_Length(vehicle) ) \upto{}front  =  \emptyset{}  \lor{} Vehicle\_Travel\_Lane(xx)  \neq{} travelLane ) )$}{false}{}
+		\Guard{grd6}{false}{$speed \in{} 0\upto{}Speed\_Limit(front)$}{false}{}
+		\Guard{grd7}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd8}{false}{$\\trafficLevel = NORMAL \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{false}{}
+		\Guard{grd9}{false}{$\\trafficLevel = DENSE \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{false}{}
+		\Guard{grd10}{false}{$\\trafficLevel = SLOWED \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{false}{}
+		\Guard{grd11}{false}{$\\trafficLevel = CONGESTION \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  < 15) ))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{} Vehicle \bunion{} \{vehicle\}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position(vehicle) \bcmeq{} front$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane(vehicle) \bcmeq{} travelLane$}{false}{}
+		\Action{act4}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{false}{}
+		\Action{act5}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+		\Action{act6}{$trafficReaded \bcmeq{} FALSE$}{true}{}
+	}
+}
+\EVT{ctrl\_ChangeSpeed}{true}{ordinary}{ctrl\_ChangeSpeed}{}{
+	\ANY{
+		\Param{vehicle}{false}{}
+		\Param{speed}{false}{}
+		\Param{trafficLevel}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{}  Vehicle$}{false}{}
+		\Guard{grd2}{false}{$speed \in{} 0\upto{}Speed\_Limit(Vehicle\_Front\_Position(vehicle))\setminus{}\{Vehicle\_Speed(vehicle)\}$}{false}{}
+		\Guard{grd3}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd4}{false}{$\\trafficLevel = NORMAL \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{false}{}
+		\Guard{grd5}{false}{$\\trafficLevel = DENSE \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{false}{}
+		\Guard{grd6}{false}{$\\trafficLevel = SLOWED \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{false}{}
+		\Guard{grd7}{false}{$\\trafficLevel = CONGESTION \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  < 15) ))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{false}{}
+		\Action{act2}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+	}
+}
+\EVT{MoveVehicle}{true}{ordinary}{MoveVehicle}{}{
+	\ANY{
+		\Param{delay}{false}{}
+		\Param{newTravelLanes}{false}{}
+		\Param{updatedVehicleFronts}{false}{}
+		\Param{newVehicleSpeeds}{false}{}
+		\Param{Vehicle\_Out}{false}{}
+		\Param{Vehicle\_In}{false}{}
+		\Param{trafficLevel}{false}{}
+		\Param{newVehicleFronts}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$delay \in{} \natn{}$}{false}{}
+		\Guard{grd01}{false}{$Vehicle \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$updatedVehicleFronts = (\lambda{}xx\qdot{}xx\in{}Vehicle|Vehicle\_Front\_Position(xx)+Vehicle\_Speed(xx)*delay)$}{false}{\\les prouveurs ont beaucoup de mal avec ce type de definition: il est necessaire a chaque fois d'expliciter le resultat ou de donner le superset dans le cas de la cardinalite}
+		\Guard{grd2}{false}{$Vehicle\_In = updatedVehicleFronts\converse{}[Tunnel]$}{false}{}
+		\Guard{grd3}{false}{$Vehicle\_Out = Vehicle\setminus{}  Vehicle\_In$}{false}{}
+		\Guard{grd4}{false}{$newVehicleSpeeds \in{} Vehicle\_In \tfun{} \nat{}$}{false}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx) \in{} 0\upto{}Speed\_Limit(updatedVehicleFronts(xx)))$}{false}{}
+		\Guard{grd6}{false}{$newTravelLanes \in{} Vehicle\_In \tfun{}TUNNEL\_TRAVEL\_LANE$}{false}{}
+		\Guard{grd7}{false}{$newVehicleFronts = Vehicle\_Out\domsub{}updatedVehicleFronts$}{false}{}
+		\Guard{grd8}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd9}{false}{$\\(trafficLevel = NORMAL \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \geq{} 40) ) ) )$}{false}{}
+		\Guard{grd10}{false}{$\\(trafficLevel = DENSE \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 35\upto{}39) ) ) )$}{false}{}
+		\Guard{grd11}{false}{$\\(trafficLevel = SLOWED \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 25\upto{}34) ) ) )$}{false}{}
+		\Guard{grd12}{false}{$\\(trafficLevel = CONGESTION \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  < 15) ) ) )$}{false}{}
+		\Guard{grd13}{false}{$\forall{} xx\qdot{}((xx \in{} Vehicle\_In \land{} newVehicleFronts(xx)  \in{} Tunnel\_part1)  \limp{} newTravelLanes(xx)  = TRAVEL\_LANE\_I)$}{false}{}
+		\Guard{grd14}{false}{$\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle\_In \land{} xx2 \in{} Vehicle\_In \land{} xx1 \neq{} xx2)  \limp{} ((newVehicleFronts(xx1)  - Vehicle\_Length(xx1) ) \upto{}newVehicleFronts(xx1)  \binter{} (newVehicleFronts(xx2)  - Vehicle\_Length(xx2) ) \upto{}newVehicleFronts(xx2)  =  \emptyset{}  \lor{} newTravelLanes(xx1)  \neq{} newTravelLanes(xx2) ) )$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{}Vehicle\_In$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} newVehicleFronts$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} newTravelLanes$}{false}{}
+		\Action{act4}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+		\Action{act5}{$Vehicle\_Speed \bcmeq{} newVehicleSpeeds$}{false}{}
+		\Action{act6}{$trafficReaded \bcmeq{} FALSE$}{true}{}
+	}
+}
+\EVT{DetermineTrafficLevel}{false}{ordinary}{ManageCongestion}{}{
+	\ANY{
+		\Param{observedTrafficLevel}{true}{}
+		\Param{observedVehicles}{true}{}
+		\Param{observedSpeeds}{true}{}
+		\Param{observedFrontPositions}{true}{}
+		\Param{observedTravelLanes}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$observedVehicles \subseteq{}  Vehicle$}{true}{\\lecture du trafic}
+		\Guard{grd1}{false}{$Vehicle \neq{} \emptyset{} \limp{} observedVehicles \neq{} \emptyset{}$}{true}{}
+		\Guard{grd2}{false}{$observedSpeeds =  observedVehicles\domres{}Vehicle\_Speed$}{true}{\\lecture de la vitesse des vehicules}
+		\Guard{grd3}{false}{$observedFrontPositions = observedVehicles\domres{}Vehicle\_Front\_Position$}{true}{\\lecture du trafic}
+		\Guard{grd4}{false}{$observedTravelLanes = observedVehicles\domres{}Vehicle\_Travel\_Lane$}{true}{\\lecture du trafic}
+		\Guard{grd5}{false}{$\\observedTrafficLevel = NORMAL\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \geq{} 40) ))$}{true}{\\determination du niveau de trafic}
+		\Guard{grd6}{false}{$\\observedTrafficLevel = DENSE\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \in{} 35\upto{}39) ))$}{true}{}
+		\Guard{grd7}{false}{$\\observedTrafficLevel = SLOWED\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \in{} 25\upto{}34) ))$}{true}{}
+		\Guard{grd8}{false}{$\\observedTrafficLevel = CONGESTION\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  < 15) ))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Observed\_Vehicle \bcmeq{}  observedVehicles$}{true}{}
+		\Action{act2}{$Observed\_Vehicle\_Speed \bcmeq{}  observedSpeeds$}{true}{}
+		\Action{act3}{$Observed\_Vehicle\_Front\_Position \bcmeq{}  observedFrontPositions$}{true}{}
+		\Action{act4}{$Observed\_Vehicle\_Travel\_Lane \bcmeq{}  observedTravelLanes$}{true}{}
+		\Action{act5}{$observed\_traffic\_level \bcmeq{}  observedTrafficLevel$}{true}{}
+		\Action{act6}{$trafficReaded \bcmin{} BOOL$}{true}{}
+	}
+}
+\EVT{RegulateTrafficLevel}{false}{ordinary}{ManageCongestion}{}{
+	\ACTIONS{false}{
+		\Skip
+	}
+}
+\EVT{SuperviseTrafficLevel}{false}{ordinary}{ManageCongestion}{}{
+	\ACTIONS{false}{
+		\Skip
+	}
+}
+}
+\END
+\MultiHeader{MACHINE}{bonaventure\_3\_mch}
+\MACHINE{bonaventure\_3\_mch}{bonaventure\_2\_mch}{bonaventure\_3\_ctxt}{}
+\VARIABLES{
+	\Variable{trafficReaded}{}
+	\Variable{Vehicle}{}
+	\Variable{Vehicle\_Front\_Position}{}
+	\Variable{Vehicle\_Travel\_Lane}{}
+	\Variable{Speed\_Limit}{}
+	\Variable{Min\_Brake\_Distance}{}
+	\Variable{traffic\_level}{}
+	\Variable{Vehicle\_Speed}{}
+	\Variable{Observed\_Vehicle}{}
+	\Variable{Observed\_Vehicle\_Speed}{}
+	\Variable{Observed\_Vehicle\_Front\_Position}{}
+	\Variable{Observed\_Vehicle\_Travel\_Lane}{}
+	\Variable{observed\_traffic\_level}{}
+	\Variable{operating\_mode}{}
+	\Variable{Traffic\_Signal\_Program}{}
+	\Variable{Sensor\_Observed\_Traffic\_Level}{}
+	\Variable{Sensor\_Observed\_Vehicle}{}
+	\Variable{Sensor\_Observed\_Vehicle\_Speed}{}
+	\Variable{Is\_Sensor\_Detection\_Available}{}
+	\Variable{tsc\_observed\_traffic\_level}{}
+	\Variable{trafficReadedCGMU}{}
+	\Variable{trafficReadedCIGC}{}
+}
+\INVARIANTS{
+	\Invariant{inv1}{false}{$operating\_mode \in{} OPERATING\_MODE$}{}
+	\Invariant{inv2}{false}{$Traffic\_Signal\_Program \in{} Traffic\_Light\_Color \tfun{} \nat{}$}{}
+	\Invariant{inv3}{false}{$Sensor\_Observed\_Traffic\_Level \in{} Sensor \pfun{} TRAFFIC\_LEVEL$}{}
+	\Invariant{inv4}{false}{$Sensor\_Observed\_Vehicle \in{} Sensor \rel{} VEHICLE$}{}
+	\Invariant{inv4\_1}{false}{$trafficReaded = TRUE \limp{} Sensor\_Observed\_Vehicle \in{} Sensor \rel{} Observed\_Vehicle$}{}
+	\Invariant{inv5}{false}{$\forall{}xx\qdot{}(xx\in{}Observed\_Vehicle\limp{} card(Sensor\_Observed\_Vehicle\converse{}[\{xx\}]) \geq{} 1)$}{}
+	\Invariant{inv6}{false}{$Sensor\_Observed\_Vehicle\_Speed \in{} Sensor\_Observed\_Vehicle \tfun{} \nat{}$}{}
+	\Invariant{inv7}{false}{$Is\_Sensor\_Detection\_Available \in{} Sensor \tfun{} BOOL$}{}
+	\Invariant{inv8}{false}{$tsc\_observed\_traffic\_level \in{} TRAFFIC\_LEVEL$}{}
+	\Invariant{inv9}{false}{$Observed\_Vehicle = ran(Sensor\_Observed\_Vehicle)$}{}
+	\Invariant{inv10}{false}{$trafficReadedCGMU \in{} BOOL$}{}
+	\Invariant{inv11}{false}{$trafficReadedCIGC \in{} BOOL$}{}
+	\Invariant{inv12}{false}{$trafficReadedCGMU=TRUE \land{} trafficReadedCIGC=TRUE \limp{} trafficReaded=TRUE$}{}
+	\Invariant{p3\_2}{false}{$(operating\_mode = NORMAL\_MODE\land{}trafficReadedCIGC = TRUE) \limp{} (AID \in{} dom(Sensor\_Observed\_Traffic\_Level) \land{} observed\_traffic\_level = Sensor\_Observed\_Traffic\_Level(AID))$}{}
+	\Invariant{p3\_3}{false}{$\\(operating\_mode \in{} \{DEGRADED\_MODE\_I,DEGRADED\_MODE\_II\}\land{}trafficReadedCGMU = TRUE)\\~ \limp{} (Sensor\_Observed\_Traffic\_Level[VdM\_Sensor] \neq{} \emptyset{}\\~ \land{} observed\_traffic\_level \in{} Sensor\_Observed\_Traffic\_Level[VdM\_Sensor])$}{}
+	\Invariant{p3\_4}{false}{$operating\_mode = NORMAL\_MODE \limp{} Is\_Sensor\_Detection\_Available(AID)  = TRUE$}{}
+	\Invariant{p3\_5}{false}{$\\(operating\_mode \in{} \{DEGRADED\_MODE\_I,DEGRADED\_MODE\_II\}\\~ \limp{} Is\_Sensor\_Detection\_Available(AID)  = FALSE)$}{}
+	\Invariant{p3\_6}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\\~ \land{} Sensor\_Observed\_Traffic\_Level(xx)  = NORMAL\\~ \limp{} (((card(Sensor\_Observed\_Vehicle[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~ \land{} (\forall{}yy\qdot{}(yy \in{} Sensor\_Observed\_Vehicle[\{xx\}] \limp{} Sensor\_Observed\_Vehicle\_Speed(xx \mapsto{} yy)  \geq{} 40))))$}{}
+	\Invariant{p3\_7}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\\~ \land{} Sensor\_Observed\_Traffic\_Level(xx)  = DENSE\\~ \limp{} (((card(Sensor\_Observed\_Vehicle[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~ \land{} (\forall{}yy\qdot{}(yy \in{} Sensor\_Observed\_Vehicle[\{xx\}] \limp{} Sensor\_Observed\_Vehicle\_Speed(xx \mapsto{} yy)  \in{} 35\upto{}39))))$}{}
+	\Invariant{p3\_8}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\\~ \land{} Sensor\_Observed\_Traffic\_Level(xx)  = SLOWED\\~ \limp{} (((card(Sensor\_Observed\_Vehicle[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~ \land{} (\forall{}yy\qdot{}(yy \in{} Sensor\_Observed\_Vehicle[\{xx\}] \limp{} Sensor\_Observed\_Vehicle\_Speed(xx \mapsto{} yy)  \in{} 25\upto{}34))))$}{}
+	\Invariant{p3\_9}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\\~ \land{} Sensor\_Observed\_Traffic\_Level(xx)  = CONGESTION\\~ \limp{} (((card(Sensor\_Observed\_Vehicle[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~ \land{} (\forall{}yy\qdot{}(yy \in{} Sensor\_Observed\_Vehicle[\{xx\}] \limp{} Sensor\_Observed\_Vehicle\_Speed(xx \mapsto{} yy)  < 15))))$}{}
+	\Invariant{p3\_10}{false}{$trafficReadedCGMU = TRUE \limp{} ((VdM\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\domres{}Sensor\_Observed\_Vehicle \in{} VdM\_Sensor \rel{} Vehicle$}{}
+	\Invariant{p3\_11}{false}{$trafficReadedCIGC = TRUE \limp{} ((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\domres{}Sensor\_Observed\_Vehicle \in{} MtQ\_Sensor \rel{} Vehicle$}{}
+	\Invariant{p3\_12}{false}{$\forall{}xx,yy\qdot{}((xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\binter{}((VdM\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}]) \land{} yy \in{} Sensor\_Observed\_Vehicle[\{xx\}]\land{}trafficReadedCGMU = TRUE) \limp{} (Vehicle\_Front\_Position(yy)-Vehicle\_Length(yy)) \upto{}Vehicle\_Front\_Position(yy)  \binter{} Sensor\_Coverage\_Rear(xx) \upto{}Sensor\_Coverage\_Front(xx)  \neq{}  \emptyset{} )$}{}
+	\Invariant{p3\_13}{false}{$\forall{}xx,yy\qdot{}((xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\binter{}((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}]) \land{} yy \in{} Sensor\_Observed\_Vehicle[\{xx\}]\land{}trafficReadedCIGC = TRUE) \limp{} (Vehicle\_Front\_Position(yy)-Vehicle\_Length(yy)) \upto{}Vehicle\_Front\_Position(yy)  \binter{} Sensor\_Coverage\_Rear(xx) \upto{}Sensor\_Coverage\_Front(xx)  \neq{}  \emptyset{} )$}{}
+	\Invariant{p3\_14}{false}{$\forall{}xx,yy\qdot{}((xx \in{} dom(Sensor\_Observed\_Traffic\_Level)\binter{}(Is\_Sensor\_Detection\_Available\converse{}[\{TRUE\}]) \land{} yy \in{} Sensor\_Observed\_Vehicle[\{xx\}]\land{}trafficReaded = TRUE) \limp{} (Vehicle\_Front\_Position(yy)-Vehicle\_Length(yy)) \upto{}Vehicle\_Front\_Position(yy)  \binter{} Sensor\_Coverage\_Rear(xx) \upto{}Sensor\_Coverage\_Front(xx)  \neq{}  \emptyset{} )$}{}
+}
+\EVENTS{
+\INITIALISATION{true}{}{
+	\ACTIONS{false}{
+		\Action{act1}{$Vehicle \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act4}{$Speed\_Limit \bcmeq{}  Tunnel \cprod{} \{70\}$}{false}{}
+		\Action{act5}{$Min\_Brake\_Distance \bcmeq{} \{70 \mapsto{}0\}$}{false}{}
+		\Action{act7}{$traffic\_level \bcmeq{} NORMAL$}{false}{}
+		\Action{act8}{$Vehicle\_Speed \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act9}{$Observed\_Vehicle \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act10}{$Observed\_Vehicle\_Speed \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act11}{$Observed\_Vehicle\_Front\_Position \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act12}{$Observed\_Vehicle\_Travel\_Lane \bcmeq{} \emptyset{}$}{false}{}
+		\Action{act13}{$observed\_traffic\_level \bcmeq{} NORMAL$}{false}{}
+		\Action{act14}{$trafficReaded \bcmeq{}  FALSE$}{false}{}
+		\Action{act15}{$operating\_mode \bcmeq{} NORMAL\_MODE$}{true}{}
+		\Action{act16}{$Traffic\_Signal\_Program \bcmeq{} Traffic\_Light\_Color \cprod{} \{10\}$}{true}{}
+		\Action{act17}{$Sensor\_Observed\_Traffic\_Level \bcmeq{} Sensor \cprod{}\{NORMAL\}$}{true}{}
+		\Action{act18}{$Sensor\_Observed\_Vehicle \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act19}{$Sensor\_Observed\_Vehicle\_Speed \bcmeq{} \emptyset{}$}{true}{}
+		\Action{act20}{$Is\_Sensor\_Detection\_Available \bcmeq{} Sensor \cprod{}\{TRUE\}$}{true}{}
+		\Action{act21}{$tsc\_observed\_traffic\_level \bcmeq{} NORMAL$}{true}{}
+		\Action{act22}{$trafficReadedCGMU \bcmeq{}  FALSE$}{true}{}
+		\Action{act23}{$trafficReadedCIGC \bcmeq{}  FALSE$}{true}{}
+	}
+}
+\EVT{ctrl\_BringVehicleInsideTunnel}{true}{ordinary}{ctrl\_BringVehicleInsideTunnel}{}{
+	\ANY{
+		\Param{vehicle}{false}{}
+		\Param{front}{false}{}
+		\Param{travelLane}{false}{}
+		\Param{speed}{false}{}
+		\Param{trafficLevel}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{} VEHICLE \setminus{} Vehicle$}{false}{}
+		\Guard{grd2}{false}{$front \in{} Tunnel$}{false}{}
+		\Guard{grd3}{false}{$travelLane \in{} TUNNEL\_TRAVEL\_LANE$}{false}{}
+		\Guard{grd4}{false}{$front  \in{} Tunnel\_part1  \limp{} travelLane  = TRAVEL\_LANE\_I$}{false}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle  \limp{} ((Vehicle\_Front\_Position(xx)  - Vehicle\_Length(xx) ) \upto{}Vehicle\_Front\_Position(xx)  \binter{} (front  - Vehicle\_Length(vehicle) ) \upto{}front  =  \emptyset{}  \lor{} Vehicle\_Travel\_Lane(xx)  \neq{} travelLane ) )$}{false}{}
+		\Guard{grd6}{false}{$speed \in{} 0\upto{}Speed\_Limit(front)$}{false}{}
+		\Guard{grd7}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd8}{false}{$\\trafficLevel = NORMAL \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{false}{}
+		\Guard{grd9}{false}{$\\trafficLevel = DENSE \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{false}{}
+		\Guard{grd10}{false}{$\\trafficLevel = SLOWED \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{false}{}
+		\Guard{grd11}{false}{$\\trafficLevel = CONGESTION \limp{}  ((((card(Vehicle)+1) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle \limp{} Vehicle\_Speed(xx)  < 15) ))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{} Vehicle \bunion{} \{vehicle\}$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position(vehicle) \bcmeq{} front$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane(vehicle) \bcmeq{} travelLane$}{false}{}
+		\Action{act4}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{false}{}
+		\Action{act5}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+		\Action{act6}{$trafficReaded \bcmeq{} FALSE$}{false}{}
+		\Action{act7}{$trafficReadedCGMU \bcmeq{} FALSE$}{true}{}
+		\Action{act8}{$trafficReadedCIGC \bcmeq{} FALSE$}{true}{}
+	}
+}
+\EVT{ctrl\_ChangeSpeed}{true}{ordinary}{ctrl\_ChangeSpeed}{}{
+	\ANY{
+		\Param{vehicle}{false}{}
+		\Param{speed}{false}{}
+		\Param{trafficLevel}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd1}{false}{$vehicle \in{}  Vehicle$}{false}{}
+		\Guard{grd2}{false}{$speed \in{} 0\upto{}Speed\_Limit(Vehicle\_Front\_Position(vehicle))\setminus{}\{Vehicle\_Speed(vehicle)\}$}{false}{}
+		\Guard{grd3}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd4}{false}{$\\trafficLevel = NORMAL \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{}speed  \geq{} 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \geq{} 40) ))$}{false}{}
+		\Guard{grd5}{false}{$\\trafficLevel = DENSE \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  < 40 \land{}speed  \in{} 35\upto{}39 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 35\upto{}39) ))$}{false}{}
+		\Guard{grd6}{false}{$\\trafficLevel = SLOWED \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  \in{} 25\upto{}34 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  \in{} 25\upto{}34) ))$}{false}{}
+		\Guard{grd7}{false}{$\\trafficLevel = CONGESTION \limp{}  (((card(Vehicle) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~~~~  )  > 40 \land{} speed  < 15 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\setminus{}\{vehicle\} \limp{} Vehicle\_Speed(xx)  < 15) ))$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle\_Speed(vehicle) \bcmeq{} speed$}{false}{}
+		\Action{act2}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+	}
+}
+\EVT{MoveVehicle}{true}{ordinary}{MoveVehicle}{}{
+	\ANY{
+		\Param{delay}{false}{}
+		\Param{newTravelLanes}{false}{}
+		\Param{updatedVehicleFronts}{false}{}
+		\Param{newVehicleSpeeds}{false}{}
+		\Param{Vehicle\_Out}{false}{}
+		\Param{Vehicle\_In}{false}{}
+		\Param{trafficLevel}{false}{}
+		\Param{newVehicleFronts}{false}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$delay \in{} \natn{}$}{false}{}
+		\Guard{grd01}{false}{$Vehicle \neq{} \emptyset{}$}{false}{}
+		\Guard{grd1}{false}{$updatedVehicleFronts = (\lambda{}xx\qdot{}xx\in{}Vehicle|Vehicle\_Front\_Position(xx)+Vehicle\_Speed(xx)*delay)$}{false}{\\les prouveurs ont beaucoup de mal avec ce type de definition: il est necessaire a chaque fois d'expliciter le resultat ou de donner le superset dans le cas de la cardinalite}
+		\Guard{grd2}{false}{$Vehicle\_In = updatedVehicleFronts\converse{}[Tunnel]$}{false}{}
+		\Guard{grd3}{false}{$Vehicle\_Out = Vehicle\setminus{}  Vehicle\_In$}{false}{}
+		\Guard{grd4}{false}{$newVehicleSpeeds \in{} Vehicle\_In \tfun{} \nat{}$}{false}{}
+		\Guard{grd5}{false}{$\forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx) \in{} 0\upto{}Speed\_Limit(updatedVehicleFronts(xx)))$}{false}{}
+		\Guard{grd6}{false}{$newTravelLanes \in{} Vehicle\_In \tfun{}TUNNEL\_TRAVEL\_LANE$}{false}{}
+		\Guard{grd7}{false}{$newVehicleFronts = Vehicle\_Out\domsub{}updatedVehicleFronts$}{false}{}
+		\Guard{grd8}{false}{$trafficLevel \in{} TRAFFIC\_LEVEL$}{false}{}
+		\Guard{grd9}{false}{$\\(trafficLevel = NORMAL \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \geq{} 40) ) ) )$}{false}{}
+		\Guard{grd10}{false}{$\\(trafficLevel = DENSE \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  < 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 35\upto{}39) ) ) )$}{false}{}
+		\Guard{grd11}{false}{$\\(trafficLevel = SLOWED \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  \in{} 25\upto{}34) ) ) )$}{false}{}
+		\Guard{grd12}{false}{$\\(trafficLevel = CONGESTION \limp{} (((card(Vehicle\_In) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION\\~     )  > 40 \land{} ( \forall{}xx\qdot{}(xx \in{} Vehicle\_In \limp{} newVehicleSpeeds(xx)  < 15) ) ) )$}{false}{}
+		\Guard{grd13}{false}{$\forall{} xx\qdot{}((xx \in{} Vehicle\_In \land{} newVehicleFronts(xx)  \in{} Tunnel\_part1)  \limp{} newTravelLanes(xx)  = TRAVEL\_LANE\_I)$}{false}{}
+		\Guard{grd14}{false}{$\forall{}xx1, xx2\qdot{}((xx1 \in{} Vehicle\_In \land{} xx2 \in{} Vehicle\_In \land{} xx1 \neq{} xx2)  \limp{} ((newVehicleFronts(xx1)  - Vehicle\_Length(xx1) ) \upto{}newVehicleFronts(xx1)  \binter{} (newVehicleFronts(xx2)  - Vehicle\_Length(xx2) ) \upto{}newVehicleFronts(xx2)  =  \emptyset{}  \lor{} newTravelLanes(xx1)  \neq{} newTravelLanes(xx2) ) )$}{false}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Vehicle \bcmeq{}Vehicle\_In$}{false}{}
+		\Action{act2}{$Vehicle\_Front\_Position \bcmeq{} newVehicleFronts$}{false}{}
+		\Action{act3}{$Vehicle\_Travel\_Lane \bcmeq{} newTravelLanes$}{false}{}
+		\Action{act4}{$traffic\_level \bcmeq{}  trafficLevel$}{false}{}
+		\Action{act5}{$Vehicle\_Speed \bcmeq{} newVehicleSpeeds$}{false}{}
+		\Action{act6}{$trafficReaded \bcmeq{} FALSE$}{false}{}
+		\Action{act7}{$trafficReadedCGMU \bcmeq{} FALSE$}{true}{}
+		\Action{act8}{$trafficReadedCIGC \bcmeq{} FALSE$}{true}{}
+	}
+}
+\EVT{DetermineTrafficLevelFromVdMSensors}{false}{ordinary}{DetermineTrafficLevel}{}{
+	\ANY{
+		\Param{observedTrafficLevel}{true}{}
+		\Param{observedVehicles}{true}{}
+		\Param{observedSpeeds}{true}{}
+		\Param{observedFrontPositions}{true}{}
+		\Param{observedTravelLanes}{true}{}
+		\Param{vdmSensors}{true}{}
+		\Param{sensorObservedVehicles}{true}{}
+		\Param{sensorObservedVehicleSpeeds}{true}{}
+		\Param{sensorObservedTrafficLevels}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$vdmSensors =  (VdM\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}]$}{true}{}
+		\Guard{grd0\_1}{false}{$vdmSensors \neq{} \emptyset{}$}{true}{}
+		\Guard{grd0\_2}{false}{$operating\_mode\in{}\{DEGRADED\_MODE\_I,DEGRADED\_MODE\_II\}$}{true}{}
+		\Guard{grd1}{false}{$sensorObservedVehicles \subseteq{}  vdmSensors\cprod{}Vehicle$}{true}{}
+		\Guard{theo1}{true}{$finite(sensorObservedVehicles)$}{true}{}
+		\Guard{grd2}{false}{$Vehicle \neq{} \emptyset{} \limp{} sensorObservedVehicles \neq{} \emptyset{}$}{true}{}
+		\Guard{grd3}{false}{$\\\forall{}xx,yy\qdot{}(xx \in{} dom(sensorObservedVehicles) \land{} yy \in{} sensorObservedVehicles[\{xx\}]\\~     \limp{} (Vehicle\_Front\_Position(yy)-Vehicle\_Length(yy)) \upto{}Vehicle\_Front\_Position(yy)\\~     \binter{} Sensor\_Coverage\_Rear(xx) \upto{}Sensor\_Coverage\_Front(xx)  \neq{}  \emptyset{})$}{true}{}
+		\Guard{grd3\_1}{false}{$\forall{}xx,yy\qdot{}((xx \in{} vdmSensors \land{} yy \in{} Vehicle \land{} (Vehicle\_Front\_Position(yy)-Vehicle\_Length(yy)) \upto{}Vehicle\_Front\_Position(yy)  \binter{} Sensor\_Coverage\_Rear(xx) \upto{}Sensor\_Coverage\_Front(xx)  \neq{}  \emptyset{}) \limp{} (xx \in{} dom(sensorObservedVehicles) \land{} yy \in{} sensorObservedVehicles[\{xx\}] ))$}{true}{\\@grd4 updatedSensorObservedVehicles = (Sensor$\_$Observed$\_$Vehicle$\ovl{}$sensorObservedVehicles)}
+		\Guard{grd4}{false}{$observedVehicles \subseteq{}  Vehicle$}{true}{}
+		\Guard{theo2}{true}{$finite(observedVehicles)$}{true}{}
+		\Guard{grd5}{false}{$trafficReadedCIGC = FALSE \limp{} observedVehicles =  ran(sensorObservedVehicles)$}{true}{\\lecture du trafic}
+		\Guard{grd5\_1}{false}{$trafficReadedCIGC = TRUE \limp{} observedVehicles =  ran(sensorObservedVehicles) \bunion{} ran(((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\domres{}Sensor\_Observed\_Vehicle)$}{true}{\\lecture du trafic}
+		\Guard{grd6}{false}{$sensorObservedVehicleSpeeds = (\lambda{}(xx\mapsto{}yy)\qdot{}(xx\mapsto{}yy\in{}sensorObservedVehicles)|Vehicle\_Speed(yy))$}{true}{}
+		\Guard{grd7\_0}{false}{$sensorObservedTrafficLevels\in{} vdmSensors \tfun{} TRAFFIC\_LEVEL$}{true}{}
+		\Guard{grd7}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(sensorObservedTrafficLevels)\\~     \land{} sensorObservedTrafficLevels(xx)  = NORMAL\\~     \limp{} (((card(sensorObservedVehicles[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}yy\qdot{}(yy \in{} sensorObservedVehicles[\{xx\}] \limp{} sensorObservedVehicleSpeeds(xx \mapsto{} yy)  \geq{} 40) ) ) )$}{true}{}
+		\Guard{grd8}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(sensorObservedTrafficLevels)\\~     \land{} sensorObservedTrafficLevels(xx)  = DENSE\\~     \limp{} (((card(sensorObservedVehicles[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}yy\qdot{}(yy \in{} sensorObservedVehicles[\{xx\}] \limp{} sensorObservedVehicleSpeeds(xx \mapsto{} yy)  \in{} 35\upto{}39) ) ) )$}{true}{}
+		\Guard{grd9}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(sensorObservedTrafficLevels)\\~     \land{} sensorObservedTrafficLevels(xx)  = SLOWED\\~     \limp{} (((card(sensorObservedVehicles[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}yy\qdot{}(yy \in{} sensorObservedVehicles[\{xx\}] \limp{} sensorObservedVehicleSpeeds(xx \mapsto{} yy)  \in{} 25\upto{}34) ) ) )$}{true}{}
+		\Guard{grd10}{false}{$\\\forall{}xx\qdot{}(xx \in{} dom(sensorObservedTrafficLevels)\\~     \land{} sensorObservedTrafficLevels(xx)  = CONGESTION\\~     \limp{} (((card(sensorObservedVehicles[\{xx\}])  * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}yy\qdot{}(yy \in{} sensorObservedVehicles[\{xx\}] \limp{} sensorObservedVehicleSpeeds(xx \mapsto{} yy)  < 15) ) ) )$}{true}{}
+		\Guard{grd11}{false}{$observedSpeeds =  observedVehicles\domres{}Vehicle\_Speed$}{true}{\\lecture de la vitesse des vehicules}
+		\Guard{grd12}{false}{$observedFrontPositions = observedVehicles\domres{}Vehicle\_Front\_Position$}{true}{\\lecture du trafic}
+		\Guard{grd13}{false}{$observedTravelLanes = observedVehicles\domres{}Vehicle\_Travel\_Lane$}{true}{\\lecture du trafic}
+		\Guard{grd14}{false}{$observedTrafficLevel \in{} TRAFFIC\_LEVEL$}{true}{}
+		\Guard{grd15}{false}{$observedTrafficLevel \in{} ran(sensorObservedTrafficLevels)$}{true}{}
+		\Guard{grd16}{false}{$\\observedTrafficLevel = NORMAL\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \geq{} 40) ))$}{true}{\\determination du niveau de trafic}
+		\Guard{grd17}{false}{$\\observedTrafficLevel = DENSE\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  < 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \in{} 35\upto{}39) ))$}{true}{}
+		\Guard{grd18}{false}{$\\observedTrafficLevel = SLOWED\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  \in{} 25\upto{}34) ))$}{true}{}
+		\Guard{grd19}{false}{$\\observedTrafficLevel = CONGESTION\\~     \limp{}  (((card(observedVehicles) * 100)  / MAXIMAL\_TUNNEL\_OCCUPATION)  > 40\\~     \land{} ( \forall{}xx\qdot{}(xx \in{} observedVehicles \limp{} observedSpeeds(xx)  < 15) ))$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act1}{$Observed\_Vehicle \bcmeq{}  observedVehicles$}{true}{}
+		\Action{act2}{$Observed\_Vehicle\_Speed \bcmeq{}  observedSpeeds$}{true}{}
+		\Action{act3}{$Observed\_Vehicle\_Front\_Position \bcmeq{}  observedFrontPositions$}{true}{}
+		\Action{act4}{$Observed\_Vehicle\_Travel\_Lane \bcmeq{}  observedTravelLanes$}{true}{}
+		\Action{act5}{$observed\_traffic\_level \bcmeq{} observedTrafficLevel$}{true}{}
+		\Action{act6}{$trafficReadedCGMU  \bcmeq{} TRUE$}{true}{\\@act7 Sensor$\_$Observed$\_$Traffic$\_$Level $\bcmeq{}$ Sensor$\_$Observed$\_$Traffic$\_$Level$\ovl{}$sensorObservedTrafficLevels }
+		\Action{act7}{$Sensor\_Observed\_Traffic\_Level \bcmeq{} (\{TRUE\mapsto{}(((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\domres{}Sensor\_Observed\_Traffic\_Level) \bunion{} sensorObservedTrafficLevels, FALSE \mapsto{}sensorObservedTrafficLevels \})(bool(trafficReadedCIGC = TRUE))$}{true}{\\@act8 Sensor$\_$Observed$\_$Vehicle $\bcmeq{}$ (vdmSensors$\domsub{}$Sensor$\_$Observed$\_$Vehicle)$\bunion{}$ sensorObservedVehicles }
+		\Action{act8}{$Sensor\_Observed\_Vehicle \bcmeq{} (\{TRUE\mapsto{}(((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\domres{}Sensor\_Observed\_Vehicle) \bunion{} sensorObservedVehicles, FALSE \mapsto{}sensorObservedVehicles \})(bool(trafficReadedCIGC = TRUE))$}{true}{\\@act9 Sensor$\_$Observed$\_$Vehicle$\_$Speed $\bcmeq{}$ ((vdmSensors $\cprod{}$ VEHICLE)$\domsub{}$Sensor$\_$Observed$\_$Vehicle$\_$Speed)$\bunion{}$ sensorObservedVehicleSpeeds}
+		\Action{act9}{$Sensor\_Observed\_Vehicle\_Speed \bcmeq{} (\{TRUE\mapsto{}((((MtQ\_Sensor\domres{}Is\_Sensor\_Detection\_Available)\converse{}[\{TRUE\}])\cprod{} VEHICLE)\domres{}Sensor\_Observed\_Vehicle\_Speed) \bunion{} sensorObservedVehicleSpeeds, FALSE \mapsto{}sensorObservedVehicleSpeeds \})(bool(trafficReadedCIGC = TRUE))$}{true}{}
+		\Action{act10}{$trafficReaded  \bcmeq{} bool(trafficReadedCIGC=TRUE)$}{true}{}
+	}
+}
+\EVT{CommunicateTrafficLeveltoTrafficSignalController}{false}{ordinary}{RegulateTrafficLevel}{}{
+	\ANY{
+		\Param{trafficLevel}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$trafficLevel \in{} Sensor\_Observed\_Traffic\_Level[VdM\_Sensor]$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$tsc\_observed\_traffic\_level \bcmeq{} trafficLevel$}{true}{}
+	}
+}
+\EVT{ApplyAppropriateTrafficSignalProgram}{false}{ordinary}{SuperviseTrafficLevel, RegulateTrafficLevel}{}{
+	\ANY{
+		\Param{trafficSignalProgram}{true}{}
+	}
+	\GUARDS{true}{
+		\Guard{grd0}{false}{$trafficSignalProgram \in{} Traffic\_Light\_Color \tfun{} \nat{}$}{true}{\\a partir de la table d'association entre niveau de trafic et plan de feux, il sera possible de specifier le plan de feux correspondant a chaque etat du trafic}
+	}
+	\ACTIONS{true}{
+		\Action{act0}{$Traffic\_Signal\_Program \bcmeq{} trafficSignalProgram$}{true}{}
+	}
+}
+\EVT{SuperviseTrafficLevelinNormalMode}{false}{ordinary}{SuperviseTrafficLevel}{}{
+	\GUARDS{false}{
+		\Guard{grd0}{false}{$operating\_mode = NORMAL\_MODE$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Skip
+	}
+}
+\EVT{SuperviseTrafficLevelinDegradedMode1}{false}{ordinary}{SuperviseTrafficLevel}{}{
+	\GUARDS{false}{
+		\Guard{grd0}{false}{$operating\_mode = DEGRADED\_MODE\_I$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Skip
+	}
+}
+\EVT{SuperviseTrafficLevelinDegradedMode2}{false}{ordinary}{SuperviseTrafficLevel}{}{
+	\GUARDS{false}{
+		\Guard{grd0}{false}{$operating\_mode = DEGRADED\_MODE\_II$}{true}{}
+	}
+	\ACTIONS{true}{
+		\Skip
+	}
+}
+}
+\END
+\end{document}

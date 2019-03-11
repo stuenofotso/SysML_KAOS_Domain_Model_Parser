@@ -1,0 +1,14 @@
+{
+    "id": "bonaventureProject",
+    "template": "index.html",
+    "model": "bonaventure_1_mch.bcm",
+    "observers": "bonaventureProject.observers.json",
+    "events": "bonaventureProject.events.json",
+    "autoOpen": [
+        "CurrentTrace",
+        "Events",
+        "StateInspector",
+        "CurrentAnimations",
+        "ModelCheckingUI"
+    ]
+}

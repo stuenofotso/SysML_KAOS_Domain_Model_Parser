@@ -1,0 +1,52 @@
+/* bonaventure_2
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 20/11/2018
+*/
+
+REFINEMENT
+bonaventure_2
+REFINES
+bonaventure_1
+
+SETS
+
+
+CONSTANTS
+
+
+VARIABLES
+Observed_Vehicle, Observed_Vehicle_Speed, Observed_Vehicle_Front_Position, Observed_Vehicle_Travel_Lane, observed_traffic_level
+
+PROPERTIES
+
+
+INVARIANT
+Observed_Vehicle <: Vehicle &
+Observed_Vehicle_Speed : Observed_Vehicle --> NATURAL &
+Observed_Vehicle_Front_Position : Observed_Vehicle --> Tunnel &
+Observed_Vehicle_Travel_Lane : Observed_Vehicle --> TUNNEL_TRAVEL_LANE &
+observed_traffic_level : TRAFFIC_LEVEL &
+/*logical formula p2_1*/
+(observed_traffic_level = NORMAL => (((card(Observed_Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !xx.(xx : Observed_Vehicle => Observed_Vehicle_Speed(xx)  >= 40) ) ) ) &
+/*logical formula p2_2*/
+(observed_traffic_level = DENSE => (((card(Observed_Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !xx.(xx : Observed_Vehicle => Observed_Vehicle_Speed(xx)  : 35..39) ) ) ) &
+/*logical formula p2_3*/
+(observed_traffic_level = SLOWED => (((card(Observed_Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !xx.(xx : Observed_Vehicle => Observed_Vehicle_Speed(xx)  : 25..34) ) ) ) &
+/*logical formula p2_4*/
+(observed_traffic_level = CONGESTION => (((card(Observed_Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !xx.(xx : Observed_Vehicle => Observed_Vehicle_Speed(xx)  < 15) ) ) ) &
+/*logical formula p2_5*/
+!(xx).((xx : Observed_Vehicle & Observed_Vehicle_Front_Position(xx)  : Tunnel_part1)  => Observed_Vehicle_Travel_Lane(xx)  = TRAVEL_LANE_I) &
+/*logical formula p2_6*/
+!(xx1, xx2).((xx1 : Observed_Vehicle & xx2 : Observed_Vehicle & xx1 /= xx2)  => ((Observed_Vehicle_Front_Position(xx1)  - Vehicle_Length(xx1) ) ..Observed_Vehicle_Front_Position(xx1)  /\ (Observed_Vehicle_Front_Position(xx2)  - Vehicle_Length(xx2) ) ..Observed_Vehicle_Front_Position(xx2)  =  {}  or Observed_Vehicle_Travel_Lane(xx1)  /= Observed_Vehicle_Travel_Lane(xx2) ) ) &
+/*logical formula p2_7*/
+!(xx).(xx : Observed_Vehicle => Observed_Vehicle_Speed(xx)  <= Speed_Limit(Observed_Vehicle_Front_Position(xx) ) )
+
+INITIALISATION
+Observed_Vehicle : (Observed_Vehicle <: Vehicle) ||
+Observed_Vehicle_Speed :: Observed_Vehicle --> NATURAL ||
+Observed_Vehicle_Front_Position :: Observed_Vehicle --> Tunnel ||
+Observed_Vehicle_Travel_Lane :: Observed_Vehicle --> TUNNEL_TRAVEL_LANE ||
+observed_traffic_level := NORMAL
+
+
+END

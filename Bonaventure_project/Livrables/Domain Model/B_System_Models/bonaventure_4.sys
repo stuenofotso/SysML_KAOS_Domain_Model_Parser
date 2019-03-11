@@ -1,0 +1,47 @@
+/* bonaventure_4
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 04/12/2018
+*/
+
+REFINEMENT
+bonaventure_4
+REFINES
+bonaventure_3
+
+SETS
+
+
+CONSTANTS
+VdM_Sensor_Tunnel_Critical_Point, Thermal_Camera, Ground_Sensor, Traffic_Radar, b_a_4, ab
+
+VARIABLES
+Sensor_Communicated_Traffic_Level, Communication_Channel
+
+PROPERTIES
+VdM_Sensor_Tunnel_Critical_Point <: VdM_Sensor &
+Thermal_Camera : VdM_Sensor_Tunnel_Critical_Point &
+Ground_Sensor : VdM_Sensor_Tunnel_Critical_Point &
+Traffic_Radar : VdM_Sensor &
+Traffic_Radar |-> cc : Sensor_Position &
+Traffic_Radar |-> cc : Sensor_Coverage_Front &
+Traffic_Radar |-> aa : Sensor_Coverage_Rear &
+b_a_4 : NATURAL &
+ab : Tunnel_part1 &
+Thermal_Camera |-> ab : Sensor_Position &
+Thermal_Camera |-> ab : Sensor_Coverage_Front &
+Thermal_Camera |-> aa : Sensor_Coverage_Rear &
+Thermal_Camera |-> b_a_4 : Sensor_Detection_Accuracy &
+Traffic_Radar |-> b_a_4 : Sensor_Detection_Accuracy &
+/* logical formula p4_1 */
+(b_a_4 = (bb - aa)  / 4)
+
+INVARIANT
+Sensor_Communicated_Traffic_Level : Sensor +-> TRAFFIC_LEVEL &
+Communication_Channel : Sensor_Observed_Traffic_Level >+> Sensor_Communicated_Traffic_Level
+
+INITIALISATION
+Sensor_Communicated_Traffic_Level :: Sensor +-> TRAFFIC_LEVEL ||
+Communication_Channel :: Sensor_Observed_Traffic_Level >+> Sensor_Communicated_Traffic_Level
+
+
+END

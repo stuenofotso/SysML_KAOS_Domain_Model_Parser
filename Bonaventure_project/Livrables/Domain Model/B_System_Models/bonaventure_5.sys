@@ -1,0 +1,67 @@
+/* bonaventure_5
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 04/12/2018
+*/
+
+REFINEMENT
+bonaventure_5
+REFINES
+bonaventure_4
+
+SETS
+Notification_Device; Notification
+
+CONSTANTS
+CIGC_PMV1, CIGC_PMV2
+
+VARIABLES
+User_Notification, VdM_Sensor_Observed_Traffic_Level, MtQ_Sensor_Observed_Traffic_Level, VdM_Sensor_Communicated_Traffic_Level, MtQ_Sensor_Communicated_Traffic_Level, MtQ_Sensor_CIGC_Communication_Channel, VdM_Sensor_CGMU_Communication_Channel, CGMU_CIGC_Synchronisation_Channel, is_cgmu_cigc_sync, is_cigc_cgmu_sync
+
+PROPERTIES
+CIGC_PMV1 : Notification_Device &
+CIGC_PMV2 : Notification_Device
+
+INVARIANT
+User_Notification : Notification_Device --> Notification &
+VdM_Sensor_Observed_Traffic_Level <: Sensor_Observed_Traffic_Level &
+VdM_Sensor_Observed_Traffic_Level : VdM_Sensor +-> TRAFFIC_LEVEL &
+MtQ_Sensor_Observed_Traffic_Level <: Sensor_Observed_Traffic_Level &
+MtQ_Sensor_Observed_Traffic_Level : MtQ_Sensor +-> TRAFFIC_LEVEL &
+VdM_Sensor_Communicated_Traffic_Level <: Sensor_Communicated_Traffic_Level &
+VdM_Sensor_Communicated_Traffic_Level : VdM_Sensor +-> TRAFFIC_LEVEL &
+MtQ_Sensor_Communicated_Traffic_Level <: Sensor_Communicated_Traffic_Level &
+MtQ_Sensor_Communicated_Traffic_Level : MtQ_Sensor +-> TRAFFIC_LEVEL &
+MtQ_Sensor_CIGC_Communication_Channel <: Communication_Channel &
+MtQ_Sensor_CIGC_Communication_Channel : MtQ_Sensor_Observed_Traffic_Level <-> MtQ_Sensor_Communicated_Traffic_Level & 
+ !xx.(xx:MtQ_Sensor_Communicated_Traffic_Level=> card(MtQ_Sensor_CIGC_Communication_Channel~[{xx}]) = 1) &
+VdM_Sensor_CGMU_Communication_Channel <: Communication_Channel &
+VdM_Sensor_CGMU_Communication_Channel : VdM_Sensor_Observed_Traffic_Level <-> VdM_Sensor_Communicated_Traffic_Level & 
+ !xx.(xx:VdM_Sensor_Communicated_Traffic_Level=> card(VdM_Sensor_CGMU_Communication_Channel~[{xx}]) = 1) &
+CGMU_CIGC_Synchronisation_Channel <: Communication_Channel &
+CGMU_CIGC_Synchronisation_Channel : Sensor_Observed_Traffic_Level <-> Sensor_Communicated_Traffic_Level & 
+ !xx.(xx:Sensor_Communicated_Traffic_Level=> card(CGMU_CIGC_Synchronisation_Channel~[{xx}]) = 1) &
+is_cgmu_cigc_sync : BOOL &
+is_cigc_cgmu_sync : BOOL &
+/*logical formula p5_1*/
+((is_cgmu_cigc_sync = TRUE & is_cigc_cgmu_sync = TRUE)  => CGMU_CIGC_Synchronisation_Channel = MtQ_Sensor_CIGC_Communication_Channel \/ VdM_Sensor_CGMU_Communication_Channel) &
+/*logical formula p5_2*/
+(operating_mode = NORMAL_MODE => observed_traffic_level = (CGMU_CIGC_Synchronisation_Channel[MtQ_Sensor_Observed_Traffic_Level]) (AID) ) &
+/*logical formula p5_3*/
+(operating_mode = DEGRADED_MODE_I => observed_traffic_level : (VdM_Sensor_CGMU_Communication_Channel[VdM_Sensor_Observed_Traffic_Level]) [VdM_Sensor]) &
+/*logical formula p5_4*/
+(operating_mode = DEGRADED_MODE_II => observed_traffic_level : VdM_Sensor_Observed_Traffic_Level[VdM_Sensor])
+
+INITIALISATION
+User_Notification :: Notification_Device --> Notification ||
+VdM_Sensor_Observed_Traffic_Level :: VdM_Sensor +-> TRAFFIC_LEVEL ||
+MtQ_Sensor_Observed_Traffic_Level :: MtQ_Sensor +-> TRAFFIC_LEVEL ||
+VdM_Sensor_Communicated_Traffic_Level :: VdM_Sensor +-> TRAFFIC_LEVEL ||
+MtQ_Sensor_Communicated_Traffic_Level :: MtQ_Sensor +-> TRAFFIC_LEVEL ||
+MtQ_Sensor_CIGC_Communication_Channel :: MtQ_Sensor_Observed_Traffic_Level <-> MtQ_Sensor_Communicated_Traffic_Level ||
+VdM_Sensor_CGMU_Communication_Channel :: VdM_Sensor_Observed_Traffic_Level <-> VdM_Sensor_Communicated_Traffic_Level ||
+CGMU_CIGC_Synchronisation_Channel :: Sensor_Observed_Traffic_Level <-> Sensor_Communicated_Traffic_Level ||
+is_cgmu_cigc_sync := TRUE ||
+is_cigc_cgmu_sync := TRUE
+
+
+END

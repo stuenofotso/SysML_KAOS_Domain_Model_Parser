@@ -1,0 +1,84 @@
+{
+    "observers": [
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "traffic_level"
+                ],
+                "selector": "#svg_17",
+                "trigger": "origin.text(values[0])"
+            }
+        },
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "Vehicle",
+                    "Vehicle_Front_Position[{V1}]",
+                    "Vehicle_Travel_Lane[{V1}]",
+                    "Vehicle_Speed[{V1}]",
+                    "Vehicle_Length(V1)"
+                ],
+                "selector": "#V1",
+                "trigger": "var id = values[0].indexOf(\"V1\");\nif(id > -1){\n origin.text(\"V1\");\n origin.attr(\"opacity\", \"1.0\"); \n origin.attr(\"width\", values[4]*50); \n //origin.attr(\"height\", 20); \n origin.attr(\"x\", (values[1].match(/\\d+/)[0])*50);\n if(values[2]==\"{TRAVEL_LANE_I}\"){\n   origin.attr(\"y\", 50);\n }\n else{\n   origin.attr(\"y\", 180);\n }\n}\nelse{\n  origin.attr(\"opacity\", \"0.0\"); \n}"
+            }
+        },
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "Vehicle",
+                    "Vehicle_Front_Position[{V2}]",
+                    "Vehicle_Travel_Lane[{V2}]",
+                    "Vehicle_Speed[{V2}]",
+                    "Vehicle_Length(V2)"
+                ],
+                "selector": "#V2",
+                "trigger": "var id = values[0].indexOf(\"V2\");\nif(id > -1){\n origin.attr(\"opacity\", \"1.0\"); \n origin.attr(\"width\", values[4]*50); \n //origin.attr(\"height\", 20); \n origin.attr(\"x\", (values[1].match(/\\d+/)[0])*50);\n if(values[2]==\"{TRAVEL_LANE_I}\"){\n   origin.attr(\"y\", 50);\n }\n else{\n   origin.attr(\"y\", 180);\n }\n}\nelse{\n  origin.attr(\"opacity\", \"0.0\"); \n}"
+            }
+        },
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "Vehicle",
+                    "Vehicle_Front_Position[{V3}]",
+                    "Vehicle_Travel_Lane[{V3}]",
+                    "Vehicle_Speed[{V3}]",
+                    "Vehicle_Length(V3)"
+                ],
+                "selector": "#V3",
+                "trigger": "var id = values[0].indexOf(\"V3\");\nif(id > -1){\n origin.attr(\"opacity\", \"1.0\"); \n origin.attr(\"width\", values[4]*50); \n //origin.attr(\"height\", 20); \n origin.attr(\"x\", (values[1].match(/\\d+/)[0])*50);\n if(values[2]==\"{TRAVEL_LANE_I}\"){\n   origin.attr(\"y\", 50);\n }\n else{\n   origin.attr(\"y\", 180);\n }\n}\nelse{\n  origin.attr(\"opacity\", \"0.0\"); \n}"
+            }
+        },
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "Vehicle",
+                    "Vehicle_Front_Position[{V4}]",
+                    "Vehicle_Travel_Lane[{V4}]",
+                    "Vehicle_Speed[{V4}]",
+                    "Vehicle_Length(V4)"
+                ],
+                "selector": "#V4",
+                "trigger": "var id = values[0].indexOf(\"V4\");\nif(id > -1){\n origin.attr(\"opacity\", \"1.0\"); \n origin.attr(\"width\", values[4]*50); \n //origin.attr(\"height\", 20); \n origin.attr(\"x\", (values[1].match(/\\d+/)[0])*50);\n if(values[2]==\"{TRAVEL_LANE_I}\"){\n   origin.attr(\"y\", 50);\n }\n else{\n   origin.attr(\"y\", 180);\n }\n}\nelse{\n  origin.attr(\"opacity\", \"0.0\"); \n}"
+            }
+        },
+        {
+            "type": "formula",
+            "data": {
+                "formulas": [
+                    "Vehicle",
+                    "Vehicle_Front_Position[{V5}]",
+                    "Vehicle_Travel_Lane[{V5}]",
+                    "Vehicle_Speed[{V5}]",
+                    "Vehicle_Length(V5)"
+                ],
+                "selector": "#V5",
+                "trigger": "var id = values[0].indexOf(\"V5\");\nif(id > -1){\n origin.attr(\"opacity\", \"1.0\"); \n origin.attr(\"width\", values[4]*50); \n //origin.attr(\"height\", 20); \n origin.attr(\"x\", (values[1].match(/\\d+/)[0])*50);\n if(values[2]==\"{TRAVEL_LANE_I}\"){\n   origin.attr(\"y\", 50);\n }\n else{\n   origin.attr(\"y\", 180);\n }\n}\nelse{\n  origin.attr(\"opacity\", \"0.0\"); \n}"
+            }
+        }
+    ]
+}

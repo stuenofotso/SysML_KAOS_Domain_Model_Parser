@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="p3_1/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1" org.eventb.core.prSets="Sensor">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p2" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p3"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="HIDE0" org.eventb.core.prHyps="p4"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p5"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∀ goal (frees xx)" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p6">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p6" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p8" org.eventb.core.prHyps="p7">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∧ goal" org.eventb.core.prGoal="p8" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p9">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p9" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p10">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prGoal="p10" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name="(" org.eventb.core.prGoal="p12">
+<org.eventb.core.prRule name="r7" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p12" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+<org.eventb.core.prAnte name=")" org.eventb.core.prGoal="p13">
+<org.eventb.core.prRule name="r5" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="total function dom substitution in goal" org.eventb.core.prGoal="p13" org.eventb.core.prHyps="p1">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p14">
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="type rewrites" org.eventb.core.prGoal="p14" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p11">
+<org.eventb.core.prRule name="r6" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⊤ goal" org.eventb.core.prGoal="p11" org.eventb.core.prHyps=""/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+<org.eventb.core.prString name=".pos" org.eventb.core.prSValue="1"/>
+<org.eventb.core.prExprRef name=".subst" org.eventb.core.prRef="e0"/>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="AID" org.eventb.core.type="Sensor"/>
+<org.eventb.core.prIdent name="Sensor_Detection_Accuracy" org.eventb.core.type="ℙ(Sensor×ℤ)"/>
+<org.eventb.core.prIdent name="VdM_Sensor" org.eventb.core.type="ℙ(Sensor)"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="Sensor_Detection_Accuracy∈Sensor ⇸ ℤ"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="⊤"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="xx∈VdM_Sensor">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀xx⦂Sensor·xx∈VdM_Sensor⇒xx∈dom(Sensor_Detection_Accuracy)∧Sensor_Detection_Accuracy∈Sensor ⇸ ℤ∧AID∈dom(Sensor_Detection_Accuracy)"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="xx∈VdM_Sensor⇒xx∈dom(Sensor_Detection_Accuracy)∧Sensor_Detection_Accuracy∈Sensor ⇸ ℤ∧AID∈dom(Sensor_Detection_Accuracy)">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="VdM_Sensor≠(∅ ⦂ ℙ(Sensor))"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Traffic_Light_William∈Traffic_Light">
+<org.eventb.core.prIdent name="Traffic_Light" org.eventb.core.type="ℙ(Traffic_Light)"/>
+<org.eventb.core.prIdent name="Traffic_Light_William" org.eventb.core.type="Traffic_Light"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="Sensor_Detection_Accuracy∈Sensor → ℕ"/>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="xx∈dom(Sensor_Detection_Accuracy)∧Sensor_Detection_Accuracy∈Sensor ⇸ ℤ∧AID∈dom(Sensor_Detection_Accuracy)">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="¬VdM_Sensor=(∅ ⦂ ℙ(Sensor))"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="AID∈dom(Sensor_Detection_Accuracy)"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="AID∈Sensor"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="Traffic_Light_Wellington∈Traffic_Light">
+<org.eventb.core.prIdent name="Traffic_Light" org.eventb.core.type="ℙ(Traffic_Light)"/>
+<org.eventb.core.prIdent name="Traffic_Light_Wellington" org.eventb.core.type="Traffic_Light"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="xx∈Sensor">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="xx∈dom(Sensor_Detection_Accuracy)">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="Sensor"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prExpr name="e0" org.eventb.core.expression="Sensor"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.typeRewrites:1"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r5" org.eventb.core.prRID="org.eventb.core.seqprover.totalDom:2"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.conj:0"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r6" org.eventb.core.prRID="org.eventb.core.seqprover.trueGoal"/>
+<org.eventb.core.prReas name="r7" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>

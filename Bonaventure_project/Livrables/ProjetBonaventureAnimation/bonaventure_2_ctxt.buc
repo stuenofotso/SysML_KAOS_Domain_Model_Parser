@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;org.eventb.codegen.ui.cgConfig;org.animb.valuation.valBase;de.prob.symbolic.ctxBase;de.prob.units.mchBase" org.eventb.core.generated="false" org.eventb.texttools.text_lastmodified="1542830175388" org.eventb.texttools.text_representation="context bonaventure_2_ctxt extends bonaventure_1_ctxt&#10;&#10;end&#10;" version="3">
+<org.eventb.core.extendsContext name="'" org.eventb.core.target="bonaventure_1_ctxt"/>
+</org.eventb.core.contextFile>

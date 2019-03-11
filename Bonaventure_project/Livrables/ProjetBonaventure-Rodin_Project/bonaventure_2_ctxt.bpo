@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+<org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+<org.eventb.core.poIdentifier name="TUNNEL_TRAVEL_LANE" org.eventb.core.type="ℙ(TUNNEL_TRAVEL_LANE)"/>
+<org.eventb.core.poIdentifier name="VEHICLE" org.eventb.core.type="ℙ(VEHICLE)"/>
+<org.eventb.core.poIdentifier name="TRAVEL_LANE_I" org.eventb.core.type="TUNNEL_TRAVEL_LANE"/>
+<org.eventb.core.poIdentifier name="TRAVEL_LANE_II" org.eventb.core.type="TUNNEL_TRAVEL_LANE"/>
+<org.eventb.core.poIdentifier name="Tunnel" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="Tunnel_part1" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="Tunnel_part2" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.poIdentifier name="Vehicle_Length" org.eventb.core.type="ℙ(VEHICLE×ℤ)"/>
+<org.eventb.core.poIdentifier name="Visibility_Limit" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.poIdentifier name="aa" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="bb" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="cc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANF" org.eventb.core.predicate="partition(TUNNEL_TRAVEL_LANE,{TRAVEL_LANE_I},{TRAVEL_LANE_II})" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkg"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANG" org.eventb.core.predicate="Tunnel⊆ℕ" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkh"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANH" org.eventb.core.predicate="Tunnel_part1⊆Tunnel" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGki"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANI" org.eventb.core.predicate="Tunnel_part2⊆Tunnel" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkj"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANJ" org.eventb.core.predicate="Visibility_Limit∈Tunnel_part1 ⇸ Tunnel" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkk"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANK" org.eventb.core.predicate="aa∈ℕ" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkl"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANL" org.eventb.core.predicate="bb∈ℕ" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkm"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANM" org.eventb.core.predicate="cc∈ℕ" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkn"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANN" org.eventb.core.predicate="finite(VEHICLE)" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGko"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANO" org.eventb.core.predicate="Vehicle_Length∈VEHICLE → ℕ" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkp"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANP" org.eventb.core.predicate="aa&lt;bb" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkq"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANQ" org.eventb.core.predicate="bb&lt;cc" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkr"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANR" org.eventb.core.predicate="Tunnel_part1=aa ‥ bb" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGks"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANS" org.eventb.core.predicate="Tunnel_part2=bb ‥ cc" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_cDWwYOhOEeiFb9vuOXZGkt"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANT" org.eventb.core.predicate="Tunnel=Tunnel_part1∪Tunnel_part2" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_Sn98gOkpEei2Zb4EspZEew"/>
+<org.eventb.core.poPredicate name="TUNNEL_TRAVEL_LANU" org.eventb.core.predicate="∀xx⦂ℤ·xx∈dom(Visibility_Limit)⇒Visibility_Limit(xx)&gt;xx" org.eventb.core.source="/ProjetBonaventure/bonaventure_0_ctxt.buc|org.eventb.core.contextFile#bonaventure_0_ctxt|org.eventb.core.axiom#_XCE6YOzZEei2Zb4EspZEew"/>
+<org.eventb.core.poIdentifier name="TRAFFIC_LEVEL" org.eventb.core.type="ℙ(TRAFFIC_LEVEL)"/>
+<org.eventb.core.poIdentifier name="CONGESTION" org.eventb.core.type="TRAFFIC_LEVEL"/>
+<org.eventb.core.poIdentifier name="DENSE" org.eventb.core.type="TRAFFIC_LEVEL"/>
+<org.eventb.core.poIdentifier name="MAXIMAL_TUNNEL_OCCUPATION" org.eventb.core.type="ℤ"/>
+<org.eventb.core.poIdentifier name="NORMAL" org.eventb.core.type="TRAFFIC_LEVEL"/>
+<org.eventb.core.poIdentifier name="SLOWED" org.eventb.core.type="TRAFFIC_LEVEL"/>
+<org.eventb.core.poPredicate name="MAXIMAL_TUNNEL_OCCUPATIOO" org.eventb.core.predicate="partition(TRAFFIC_LEVEL,{NORMAL},{DENSE},{SLOWED},{CONGESTION})" org.eventb.core.source="/ProjetBonaventure/bonaventure_1_ctxt.buc|org.eventb.core.contextFile#bonaventure_1_ctxt|org.eventb.core.axiom#-"/>
+<org.eventb.core.poPredicate name="MAXIMAL_TUNNEL_OCCUPATIOP" org.eventb.core.predicate="MAXIMAL_TUNNEL_OCCUPATION∈ℕ1" org.eventb.core.source="/ProjetBonaventure/bonaventure_1_ctxt.buc|org.eventb.core.contextFile#bonaventure_1_ctxt|org.eventb.core.axiom#\/"/>
+</org.eventb.core.poPredicateSet>
+<org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/ProjetBonaventure/bonaventure_2_ctxt.bpo|org.eventb.core.poFile#bonaventure_2_ctxt|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0"/>
+</org.eventb.core.poFile>

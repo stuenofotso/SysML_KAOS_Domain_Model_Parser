@@ -1,0 +1,42 @@
+/* bonaventure_1
+* Author: SysML/KAOS Domain Model Parser
+* Creation date: 01/11/2018
+*/
+
+REFINEMENT
+bonaventure_1
+REFINES
+bonaventure_0
+
+SETS
+TRAFFIC_LEVEL={NORMAL, DENSE, SLOWED, CONGESTION}
+
+CONSTANTS
+MAXIMAL_TUNNEL_OCCUPATION
+
+VARIABLES
+traffic_level, Vehicle_Speed
+
+PROPERTIES
+MAXIMAL_TUNNEL_OCCUPATION : NATURAL
+
+INVARIANT
+traffic_level : TRAFFIC_LEVEL &
+Vehicle_Speed : Vehicle --> NATURAL &
+/*logical formula p1_1*/
+!(xx).(xx : Vehicle => Vehicle_Speed(xx)  <= Speed_Limit(Vehicle_Front_Position(xx) ) ) &
+/*logical formula p1_2*/
+(traffic_level = NORMAL => (((card(Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !xx.(xx : Vehicle => Vehicle_Speed(xx)  >= 40) ) ) ) &
+/*logical formula p1_3*/
+(traffic_level = DENSE => (((card(Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  < 40 & ( !xx.(xx : Vehicle => Vehicle_Speed(xx)  : 35..39) ) ) ) &
+/*logical formula p1_4*/
+(traffic_level = SLOWED => (((card(Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !xx.(xx : Vehicle => Vehicle_Speed(xx)  : 25..34) ) ) ) &
+/*logical formula p1_5*/
+(traffic_level = CONGESTION => (((card(Vehicle) * 100)  / MAXIMAL_TUNNEL_OCCUPATION)  > 40 & ( !xx.(xx : Vehicle => Vehicle_Speed(xx)  < 15) ) ) )
+
+INITIALISATION
+traffic_level := NORMAL ||
+Vehicle_Speed :: Vehicle --> NATURAL
+
+
+END

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.prFile version="1">
+<org.eventb.core.prProof name="p0_7/WD" org.eventb.core.confidence="1000" org.eventb.core.prFresh="xx" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="p1,p2,p3,p4">
+<org.eventb.core.lang name="L"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Tunnel_part1=aa ‥ bb" org.eventb.core.prHyps="p2">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p5" org.eventb.core.prInfHyps="p6"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p1" org.eventb.core.prInfHyps="p7"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p4" org.eventb.core.prInfHyps="p8"/>
+<org.eventb.core.prHypAction name="DESELECT3" org.eventb.core.prHyps="p5,p1,p4"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Tunnel_part2=bb ‥ cc" org.eventb.core.prHyps="p3">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p9" org.eventb.core.prInfHyps="p10"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p8" org.eventb.core.prInfHyps="p11"/>
+<org.eventb.core.prHypAction name="DESELECT2" org.eventb.core.prHyps="p9,p8"/>
+<org.eventb.core.prRule name="r0" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="eh with Tunnel=aa ‥ bb∪bb ‥ cc" org.eventb.core.prHyps="p11">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="FORWARD_INF0" org.eventb.core.prHyps="p12" org.eventb.core.prInfHyps="p13"/>
+<org.eventb.core.prHypAction name="FORWARD_INF1" org.eventb.core.prHyps="p6" org.eventb.core.prInfHyps="p14"/>
+<org.eventb.core.prHypAction name="FORWARD_INF2" org.eventb.core.prHyps="p7" org.eventb.core.prInfHyps="p15"/>
+<org.eventb.core.prHypAction name="FORWARD_INF3" org.eventb.core.prHyps="p10" org.eventb.core.prInfHyps="p16"/>
+<org.eventb.core.prHypAction name="DESELECT4" org.eventb.core.prHyps="p12,p6,p7,p10"/>
+<org.eventb.core.prRule name="r1" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="simplification rewrites" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'">
+<org.eventb.core.prHypAction name="REWRITE0" org.eventb.core.prHidden="p13" org.eventb.core.prHyps="" org.eventb.core.prInfHyps="p17,p18"/>
+<org.eventb.core.prHypAction name="HIDE1" org.eventb.core.prHyps="p14"/>
+<org.eventb.core.prHypAction name="HIDE2" org.eventb.core.prHyps="p16"/>
+<org.eventb.core.prRule name="r2" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="∀ goal (frees xx)" org.eventb.core.prGoal="p0" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p19">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prRule name="r3" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="⇒ goal" org.eventb.core.prGoal="p19" org.eventb.core.prHyps="">
+<org.eventb.core.prAnte name="'" org.eventb.core.prGoal="p21" org.eventb.core.prHyps="p20">
+<org.eventb.core.prRule name="r4" org.eventb.core.confidence="1000" org.eventb.core.prDisplay="functional goal" org.eventb.core.prGoal="p21" org.eventb.core.prHyps="p1"/>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+</org.eventb.core.prAnte>
+</org.eventb.core.prRule>
+<org.eventb.core.prIdent name="Tunnel" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Tunnel_part1" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Tunnel_part2" org.eventb.core.type="ℙ(ℤ)"/>
+<org.eventb.core.prIdent name="Visibility_Limit" org.eventb.core.type="ℙ(ℤ×ℤ)"/>
+<org.eventb.core.prIdent name="aa" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="bb" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prIdent name="cc" org.eventb.core.type="ℤ"/>
+<org.eventb.core.prPred name="p6" org.eventb.core.predicate="aa ‥ bb⊆Tunnel"/>
+<org.eventb.core.prPred name="p17" org.eventb.core.predicate="aa ‥ bb⊆ℕ"/>
+<org.eventb.core.prPred name="p10" org.eventb.core.predicate="bb ‥ cc⊆Tunnel"/>
+<org.eventb.core.prPred name="p16" org.eventb.core.predicate="bb ‥ cc⊆aa ‥ bb∪bb ‥ cc"/>
+<org.eventb.core.prPred name="p11" org.eventb.core.predicate="Tunnel=aa ‥ bb∪bb ‥ cc"/>
+<org.eventb.core.prPred name="p7" org.eventb.core.predicate="Visibility_Limit∈aa ‥ bb ⇸ Tunnel"/>
+<org.eventb.core.prPred name="p14" org.eventb.core.predicate="aa ‥ bb⊆aa ‥ bb∪bb ‥ cc"/>
+<org.eventb.core.prPred name="p1" org.eventb.core.predicate="Visibility_Limit∈Tunnel_part1 ⇸ Tunnel"/>
+<org.eventb.core.prPred name="p20" org.eventb.core.predicate="xx∈dom(Visibility_Limit)">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p8" org.eventb.core.predicate="Tunnel=aa ‥ bb∪Tunnel_part2"/>
+<org.eventb.core.prPred name="p12" org.eventb.core.predicate="Tunnel⊆ℕ"/>
+<org.eventb.core.prPred name="p4" org.eventb.core.predicate="Tunnel=Tunnel_part1∪Tunnel_part2"/>
+<org.eventb.core.prPred name="p5" org.eventb.core.predicate="Tunnel_part1⊆Tunnel"/>
+<org.eventb.core.prPred name="p19" org.eventb.core.predicate="xx∈dom(Visibility_Limit)⇒Visibility_Limit∈ℤ ⇸ ℤ">
+<org.eventb.core.prIdent name="xx" org.eventb.core.type="ℤ"/>
+</org.eventb.core.prPred>
+<org.eventb.core.prPred name="p0" org.eventb.core.predicate="∀xx⦂ℤ·xx∈dom(Visibility_Limit)⇒Visibility_Limit∈ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p2" org.eventb.core.predicate="Tunnel_part1=aa ‥ bb"/>
+<org.eventb.core.prPred name="p13" org.eventb.core.predicate="aa ‥ bb∪bb ‥ cc⊆ℕ"/>
+<org.eventb.core.prPred name="p3" org.eventb.core.predicate="Tunnel_part2=bb ‥ cc"/>
+<org.eventb.core.prPred name="p21" org.eventb.core.predicate="Visibility_Limit∈ℤ ⇸ ℤ"/>
+<org.eventb.core.prPred name="p18" org.eventb.core.predicate="bb ‥ cc⊆ℕ"/>
+<org.eventb.core.prPred name="p9" org.eventb.core.predicate="Tunnel_part2⊆Tunnel"/>
+<org.eventb.core.prPred name="p15" org.eventb.core.predicate="Visibility_Limit∈aa ‥ bb ⇸ aa ‥ bb∪bb ‥ cc"/>
+<org.eventb.core.prReas name="r0" org.eventb.core.prRID="org.eventb.core.seqprover.eq:1"/>
+<org.eventb.core.prReas name="r3" org.eventb.core.prRID="org.eventb.core.seqprover.impI"/>
+<org.eventb.core.prReas name="r2" org.eventb.core.prRID="org.eventb.core.seqprover.allI"/>
+<org.eventb.core.prReas name="r1" org.eventb.core.prRID="org.eventb.core.seqprover.autoRewritesL4:0"/>
+<org.eventb.core.prReas name="r4" org.eventb.core.prRID="org.eventb.core.seqprover.isFunGoal"/>
+</org.eventb.core.prProof>
+</org.eventb.core.prFile>
